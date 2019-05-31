@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb1c4a73260b4f8082dc95ef868ff5e6" Name="Diagram1" ZoomLevel="81" >
+        <EntityTypeShape EntityType="Model1.Cliente" Width="1.5" PointX="0.5" PointY="2.375" />
+        <EntityTypeShape EntityType="Model1.Carro" Width="1.5" PointX="7.875" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.CarroOficina" Width="1.5" PointX="7.625" PointY="0.5" />
+        <InheritanceConnector EntityType="Model1.CarroOficina" />
+        <EntityTypeShape EntityType="Model1.CarroAluguer" Width="1.5" PointX="7.875" PointY="5.625" />
+        <InheritanceConnector EntityType="Model1.CarroAluguer" />
+        <EntityTypeShape EntityType="Model1.Parcela" Width="1.5" PointX="2.5" PointY="1.375" />
+        <EntityTypeShape EntityType="Model1.Servico" Width="1.5" PointX="5" PointY="1.375" />
+        <AssociationConnector Association="Model1.ClienteIdCliente" />
+        <AssociationConnector Association="Model1.ServicoIdServico" />
+        <AssociationConnector Association="Model1.CarroOficinaIdCarroOficina" />
+        <EntityTypeShape EntityType="Model1.CarroVenda" Width="1.5" PointX="5.125" PointY="3.75" />
+        <InheritanceConnector EntityType="Model1.CarroVenda" />
+        <EntityTypeShape EntityType="Model1.Venda" Width="1.5" PointX="2.75" PointY="4" />
+        <AssociationConnector Association="Model1.VendaCarroVenda" />
+        <AssociationConnector Association="Model1.ClienteIdVenda" />
+        <EntityTypeShape EntityType="Model1.Aluguer" Width="1.5" PointX="5" PointY="6" />
+        <AssociationConnector Association="Model1.ClienteIdAluguer" />
+        <AssociationConnector Association="Model1.AluguerCarroAluguer" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
