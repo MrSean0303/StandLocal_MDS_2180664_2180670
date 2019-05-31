@@ -68,13 +68,14 @@
             // 
             // buttonAddParcela
             // 
+            this.buttonAddParcela.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddParcela.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonAddParcela.Enabled = false;
-            this.buttonAddParcela.Location = new System.Drawing.Point(202, 64);
+            this.buttonAddParcela.Location = new System.Drawing.Point(202, 72);
             this.buttonAddParcela.Name = "buttonAddParcela";
             this.buttonAddParcela.Size = new System.Drawing.Size(101, 32);
             this.buttonAddParcela.TabIndex = 4;
-            this.buttonAddParcela.Text = "Adicionar Parcela";
+            this.buttonAddParcela.Text = "Continuar";
             this.buttonAddParcela.UseVisualStyleBackColor = true;
             this.buttonAddParcela.Click += new System.EventHandler(this.ButtonAddParcela_Click);
             // 
@@ -91,23 +92,27 @@
             // 
             this.toolTipValor.AutoPopDelay = 5000;
             this.toolTipValor.InitialDelay = 1000;
+            this.toolTipValor.IsBalloon = true;
             this.toolTipValor.ReshowDelay = 100;
             this.toolTipValor.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             this.toolTipValor.ToolTipTitle = "Valor nulo";
             // 
             // pictureBoxValor
             // 
-            this.pictureBoxValor.Location = new System.Drawing.Point(306, 13);
+            this.pictureBoxValor.Image = global::Stand_Automoveis.Properties.Resources.StatusWarning_exp_16x;
+            this.pictureBoxValor.Location = new System.Drawing.Point(305, 14);
             this.pictureBoxValor.Name = "pictureBoxValor";
-            this.pictureBoxValor.Size = new System.Drawing.Size(18, 18);
+            this.pictureBoxValor.Size = new System.Drawing.Size(16, 16);
             this.pictureBoxValor.TabIndex = 6;
             this.pictureBoxValor.TabStop = false;
+            this.toolTipValor.SetToolTip(this.pictureBoxValor, "Atenção! O valor introduzido é nulo.\r\n");
+            this.pictureBoxValor.Visible = false;
             // 
             // New_Update_Parcela
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 111);
+            this.ClientSize = new System.Drawing.Size(324, 116);
             this.Controls.Add(this.pictureBoxValor);
             this.Controls.Add(this.numValor);
             this.Controls.Add(this.buttonAddParcela);
@@ -124,12 +129,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox tbxDescricao;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonAddParcela;
-        private System.Windows.Forms.NumericUpDown numValor;
         private System.Windows.Forms.ToolTip toolTipValor;
         private System.Windows.Forms.PictureBox pictureBoxValor;
+        public System.Windows.Forms.TextBox tbxDescricao;
+        public System.Windows.Forms.NumericUpDown numValor;
     }
 }

@@ -8,5 +8,9 @@ namespace Stand_Automoveis
 {
     public partial class Parcelas
     {
+        public override string ToString()
+        {
+            return "Valor: " + Valor + "€ | Descrição: " + Descricao;
+        }
     }
 }

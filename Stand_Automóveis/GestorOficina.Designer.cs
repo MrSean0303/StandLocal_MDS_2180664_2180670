@@ -34,8 +34,8 @@
             this.lbxClientes = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonEditarParcelas = new System.Windows.Forms.Button();
+            this.buttonEliminarParcelas = new System.Windows.Forms.Button();
             this.buttonAddParcela = new System.Windows.Forms.Button();
             this.lbxParcelas = new System.Windows.Forms.ListBox();
             this.buttonEditarCarro = new System.Windows.Forms.Button();
@@ -115,8 +115,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.buttonEditarParcelas);
+            this.groupBox3.Controls.Add(this.buttonEliminarParcelas);
             this.groupBox3.Controls.Add(this.buttonAddParcela);
             this.groupBox3.Controls.Add(this.lbxParcelas);
             this.groupBox3.Location = new System.Drawing.Point(484, 213);
@@ -126,23 +126,25 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Parcelas";
             // 
-            // button1
+            // buttonEditarParcelas
             // 
-            this.button1.Location = new System.Drawing.Point(176, 208);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Editar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonEditarParcelas.Location = new System.Drawing.Point(176, 208);
+            this.buttonEditarParcelas.Name = "buttonEditarParcelas";
+            this.buttonEditarParcelas.Size = new System.Drawing.Size(81, 23);
+            this.buttonEditarParcelas.TabIndex = 7;
+            this.buttonEditarParcelas.Text = "Editar";
+            this.buttonEditarParcelas.UseVisualStyleBackColor = true;
+            this.buttonEditarParcelas.Click += new System.EventHandler(this.ButtonEditarParcelas_Click);
             // 
-            // button2
+            // buttonEliminarParcelas
             // 
-            this.button2.Location = new System.Drawing.Point(91, 208);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(79, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Eliminar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonEliminarParcelas.Location = new System.Drawing.Point(91, 208);
+            this.buttonEliminarParcelas.Name = "buttonEliminarParcelas";
+            this.buttonEliminarParcelas.Size = new System.Drawing.Size(79, 23);
+            this.buttonEliminarParcelas.TabIndex = 6;
+            this.buttonEliminarParcelas.Text = "Eliminar";
+            this.buttonEliminarParcelas.UseVisualStyleBackColor = true;
+            this.buttonEliminarParcelas.Click += new System.EventHandler(this.ButtonEliminarParcelas_Click);
             // 
             // buttonAddParcela
             // 
@@ -352,8 +354,8 @@
         private System.Windows.Forms.Button buttonEditarServicos;
         private System.Windows.Forms.Button buttonEliminarServicos;
         private System.Windows.Forms.Button buttonAddServico;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonEditarParcelas;
+        private System.Windows.Forms.Button buttonEliminarParcelas;
         private System.Windows.Forms.Button buttonAddParcela;
     }
 }
