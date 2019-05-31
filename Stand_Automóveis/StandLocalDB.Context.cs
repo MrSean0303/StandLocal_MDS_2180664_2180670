@@ -25,11 +25,11 @@ namespace Stand_Automoveis
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cliente> Clientes { get; set; }
-        public virtual DbSet<Carro> Carro { get; set; }
-        public virtual DbSet<Parcela> Parcela { get; set; }
-        public virtual DbSet<Servico> Servico { get; set; }
-        public virtual DbSet<Venda> Vendas { get; set; }
-        public virtual DbSet<Aluguer> Aluguer { get; set; }
+        public virtual DbSet<Clientes> Clientes { get; set; }
+        public virtual DbSet<Carros> Carro { get; set; }
+        public virtual DbSet<Parcelas> Parcela { get; set; }
+        public virtual DbSet<Servicos> Servico { get; set; }
+        public virtual DbSet<Vendas> Vendas { get; set; }
+        public virtual DbSet<Alugueres> Aluguer { get; set; }
     }
 }

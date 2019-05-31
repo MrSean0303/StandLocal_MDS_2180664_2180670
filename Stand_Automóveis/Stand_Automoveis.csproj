@@ -55,33 +55,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aluguer.cs">
+    <Compile Include="Alugueres.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Carro.cs">
+    <Compile Include="AluguerInformacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AluguerInformacoes.Designer.cs">
+      <DependentUpon>AluguerInformacoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CarregarBD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CarregarBD.Designer.cs">
+      <DependentUpon>CarregarBD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Carros.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="CarroAluguer.cs">
+    <Compile Include="CarrosAluguer.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="CarroOficina.cs">
+    <Compile Include="CarrosOficina.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="CarroVenda.cs">
+    <Compile Include="CarrosVenda.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Cliente.cs">
+    <Compile Include="Clientes.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Extension\Aluguer.cs" />
-    <Compile Include="Extension\Carro.cs" />
-    <Compile Include="Extension\Carro_CarroAluguer.cs" />
-    <Compile Include="Extension\Carro_CarroOficina.cs" />
-    <Compile Include="Extension\Carro_CarroVenda.cs" />
-    <Compile Include="Extension\Cliente.cs" />
-    <Compile Include="Extension\Parcela.cs" />
-    <Compile Include="Extension\Servico.cs" />
-    <Compile Include="Extension\Venda.cs" />
+    <Compile Include="Extension\Alugueres.cs" />
+    <Compile Include="Extension\Carros.cs" />
+    <Compile Include="Extension\CarrosAluguer.cs" />
+    <Compile Include="Extension\CarrosOficina.cs" />
+    <Compile Include="Extension\CarrosVenda.cs" />
+    <Compile Include="Extension\Clientes.cs" />
+    <Compile Include="Extension\Parcelas.cs" />
+    <Compile Include="Extension\Servicos.cs" />
+    <Compile Include="Extension\Vendas.cs" />
     <Compile Include="GestorVenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +130,12 @@
     <Compile Include="New_Update_Carro.Designer.cs">
       <DependentUpon>New_Update_Carro.cs</DependentUpon>
     </Compile>
+    <Compile Include="New_Update_CarroAluguer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New_Update_CarroAluguer.Designer.cs">
+      <DependentUpon>New_Update_CarroAluguer.cs</DependentUpon>
+    </Compile>
     <Compile Include="New_Update_Parcela.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,12 +154,12 @@
     <Compile Include="New_Update_Servico.Designer.cs">
       <DependentUpon>New_Update_Servico.cs</DependentUpon>
     </Compile>
-    <Compile Include="Parcela.cs">
+    <Compile Include="Parcelas.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servico.cs">
+    <Compile Include="Servicos.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
     <Compile Include="StandLocalDB.Context.cs">
@@ -159,7 +177,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StandLocalDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Venda.cs">
+    <Compile Include="Vendas.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="GestorCliente.resx">

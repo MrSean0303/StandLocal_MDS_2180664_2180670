@@ -12,18 +12,20 @@ namespace Stand_Automoveis
     using System;
     using System.Collections.Generic;
     
-    public partial class CarroAluguer : Carro
+    public partial class CarrosOficina : Carros
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CarroAluguer()
+        public CarrosOficina()
         {
-            this.Aluguer = new HashSet<Aluguer>();
+            this.Servico = new HashSet<Servicos>();
         }
     
-        public string Estado { get; set; }
         public string Matricula { get; set; }
+        public string Kms { get; set; }
+        public int ClienteIdCliente { get; set; }
     
+        public virtual Clientes Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Aluguer> Aluguer { get; set; }
+        public virtual ICollection<Servicos> Servico { get; set; }
     }
 }

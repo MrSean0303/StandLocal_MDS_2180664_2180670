@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Stand_Automoveis
 {
-    public partial class Aluguer
+    public partial class CarrosVenda
     {
-       /*
-        */
     }
 }

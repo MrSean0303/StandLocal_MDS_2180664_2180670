@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Stand_Automoveis
 {
-    public partial class CarroOficina
+    public partial class CarrosOficina
     {
         public override string ToString()
         {

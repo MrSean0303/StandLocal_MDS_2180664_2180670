@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Stand_Automoveis
-{ 
-    public partial class Carro_CarroVenda
+{
+    public partial class Parcelas
     {
     }
 }

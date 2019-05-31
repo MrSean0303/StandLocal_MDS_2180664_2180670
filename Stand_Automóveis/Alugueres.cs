@@ -12,15 +12,16 @@ namespace Stand_Automoveis
     using System;
     using System.Collections.Generic;
     
-    public partial class Venda
+    public partial class Alugueres
     {
-        public int IdVenda { get; set; }
+        public int IdAluguer { get; set; }
+        public System.DateTime DataInicio { get; set; }
+        public System.DateTime DataFim { get; set; }
         public double Valor { get; set; }
-        public string Estado { get; set; }
-        public System.DateTime Data { get; set; }
+        public string Kms { get; set; }
         public int ClienteIdCliente { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
-        public virtual CarroVenda CarroVenda { get; set; }
+        public virtual Clientes Cliente { get; set; }
+        public virtual CarrosAluguer CarroAluguer { get; set; }
     }
 }

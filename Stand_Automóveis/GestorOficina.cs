@@ -8,9 +8,9 @@ namespace Stand_Automoveis
     public partial class GestorOficina : Form
     {
         private StandLocalDBContainer StandLocalDB;
-        List<Cliente> listaCliente = new List<Cliente>();
-        List<Carro> listaCarro = new List<Carro>();
-        List<Servico> listaServico = new List<Servico>();
+        List<Clientes> listaCliente = new List<Clientes>();
+        List<Carros> listaCarro = new List<Carros>();
+        List<Servicos> listaServico = new List<Servicos>();
         bool conteudoNovo = false;
 
         public GestorOficina()
@@ -22,7 +22,7 @@ namespace Stand_Automoveis
 
         private void LbxClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Cliente clienteSelecionado = (Cliente)lbxClientes.SelectedItem;
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
 
             if (clienteSelecionado == null)
             {
@@ -39,7 +39,7 @@ namespace Stand_Automoveis
         }
         private void AtualizarCarros()
         {
-            Cliente clienteSelecionado = (Cliente)lbxClientes.SelectedItem;
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
             lbxCarros.DataSource = null;
             lbxCarros.DataSource = clienteSelecionado.CarroOficina.ToList();
         }
@@ -50,7 +50,7 @@ namespace Stand_Automoveis
         }
         private void AtualizarServicos()
         {
-            CarroOficina carroSelecionado = (CarroOficina)lbxCarros.SelectedItem;
+            CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
             if (carroSelecionado == null)
             {
                 lbxServicos.DataSource = null;
@@ -65,7 +65,7 @@ namespace Stand_Automoveis
 
         private void AtualizarParcelas()
         {
-            Servico servicoSelecionado = (Servico)lbxServicos.SelectedItem;
+            Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
             if (servicoSelecionado == null)
             {
                 lbxParcelas.DataSource = null;
@@ -80,10 +80,10 @@ namespace Stand_Automoveis
 
         private void ButtonAddCarro_Click(object sender, EventArgs e)
         {
-            Cliente clienteSelecionado = (Cliente)lbxClientes.SelectedItem;
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
             New_Update_Carro novocarro = new New_Update_Carro();
             novocarro.ShowDialog();
-            CarroOficina carroTemp = new CarroOficina
+            CarrosOficina carroTemp = new CarrosOficina
             {
                 Marca = novocarro.marca,
                 Modelo = novocarro.modelo,
@@ -106,7 +106,7 @@ namespace Stand_Automoveis
         {
             NovoCliente novocliente = new NovoCliente();
             novocliente.ShowDialog();
-            Cliente clienteTemp = new Cliente
+            Clientes clienteTemp = new Clientes
             {
                 Nome = novocliente.nome,
                 NIF = novocliente.nif,
@@ -149,14 +149,14 @@ namespace Stand_Automoveis
 
         private void ButtonEliminarCarro_Click(object sender, EventArgs e)
         {
-            CarroOficina carroSelecionado = (CarroOficina)lbxCarros.SelectedItem;
+            CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
             bool servicoCheck = true;
             if (carroSelecionado == null)
             {
                 MessageBox.Show("Nenhum Carro Selecionado", "Erro: Carro Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            foreach (Servico servicos in carroSelecionado.Servico)
+            foreach (Servicos servicos in carroSelecionado.Servico)
             {
                 if (servicos.DataSaida != null)
                     servicoCheck = false;
@@ -176,11 +176,11 @@ namespace Stand_Automoveis
 
         private void ButtonAddServico_Click(object sender, EventArgs e)
         {
-            CarroOficina carroSelecionado = (CarroOficina)lbxCarros.SelectedItem;
+            CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
             New_Update_Servico novoServico = new New_Update_Servico();
             novoServico.ShowDialog();
 
-            Servico servicoTemp = new Servico
+            Servicos servicoTemp = new Servicos
             {
                 Tipo = novoServico.tipo,
                 DataEntrada = novoServico.dataEntrada,
@@ -190,7 +190,7 @@ namespace Stand_Automoveis
             if (novoServico.DialogResult == DialogResult.OK)
             {
                 listaServico.Add(servicoTemp);
-                ((CarroOficina)StandLocalDB.Carro.Find(carroSelecionado.idCarro)).Servico.Add(servicoTemp);
+                ((CarrosOficina)StandLocalDB.Carro.Find(carroSelecionado.idCarro)).Servico.Add(servicoTemp);
                 carroSelecionado.Servico.Add(servicoTemp);
                 conteudoNovo = true;
                 AtualizarServicos();
@@ -199,7 +199,7 @@ namespace Stand_Automoveis
 
         private void LbxCarros_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CarroOficina carroSelecionado = (CarroOficina)lbxCarros.SelectedItem;
+            CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
 
             if (carroSelecionado == null)
             {
@@ -211,7 +211,7 @@ namespace Stand_Automoveis
 
         private void ButtonEliminarServicos_Click(object sender, EventArgs e)
         {
-            Servico servicoSelecionado = (Servico)lbxServicos.SelectedItem;
+            Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
             if (servicoSelecionado == null)
             {
                 MessageBox.Show("Nenhum Serviço Selecionado", "Erro: Serviço Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -233,7 +233,7 @@ namespace Stand_Automoveis
 
         private void ButtonEditarServicos_Click(object sender, EventArgs e)
         {
-            Servico servicoSelecionado = (Servico)lbxServicos.SelectedItem;
+            Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
             New_Update_Servico novoServico = new New_Update_Servico();
 
             novoServico.label_Provisorio.Visible = false;
@@ -255,7 +255,7 @@ namespace Stand_Automoveis
 
         private void ButtonEditarCarro_Click(object sender, EventArgs e)
         {
-            CarroOficina carroSelecionado = (CarroOficina)lbxCarros.SelectedItem;
+            CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
             New_Update_Carro edicaoCarro = new New_Update_Carro();
             edicaoCarro.Text = "Edição do Carro Selecionado";
             edicaoCarro.buttonAddCarro.Text = "Editar Carro";
@@ -285,11 +285,11 @@ namespace Stand_Automoveis
 
         private void ButtonAddParcela_Click(object sender, EventArgs e)
         {
-            Servico servicoSelecionado = (Servico)lbxServicos.SelectedItem;
+            Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
             New_Update_Parcela newParcela = new New_Update_Parcela();
             newParcela.ShowDialog();
 
-            Parcela novaParcela = new Parcela
+            Parcelas novaParcela = new Parcelas
             {
                 Valor = newParcela.valor,
                 Descricao = newParcela.descricao,
@@ -307,7 +307,7 @@ namespace Stand_Automoveis
 
         private void LbxServicos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Servico servicoSelecionado = (Servico)lbxServicos.SelectedItem;
+            Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
 
             if (servicoSelecionado == null)
             {

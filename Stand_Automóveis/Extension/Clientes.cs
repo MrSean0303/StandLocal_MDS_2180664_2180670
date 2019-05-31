@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Stand_Automoveis
 {
-    public partial class Servico
+    public partial class Clientes
     {
         public override string ToString()
         {
-            return "Tipo: " + Tipo + " | Data-Entrada: " + DataEntrada.ToShortDateString() + " | Data-Saída: " + DataSaida.ToShortDateString();
+            return Nome + " | " + NIF + " | " + Contacto + " | " + Morada;
         }
     }
 }

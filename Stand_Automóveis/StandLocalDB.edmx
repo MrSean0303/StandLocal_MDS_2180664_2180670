@@ -12,12 +12,12 @@
     <EntitySet Name="Servico" EntityType="StandLocalDB.Store.Servico" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Vendas" EntityType="StandLocalDB.Store.Vendas" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Aluguer" EntityType="StandLocalDB.Store.Aluguer" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Carro_CarroOficina" EntityType="StandLocalDB.Store.Carro_CarroOficina" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Carro_CarroAluguer" EntityType="StandLocalDB.Store.Carro_CarroAluguer" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Carro_CarroVenda" EntityType="StandLocalDB.Store.Carro_CarroVenda" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Carro_CarrosOficina" EntityType="StandLocalDB.Store.Carro_CarrosOficina" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Carro_CarrosAluguer" EntityType="StandLocalDB.Store.Carro_CarrosAluguer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Carro_CarrosVenda" EntityType="StandLocalDB.Store.Carro_CarrosVenda" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ClienteIdCliente" Association="StandLocalDB.Store.ClienteIdCliente">
       <End Role="Cliente" EntitySet="Clientes" />
-      <End Role="CarroOficina" EntitySet="Carro_CarroOficina" />
+      <End Role="CarroOficina" EntitySet="Carro_CarrosOficina" />
     </AssociationSet>
     <AssociationSet Name="ClienteIdVenda" Association="StandLocalDB.Store.ClienteIdVenda">
       <End Role="Cliente" EntitySet="Clientes" />
@@ -29,7 +29,7 @@
     </AssociationSet>
     <AssociationSet Name="AluguerCarroAluguer" Association="StandLocalDB.Store.AluguerCarroAluguer">
       <End Role="Aluguer" EntitySet="Aluguer" />
-      <End Role="CarroAluguer" EntitySet="Carro_CarroAluguer" />
+      <End Role="CarroAluguer" EntitySet="Carro_CarrosAluguer" />
     </AssociationSet>
     <AssociationSet Name="ServicoIdServico" Association="StandLocalDB.Store.ServicoIdServico">
       <End Role="Servico" EntitySet="Servico" />
@@ -37,23 +37,23 @@
     </AssociationSet>
     <AssociationSet Name="VendaCarroVenda" Association="StandLocalDB.Store.VendaCarroVenda">
       <End Role="Venda" EntitySet="Vendas" />
-      <End Role="CarroVenda" EntitySet="Carro_CarroVenda" />
+      <End Role="CarroVenda" EntitySet="Carro_CarrosVenda" />
     </AssociationSet>
     <AssociationSet Name="ServicoCarroOficina" Association="StandLocalDB.Store.ServicoCarroOficina">
       <End Role="Servico" EntitySet="Servico" />
-      <End Role="CarroOficina" EntitySet="Carro_CarroOficina" />
+      <End Role="CarroOficina" EntitySet="Carro_CarrosOficina" />
     </AssociationSet>
-    <AssociationSet Name="FK_CarroOficina_inherits_Carro" Association="StandLocalDB.Store.FK_CarroOficina_inherits_Carro">
-      <End Role="Carro" EntitySet="Carro" />
-      <End Role="CarroOficina" EntitySet="Carro_CarroOficina" />
+    <AssociationSet Name="FK_CarrosOficina_inherits_Carros" Association="StandLocalDB.Store.FK_CarrosOficina_inherits_Carros">
+      <End Role="Carros" EntitySet="Carro" />
+      <End Role="CarrosOficina" EntitySet="Carro_CarrosOficina" />
     </AssociationSet>
-    <AssociationSet Name="FK_CarroAluguer_inherits_Carro" Association="StandLocalDB.Store.FK_CarroAluguer_inherits_Carro">
-      <End Role="Carro" EntitySet="Carro" />
-      <End Role="CarroAluguer" EntitySet="Carro_CarroAluguer" />
+    <AssociationSet Name="FK_CarrosAluguer_inherits_Carros" Association="StandLocalDB.Store.FK_CarrosAluguer_inherits_Carros">
+      <End Role="Carros" EntitySet="Carro" />
+      <End Role="CarrosAluguer" EntitySet="Carro_CarrosAluguer" />
     </AssociationSet>
-    <AssociationSet Name="FK_CarroVenda_inherits_Carro" Association="StandLocalDB.Store.FK_CarroVenda_inherits_Carro">
-      <End Role="Carro" EntitySet="Carro" />
-      <End Role="CarroVenda" EntitySet="Carro_CarroVenda" />
+    <AssociationSet Name="FK_CarrosVenda_inherits_Carros" Association="StandLocalDB.Store.FK_CarrosVenda_inherits_Carros">
+      <End Role="Carros" EntitySet="Carro" />
+      <End Role="CarrosVenda" EntitySet="Carro_CarrosVenda" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Clientes">
@@ -119,7 +119,7 @@
     <Property Name="ClienteIdCliente" Type="int" Nullable="false" />
     <Property Name="CarroAluguer_idCarro" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Carro_CarroOficina">
+  <EntityType Name="Carro_CarrosOficina">
     <Key>
       <PropertyRef Name="idCarro" />
     </Key>
@@ -128,7 +128,7 @@
     <Property Name="ClienteIdCliente" Type="int" Nullable="false" />
     <Property Name="idCarro" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Carro_CarroAluguer">
+  <EntityType Name="Carro_CarrosAluguer">
     <Key>
       <PropertyRef Name="idCarro" />
     </Key>
@@ -136,7 +136,7 @@
     <Property Name="Matricula" Type="nvarchar(max)" Nullable="false" />
     <Property Name="idCarro" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Carro_CarroVenda">
+  <EntityType Name="Carro_CarrosVenda">
     <Key>
       <PropertyRef Name="idCarro" />
     </Key>
@@ -145,7 +145,7 @@
   </EntityType>
   <Association Name="ClienteIdCliente">
     <End Role="Cliente" Type="StandLocalDB.Store.Clientes" Multiplicity="1" />
-    <End Role="CarroOficina" Type="StandLocalDB.Store.Carro_CarroOficina" Multiplicity="*" />
+    <End Role="CarroOficina" Type="StandLocalDB.Store.Carro_CarrosOficina" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Cliente">
         <PropertyRef Name="IdCliente" />
@@ -181,7 +181,7 @@
   </Association>
   <Association Name="AluguerCarroAluguer">
     <End Role="Aluguer" Type="StandLocalDB.Store.Aluguer" Multiplicity="*" />
-    <End Role="CarroAluguer" Type="StandLocalDB.Store.Carro_CarroAluguer" Multiplicity="1" />
+    <End Role="CarroAluguer" Type="StandLocalDB.Store.Carro_CarrosAluguer" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="CarroAluguer">
         <PropertyRef Name="idCarro" />
@@ -205,7 +205,7 @@
   </Association>
   <Association Name="VendaCarroVenda">
     <End Role="Venda" Type="StandLocalDB.Store.Vendas" Multiplicity="*" />
-    <End Role="CarroVenda" Type="StandLocalDB.Store.Carro_CarroVenda" Multiplicity="1" />
+    <End Role="CarroVenda" Type="StandLocalDB.Store.Carro_CarrosVenda" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="CarroVenda">
         <PropertyRef Name="idCarro" />
@@ -217,7 +217,7 @@
   </Association>
   <Association Name="ServicoCarroOficina">
     <End Role="Servico" Type="StandLocalDB.Store.Servico" Multiplicity="*" />
-    <End Role="CarroOficina" Type="StandLocalDB.Store.Carro_CarroOficina" Multiplicity="1" />
+    <End Role="CarroOficina" Type="StandLocalDB.Store.Carro_CarrosOficina" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="CarroOficina">
         <PropertyRef Name="idCarro" />
@@ -227,44 +227,44 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_CarroOficina_inherits_Carro">
-    <End Role="Carro" Type="StandLocalDB.Store.Carro" Multiplicity="1">
+  <Association Name="FK_CarrosOficina_inherits_Carros">
+    <End Role="Carros" Type="StandLocalDB.Store.Carro" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="CarroOficina" Type="StandLocalDB.Store.Carro_CarroOficina" Multiplicity="0..1" />
+    <End Role="CarrosOficina" Type="StandLocalDB.Store.Carro_CarrosOficina" Multiplicity="0..1" />
     <ReferentialConstraint>
-      <Principal Role="Carro">
+      <Principal Role="Carros">
         <PropertyRef Name="idCarro" />
       </Principal>
-      <Dependent Role="CarroOficina">
+      <Dependent Role="CarrosOficina">
         <PropertyRef Name="idCarro" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_CarroAluguer_inherits_Carro">
-    <End Role="Carro" Type="StandLocalDB.Store.Carro" Multiplicity="1">
+  <Association Name="FK_CarrosAluguer_inherits_Carros">
+    <End Role="Carros" Type="StandLocalDB.Store.Carro" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="CarroAluguer" Type="StandLocalDB.Store.Carro_CarroAluguer" Multiplicity="0..1" />
+    <End Role="CarrosAluguer" Type="StandLocalDB.Store.Carro_CarrosAluguer" Multiplicity="0..1" />
     <ReferentialConstraint>
-      <Principal Role="Carro">
+      <Principal Role="Carros">
         <PropertyRef Name="idCarro" />
       </Principal>
-      <Dependent Role="CarroAluguer">
+      <Dependent Role="CarrosAluguer">
         <PropertyRef Name="idCarro" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_CarroVenda_inherits_Carro">
-    <End Role="Carro" Type="StandLocalDB.Store.Carro" Multiplicity="1">
+  <Association Name="FK_CarrosVenda_inherits_Carros">
+    <End Role="Carros" Type="StandLocalDB.Store.Carro" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="CarroVenda" Type="StandLocalDB.Store.Carro_CarroVenda" Multiplicity="0..1" />
+    <End Role="CarrosVenda" Type="StandLocalDB.Store.Carro_CarrosVenda" Multiplicity="0..1" />
     <ReferentialConstraint>
-      <Principal Role="Carro">
+      <Principal Role="Carros">
         <PropertyRef Name="idCarro" />
       </Principal>
-      <Dependent Role="CarroVenda">
+      <Dependent Role="CarrosVenda">
         <PropertyRef Name="idCarro" />
       </Dependent>
     </ReferentialConstraint>
@@ -274,12 +274,12 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="StandLocalDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="StandLocalDBContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Clientes" EntityType="StandLocalDB.Cliente" />
-          <EntitySet Name="Carro" EntityType="StandLocalDB.Carro" />
-          <EntitySet Name="Parcela" EntityType="StandLocalDB.Parcela" />
-          <EntitySet Name="Servico" EntityType="StandLocalDB.Servico" />
-          <EntitySet Name="Vendas" EntityType="StandLocalDB.Venda" />
-          <EntitySet Name="Aluguer" EntityType="StandLocalDB.Aluguer" />
+          <EntitySet Name="Clientes" EntityType="StandLocalDB.Clientes" />
+          <EntitySet Name="Carro" EntityType="StandLocalDB.Carros" />
+          <EntitySet Name="Parcela" EntityType="StandLocalDB.Parcelas" />
+          <EntitySet Name="Servico" EntityType="StandLocalDB.Servicos" />
+          <EntitySet Name="Vendas" EntityType="StandLocalDB.Vendas" />
+          <EntitySet Name="Aluguer" EntityType="StandLocalDB.Alugueres" />
           <AssociationSet Name="ClienteIdCliente" Association="StandLocalDB.ClienteIdCliente">
             <End Role="Cliente" EntitySet="Clientes" />
             <End Role="CarroOficina" EntitySet="Carro" />
@@ -309,7 +309,7 @@
             <End Role="CarroOficina" EntitySet="Carro" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Cliente">
+        <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="IdCliente" />
           </Key>
@@ -322,7 +322,7 @@
           <NavigationProperty Name="Venda" Relationship="StandLocalDB.ClienteIdVenda" FromRole="Cliente" ToRole="Venda" />
           <NavigationProperty Name="Aluguer" Relationship="StandLocalDB.ClienteIdAluguer" FromRole="Cliente" ToRole="Aluguer" />
         </EntityType>
-        <EntityType Name="Carro">
+        <EntityType Name="Carros">
           <Key>
             <PropertyRef Name="idCarro" />
           </Key>
@@ -332,19 +332,19 @@
           <Property Name="Modelo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Combustivel" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
-        <EntityType Name="CarroOficina" BaseType="StandLocalDB.Carro">
+        <EntityType Name="CarrosOficina" BaseType="StandLocalDB.Carros">
           <Property Name="Matricula" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Kms" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="ClienteIdCliente" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="StandLocalDB.ClienteIdCliente" FromRole="CarroOficina" ToRole="Cliente" />
           <NavigationProperty Name="Servico" Relationship="StandLocalDB.ServicoCarroOficina" FromRole="CarroOficina" ToRole="Servico" />
         </EntityType>
-        <EntityType Name="CarroAluguer" BaseType="StandLocalDB.Carro">
+        <EntityType Name="CarrosAluguer" BaseType="StandLocalDB.Carros">
           <Property Name="Estado" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Matricula" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Aluguer" Relationship="StandLocalDB.AluguerCarroAluguer" FromRole="CarroAluguer" ToRole="Aluguer" />
         </EntityType>
-        <EntityType Name="Parcela">
+        <EntityType Name="Parcelas">
           <Key>
             <PropertyRef Name="IdParcela" />
           </Key>
@@ -354,7 +354,7 @@
           <Property Name="ServicoIdServico" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Servico" Relationship="StandLocalDB.ServicoIdServico" FromRole="Parcela" ToRole="Servico" />
         </EntityType>
-        <EntityType Name="Servico">
+        <EntityType Name="Servicos">
           <Key>
             <PropertyRef Name="IdServico" />
           </Key>
@@ -366,11 +366,11 @@
           <Property Name="Tipo" Type="String" Nullable="false" />
           <Property Name="DataSaida" Type="DateTime" Nullable="false" />
         </EntityType>
-        <EntityType Name="CarroVenda" BaseType="StandLocalDB.Carro">
+        <EntityType Name="CarrosVenda" BaseType="StandLocalDB.Carros">
           <Property Name="Extras" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Venda" Relationship="StandLocalDB.VendaCarroVenda" FromRole="CarroVenda" ToRole="Venda" />
         </EntityType>
-        <EntityType Name="Venda">
+        <EntityType Name="Vendas">
           <Key>
             <PropertyRef Name="IdVenda" />
           </Key>
@@ -382,7 +382,7 @@
           <NavigationProperty Name="Cliente" Relationship="StandLocalDB.ClienteIdVenda" FromRole="Venda" ToRole="Cliente" />
           <NavigationProperty Name="CarroVenda" Relationship="StandLocalDB.VendaCarroVenda" FromRole="Venda" ToRole="CarroVenda" />
         </EntityType>
-        <EntityType Name="Aluguer">
+        <EntityType Name="Alugueres">
           <Key>
             <PropertyRef Name="IdAluguer" />
           </Key>
@@ -396,8 +396,8 @@
           <NavigationProperty Name="CarroAluguer" Relationship="StandLocalDB.AluguerCarroAluguer" FromRole="Aluguer" ToRole="CarroAluguer" />
         </EntityType>
         <Association Name="ClienteIdCliente">
-          <End Type="StandLocalDB.Cliente" Role="Cliente" Multiplicity="1" />
-          <End Type="StandLocalDB.CarroOficina" Role="CarroOficina" Multiplicity="*" />
+          <End Type="StandLocalDB.Clientes" Role="Cliente" Multiplicity="1" />
+          <End Type="StandLocalDB.CarrosOficina" Role="CarroOficina" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cliente">
               <PropertyRef Name="IdCliente" />
@@ -408,8 +408,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="ClienteIdVenda">
-          <End Type="StandLocalDB.Cliente" Role="Cliente" Multiplicity="1" />
-          <End Type="StandLocalDB.Venda" Role="Venda" Multiplicity="*" />
+          <End Type="StandLocalDB.Clientes" Role="Cliente" Multiplicity="1" />
+          <End Type="StandLocalDB.Vendas" Role="Venda" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cliente">
               <PropertyRef Name="IdCliente" />
@@ -420,8 +420,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="ClienteIdAluguer">
-          <End Type="StandLocalDB.Cliente" Role="Cliente" Multiplicity="1" />
-          <End Type="StandLocalDB.Aluguer" Role="Aluguer" Multiplicity="*" />
+          <End Type="StandLocalDB.Clientes" Role="Cliente" Multiplicity="1" />
+          <End Type="StandLocalDB.Alugueres" Role="Aluguer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cliente">
               <PropertyRef Name="IdCliente" />
@@ -432,12 +432,12 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="AluguerCarroAluguer">
-          <End Type="StandLocalDB.Aluguer" Role="Aluguer" Multiplicity="*" />
-          <End Type="StandLocalDB.CarroAluguer" Role="CarroAluguer" Multiplicity="1" />
+          <End Type="StandLocalDB.Alugueres" Role="Aluguer" Multiplicity="*" />
+          <End Type="StandLocalDB.CarrosAluguer" Role="CarroAluguer" Multiplicity="1" />
         </Association>
         <Association Name="ServicoIdServico">
-          <End Type="StandLocalDB.Servico" Role="Servico" Multiplicity="1" />
-          <End Type="StandLocalDB.Parcela" Role="Parcela" Multiplicity="*" />
+          <End Type="StandLocalDB.Servicos" Role="Servico" Multiplicity="1" />
+          <End Type="StandLocalDB.Parcelas" Role="Parcela" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Servico">
               <PropertyRef Name="IdServico" />
@@ -448,12 +448,12 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="VendaCarroVenda">
-          <End Type="StandLocalDB.Venda" Role="Venda" Multiplicity="1" />
-          <End Type="StandLocalDB.CarroVenda" Role="CarroVenda" Multiplicity="1" />
+          <End Type="StandLocalDB.Vendas" Role="Venda" Multiplicity="1" />
+          <End Type="StandLocalDB.CarrosVenda" Role="CarroVenda" Multiplicity="1" />
         </Association>
         <Association Name="ServicoCarroOficina">
-          <End Type="StandLocalDB.Servico" Role="Servico" Multiplicity="*" />
-          <End Type="StandLocalDB.CarroOficina" Role="CarroOficina" Multiplicity="1" />
+          <End Type="StandLocalDB.Servicos" Role="Servico" Multiplicity="*" />
+          <End Type="StandLocalDB.CarrosOficina" Role="CarroOficina" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -462,7 +462,7 @@
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="StandLocalDBStoreContainer" CdmEntityContainer="StandLocalDBContainer">
     <EntitySetMapping Name="Clientes">
-      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.Cliente)">
+      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.Clientes)">
         <MappingFragment StoreEntitySet="Clientes">
           <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
           <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -473,7 +473,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Carro">
-      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.Carro)">
+      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.Carros)">
         <MappingFragment StoreEntitySet="Carro">
           <ScalarProperty Name="idCarro" ColumnName="idCarro" />
           <ScalarProperty Name="NumeroChassis" ColumnName="NumeroChassis" />
@@ -482,30 +482,30 @@
           <ScalarProperty Name="Combustivel" ColumnName="Combustivel" />
         </MappingFragment>
       </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.CarroOficina)">
-        <MappingFragment StoreEntitySet="Carro_CarroOficina">
+      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.CarrosOficina)">
+        <MappingFragment StoreEntitySet="Carro_CarrosOficina">
           <ScalarProperty Name="idCarro" ColumnName="idCarro" />
           <ScalarProperty Name="Matricula" ColumnName="Matricula" />
           <ScalarProperty Name="Kms" ColumnName="Kms" />
           <ScalarProperty Name="ClienteIdCliente" ColumnName="ClienteIdCliente" />
         </MappingFragment>
       </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.CarroAluguer)">
-        <MappingFragment StoreEntitySet="Carro_CarroAluguer">
+      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.CarrosAluguer)">
+        <MappingFragment StoreEntitySet="Carro_CarrosAluguer">
           <ScalarProperty Name="idCarro" ColumnName="idCarro" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Matricula" ColumnName="Matricula" />
         </MappingFragment>
       </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.CarroVenda)">
-        <MappingFragment StoreEntitySet="Carro_CarroVenda">
+      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.CarrosVenda)">
+        <MappingFragment StoreEntitySet="Carro_CarrosVenda">
           <ScalarProperty Name="idCarro" ColumnName="idCarro" />
           <ScalarProperty Name="Extras" ColumnName="Extras" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parcela">
-      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.Parcela)">
+      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.Parcelas)">
         <MappingFragment StoreEntitySet="Parcela">
           <ScalarProperty Name="IdParcela" ColumnName="IdParcela" />
           <ScalarProperty Name="Valor" ColumnName="Valor" />
@@ -515,7 +515,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Servico">
-      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.Servico)">
+      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.Servicos)">
         <MappingFragment StoreEntitySet="Servico">
           <ScalarProperty Name="IdServico" ColumnName="IdServico" />
           <ScalarProperty Name="DataEntrada" ColumnName="DataEntrada" />
@@ -526,7 +526,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Vendas">
-      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.Venda)">
+      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.Vendas)">
         <MappingFragment StoreEntitySet="Vendas">
           <ScalarProperty Name="IdVenda" ColumnName="IdVenda" />
           <ScalarProperty Name="Valor" ColumnName="Valor" />
@@ -537,7 +537,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Aluguer">
-      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.Aluguer)">
+      <EntityTypeMapping TypeName="IsTypeOf(StandLocalDB.Alugueres)">
         <MappingFragment StoreEntitySet="Aluguer">
           <ScalarProperty Name="IdAluguer" ColumnName="IdAluguer" />
           <ScalarProperty Name="DataInicio" ColumnName="DataInicio" />
