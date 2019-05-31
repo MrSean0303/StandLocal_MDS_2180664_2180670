@@ -41,9 +41,9 @@ namespace Stand_Automoveis
         private void NumValor_ValueChanged(object sender, EventArgs e)
         {
             if (numValor.Value == 0)
-                toolTipValor.Show("O valor introduzido é nulo.", pictureBoxValor);
+                pictureBoxValor.Visible = true;
             else
-                toolTipValor.Hide(pictureBoxValor);
+                pictureBoxValor.Visible = false;
         }
 
         private void buttonCheck()

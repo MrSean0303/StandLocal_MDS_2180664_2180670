@@ -91,23 +91,27 @@
             // 
             this.toolTipValor.AutoPopDelay = 5000;
             this.toolTipValor.InitialDelay = 1000;
+            this.toolTipValor.IsBalloon = true;
             this.toolTipValor.ReshowDelay = 100;
             this.toolTipValor.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
             this.toolTipValor.ToolTipTitle = "Valor nulo";
             // 
             // pictureBoxValor
             // 
-            this.pictureBoxValor.Location = new System.Drawing.Point(306, 13);
+            this.pictureBoxValor.Image = global::Stand_Automoveis.Properties.Resources.StatusWarning_exp_16x;
+            this.pictureBoxValor.Location = new System.Drawing.Point(305, 14);
             this.pictureBoxValor.Name = "pictureBoxValor";
-            this.pictureBoxValor.Size = new System.Drawing.Size(18, 18);
+            this.pictureBoxValor.Size = new System.Drawing.Size(16, 16);
             this.pictureBoxValor.TabIndex = 6;
             this.pictureBoxValor.TabStop = false;
+            this.toolTipValor.SetToolTip(this.pictureBoxValor, "Atenção! O valor introduzido é nulo.\r\n");
+            this.pictureBoxValor.Visible = false;
             // 
             // New_Update_Parcela
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 111);
+            this.ClientSize = new System.Drawing.Size(324, 111);
             this.Controls.Add(this.pictureBoxValor);
             this.Controls.Add(this.numValor);
             this.Controls.Add(this.buttonAddParcela);
