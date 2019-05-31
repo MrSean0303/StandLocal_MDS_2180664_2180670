@@ -258,7 +258,6 @@ namespace Stand_Automoveis
             CarroOficina carroSelecionado = (CarroOficina)lbxCarros.SelectedItem;
             New_Update_Carro edicaoCarro = new New_Update_Carro();
             edicaoCarro.Text = "Edição do Carro Selecionado";
-            edicaoCarro.buttonAddCarro.Text = "Editar Carro";
 
             edicaoCarro.tbxMarcaCarro.Text = carroSelecionado.Marca;
             edicaoCarro.tbxModeloCarro.Text = carroSelecionado.Modelo;
@@ -271,12 +270,12 @@ namespace Stand_Automoveis
 
             if (edicaoCarro.DialogResult == DialogResult.OK)
             {
-                carroSelecionado.Marca = edicaoCarro.tbxMarcaCarro.Text;
-                carroSelecionado.Modelo = edicaoCarro.tbxModeloCarro.Text;
-                carroSelecionado.Matricula = edicaoCarro.tbxMatriculaCarro.Text;
-                carroSelecionado.NumeroChassis = edicaoCarro.tbxNumChassis.Text;
-                carroSelecionado.Kms = edicaoCarro.tbxKms.Text;
-                carroSelecionado.Combustivel = edicaoCarro.tbxCombustivelCarro.Text;
+                carroSelecionado.Marca = edicaoCarro.marca;
+                carroSelecionado.Modelo = edicaoCarro.modelo;
+                carroSelecionado.Matricula = edicaoCarro.matricula;
+                carroSelecionado.NumeroChassis = edicaoCarro.numeroChassis;
+                carroSelecionado.Kms = edicaoCarro.kms;
+                carroSelecionado.Combustivel = edicaoCarro.combustivel;
 
                 conteudoNovo = true;
                 AtualizarCarros();
@@ -315,6 +314,47 @@ namespace Stand_Automoveis
             }
 
             AtualizarParcelas(); 
+        }
+
+        private void ButtonEliminarParcelas_Click(object sender, EventArgs e)
+        {
+            Parcela parcelaSelecionada = (Parcela)lbxParcelas.SelectedItem;
+            DialogResult dialogResult;
+            if (parcelaSelecionada == null)
+            {
+                MessageBox.Show("Nenhum Serviço Selecionado", "Erro: Serviço Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            dialogResult = MessageBox.Show("Pretende eliminar a Parcela selecionada?.", "Eliminar Parcela?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                StandLocalDB.Parcela.Remove(parcelaSelecionada);
+                AtualizarParcelas();
+                conteudoNovo = true;
+            }
+        }
+
+        private void ButtonEditarParcelas_Click(object sender, EventArgs e)
+        {
+            Parcela parcelaSelecionada = (Parcela)lbxParcelas.SelectedItem;
+            New_Update_Parcela edicaoParcela = new New_Update_Parcela();
+            edicaoParcela.Text = "Edição da Parcela Selecionada";
+
+            edicaoParcela.numValor.Value = (decimal)parcelaSelecionada.Valor;
+            edicaoParcela.tbxDescricao.Text = parcelaSelecionada.Descricao;
+
+            edicaoParcela.ShowDialog();
+
+            if (edicaoParcela.DialogResult == DialogResult.OK)
+            {
+                parcelaSelecionada.Valor = edicaoParcela.valor;
+                parcelaSelecionada.Descricao = edicaoParcela.descricao;
+
+                conteudoNovo = true;
+                AtualizarParcelas();
+            }
         }
     }
 }

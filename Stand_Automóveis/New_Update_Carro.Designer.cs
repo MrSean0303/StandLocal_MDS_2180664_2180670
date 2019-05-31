@@ -52,7 +52,7 @@
             this.buttonAddCarro.Name = "buttonAddCarro";
             this.buttonAddCarro.Size = new System.Drawing.Size(114, 38);
             this.buttonAddCarro.TabIndex = 6;
-            this.buttonAddCarro.Text = "Adicionar Carro";
+            this.buttonAddCarro.Text = "Continuar";
             this.buttonAddCarro.UseVisualStyleBackColor = true;
             this.buttonAddCarro.Click += new System.EventHandler(this.ButtonAddCarro_Click);
             // 
