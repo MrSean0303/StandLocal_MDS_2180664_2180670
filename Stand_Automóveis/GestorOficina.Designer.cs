@@ -29,19 +29,22 @@
         private void InitializeComponent()
         {
             this.gbxClientes = new System.Windows.Forms.GroupBox();
-            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.buttonOrdenarDesc = new System.Windows.Forms.Button();
+            this.buttonOrdenarCres = new System.Windows.Forms.Button();
             this.tbxFiltrar = new System.Windows.Forms.TextBox();
             this.lbxClientes = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.buttonEditarParcelas = new System.Windows.Forms.Button();
-            this.buttonEliminarParcelas = new System.Windows.Forms.Button();
+            this.buttonEditarParcela = new System.Windows.Forms.Button();
+            this.buttonEliminarParcela = new System.Windows.Forms.Button();
             this.buttonAddParcela = new System.Windows.Forms.Button();
             this.lbxParcelas = new System.Windows.Forms.ListBox();
             this.buttonEditarCarro = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.buttonEditarServicos = new System.Windows.Forms.Button();
+            this.buttonEditarServico = new System.Windows.Forms.Button();
+            this.buttonEliminarServico = new System.Windows.Forms.Button();
             this.lbxServicos = new System.Windows.Forms.ListBox();
+            this.buttonAddServico = new System.Windows.Forms.Button();
             this.buttonEliminarCarro = new System.Windows.Forms.Button();
             this.buttonAddCarro = new System.Windows.Forms.Button();
             this.lbxCarros = new System.Windows.Forms.ListBox();
@@ -49,12 +52,8 @@
             this.ficheiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.limparDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.limparSelecaoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonEliminarServicos = new System.Windows.Forms.Button();
-            this.buttonAddServico = new System.Windows.Forms.Button();
-            this.buttonOrdenarDesc = new System.Windows.Forms.Button();
-            this.buttonOrdenarCres = new System.Windows.Forms.Button();
             this.gbxClientes.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -66,7 +65,6 @@
             // 
             this.gbxClientes.Controls.Add(this.buttonOrdenarDesc);
             this.gbxClientes.Controls.Add(this.buttonOrdenarCres);
-            this.gbxClientes.Controls.Add(this.btnFiltrar);
             this.gbxClientes.Controls.Add(this.tbxFiltrar);
             this.gbxClientes.Controls.Add(this.lbxClientes);
             this.gbxClientes.Location = new System.Drawing.Point(12, 27);
@@ -76,22 +74,33 @@
             this.gbxClientes.TabStop = false;
             this.gbxClientes.Text = "Clientes";
             // 
-            // btnFiltrar
+            // buttonOrdenarDesc
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(215, 20);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(58, 23);
-            this.btnFiltrar.TabIndex = 2;
-            this.btnFiltrar.Text = "Filtrar";
-            this.btnFiltrar.UseVisualStyleBackColor = true;
-            this.btnFiltrar.Click += new System.EventHandler(this.BtnFiltrar_Click);
+            this.buttonOrdenarDesc.Image = global::Stand_Automoveis.Properties.Resources.Download_grey_16x;
+            this.buttonOrdenarDesc.Location = new System.Drawing.Point(311, 20);
+            this.buttonOrdenarDesc.Name = "buttonOrdenarDesc";
+            this.buttonOrdenarDesc.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarDesc.TabIndex = 4;
+            this.buttonOrdenarDesc.UseVisualStyleBackColor = true;
+            this.buttonOrdenarDesc.Click += new System.EventHandler(this.ButtonOrdenarDesc_Click);
+            // 
+            // buttonOrdenarCres
+            // 
+            this.buttonOrdenarCres.Image = global::Stand_Automoveis.Properties.Resources.Upload_gray_16x;
+            this.buttonOrdenarCres.Location = new System.Drawing.Point(283, 20);
+            this.buttonOrdenarCres.Name = "buttonOrdenarCres";
+            this.buttonOrdenarCres.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarCres.TabIndex = 3;
+            this.buttonOrdenarCres.UseVisualStyleBackColor = true;
+            this.buttonOrdenarCres.Click += new System.EventHandler(this.ButtonOrdenarCres_Click);
             // 
             // tbxFiltrar
             // 
             this.tbxFiltrar.Location = new System.Drawing.Point(7, 22);
             this.tbxFiltrar.Name = "tbxFiltrar";
-            this.tbxFiltrar.Size = new System.Drawing.Size(202, 20);
+            this.tbxFiltrar.Size = new System.Drawing.Size(270, 20);
             this.tbxFiltrar.TabIndex = 1;
+            this.tbxFiltrar.TextChanged += new System.EventHandler(this.TbxFiltrar_TextChanged);
             // 
             // lbxClientes
             // 
@@ -120,8 +129,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.buttonEditarParcelas);
-            this.groupBox3.Controls.Add(this.buttonEliminarParcelas);
+            this.groupBox3.Controls.Add(this.buttonEditarParcela);
+            this.groupBox3.Controls.Add(this.buttonEliminarParcela);
             this.groupBox3.Controls.Add(this.buttonAddParcela);
             this.groupBox3.Controls.Add(this.lbxParcelas);
             this.groupBox3.Location = new System.Drawing.Point(484, 184);
@@ -131,34 +140,37 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Parcelas";
             // 
-            // buttonEditarParcelas
+            // buttonEditarParcela
             // 
-            this.buttonEditarParcelas.Image = global::Stand_Automoveis.Properties.Resources.Edit_straight_16xLG;
-            this.buttonEditarParcelas.Location = new System.Drawing.Point(176, 242);
-            this.buttonEditarParcelas.Name = "buttonEditarParcelas";
-            this.buttonEditarParcelas.Size = new System.Drawing.Size(81, 23);
-            this.buttonEditarParcelas.TabIndex = 7;
-            this.buttonEditarParcelas.Text = "Editar";
-            this.buttonEditarParcelas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonEditarParcelas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonEditarParcelas.UseVisualStyleBackColor = true;
-            this.buttonEditarParcelas.Click += new System.EventHandler(this.ButtonEditarParcelas_Click);
+            this.buttonEditarParcela.Enabled = false;
+            this.buttonEditarParcela.Image = global::Stand_Automoveis.Properties.Resources.Edit_straight_16xLG;
+            this.buttonEditarParcela.Location = new System.Drawing.Point(176, 242);
+            this.buttonEditarParcela.Name = "buttonEditarParcela";
+            this.buttonEditarParcela.Size = new System.Drawing.Size(81, 23);
+            this.buttonEditarParcela.TabIndex = 7;
+            this.buttonEditarParcela.Text = "Editar";
+            this.buttonEditarParcela.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonEditarParcela.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonEditarParcela.UseVisualStyleBackColor = true;
+            this.buttonEditarParcela.Click += new System.EventHandler(this.ButtonEditarParcelas_Click);
             // 
-            // buttonEliminarParcelas
+            // buttonEliminarParcela
             // 
-            this.buttonEliminarParcelas.Image = global::Stand_Automoveis.Properties.Resources.Cancel_16x;
-            this.buttonEliminarParcelas.Location = new System.Drawing.Point(91, 242);
-            this.buttonEliminarParcelas.Name = "buttonEliminarParcelas";
-            this.buttonEliminarParcelas.Size = new System.Drawing.Size(79, 23);
-            this.buttonEliminarParcelas.TabIndex = 6;
-            this.buttonEliminarParcelas.Text = "Eliminar";
-            this.buttonEliminarParcelas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonEliminarParcelas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonEliminarParcelas.UseVisualStyleBackColor = true;
-            this.buttonEliminarParcelas.Click += new System.EventHandler(this.ButtonEliminarParcelas_Click);
+            this.buttonEliminarParcela.Enabled = false;
+            this.buttonEliminarParcela.Image = global::Stand_Automoveis.Properties.Resources.Cancel_16x;
+            this.buttonEliminarParcela.Location = new System.Drawing.Point(91, 242);
+            this.buttonEliminarParcela.Name = "buttonEliminarParcela";
+            this.buttonEliminarParcela.Size = new System.Drawing.Size(79, 23);
+            this.buttonEliminarParcela.TabIndex = 6;
+            this.buttonEliminarParcela.Text = "Eliminar";
+            this.buttonEliminarParcela.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonEliminarParcela.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonEliminarParcela.UseVisualStyleBackColor = true;
+            this.buttonEliminarParcela.Click += new System.EventHandler(this.ButtonEliminarParcelas_Click);
             // 
             // buttonAddParcela
             // 
+            this.buttonAddParcela.Enabled = false;
             this.buttonAddParcela.Image = global::Stand_Automoveis.Properties.Resources.Add_grey_16x;
             this.buttonAddParcela.Location = new System.Drawing.Point(6, 242);
             this.buttonAddParcela.Name = "buttonAddParcela";
@@ -178,9 +190,11 @@
             this.lbxParcelas.Name = "lbxParcelas";
             this.lbxParcelas.Size = new System.Drawing.Size(251, 212);
             this.lbxParcelas.TabIndex = 0;
+            this.lbxParcelas.SelectedIndexChanged += new System.EventHandler(this.LbxParcelas_SelectedIndexChanged);
             // 
             // buttonEditarCarro
             // 
+            this.buttonEditarCarro.Enabled = false;
             this.buttonEditarCarro.Image = global::Stand_Automoveis.Properties.Resources.Edit_straight_16xLG;
             this.buttonEditarCarro.Location = new System.Drawing.Point(723, 77);
             this.buttonEditarCarro.Name = "buttonEditarCarro";
@@ -191,8 +205,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.buttonEditarServicos);
-            this.groupBox2.Controls.Add(this.buttonEliminarServicos);
+            this.groupBox2.Controls.Add(this.buttonEditarServico);
+            this.groupBox2.Controls.Add(this.buttonEliminarServico);
             this.groupBox2.Controls.Add(this.lbxServicos);
             this.groupBox2.Controls.Add(this.buttonAddServico);
             this.groupBox2.Location = new System.Drawing.Point(6, 184);
@@ -202,15 +216,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Serviços";
             // 
-            // buttonEditarServicos
+            // buttonEditarServico
             // 
-            this.buttonEditarServicos.Image = global::Stand_Automoveis.Properties.Resources.Edit_straight_16xLG;
-            this.buttonEditarServicos.Location = new System.Drawing.Point(6, 78);
-            this.buttonEditarServicos.Name = "buttonEditarServicos";
-            this.buttonEditarServicos.Size = new System.Drawing.Size(24, 23);
-            this.buttonEditarServicos.TabIndex = 4;
-            this.buttonEditarServicos.UseVisualStyleBackColor = true;
-            this.buttonEditarServicos.Click += new System.EventHandler(this.ButtonEditarServicos_Click);
+            this.buttonEditarServico.Enabled = false;
+            this.buttonEditarServico.Image = global::Stand_Automoveis.Properties.Resources.Edit_straight_16xLG;
+            this.buttonEditarServico.Location = new System.Drawing.Point(6, 78);
+            this.buttonEditarServico.Name = "buttonEditarServico";
+            this.buttonEditarServico.Size = new System.Drawing.Size(24, 23);
+            this.buttonEditarServico.TabIndex = 4;
+            this.buttonEditarServico.UseVisualStyleBackColor = true;
+            this.buttonEditarServico.Click += new System.EventHandler(this.ButtonEditarServicos_Click);
+            // 
+            // buttonEliminarServico
+            // 
+            this.buttonEliminarServico.Enabled = false;
+            this.buttonEliminarServico.Image = global::Stand_Automoveis.Properties.Resources.Cancel_16x;
+            this.buttonEliminarServico.Location = new System.Drawing.Point(6, 49);
+            this.buttonEliminarServico.Name = "buttonEliminarServico";
+            this.buttonEliminarServico.Size = new System.Drawing.Size(24, 23);
+            this.buttonEliminarServico.TabIndex = 3;
+            this.buttonEliminarServico.UseVisualStyleBackColor = true;
+            this.buttonEliminarServico.Click += new System.EventHandler(this.ButtonEliminarServicos_Click);
             // 
             // lbxServicos
             // 
@@ -222,8 +248,20 @@
             this.lbxServicos.TabIndex = 0;
             this.lbxServicos.SelectedIndexChanged += new System.EventHandler(this.LbxServicos_SelectedIndexChanged);
             // 
+            // buttonAddServico
+            // 
+            this.buttonAddServico.Enabled = false;
+            this.buttonAddServico.Image = global::Stand_Automoveis.Properties.Resources.Add_grey_16x;
+            this.buttonAddServico.Location = new System.Drawing.Point(6, 19);
+            this.buttonAddServico.Name = "buttonAddServico";
+            this.buttonAddServico.Size = new System.Drawing.Size(24, 24);
+            this.buttonAddServico.TabIndex = 2;
+            this.buttonAddServico.UseVisualStyleBackColor = true;
+            this.buttonAddServico.Click += new System.EventHandler(this.ButtonAddServico_Click);
+            // 
             // buttonEliminarCarro
             // 
+            this.buttonEliminarCarro.Enabled = false;
             this.buttonEliminarCarro.Image = global::Stand_Automoveis.Properties.Resources.Cancel_16x;
             this.buttonEliminarCarro.Location = new System.Drawing.Point(723, 48);
             this.buttonEliminarCarro.Name = "buttonEliminarCarro";
@@ -267,7 +305,7 @@
             this.ficheiroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novoClienteToolStripMenuItem,
             this.guardarToolStripMenuItem,
-            this.limparDadosToolStripMenuItem,
+            this.limparSelecaoToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.ficheiroToolStripMenuItem.Name = "ficheiroToolStripMenuItem";
             this.ficheiroToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
@@ -276,69 +314,30 @@
             // novoClienteToolStripMenuItem
             // 
             this.novoClienteToolStripMenuItem.Name = "novoClienteToolStripMenuItem";
-            this.novoClienteToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.novoClienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.novoClienteToolStripMenuItem.Text = "Novo Cliente";
             this.novoClienteToolStripMenuItem.Click += new System.EventHandler(this.NovoClienteToolStripMenuItem_Click);
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.GuardarToolStripMenuItem_Click);
             // 
-            // limparDadosToolStripMenuItem
+            // limparSelecaoToolStripMenuItem
             // 
-            this.limparDadosToolStripMenuItem.Name = "limparDadosToolStripMenuItem";
-            this.limparDadosToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.limparDadosToolStripMenuItem.Text = "Limpar Dados";
+            this.limparSelecaoToolStripMenuItem.Name = "limparSelecaoToolStripMenuItem";
+            this.limparSelecaoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.limparSelecaoToolStripMenuItem.Text = "Limpar Seleções";
+            this.limparSelecaoToolStripMenuItem.Click += new System.EventHandler(this.LimparSelecaoToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
-            // 
-            // buttonEliminarServicos
-            // 
-            this.buttonEliminarServicos.Image = global::Stand_Automoveis.Properties.Resources.Cancel_16x;
-            this.buttonEliminarServicos.Location = new System.Drawing.Point(6, 49);
-            this.buttonEliminarServicos.Name = "buttonEliminarServicos";
-            this.buttonEliminarServicos.Size = new System.Drawing.Size(24, 23);
-            this.buttonEliminarServicos.TabIndex = 3;
-            this.buttonEliminarServicos.UseVisualStyleBackColor = true;
-            this.buttonEliminarServicos.Click += new System.EventHandler(this.ButtonEliminarServicos_Click);
-            // 
-            // buttonAddServico
-            // 
-            this.buttonAddServico.Image = global::Stand_Automoveis.Properties.Resources.Add_grey_16x;
-            this.buttonAddServico.Location = new System.Drawing.Point(6, 19);
-            this.buttonAddServico.Name = "buttonAddServico";
-            this.buttonAddServico.Size = new System.Drawing.Size(24, 24);
-            this.buttonAddServico.TabIndex = 2;
-            this.buttonAddServico.UseVisualStyleBackColor = true;
-            this.buttonAddServico.Click += new System.EventHandler(this.ButtonAddServico_Click);
-            // 
-            // buttonOrdenarDesc
-            // 
-            this.buttonOrdenarDesc.Image = global::Stand_Automoveis.Properties.Resources.Download_grey_16x;
-            this.buttonOrdenarDesc.Location = new System.Drawing.Point(311, 20);
-            this.buttonOrdenarDesc.Name = "buttonOrdenarDesc";
-            this.buttonOrdenarDesc.Size = new System.Drawing.Size(26, 23);
-            this.buttonOrdenarDesc.TabIndex = 4;
-            this.buttonOrdenarDesc.UseVisualStyleBackColor = true;
-            this.buttonOrdenarDesc.Click += new System.EventHandler(this.ButtonOrdenarDesc_Click);
-            // 
-            // buttonOrdenarCres
-            // 
-            this.buttonOrdenarCres.Image = global::Stand_Automoveis.Properties.Resources.Upload_gray_16x;
-            this.buttonOrdenarCres.Location = new System.Drawing.Point(283, 20);
-            this.buttonOrdenarCres.Name = "buttonOrdenarCres";
-            this.buttonOrdenarCres.Size = new System.Drawing.Size(26, 23);
-            this.buttonOrdenarCres.TabIndex = 3;
-            this.buttonOrdenarCres.UseVisualStyleBackColor = true;
-            this.buttonOrdenarCres.Click += new System.EventHandler(this.ButtonOrdenarCres_Click);
             // 
             // GestorOficina
             // 
@@ -367,7 +366,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbxClientes;
-        private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.TextBox tbxFiltrar;
         private System.Windows.Forms.ListBox lbxClientes;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -378,18 +376,18 @@
         private System.Windows.Forms.ToolStripMenuItem ficheiroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem novoClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem guardarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem limparDadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem limparSelecaoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.Button buttonEditarCarro;
         private System.Windows.Forms.Button buttonEliminarCarro;
         private System.Windows.Forms.Button buttonAddCarro;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListBox lbxParcelas;
-        private System.Windows.Forms.Button buttonEditarServicos;
-        private System.Windows.Forms.Button buttonEliminarServicos;
+        private System.Windows.Forms.Button buttonEditarServico;
+        private System.Windows.Forms.Button buttonEliminarServico;
         private System.Windows.Forms.Button buttonAddServico;
-        private System.Windows.Forms.Button buttonEditarParcelas;
-        private System.Windows.Forms.Button buttonEliminarParcelas;
+        private System.Windows.Forms.Button buttonEditarParcela;
+        private System.Windows.Forms.Button buttonEliminarParcela;
         private System.Windows.Forms.Button buttonAddParcela;
         private System.Windows.Forms.Button buttonOrdenarDesc;
         private System.Windows.Forms.Button buttonOrdenarCres;

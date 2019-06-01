@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -17,20 +18,49 @@ namespace Stand_Automoveis
         public GestorOficina()
         {
             InitializeComponent();
+
+            tbxFiltrar.ForeColor = SystemColors.GrayText;
+            tbxFiltrar.Text = "Filtrar";
+            tbxFiltrar.Leave += new System.EventHandler(TbxFiltrar_Leave);
+            tbxFiltrar.Enter += new System.EventHandler(TbxFiltrar_Enter);
+
             StandLocalDB = new StandLocalDBContainer();
             LerDados();
         }
+        private void TbxFiltrar_Leave(object sender, EventArgs e)
+        {
+            if (tbxFiltrar.Text.Length == 0)
+            {
+                tbxFiltrar.Text = "Filtrar";
+                tbxFiltrar.ForeColor = SystemColors.GrayText;
+                AtualizarClientes();
+            }
+        }
 
+        private void TbxFiltrar_Enter(object sender, EventArgs e)
+        {
+            if (tbxFiltrar.Text == "Filtrar")
+            {
+                tbxFiltrar.Text = "";
+                tbxFiltrar.ForeColor = SystemColors.WindowText;
+            }
+        }
         private void LbxClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
 
             if (clienteSelecionado == null)
             {
+                buttonAddCarro.Enabled = false;
                 return;
             }
-
-            AtualizarCarros();
+            else
+            {
+                buttonAddCarro.Enabled = true;
+                AtualizarCarros();
+                AtualizarServicos();
+                AtualizarParcelas();
+            }
         }
         private void LerDados()
         {
@@ -204,10 +234,15 @@ namespace Stand_Automoveis
 
             if (carroSelecionado == null)
             {
-                return;
+                DisableCarros();
+                return;  
             }
-
-            AtualizarServicos();
+            else
+            {
+                EnableCarros();
+                AtualizarServicos();
+                AtualizarParcelas();
+            }       
         }
 
         private void ButtonEliminarServicos_Click(object sender, EventArgs e)
@@ -311,10 +346,15 @@ namespace Stand_Automoveis
 
             if (servicoSelecionado == null)
             {
+                DisableServicos();
                 return;
             }
-
-            AtualizarParcelas(); 
+            else
+            {
+                EnableServicos();
+                AtualizarParcelas(); 
+            }
+            
         }
 
         private void ButtonEliminarParcelas_Click(object sender, EventArgs e)
@@ -358,20 +398,6 @@ namespace Stand_Automoveis
             }
         }
 
-        private void BtnFiltrar_Click(object sender, EventArgs e)
-        {
-            string nome = tbxFiltrar.Text;
-
-            if (nome != string.Empty)
-            {
-                List<Clientes> clientes = listaCliente.Where(cliente => cliente.Nome.Contains(nome)).ToList();
-                lbxClientes.DataSource = null;
-                lbxClientes.DataSource = clientes;
-            }
-            else
-                AtualizarClientes();
-        }
-
         private void ButtonOrdenarCres_Click(object sender, EventArgs e)
         {
             List<Clientes> clientes = listaCliente.OrderBy(cliente => cliente.Nome).ToList();
@@ -384,6 +410,81 @@ namespace Stand_Automoveis
             List<Clientes> clientes = listaCliente.OrderByDescending(cliente => cliente.Nome).ToList();
             lbxClientes.DataSource = null;
             lbxClientes.DataSource = clientes;
+        }
+
+        private void LbxParcelas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Parcelas parcelaSelecionado = (Parcelas)lbxParcelas.SelectedItem;
+
+            if (parcelaSelecionado == null)
+            {
+                DisableParcelas();
+                return;
+            }
+            else
+                EnableParcelas();
+        }
+
+        private void LimparSelecaoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lbxClientes.ClearSelected();
+            lbxCarros.DataSource = null;
+            lbxServicos.DataSource = null;
+            lbxParcelas.DataSource = null;
+        }
+
+        #region DisableButtons
+        private void DisableParcelas()
+        {
+            buttonEliminarParcela.Enabled = false;
+            buttonEditarParcela.Enabled = false;
+        }
+        private void DisableCarros()
+        {
+            buttonAddServico.Enabled = false;
+            buttonEliminarCarro.Enabled = false;
+            buttonEditarCarro.Enabled = false;
+        }
+        private void DisableServicos()
+        {
+            buttonAddParcela.Enabled = false;
+            buttonEliminarServico.Enabled = false;
+            buttonEditarServico.Enabled = false;
+        }
+        #endregion
+
+        #region EnableButtons
+        private void EnableParcelas()
+        {
+            buttonEliminarParcela.Enabled = true;
+            buttonEditarParcela.Enabled = true;
+        }
+        private void EnableCarros()
+        {
+            buttonAddServico.Enabled = true;
+            buttonEliminarCarro.Enabled = true;
+            buttonEditarCarro.Enabled = true;
+        }
+        private void EnableServicos()
+        {
+            buttonAddParcela.Enabled = true;
+            buttonEliminarServico.Enabled = true;
+            buttonEditarServico.Enabled = true;
+        }
+        #endregion
+
+        private void TbxFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            string nome = tbxFiltrar.Text;
+
+            if (nome != string.Empty)
+            {
+                List<Clientes> clientes = listaCliente.Where(cliente => cliente.Nome.Contains(nome)).ToList();
+                lbxClientes.DataSource = null;
+                lbxClientes.DataSource = clientes;
+            }
+            else
+                AtualizarClientes();
         }
     }
 }
