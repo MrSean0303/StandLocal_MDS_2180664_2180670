@@ -186,6 +186,9 @@
     <EmbeddedResource Include="GestorOficina.resx">
       <DependentUpon>GestorOficina.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GestorVenda.resx">
+      <DependentUpon>GestorVenda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
