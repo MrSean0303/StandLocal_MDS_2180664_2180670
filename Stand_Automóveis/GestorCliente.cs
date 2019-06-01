@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -20,13 +17,17 @@ namespace Stand_Automoveis
         public GestorCliente()
         {
             InitializeComponent();
+            tbxFiltrar.ForeColor = SystemColors.GrayText;
+            tbxFiltrar.Text = "Filtrar";
+            tbxFiltrar.Leave += new System.EventHandler(TbxFiltrar_Leave);
+            tbxFiltrar.Enter += new System.EventHandler(TbxFiltrar_Enter);
+
             StandLocalDB = new StandLocalDBContainer();
             LerDados();
         }
-
         private void lblListaClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Clientes clienteSelecionado = (Clientes)lbListaClientes.SelectedItem;
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
 
             if (clienteSelecionado == null)
             {
@@ -39,6 +40,10 @@ namespace Stand_Automoveis
             tbAlterarMorada.Text = clienteSelecionado.Morada;
 
             //apresenta o numero de registos de carros vendidos, comprados e consertados do cliente.
+            lblShowNome.Text = clienteSelecionado.Nome;
+            lblShowMorada.Text = clienteSelecionado.Morada;
+            lblShowContacto.Text = clienteSelecionado.Contacto;
+            lblShowNif.Text = clienteSelecionado.NIF;
             lblNumCarrosOficina.Text = clienteSelecionado.CarroOficina.Count.ToString();
             lblNumCarrosComprados.Text = clienteSelecionado.Venda.Count.ToString();
             lblNumCarroAluguer.Text = clienteSelecionado.Aluguer.Count.ToString();
@@ -50,8 +55,8 @@ namespace Stand_Automoveis
         }
         private void AtualizarClientes()
         {
-            lbListaClientes.DataSource = null;
-            lbListaClientes.DataSource = listaCliente;
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = listaCliente;
         }
 
         private void BtnCriarCliente_Click(object sender, EventArgs e)
@@ -77,7 +82,7 @@ namespace Stand_Automoveis
 
         private void BtnEliminarCliente_Click(object sender, EventArgs e)
         {
-            Clientes clienteSelecionado = (Clientes)lbListaClientes.SelectedItem;
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
 
             if (clienteSelecionado == null)
             {
@@ -107,7 +112,7 @@ namespace Stand_Automoveis
 
         private void BtnEditarCliente_Click(object sender, EventArgs e)
         {
-            Clientes clienteSelecionado = (Clientes)lbListaClientes.SelectedItem;
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
 
             if (clienteSelecionado == null)
             {
@@ -136,7 +141,7 @@ namespace Stand_Automoveis
             tbAlterarContacto.Text = null;
             tbAlterarMorada.Text = null;
 
-            lbListaClientes.SelectedIndex = -1;
+            lbxClientes.SelectedIndex = -1;
         }
 
         private void NovoClienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -171,6 +176,53 @@ namespace Stand_Automoveis
                 }
             }
             StandLocalDB.Dispose();
+        }
+
+        private void TbxFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            string nome = tbxFiltrar.Text;
+
+            if (nome != string.Empty)
+            {
+                List<Clientes> clientes = listaCliente.Where(cliente => cliente.Nome.Contains(nome)).ToList();
+                lbxClientes.DataSource = null;
+                lbxClientes.DataSource = clientes;
+            }
+            else
+                AtualizarClientes();
+        }
+
+        private void ButtonOrdenarCres_Click(object sender, EventArgs e)
+        {
+            List<Clientes> clientes = listaCliente.OrderBy(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
+        }
+
+        private void ButtonOrdenarDesc_Click(object sender, EventArgs e)
+        {
+            List<Clientes> clientes = listaCliente.OrderByDescending(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
+        }
+
+        private void TbxFiltrar_Leave(object sender, EventArgs e)
+        {
+            if (tbxFiltrar.Text.Length == 0)
+            {
+                tbxFiltrar.Text = "Filtrar";
+                tbxFiltrar.ForeColor = SystemColors.GrayText;
+                AtualizarClientes();
+            }
+        }
+
+        private void TbxFiltrar_Enter(object sender, EventArgs e)
+        {
+            if (tbxFiltrar.Text == "Filtrar")
+            {
+                tbxFiltrar.Text = "";
+                tbxFiltrar.ForeColor = SystemColors.WindowText;
+            }
         }
     }
 }
