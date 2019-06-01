@@ -318,7 +318,7 @@ namespace Stand_Automoveis
 
         private void ButtonEliminarParcelas_Click(object sender, EventArgs e)
         {
-            Parcela parcelaSelecionada = (Parcela)lbxParcelas.SelectedItem;
+            Parcelas parcelaSelecionada = (Parcelas)lbxParcelas.SelectedItem;
             DialogResult dialogResult;
             if (parcelaSelecionada == null)
             {
@@ -338,7 +338,7 @@ namespace Stand_Automoveis
 
         private void ButtonEditarParcelas_Click(object sender, EventArgs e)
         {
-            Parcela parcelaSelecionada = (Parcela)lbxParcelas.SelectedItem;
+            Parcelas parcelaSelecionada = (Parcelas)lbxParcelas.SelectedItem;
             New_Update_Parcela edicaoParcela = new New_Update_Parcela();
             edicaoParcela.Text = "Edição da Parcela Selecionada";
 
