@@ -238,6 +238,11 @@
   <ItemGroup>
     <None Include="Resources\StatusCriticalError_16x.png" />
     <None Include="Resources\StatusWarning_exp_16x.png" />
+    <None Include="Resources\Upload_gray_16x.png" />
+    <None Include="Resources\Download_grey_16x.png" />
+    <None Include="Resources\Add_grey_16x.png" />
+    <None Include="Resources\Cancel_16x.png" />
+    <None Include="Resources\Edit_straight_16xLG.png" />
     <Content Include="StandLocalDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>StandLocalDB.Context.cs</LastGenOutput>

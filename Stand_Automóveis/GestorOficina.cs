@@ -12,6 +12,7 @@ namespace Stand_Automoveis
         List<Carros> listaCarro = new List<Carros>();
         List<Servicos> listaServico = new List<Servicos>();
         bool conteudoNovo = false;
+        private IEnumerable<string> clientes;
 
         public GestorOficina()
         {
@@ -355,6 +356,34 @@ namespace Stand_Automoveis
                 conteudoNovo = true;
                 AtualizarParcelas();
             }
+        }
+
+        private void BtnFiltrar_Click(object sender, EventArgs e)
+        {
+            string nome = tbxFiltrar.Text;
+
+            if (nome != string.Empty)
+            {
+                List<Clientes> clientes = listaCliente.Where(cliente => cliente.Nome.Contains(nome)).ToList();
+                lbxClientes.DataSource = null;
+                lbxClientes.DataSource = clientes;
+            }
+            else
+                AtualizarClientes();
+        }
+
+        private void ButtonOrdenarCres_Click(object sender, EventArgs e)
+        {
+            List<Clientes> clientes = listaCliente.OrderBy(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
+        }
+
+        private void ButtonOrdenarDesc_Click(object sender, EventArgs e)
+        {
+            List<Clientes> clientes = listaCliente.OrderByDescending(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
         }
     }
 }
