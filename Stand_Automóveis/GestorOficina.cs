@@ -319,7 +319,7 @@ namespace Stand_Automoveis
 
         private void ButtonEliminarParcelas_Click(object sender, EventArgs e)
         {
-            Parcela parcelaSelecionada = (Parcela)lbxParcelas.SelectedItem;
+            Parcelas parcelaSelecionada = (Parcelas)lbxParcelas.SelectedItem;
             DialogResult dialogResult;
             if (parcelaSelecionada == null)
             {
@@ -339,7 +339,7 @@ namespace Stand_Automoveis
 
         private void ButtonEditarParcelas_Click(object sender, EventArgs e)
         {
-            Parcela parcelaSelecionada = (Parcela)lbxParcelas.SelectedItem;
+            Parcelas parcelaSelecionada = (Parcelas)lbxParcelas.SelectedItem;
             New_Update_Parcela edicaoParcela = new New_Update_Parcela();
             edicaoParcela.Text = "Edição da Parcela Selecionada";
 
@@ -364,7 +364,7 @@ namespace Stand_Automoveis
 
             if (nome != string.Empty)
             {
-                List<Cliente> clientes = listaCliente.Where(cliente => cliente.Nome.Contains(nome)).ToList();
+                List<Clientes> clientes = listaCliente.Where(cliente => cliente.Nome.Contains(nome)).ToList();
                 lbxClientes.DataSource = null;
                 lbxClientes.DataSource = clientes;
             }
@@ -374,14 +374,14 @@ namespace Stand_Automoveis
 
         private void ButtonOrdenarCres_Click(object sender, EventArgs e)
         {
-            List<Cliente> clientes = listaCliente.OrderBy(cliente => cliente.Nome).ToList();
+            List<Clientes> clientes = listaCliente.OrderBy(cliente => cliente.Nome).ToList();
             lbxClientes.DataSource = null;
             lbxClientes.DataSource = clientes;
         }
 
         private void ButtonOrdenarDesc_Click(object sender, EventArgs e)
         {
-            List<Cliente> clientes = listaCliente.OrderByDescending(cliente => cliente.Nome).ToList();
+            List<Clientes> clientes = listaCliente.OrderByDescending(cliente => cliente.Nome).ToList();
             lbxClientes.DataSource = null;
             lbxClientes.DataSource = clientes;
         }

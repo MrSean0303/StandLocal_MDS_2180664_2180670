@@ -68,13 +68,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(293, 38);
+            this.label1.Location = new System.Drawing.Point(199, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 31);
+            this.label1.Size = new System.Drawing.Size(364, 24);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Stand Local";
+            this.label1.Text = "Olá! Selecione uma opção para continuar.";
             // 
             // btnGestaoVenda
             // 
@@ -90,7 +90,7 @@
             this.btnGestaoVenda.Name = "btnGestaoVenda";
             this.btnGestaoVenda.Size = new System.Drawing.Size(143, 164);
             this.btnGestaoVenda.TabIndex = 9;
-            this.btnGestaoVenda.Text = " Gestao de Vendas";
+            this.btnGestaoVenda.Text = " Gestão de Vendas";
             this.btnGestaoVenda.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnGestaoVenda.UseVisualStyleBackColor = true;
             this.btnGestaoVenda.Click += new System.EventHandler(this.BtnGestaoVenda_Click_1);
@@ -109,7 +109,7 @@
             this.btnGestaoAluguer.Name = "btnGestaoAluguer";
             this.btnGestaoAluguer.Size = new System.Drawing.Size(143, 164);
             this.btnGestaoAluguer.TabIndex = 8;
-            this.btnGestaoAluguer.Text = " Gestao de Aluguer ";
+            this.btnGestaoAluguer.Text = " Gestão de Aluguer ";
             this.btnGestaoAluguer.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnGestaoAluguer.UseVisualStyleBackColor = true;
             this.btnGestaoAluguer.Click += new System.EventHandler(this.BtnGestaoAluguer_Click_1);
@@ -129,7 +129,7 @@
             this.btnGestaoOficina.Name = "btnGestaoOficina";
             this.btnGestaoOficina.Size = new System.Drawing.Size(143, 164);
             this.btnGestaoOficina.TabIndex = 7;
-            this.btnGestaoOficina.Text = " Gestao de Oficina ";
+            this.btnGestaoOficina.Text = " Gestão de Oficina ";
             this.btnGestaoOficina.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnGestaoOficina.UseVisualStyleBackColor = false;
             this.btnGestaoOficina.Click += new System.EventHandler(this.BtnGestaoOficina_Click_1);
@@ -149,7 +149,7 @@
             this.btnGestaoClientes.Name = "btnGestaoClientes";
             this.btnGestaoClientes.Size = new System.Drawing.Size(143, 164);
             this.btnGestaoClientes.TabIndex = 6;
-            this.btnGestaoClientes.Text = " Gestao de Clientes ";
+            this.btnGestaoClientes.Text = " Gestão de Clientes ";
             this.btnGestaoClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnGestaoClientes.UseVisualStyleBackColor = false;
             this.btnGestaoClientes.Click += new System.EventHandler(this.BtnGestaoClientes_Click_1);
