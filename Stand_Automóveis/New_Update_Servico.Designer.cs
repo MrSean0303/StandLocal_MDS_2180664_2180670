@@ -114,7 +114,7 @@
             this.label_Provisorio.TabIndex = 46;
             this.label_Provisorio.Text = "(Provisória)";
             // 
-            // NovoServico
+            // New_Update_Servico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -127,7 +127,8 @@
             this.Controls.Add(this.lblNif);
             this.Controls.Add(this.tbxTipo);
             this.Controls.Add(this.labelNome);
-            this.Name = "NovoServico";
+            this.Name = "New_Update_Servico";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Serviço";
             this.ResumeLayout(false);
             this.PerformLayout();

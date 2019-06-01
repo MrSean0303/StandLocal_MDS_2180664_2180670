@@ -151,7 +151,7 @@ namespace Stand_Automoveis
 
             New_Update_CarroAluguer EditarcarroAluguer = new New_Update_CarroAluguer();
             EditarcarroAluguer.tbxMarcaCarro.Text = carrosAluguerSelecionado.Marca;
-            EditarcarroAluguer.tbxMatriculaCarro.Text = carrosAluguerSelecionado.Matricula;
+            EditarcarroAluguer.tbxExtrasCarro.Text = carrosAluguerSelecionado.Matricula;
             EditarcarroAluguer.tbxModeloCarro.Text = carrosAluguerSelecionado.Modelo;
             EditarcarroAluguer.tbxNumChassis.Text = carrosAluguerSelecionado.NumeroChassis;
             EditarcarroAluguer.tbxCombustivelCarro.Text = carrosAluguerSelecionado.Combustivel.ToString();

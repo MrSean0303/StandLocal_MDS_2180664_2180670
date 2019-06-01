@@ -314,28 +314,28 @@
             // novoClienteToolStripMenuItem
             // 
             this.novoClienteToolStripMenuItem.Name = "novoClienteToolStripMenuItem";
-            this.novoClienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novoClienteToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.novoClienteToolStripMenuItem.Text = "Novo Cliente";
             this.novoClienteToolStripMenuItem.Click += new System.EventHandler(this.NovoClienteToolStripMenuItem_Click);
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.GuardarToolStripMenuItem_Click);
             // 
             // limparSelecaoToolStripMenuItem
             // 
             this.limparSelecaoToolStripMenuItem.Name = "limparSelecaoToolStripMenuItem";
-            this.limparSelecaoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.limparSelecaoToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.limparSelecaoToolStripMenuItem.Text = "Limpar Seleções";
             this.limparSelecaoToolStripMenuItem.Click += new System.EventHandler(this.LimparSelecaoToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
             // 
@@ -349,6 +349,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbxClientes);
             this.Name = "GestorOficina";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GestorOficina";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestorOficina_FormClosing);
             this.gbxClientes.ResumeLayout(false);

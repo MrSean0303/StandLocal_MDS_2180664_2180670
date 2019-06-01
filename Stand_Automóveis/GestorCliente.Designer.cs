@@ -36,10 +36,21 @@
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbxClientes = new System.Windows.Forms.ListBox();
             this.gbxClientes = new System.Windows.Forms.GroupBox();
-            this.btnCriarCliente = new System.Windows.Forms.Button();
+            this.buttonOrdenarDesc = new System.Windows.Forms.Button();
             this.btnEliminarCliente = new System.Windows.Forms.Button();
+            this.buttonOrdenarCres = new System.Windows.Forms.Button();
+            this.btnCriarCliente = new System.Windows.Forms.Button();
+            this.tbxFiltrar = new System.Windows.Forms.TextBox();
             this.gbxDadosCliente = new System.Windows.Forms.GroupBox();
             this.gbxInformacaoCliente = new System.Windows.Forms.GroupBox();
+            this.lblShowNif = new System.Windows.Forms.Label();
+            this.lblShowNome = new System.Windows.Forms.Label();
+            this.lblShowMorada = new System.Windows.Forms.Label();
+            this.lblShowContacto = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblNumCarrosComprados = new System.Windows.Forms.Label();
             this.lblNumCarroAluguer = new System.Windows.Forms.Label();
             this.lblNumCarrosOficina = new System.Windows.Forms.Label();
@@ -56,17 +67,6 @@
             this.lblContacto = new System.Windows.Forms.Label();
             this.tbAlterarNome = new System.Windows.Forms.TextBox();
             this.labelNome = new System.Windows.Forms.Label();
-            this.buttonOrdenarDesc = new System.Windows.Forms.Button();
-            this.buttonOrdenarCres = new System.Windows.Forms.Button();
-            this.tbxFiltrar = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblShowContacto = new System.Windows.Forms.Label();
-            this.lblShowMorada = new System.Windows.Forms.Label();
-            this.lblShowNome = new System.Windows.Forms.Label();
-            this.lblShowNif = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.gbxClientes.SuspendLayout();
             this.gbxDadosCliente.SuspendLayout();
@@ -152,16 +152,15 @@
             this.gbxClientes.TabStop = false;
             this.gbxClientes.Text = "Clientes";
             // 
-            // btnCriarCliente
+            // buttonOrdenarDesc
             // 
-            this.btnCriarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCriarCliente.Image = global::Stand_Automoveis.Properties.Resources.Add_grey_16x;
-            this.btnCriarCliente.Location = new System.Drawing.Point(257, 11);
-            this.btnCriarCliente.Name = "btnCriarCliente";
-            this.btnCriarCliente.Size = new System.Drawing.Size(24, 24);
-            this.btnCriarCliente.TabIndex = 2;
-            this.btnCriarCliente.UseVisualStyleBackColor = true;
-            this.btnCriarCliente.Click += new System.EventHandler(this.BtnCriarCliente_Click);
+            this.buttonOrdenarDesc.Image = global::Stand_Automoveis.Properties.Resources.Download_grey_16x;
+            this.buttonOrdenarDesc.Location = new System.Drawing.Point(185, 12);
+            this.buttonOrdenarDesc.Name = "buttonOrdenarDesc";
+            this.buttonOrdenarDesc.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarDesc.TabIndex = 8;
+            this.buttonOrdenarDesc.UseVisualStyleBackColor = true;
+            this.buttonOrdenarDesc.Click += new System.EventHandler(this.ButtonOrdenarDesc_Click);
             // 
             // btnEliminarCliente
             // 
@@ -173,6 +172,37 @@
             this.btnEliminarCliente.TabIndex = 1;
             this.btnEliminarCliente.UseVisualStyleBackColor = true;
             this.btnEliminarCliente.Click += new System.EventHandler(this.BtnEliminarCliente_Click);
+            // 
+            // buttonOrdenarCres
+            // 
+            this.buttonOrdenarCres.Image = global::Stand_Automoveis.Properties.Resources.Upload_gray_16x;
+            this.buttonOrdenarCres.Location = new System.Drawing.Point(153, 12);
+            this.buttonOrdenarCres.Name = "buttonOrdenarCres";
+            this.buttonOrdenarCres.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarCres.TabIndex = 7;
+            this.buttonOrdenarCres.UseVisualStyleBackColor = true;
+            this.buttonOrdenarCres.Click += new System.EventHandler(this.ButtonOrdenarCres_Click);
+            // 
+            // btnCriarCliente
+            // 
+            this.btnCriarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCriarCliente.Image = global::Stand_Automoveis.Properties.Resources.Add_grey_16x;
+            this.btnCriarCliente.Location = new System.Drawing.Point(257, 11);
+            this.btnCriarCliente.Name = "btnCriarCliente";
+            this.btnCriarCliente.Size = new System.Drawing.Size(24, 24);
+            this.btnCriarCliente.TabIndex = 2;
+            this.btnCriarCliente.UseVisualStyleBackColor = true;
+            this.btnCriarCliente.Click += new System.EventHandler(this.BtnCriarCliente_Click);
+            // 
+            // tbxFiltrar
+            // 
+            this.tbxFiltrar.Location = new System.Drawing.Point(6, 14);
+            this.tbxFiltrar.Name = "tbxFiltrar";
+            this.tbxFiltrar.Size = new System.Drawing.Size(141, 20);
+            this.tbxFiltrar.TabIndex = 5;
+            this.tbxFiltrar.TextChanged += new System.EventHandler(this.TbxFiltrar_TextChanged);
+            this.tbxFiltrar.Enter += new System.EventHandler(this.TbxFiltrar_Enter);
+            this.tbxFiltrar.Leave += new System.EventHandler(this.TbxFiltrar_Leave);
             // 
             // gbxDadosCliente
             // 
@@ -213,6 +243,94 @@
             this.gbxInformacaoCliente.TabIndex = 1;
             this.gbxInformacaoCliente.TabStop = false;
             this.gbxInformacaoCliente.Text = "Informacão do Cliente";
+            // 
+            // lblShowNif
+            // 
+            this.lblShowNif.AutoSize = true;
+            this.lblShowNif.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowNif.Location = new System.Drawing.Point(119, 129);
+            this.lblShowNif.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
+            this.lblShowNif.Name = "lblShowNif";
+            this.lblShowNif.Size = new System.Drawing.Size(168, 15);
+            this.lblShowNif.TabIndex = 13;
+            this.lblShowNif.Text = "Nenhum Cliente Selecionado";
+            // 
+            // lblShowNome
+            // 
+            this.lblShowNome.AutoSize = true;
+            this.lblShowNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowNome.Location = new System.Drawing.Point(119, 36);
+            this.lblShowNome.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
+            this.lblShowNome.Name = "lblShowNome";
+            this.lblShowNome.Size = new System.Drawing.Size(168, 15);
+            this.lblShowNome.TabIndex = 12;
+            this.lblShowNome.Text = "Nenhum Cliente Selecionado";
+            // 
+            // lblShowMorada
+            // 
+            this.lblShowMorada.AutoSize = true;
+            this.lblShowMorada.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowMorada.Location = new System.Drawing.Point(119, 67);
+            this.lblShowMorada.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
+            this.lblShowMorada.Name = "lblShowMorada";
+            this.lblShowMorada.Size = new System.Drawing.Size(168, 15);
+            this.lblShowMorada.TabIndex = 11;
+            this.lblShowMorada.Text = "Nenhum Cliente Selecionado";
+            // 
+            // lblShowContacto
+            // 
+            this.lblShowContacto.AutoSize = true;
+            this.lblShowContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowContacto.Location = new System.Drawing.Point(119, 98);
+            this.lblShowContacto.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
+            this.lblShowContacto.Name = "lblShowContacto";
+            this.lblShowContacto.Size = new System.Drawing.Size(168, 15);
+            this.lblShowContacto.TabIndex = 10;
+            this.lblShowContacto.Text = "Nenhum Cliente Selecionado";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 129);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 15);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "NIF:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 98);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 16);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Contacto:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(6, 67);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 16);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Morada:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 36);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 16);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Nome Cliente:";
             // 
             // lblNumCarrosComprados
             // 
@@ -382,124 +500,6 @@
             this.labelNome.TabIndex = 0;
             this.labelNome.Text = "Nome Cliente";
             // 
-            // buttonOrdenarDesc
-            // 
-            this.buttonOrdenarDesc.Image = global::Stand_Automoveis.Properties.Resources.Download_grey_16x;
-            this.buttonOrdenarDesc.Location = new System.Drawing.Point(185, 12);
-            this.buttonOrdenarDesc.Name = "buttonOrdenarDesc";
-            this.buttonOrdenarDesc.Size = new System.Drawing.Size(26, 23);
-            this.buttonOrdenarDesc.TabIndex = 8;
-            this.buttonOrdenarDesc.UseVisualStyleBackColor = true;
-            this.buttonOrdenarDesc.Click += new System.EventHandler(this.ButtonOrdenarDesc_Click);
-            // 
-            // buttonOrdenarCres
-            // 
-            this.buttonOrdenarCres.Image = global::Stand_Automoveis.Properties.Resources.Upload_gray_16x;
-            this.buttonOrdenarCres.Location = new System.Drawing.Point(153, 12);
-            this.buttonOrdenarCres.Name = "buttonOrdenarCres";
-            this.buttonOrdenarCres.Size = new System.Drawing.Size(26, 23);
-            this.buttonOrdenarCres.TabIndex = 7;
-            this.buttonOrdenarCres.UseVisualStyleBackColor = true;
-            this.buttonOrdenarCres.Click += new System.EventHandler(this.ButtonOrdenarCres_Click);
-            // 
-            // tbxFiltrar
-            // 
-            this.tbxFiltrar.Location = new System.Drawing.Point(6, 14);
-            this.tbxFiltrar.Name = "tbxFiltrar";
-            this.tbxFiltrar.Size = new System.Drawing.Size(141, 20);
-            this.tbxFiltrar.TabIndex = 5;
-            this.tbxFiltrar.TextChanged += new System.EventHandler(this.TbxFiltrar_TextChanged);
-            this.tbxFiltrar.Enter += new System.EventHandler(this.TbxFiltrar_Enter);
-            this.tbxFiltrar.Leave += new System.EventHandler(this.TbxFiltrar_Leave);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 36);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 16);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Nome Cliente:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 67);
-            this.label2.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 16);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Morada:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 98);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 16);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Contacto:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 129);
-            this.label4.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 15);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "NIF:";
-            // 
-            // lblShowContacto
-            // 
-            this.lblShowContacto.AutoSize = true;
-            this.lblShowContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShowContacto.Location = new System.Drawing.Point(119, 98);
-            this.lblShowContacto.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
-            this.lblShowContacto.Name = "lblShowContacto";
-            this.lblShowContacto.Size = new System.Drawing.Size(168, 15);
-            this.lblShowContacto.TabIndex = 10;
-            this.lblShowContacto.Text = "Nenhum Cliente Selecionado";
-            // 
-            // lblShowMorada
-            // 
-            this.lblShowMorada.AutoSize = true;
-            this.lblShowMorada.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShowMorada.Location = new System.Drawing.Point(119, 67);
-            this.lblShowMorada.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
-            this.lblShowMorada.Name = "lblShowMorada";
-            this.lblShowMorada.Size = new System.Drawing.Size(168, 15);
-            this.lblShowMorada.TabIndex = 11;
-            this.lblShowMorada.Text = "Nenhum Cliente Selecionado";
-            // 
-            // lblShowNome
-            // 
-            this.lblShowNome.AutoSize = true;
-            this.lblShowNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShowNome.Location = new System.Drawing.Point(119, 36);
-            this.lblShowNome.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
-            this.lblShowNome.Name = "lblShowNome";
-            this.lblShowNome.Size = new System.Drawing.Size(168, 15);
-            this.lblShowNome.TabIndex = 12;
-            this.lblShowNome.Text = "Nenhum Cliente Selecionado";
-            // 
-            // lblShowNif
-            // 
-            this.lblShowNif.AutoSize = true;
-            this.lblShowNif.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShowNif.Location = new System.Drawing.Point(119, 129);
-            this.lblShowNif.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
-            this.lblShowNif.Name = "lblShowNif";
-            this.lblShowNif.Size = new System.Drawing.Size(168, 15);
-            this.lblShowNif.TabIndex = 13;
-            this.lblShowNif.Text = "Nenhum Cliente Selecionado";
-            // 
             // GestorCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,6 +510,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "GestorCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GestorClientes";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestorCliente_FormClosing);
             this.menuStrip1.ResumeLayout(false);

@@ -183,6 +183,7 @@
             this.Controls.Add(this.tbxMarcaCarro);
             this.Controls.Add(this.labelNome);
             this.Name = "New_Update_Carro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Carro";
             this.ResumeLayout(false);
             this.PerformLayout();

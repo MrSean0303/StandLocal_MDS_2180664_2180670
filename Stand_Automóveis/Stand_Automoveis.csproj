@@ -136,6 +136,12 @@
     <Compile Include="New_Update_CarroAluguer.Designer.cs">
       <DependentUpon>New_Update_CarroAluguer.cs</DependentUpon>
     </Compile>
+    <Compile Include="New_Update_CarroVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New_Update_CarroVenda.Designer.cs">
+      <DependentUpon>New_Update_CarroVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="New_Update_Parcela.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,12 @@
     <Compile Include="Vendas.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AluguerInformacoes.resx">
+      <DependentUpon>AluguerInformacoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarregarBD.resx">
+      <DependentUpon>CarregarBD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GestorCliente.resx">
       <DependentUpon>GestorCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +206,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="New_Update_Carro.resx">
       <DependentUpon>New_Update_Carro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New_Update_CarroAluguer.resx">
+      <DependentUpon>New_Update_CarroAluguer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="New_Update_CarroVenda.resx">
+      <DependentUpon>New_Update_CarroVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="New_Update_Parcela.resx">
       <DependentUpon>New_Update_Parcela.cs</DependentUpon>

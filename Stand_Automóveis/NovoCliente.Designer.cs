@@ -139,6 +139,7 @@
             this.Controls.Add(this.tbxNomeCliente);
             this.Controls.Add(this.labelNome);
             this.Name = "NovoCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Cliente";
             this.ResumeLayout(false);
             this.PerformLayout();

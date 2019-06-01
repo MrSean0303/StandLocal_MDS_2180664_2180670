@@ -322,6 +322,7 @@
             this.btnAddCarro.TabIndex = 5;
             this.btnAddCarro.Text = "Adicionar Carro";
             this.btnAddCarro.UseVisualStyleBackColor = true;
+            this.btnAddCarro.Click += new System.EventHandler(this.btnAddCarro_Click);
             // 
             // btnFiltrarVenda
             // 
@@ -374,6 +375,7 @@
             this.Controls.Add(this.gbxClientes);
             this.Controls.Add(this.gbxAluguer);
             this.Name = "GestorVenda";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GertorVenda";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

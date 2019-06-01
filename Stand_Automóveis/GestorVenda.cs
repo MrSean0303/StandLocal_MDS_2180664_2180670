@@ -60,5 +60,10 @@ namespace Stand_Automoveis
             tbxKms.Clear();
             tbxValor.Clear();
         }
+
+        private void btnAddCarro_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -64,7 +64,7 @@ namespace Stand_Automoveis
         }
         private void TbxMatriculaCarro_TextChanged(object sender, EventArgs e)
         {
-            if (tbxMatriculaCarro.Text.Length == 0)
+            if (tbxExtrasCarro.Text.Length == 0)
                 matriculaCheck = false;
             else
                 matriculaCheck = true;
@@ -102,7 +102,7 @@ namespace Stand_Automoveis
 
             marca = tbxMarcaCarro.Text;
             modelo = tbxModeloCarro.Text;
-            matricula = tbxMatriculaCarro.Text;
+            matricula = tbxExtrasCarro.Text;
             numeroChassis = tbxNumChassis.Text;
             combustivel = tbxCombustivelCarro.Text;
             estado = estadoCarroAluguer;
