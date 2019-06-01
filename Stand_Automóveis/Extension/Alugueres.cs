@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Stand_Automoveis
 {
-    public partial class Servico
+    public partial class Alugueres
     {
         public override string ToString()
         {
-            return "Tipo: " + Tipo + " | Data-Entrada: " + DataEntrada.ToShortDateString() + " | Data-Saída: " + DataSaida.ToShortDateString();
+
+            return "Data de Entrega do veiculo: " + DataInicio.ToString("dd-MM-yy") + " | Valor: " + Valor + "€ | Data de Receção do veiculo: " + DataFim.ToString("dd-MM-yy");
         }
     }
 }

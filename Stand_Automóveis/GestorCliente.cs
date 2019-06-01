@@ -14,7 +14,7 @@ namespace Stand_Automoveis
     public partial class GestorCliente : Form
     {
         private StandLocalDBContainer StandLocalDB;
-        List<Cliente> listaCliente = new List<Cliente>();
+        List<Clientes> listaCliente = new List<Clientes>();
         bool conteudoNovo = false;
 
         public GestorCliente()
@@ -26,7 +26,7 @@ namespace Stand_Automoveis
 
         private void lblListaClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Cliente clienteSelecionado = (Cliente)lbListaClientes.SelectedItem;
+            Clientes clienteSelecionado = (Clientes)lbListaClientes.SelectedItem;
 
             if (clienteSelecionado == null)
             {
@@ -58,7 +58,7 @@ namespace Stand_Automoveis
         {      
             NovoCliente novocliente = new NovoCliente();
             novocliente.ShowDialog();
-            Cliente clienteTemp = new Cliente
+            Clientes clienteTemp = new Clientes
             {
                 Nome = novocliente.nome,
                 NIF = novocliente.nif,
@@ -77,7 +77,7 @@ namespace Stand_Automoveis
 
         private void BtnEliminarCliente_Click(object sender, EventArgs e)
         {
-            Cliente clienteSelecionado = (Cliente)lbListaClientes.SelectedItem;
+            Clientes clienteSelecionado = (Clientes)lbListaClientes.SelectedItem;
 
             if (clienteSelecionado == null)
             {
@@ -107,7 +107,7 @@ namespace Stand_Automoveis
 
         private void BtnEditarCliente_Click(object sender, EventArgs e)
         {
-            Cliente clienteSelecionado = (Cliente)lbListaClientes.SelectedItem;
+            Clientes clienteSelecionado = (Clientes)lbListaClientes.SelectedItem;
 
             if (clienteSelecionado == null)
             {
@@ -143,7 +143,7 @@ namespace Stand_Automoveis
         {
             NovoCliente novocliente = new NovoCliente();
             novocliente.ShowDialog();
-            Cliente clienteTemp = new Cliente
+            Clientes clienteTemp = new Clientes
             {
                 Nome = novocliente.nome,
                 NIF = novocliente.nif,

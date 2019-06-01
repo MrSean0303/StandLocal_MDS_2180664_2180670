@@ -17,16 +17,17 @@ namespace Stand_Automoveis
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Servicos()
         {
-            this.Parcelas = new HashSet<Parcelas>();
+            this.Parcela = new HashSet<Parcelas>();
         }
     
         public int IdServico { get; set; }
-        public System.DateTime Data { get; set; }
+        public System.DateTime DataEntrada { get; set; }
+        public int CarroOficinaIdCarroOficina { get; set; }
         public string Tipo { get; set; }
-        public int CarroIdCarro { get; set; }
+        public System.DateTime DataSaida { get; set; }
     
-        public virtual Carros Carros { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Parcelas> Parcelas { get; set; }
+        public virtual ICollection<Parcelas> Parcela { get; set; }
+        public virtual CarrosOficina CarroOficina { get; set; }
     }
 }

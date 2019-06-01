@@ -12,10 +12,10 @@ namespace Stand_Automoveis
     using System;
     using System.Collections.Generic;
     
-    public partial class CarroVenda : Carro
+    public partial class CarrosVenda : Carros
     {
         public string Extras { get; set; }
     
-        public virtual Venda Venda { get; set; }
+        public virtual Vendas Venda { get; set; }
     }
 }

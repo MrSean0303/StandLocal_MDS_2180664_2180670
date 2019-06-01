@@ -19,6 +19,6 @@ namespace Stand_Automoveis
         public string Descricao { get; set; }
         public int ServicoIdServico { get; set; }
     
-        public virtual Servicos Servicos { get; set; }
+        public virtual Servicos Servico { get; set; }
     }
 }

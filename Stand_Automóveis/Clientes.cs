@@ -12,14 +12,14 @@ namespace Stand_Automoveis
     using System;
     using System.Collections.Generic;
     
-    public partial class Cliente
+    public partial class Clientes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cliente()
+        public Clientes()
         {
-            this.CarroOficina = new HashSet<CarroOficina>();
-            this.Venda = new HashSet<Venda>();
-            this.Aluguer = new HashSet<Aluguer>();
+            this.CarroOficina = new HashSet<CarrosOficina>();
+            this.Venda = new HashSet<Vendas>();
+            this.Aluguer = new HashSet<Alugueres>();
         }
     
         public int IdCliente { get; set; }
@@ -29,10 +29,10 @@ namespace Stand_Automoveis
         public string Contacto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CarroOficina> CarroOficina { get; set; }
+        public virtual ICollection<CarrosOficina> CarroOficina { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Venda> Venda { get; set; }
+        public virtual ICollection<Vendas> Venda { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Aluguer> Aluguer { get; set; }
+        public virtual ICollection<Alugueres> Aluguer { get; set; }
     }
 }

@@ -14,18 +14,10 @@ namespace Stand_Automoveis
     
     public partial class Carros
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Carros()
-        {
-            this.Servicos = new HashSet<Servicos>();
-        }
-    
-        public int IdCarro { get; set; }
-        public string Matricula { get; set; }
-        public int ClienteIdCliente { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Servicos> Servicos { get; set; }
-        public virtual Cliente Clientes { get; set; }
+        public int idCarro { get; set; }
+        public string NumeroChassis { get; set; }
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
+        public string Combustivel { get; set; }
     }
 }
