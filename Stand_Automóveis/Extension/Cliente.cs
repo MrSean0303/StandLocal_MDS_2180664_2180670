@@ -10,7 +10,7 @@ namespace Stand_Automoveis
     {
         public override string ToString()
         {
-            return Nome + " | " + NIF + " | " + Contacto + " | " + Morada;
+            return "Nome: " + Nome + " | NIF: " + NIF + " | Contacto: " + Contacto + " | Morada: " + Morada;
         }
     }
 }

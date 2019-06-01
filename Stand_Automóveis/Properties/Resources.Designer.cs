@@ -63,6 +63,16 @@ namespace Stand_Automoveis.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Download_grey_16x {
+            get {
+                object obj = ResourceManager.GetObject("Download_grey_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap StatusCriticalError_16x {
             get {
                 object obj = ResourceManager.GetObject("StatusCriticalError_16x", resourceCulture);
@@ -76,6 +86,16 @@ namespace Stand_Automoveis.Properties {
         internal static System.Drawing.Bitmap StatusWarning_exp_16x {
             get {
                 object obj = ResourceManager.GetObject("StatusWarning_exp_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Upload_gray_16x {
+            get {
+                object obj = ResourceManager.GetObject("Upload_gray_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

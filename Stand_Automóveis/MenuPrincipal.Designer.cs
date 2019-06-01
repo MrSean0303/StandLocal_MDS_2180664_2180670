@@ -167,7 +167,7 @@
             this.Controls.Add(this.btnGestaoClientes);
             this.Controls.Add(this.statusStrip1);
             this.Name = "MenuPrincipal";
-            this.Text = "Form1";
+            this.Text = "Stand Local";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);

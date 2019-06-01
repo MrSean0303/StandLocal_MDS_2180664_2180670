@@ -220,6 +220,8 @@
   <ItemGroup>
     <None Include="Resources\StatusCriticalError_16x.png" />
     <None Include="Resources\StatusWarning_exp_16x.png" />
+    <None Include="Resources\Upload_gray_16x.png" />
+    <None Include="Resources\Download_grey_16x.png" />
     <Content Include="StandLocalDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>StandLocalDB.Context.cs</LastGenOutput>

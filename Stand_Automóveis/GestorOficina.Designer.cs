@@ -30,7 +30,7 @@
         {
             this.gbxClientes = new System.Windows.Forms.GroupBox();
             this.btnFiltrar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxFiltrar = new System.Windows.Forms.TextBox();
             this.lbxClientes = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -53,6 +53,8 @@
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.limparDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonOrdenarCres = new System.Windows.Forms.Button();
+            this.buttonOrdenarDesc = new System.Windows.Forms.Button();
             this.gbxClientes.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -62,31 +64,34 @@
             // 
             // gbxClientes
             // 
+            this.gbxClientes.Controls.Add(this.buttonOrdenarDesc);
+            this.gbxClientes.Controls.Add(this.buttonOrdenarCres);
             this.gbxClientes.Controls.Add(this.btnFiltrar);
-            this.gbxClientes.Controls.Add(this.textBox1);
+            this.gbxClientes.Controls.Add(this.tbxFiltrar);
             this.gbxClientes.Controls.Add(this.lbxClientes);
             this.gbxClientes.Location = new System.Drawing.Point(12, 27);
             this.gbxClientes.Name = "gbxClientes";
-            this.gbxClientes.Size = new System.Drawing.Size(277, 461);
+            this.gbxClientes.Size = new System.Drawing.Size(343, 461);
             this.gbxClientes.TabIndex = 0;
             this.gbxClientes.TabStop = false;
             this.gbxClientes.Text = "Clientes";
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(213, 20);
+            this.btnFiltrar.Location = new System.Drawing.Point(215, 20);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(58, 23);
             this.btnFiltrar.TabIndex = 2;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.BtnFiltrar_Click);
             // 
-            // textBox1
+            // tbxFiltrar
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 1;
+            this.tbxFiltrar.Location = new System.Drawing.Point(7, 22);
+            this.tbxFiltrar.Name = "tbxFiltrar";
+            this.tbxFiltrar.Size = new System.Drawing.Size(202, 20);
+            this.tbxFiltrar.TabIndex = 1;
             // 
             // lbxClientes
             // 
@@ -94,7 +99,7 @@
             this.lbxClientes.HorizontalScrollbar = true;
             this.lbxClientes.Location = new System.Drawing.Point(6, 48);
             this.lbxClientes.Name = "lbxClientes";
-            this.lbxClientes.Size = new System.Drawing.Size(265, 407);
+            this.lbxClientes.Size = new System.Drawing.Size(331, 407);
             this.lbxClientes.TabIndex = 0;
             this.lbxClientes.SelectedIndexChanged += new System.EventHandler(this.LbxClientes_SelectedIndexChanged);
             // 
@@ -106,7 +111,7 @@
             this.groupBox1.Controls.Add(this.buttonEliminarCarro);
             this.groupBox1.Controls.Add(this.buttonAddCarro);
             this.groupBox1.Controls.Add(this.lbxCarros);
-            this.groupBox1.Location = new System.Drawing.Point(295, 27);
+            this.groupBox1.Location = new System.Drawing.Point(361, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(753, 461);
             this.groupBox1.TabIndex = 1;
@@ -264,7 +269,7 @@
             this.ficheiroToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1060, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1126, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -306,12 +311,32 @@
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
             // 
+            // buttonOrdenarCres
+            // 
+            this.buttonOrdenarCres.Image = global::Stand_Automoveis.Properties.Resources.Upload_gray_16x;
+            this.buttonOrdenarCres.Location = new System.Drawing.Point(283, 20);
+            this.buttonOrdenarCres.Name = "buttonOrdenarCres";
+            this.buttonOrdenarCres.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarCres.TabIndex = 3;
+            this.buttonOrdenarCres.UseVisualStyleBackColor = true;
+            this.buttonOrdenarCres.Click += new System.EventHandler(this.ButtonOrdenarCres_Click);
+            // 
+            // buttonOrdenarDesc
+            // 
+            this.buttonOrdenarDesc.Image = global::Stand_Automoveis.Properties.Resources.Download_grey_16x;
+            this.buttonOrdenarDesc.Location = new System.Drawing.Point(311, 20);
+            this.buttonOrdenarDesc.Name = "buttonOrdenarDesc";
+            this.buttonOrdenarDesc.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarDesc.TabIndex = 4;
+            this.buttonOrdenarDesc.UseVisualStyleBackColor = true;
+            this.buttonOrdenarDesc.Click += new System.EventHandler(this.ButtonOrdenarDesc_Click);
+            // 
             // GestorOficina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1060, 489);
+            this.ClientSize = new System.Drawing.Size(1126, 489);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbxClientes);
@@ -334,7 +359,7 @@
 
         private System.Windows.Forms.GroupBox gbxClientes;
         private System.Windows.Forms.Button btnFiltrar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxFiltrar;
         private System.Windows.Forms.ListBox lbxClientes;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox lbxCarros;
@@ -357,5 +382,7 @@
         private System.Windows.Forms.Button buttonEditarParcelas;
         private System.Windows.Forms.Button buttonEliminarParcelas;
         private System.Windows.Forms.Button buttonAddParcela;
+        private System.Windows.Forms.Button buttonOrdenarDesc;
+        private System.Windows.Forms.Button buttonOrdenarCres;
     }
 }
