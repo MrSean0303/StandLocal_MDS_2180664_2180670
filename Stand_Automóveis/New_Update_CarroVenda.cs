@@ -12,35 +12,64 @@ namespace Stand_Automoveis
 {
     public partial class New_Update_CarroVenda : Form
     {
-        public string marca, modelo, matricula, numeroChassis, combustivel, extras;
-
-        private void tbxModeloCarro_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbxMatriculaCarro_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbxMarcaCarro_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public bool marcaCheck = false, modeloCheck = false, matriculaCheck = false, numChassisCheck = false, combustivelCheck = false, extrasCheck = false;
+        public string marca, modelo, extra, numeroChassis, combustivel;
+        public bool marcaCheck = false, modeloCheck = false, extrasCheck = false, numChassisCheck = false, combustivelCheck = false;
 
         public New_Update_CarroVenda()
         {
             InitializeComponent();
         }
 
+        private void tbxModeloCarro_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxModeloCarro.Text.Length == 0)
+                modeloCheck = false;
+            else
+                modeloCheck = true;
+            buttonCheck();
+        }
+
+        private void tbxNumChassis_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxNumChassis.Text.Length == 0)
+                numChassisCheck = false;
+            else
+                numChassisCheck = true;
+            buttonCheck();
+        }
+
+        private void tbxCombustivelCarro_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxCombustivelCarro.Text.Length == 0)
+                combustivelCheck = false;
+            else
+                combustivelCheck = true;
+            buttonCheck();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxExtras.Text.Length == 0)
+                extrasCheck = false;
+            else
+                extrasCheck = true;
+            buttonCheck();
+        }
+
+        private void tbxMarcaCarro_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxMarcaCarro.Text.Length == 0)
+                marcaCheck = false;
+            else
+                marcaCheck = true;
+            buttonCheck();
+        }
+
         private void ButtonAddCarro_Click(object sender, EventArgs e)
         {
             marca = tbxMarcaCarro.Text;
             modelo = tbxModeloCarro.Text;
-            matricula = tbxMatriculaCarro.Text;
+            extra = tbxExtras.Text;
             numeroChassis = tbxNumChassis.Text;
             combustivel = tbxCombustivelCarro.Text;
 
@@ -49,7 +78,7 @@ namespace Stand_Automoveis
 
         private void buttonCheck()
         {
-            if (marcaCheck != true || modeloCheck != true || matriculaCheck != true || numChassisCheck != true || combustivelCheck != true || extrasCheck != true)
+            if (marcaCheck != true || modeloCheck != true || extrasCheck != true || numChassisCheck != true || combustivelCheck != true || extrasCheck != true)
             {
                 buttonAddCarro.Enabled = false;
             }

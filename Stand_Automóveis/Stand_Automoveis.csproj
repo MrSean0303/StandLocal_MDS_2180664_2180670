@@ -183,6 +183,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StandLocalDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="VendaInformacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendaInformacoes.Designer.cs">
+      <DependentUpon>VendaInformacoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vendas.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>

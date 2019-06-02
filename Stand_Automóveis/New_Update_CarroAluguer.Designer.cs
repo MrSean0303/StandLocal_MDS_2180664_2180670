@@ -64,6 +64,7 @@
             this.cbxEstadoCarro.Size = new System.Drawing.Size(283, 21);
             this.cbxEstadoCarro.TabIndex = 92;
             this.cbxEstadoCarro.TextChanged += new System.EventHandler(this.cbxEstadoCarro_SelectedIndexChanged);
+            this.cbxEstadoCarro.Click += new System.EventHandler(this.cbxEstadoCarro_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -91,6 +92,7 @@
             this.tbxCombustivelCarro.Name = "tbxCombustivelCarro";
             this.tbxCombustivelCarro.Size = new System.Drawing.Size(283, 20);
             this.tbxCombustivelCarro.TabIndex = 85;
+            this.tbxCombustivelCarro.Click += new System.EventHandler(this.TbxCombustivelCarro_TextChanged);
             this.tbxCombustivelCarro.TextChanged += new System.EventHandler(this.TbxCombustivelCarro_TextChanged);
             // 
             // tbxModeloCarro
@@ -99,6 +101,7 @@
             this.tbxModeloCarro.Name = "tbxModeloCarro";
             this.tbxModeloCarro.Size = new System.Drawing.Size(283, 20);
             this.tbxModeloCarro.TabIndex = 82;
+            this.tbxModeloCarro.Click += new System.EventHandler(this.TbxModeloCarro_TextChanged);
             this.tbxModeloCarro.TextChanged += new System.EventHandler(this.TbxModeloCarro_TextChanged);
             // 
             // lblNif
@@ -127,6 +130,7 @@
             this.tbxNumChassis.Name = "tbxNumChassis";
             this.tbxNumChassis.Size = new System.Drawing.Size(283, 20);
             this.tbxNumChassis.TabIndex = 84;
+            this.tbxNumChassis.Click += new System.EventHandler(this.TbxNumChassis_TextChanged);
             this.tbxNumChassis.TextChanged += new System.EventHandler(this.TbxNumChassis_TextChanged);
             // 
             // tbxMatriculaCarro
@@ -135,6 +139,7 @@
             this.tbxMatriculaCarro.Name = "tbxMatriculaCarro";
             this.tbxMatriculaCarro.Size = new System.Drawing.Size(283, 20);
             this.tbxMatriculaCarro.TabIndex = 83;
+            this.tbxMatriculaCarro.Click += new System.EventHandler(this.TbxMatriculaCarro_TextChanged);
             this.tbxMatriculaCarro.TextChanged += new System.EventHandler(this.TbxMatriculaCarro_TextChanged);
             // 
             // lblContacto
@@ -153,6 +158,7 @@
             this.tbxMarcaCarro.Name = "tbxMarcaCarro";
             this.tbxMarcaCarro.Size = new System.Drawing.Size(283, 20);
             this.tbxMarcaCarro.TabIndex = 81;
+            this.tbxMarcaCarro.Click += new System.EventHandler(this.TbxMarcaCarro_TextChanged);
             this.tbxMarcaCarro.TextChanged += new System.EventHandler(this.TbxMarcaCarro_TextChanged);
             // 
             // labelNome

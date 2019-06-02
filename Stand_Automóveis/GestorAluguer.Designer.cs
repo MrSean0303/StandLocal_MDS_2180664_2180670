@@ -51,7 +51,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnInfAluguer = new System.Windows.Forms.Button();
             this.lbxAluguer = new System.Windows.Forms.ListBox();
             this.gbxAlugados = new System.Windows.Forms.GroupBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -296,15 +296,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações do aluguer";
             // 
-            // button1
+            // btnInfAluguer
             // 
-            this.button1.Location = new System.Drawing.Point(9, 237);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(466, 22);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Infromações adicionais sobre o aluguer";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnInfAluguer.Location = new System.Drawing.Point(9, 237);
+            this.btnInfAluguer.Name = "btnInfAluguer";
+            this.btnInfAluguer.Size = new System.Drawing.Size(466, 22);
+            this.btnInfAluguer.TabIndex = 17;
+            this.btnInfAluguer.Text = "Infromações adicionais sobre o aluguer";
+            this.btnInfAluguer.UseVisualStyleBackColor = true;
+            this.btnInfAluguer.Click += new System.EventHandler(this.button1_Click);
             // 
             // lbxAluguer
             // 
@@ -318,7 +318,7 @@
             // 
             // gbxAlugados
             // 
-            this.gbxAlugados.Controls.Add(this.button1);
+            this.gbxAlugados.Controls.Add(this.btnInfAluguer);
             this.gbxAlugados.Controls.Add(this.lbxAluguer);
             this.gbxAlugados.Location = new System.Drawing.Point(657, 216);
             this.gbxAlugados.Name = "gbxAlugados";
@@ -453,7 +453,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnInfAluguer;
         public System.Windows.Forms.ListBox lbxAluguer;
         private System.Windows.Forms.GroupBox gbxAlugados;
         private System.Windows.Forms.MenuStrip menuStrip1;
