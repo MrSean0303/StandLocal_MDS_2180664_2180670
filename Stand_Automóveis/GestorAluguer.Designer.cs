@@ -351,21 +351,21 @@
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // limparDadosToolStripMenuItem
             // 
             this.limparDadosToolStripMenuItem.Name = "limparDadosToolStripMenuItem";
-            this.limparDadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.limparDadosToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.limparDadosToolStripMenuItem.Text = "Limpar Dados";
             this.limparDadosToolStripMenuItem.Click += new System.EventHandler(this.limparDadosToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
@@ -382,21 +382,21 @@
             // criarCarroToolStripMenuItem
             // 
             this.criarCarroToolStripMenuItem.Name = "criarCarroToolStripMenuItem";
-            this.criarCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.criarCarroToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.criarCarroToolStripMenuItem.Text = "Criar Carro";
             this.criarCarroToolStripMenuItem.Click += new System.EventHandler(this.adicionarCarroToolStripMenuItem_Click);
             // 
             // editarCarroToolStripMenuItem
             // 
             this.editarCarroToolStripMenuItem.Name = "editarCarroToolStripMenuItem";
-            this.editarCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarCarroToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.editarCarroToolStripMenuItem.Text = "Editar Carro";
             this.editarCarroToolStripMenuItem.Click += new System.EventHandler(this.editarCarroToolStripMenuItem_Click);
             // 
             // eliminarCarroToolStripMenuItem
             // 
             this.eliminarCarroToolStripMenuItem.Name = "eliminarCarroToolStripMenuItem";
-            this.eliminarCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarCarroToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.eliminarCarroToolStripMenuItem.Text = "Eliminar Carro";
             this.eliminarCarroToolStripMenuItem.Click += new System.EventHandler(this.eliminarCarroToolStripMenuItem_Click);
             // 
@@ -413,6 +413,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "GestorAluguer";
             this.Text = "GestorAluguer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestorAluguer_FormClosing);
             this.gbxAluguer.ResumeLayout(false);
             this.gbxAluguer.PerformLayout();
             this.gbxClientes.ResumeLayout(false);

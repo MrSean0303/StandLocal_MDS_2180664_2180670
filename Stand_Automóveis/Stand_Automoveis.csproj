@@ -192,6 +192,9 @@
     <EmbeddedResource Include="CarregarBD.resx">
       <DependentUpon>CarregarBD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GestorAluguer.resx">
+      <DependentUpon>GestorAluguer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GestorCliente.resx">
       <DependentUpon>GestorCliente.cs</DependentUpon>
     </EmbeddedResource>

@@ -96,6 +96,7 @@
             this.tbxModeloCarro.Name = "tbxModeloCarro";
             this.tbxModeloCarro.Size = new System.Drawing.Size(283, 20);
             this.tbxModeloCarro.TabIndex = 69;
+            this.tbxModeloCarro.TextChanged += new System.EventHandler(this.tbxModeloCarro_TextChanged);
             // 
             // lblNif
             // 
@@ -130,6 +131,7 @@
             this.tbxMatriculaCarro.Name = "tbxMatriculaCarro";
             this.tbxMatriculaCarro.Size = new System.Drawing.Size(283, 20);
             this.tbxMatriculaCarro.TabIndex = 70;
+            this.tbxMatriculaCarro.TextChanged += new System.EventHandler(this.tbxMatriculaCarro_TextChanged);
             // 
             // lblContacto
             // 
@@ -147,6 +149,7 @@
             this.tbxMarcaCarro.Name = "tbxMarcaCarro";
             this.tbxMarcaCarro.Size = new System.Drawing.Size(283, 20);
             this.tbxMarcaCarro.TabIndex = 68;
+            this.tbxMarcaCarro.TextChanged += new System.EventHandler(this.tbxMarcaCarro_TextChanged);
             // 
             // labelNome
             // 

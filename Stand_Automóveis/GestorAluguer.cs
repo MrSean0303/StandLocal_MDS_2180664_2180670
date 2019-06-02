@@ -151,7 +151,7 @@ namespace Stand_Automoveis
 
             New_Update_CarroAluguer EditarcarroAluguer = new New_Update_CarroAluguer();
             EditarcarroAluguer.tbxMarcaCarro.Text = carrosAluguerSelecionado.Marca;
-            EditarcarroAluguer.tbxExtrasCarro.Text = carrosAluguerSelecionado.Matricula;
+            EditarcarroAluguer.tbxMatriculaCarro.Text = carrosAluguerSelecionado.Matricula;
             EditarcarroAluguer.tbxModeloCarro.Text = carrosAluguerSelecionado.Modelo;
             EditarcarroAluguer.tbxNumChassis.Text = carrosAluguerSelecionado.NumeroChassis;
             EditarcarroAluguer.tbxCombustivelCarro.Text = carrosAluguerSelecionado.Combustivel.ToString();
@@ -171,6 +171,7 @@ namespace Stand_Automoveis
         public void EliminarCarro()
         {
             CarrosAluguer carrosAluguerSelecionado = lbxCarrosAluguer.SelectedItem as CarrosAluguer;
+            bool carroAlugado = false;
 
             if (carrosAluguerSelecionado == null)
             {
@@ -178,10 +179,29 @@ namespace Stand_Automoveis
                 return;
             }
 
-            ListacarrosAluguer.Remove(carrosAluguerSelecionado);
-            StandLocalDB.Carro.Remove(carrosAluguerSelecionado);
-            AtualizarCarrosAluguer();
-            dadosGuardados = false;
+            List<Alugueres> AlugueresLista = StandLocalDB.Aluguer.ToList();
+
+            foreach (Alugueres aluguer in AlugueresLista) {
+
+                if (aluguer.CarroAluguer == carrosAluguerSelecionado) {
+                    if (DateTime.Now.Date < aluguer.DataFim) {
+                        carroAlugado = true;
+                    }               
+                }
+            }
+
+            if (carroAlugado == false)
+            {
+                ListacarrosAluguer.Remove(carrosAluguerSelecionado);
+                StandLocalDB.Carro.Remove(carrosAluguerSelecionado);
+                AtualizarCarrosAluguer();
+                dadosGuardados = false;
+            }
+            else {
+                MessageBox.Show("O Carro selecionado esta alugado neste momento", "Carro nao pode ser eliminado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbxCarrosAluguer.ClearSelected();
+                return;
+            }
         }
 
 
@@ -389,8 +409,8 @@ namespace Stand_Automoveis
             {
                 aluguerSelecionado.Kms = tbxKms.Text;
                 aluguerSelecionado.Valor = double.Parse(tbxValor.Text);
-                dtpEntrega.Value = aluguerSelecionado.DataInicio;
-                dtpRececao.Value = aluguerSelecionado.DataFim;
+                aluguerSelecionado.DataInicio = dtpEntrega.Value;
+                aluguerSelecionado.DataFim = dtpRececao.Value;
 
                 AtualizarAluguer();
                 dadosGuardados = false;
@@ -400,6 +420,8 @@ namespace Stand_Automoveis
                 tbxKms.Clear();
                 dtpEntrega.Value = DateTime.Now;
                 dtpRececao.Value = DateTime.Now;
+
+
             }
 
             valorpassou = false;
