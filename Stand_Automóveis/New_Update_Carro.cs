@@ -13,20 +13,23 @@ namespace Stand_Automoveis
     public partial class New_Update_Carro : Form
     {
         public string marca, modelo, matricula, numeroChassis, combustivel, kms;
-        public bool marcaCheck = false, modeloCheck = false, matriculaCheck = false, numChassisCheck = false, combustivelCheck = false, kmsCheck = false;
+        public bool marcaCheck = false, modeloCheck = false, matriculaCheck = false, numChassisCheck = false, combustivelCheck = false;
 
+        private void NudKms_ValueChanged(object sender, EventArgs e)
+        {
+            kmsCheck();
+        }
+        private void kmsCheck()
+        {
+            if (nudKms.Value == 0)
+                pictureBoxKms.Visible = true;
+            else
+                pictureBoxKms.Visible = false;
+        }
         public New_Update_Carro()
         {
             InitializeComponent();
-        }
-
-        private void TbxKms_TextChanged(object sender, EventArgs e)
-        {
-            if (tbxKms.Text.Length == 0)
-                kmsCheck = false;
-            else
-                kmsCheck = true;
-            buttonCheck();
+            kmsCheck();
         }
 
         private void TbxCombustivelCarro_TextChanged(object sender, EventArgs e)
@@ -80,13 +83,13 @@ namespace Stand_Automoveis
             matricula = tbxMatriculaCarro.Text;
             numeroChassis = tbxNumChassis.Text;
             combustivel = tbxCombustivelCarro.Text;
-            kms = tbxKms.Text;
+            kms = nudKms.Value.ToString();
 
             Close();
         }
         private void buttonCheck()
         {
-            if (marcaCheck != true || modeloCheck != true || matriculaCheck != true || numChassisCheck != true || combustivelCheck != true || kmsCheck != true)
+            if (marcaCheck != true || modeloCheck != true || matriculaCheck != true || numChassisCheck != true || combustivelCheck != true)
             {
                 buttonAddCarro.Enabled = false;
             }

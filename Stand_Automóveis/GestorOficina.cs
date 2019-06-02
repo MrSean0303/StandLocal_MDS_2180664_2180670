@@ -181,18 +181,17 @@ namespace Stand_Automoveis
         private void ButtonEliminarCarro_Click(object sender, EventArgs e)
         {
             CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
-            bool servicoCheck = true;
+            DialogResult dialogResult;
+
             if (carroSelecionado == null)
             {
                 MessageBox.Show("Nenhum Carro Selecionado", "Erro: Carro Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            foreach (Servicos servicos in carroSelecionado.Servico)
-            {
-                if (servicos.DataSaida != null)
-                    servicoCheck = false;
-            }
-            if (servicoCheck == true)
+
+            dialogResult = MessageBox.Show("Pretende eliminar a Parcela selecionada?.", "Eliminar Parcela?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.Yes)
             {
                 listaCarro.Remove(carroSelecionado);
                 StandLocalDB.Carro.Remove(carroSelecionado);
@@ -201,7 +200,7 @@ namespace Stand_Automoveis
             }
             else
             {
-                MessageBox.Show("O carro tem serviços em execução, não é possível a sua eliminação.", "Erro ao Eliminar Carro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -247,14 +246,23 @@ namespace Stand_Automoveis
 
         private void ButtonEliminarServicos_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult;
             Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
             if (servicoSelecionado == null)
             {
                 MessageBox.Show("Nenhum Serviço Selecionado", "Erro: Serviço Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
-            if (servicoSelecionado.Parcela.Count == 0)
+
+            if (servicoSelecionado.DataSaida > DateTime.Now.Date)
+            {
+                MessageBox.Show("O serviço não está concluido! Termine primeiro o serviço para continuar.", "Erro: Serviço não terminado.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+                
+            dialogResult = MessageBox.Show("Pretende eliminar o Serviço selecionada?.", "Eliminar Serviço?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (servicoSelecionado.Parcela.Count == 0 && dialogResult == DialogResult.Yes)
             {
                 listaServico.Remove(servicoSelecionado);
                 StandLocalDB.Servico.Remove(servicoSelecionado);
@@ -299,7 +307,7 @@ namespace Stand_Automoveis
             edicaoCarro.tbxModeloCarro.Text = carroSelecionado.Modelo;
             edicaoCarro.tbxMatriculaCarro.Text = carroSelecionado.Matricula;
             edicaoCarro.tbxNumChassis.Text = carroSelecionado.NumeroChassis;
-            edicaoCarro.tbxKms.Text = carroSelecionado.Kms;
+            edicaoCarro.nudKms.Value = decimal.Parse(carroSelecionado.Kms);
             edicaoCarro.tbxCombustivelCarro.Text = carroSelecionado.Combustivel;
 
             edicaoCarro.ShowDialog();
@@ -485,6 +493,12 @@ namespace Stand_Automoveis
             }
             else
                 AtualizarClientes();
+        }
+
+        private void ButtonServicoOkay_Click(object sender, EventArgs e)
+        {
+            Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
+
         }
     }
 }

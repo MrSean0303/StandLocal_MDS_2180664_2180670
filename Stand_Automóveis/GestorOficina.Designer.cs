@@ -29,24 +29,13 @@
         private void InitializeComponent()
         {
             this.gbxClientes = new System.Windows.Forms.GroupBox();
-            this.buttonOrdenarDesc = new System.Windows.Forms.Button();
-            this.buttonOrdenarCres = new System.Windows.Forms.Button();
             this.tbxFiltrar = new System.Windows.Forms.TextBox();
             this.lbxClientes = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.buttonEditarParcela = new System.Windows.Forms.Button();
-            this.buttonEliminarParcela = new System.Windows.Forms.Button();
-            this.buttonAddParcela = new System.Windows.Forms.Button();
             this.lbxParcelas = new System.Windows.Forms.ListBox();
-            this.buttonEditarCarro = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.buttonEditarServico = new System.Windows.Forms.Button();
-            this.buttonEliminarServico = new System.Windows.Forms.Button();
             this.lbxServicos = new System.Windows.Forms.ListBox();
-            this.buttonAddServico = new System.Windows.Forms.Button();
-            this.buttonEliminarCarro = new System.Windows.Forms.Button();
-            this.buttonAddCarro = new System.Windows.Forms.Button();
             this.lbxCarros = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ficheiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +43,18 @@
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.limparSelecaoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonEditarParcela = new System.Windows.Forms.Button();
+            this.buttonEliminarParcela = new System.Windows.Forms.Button();
+            this.buttonAddParcela = new System.Windows.Forms.Button();
+            this.buttonEditarCarro = new System.Windows.Forms.Button();
+            this.buttonEditarServico = new System.Windows.Forms.Button();
+            this.buttonEliminarServico = new System.Windows.Forms.Button();
+            this.buttonAddServico = new System.Windows.Forms.Button();
+            this.buttonEliminarCarro = new System.Windows.Forms.Button();
+            this.buttonAddCarro = new System.Windows.Forms.Button();
+            this.buttonOrdenarDesc = new System.Windows.Forms.Button();
+            this.buttonOrdenarCres = new System.Windows.Forms.Button();
+            this.buttonServicoOkay = new System.Windows.Forms.Button();
             this.gbxClientes.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -73,26 +74,6 @@
             this.gbxClientes.TabIndex = 0;
             this.gbxClientes.TabStop = false;
             this.gbxClientes.Text = "Clientes";
-            // 
-            // buttonOrdenarDesc
-            // 
-            this.buttonOrdenarDesc.Image = global::Stand_Automoveis.Properties.Resources.Download_grey_16x;
-            this.buttonOrdenarDesc.Location = new System.Drawing.Point(311, 20);
-            this.buttonOrdenarDesc.Name = "buttonOrdenarDesc";
-            this.buttonOrdenarDesc.Size = new System.Drawing.Size(26, 23);
-            this.buttonOrdenarDesc.TabIndex = 4;
-            this.buttonOrdenarDesc.UseVisualStyleBackColor = true;
-            this.buttonOrdenarDesc.Click += new System.EventHandler(this.ButtonOrdenarDesc_Click);
-            // 
-            // buttonOrdenarCres
-            // 
-            this.buttonOrdenarCres.Image = global::Stand_Automoveis.Properties.Resources.Upload_gray_16x;
-            this.buttonOrdenarCres.Location = new System.Drawing.Point(283, 20);
-            this.buttonOrdenarCres.Name = "buttonOrdenarCres";
-            this.buttonOrdenarCres.Size = new System.Drawing.Size(26, 23);
-            this.buttonOrdenarCres.TabIndex = 3;
-            this.buttonOrdenarCres.UseVisualStyleBackColor = true;
-            this.buttonOrdenarCres.Click += new System.EventHandler(this.ButtonOrdenarCres_Click);
             // 
             // tbxFiltrar
             // 
@@ -140,6 +121,99 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Parcelas";
             // 
+            // lbxParcelas
+            // 
+            this.lbxParcelas.FormattingEnabled = true;
+            this.lbxParcelas.HorizontalScrollbar = true;
+            this.lbxParcelas.Location = new System.Drawing.Point(6, 19);
+            this.lbxParcelas.Name = "lbxParcelas";
+            this.lbxParcelas.Size = new System.Drawing.Size(251, 212);
+            this.lbxParcelas.TabIndex = 0;
+            this.lbxParcelas.SelectedIndexChanged += new System.EventHandler(this.LbxParcelas_SelectedIndexChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.buttonServicoOkay);
+            this.groupBox2.Controls.Add(this.buttonEditarServico);
+            this.groupBox2.Controls.Add(this.buttonEliminarServico);
+            this.groupBox2.Controls.Add(this.lbxServicos);
+            this.groupBox2.Controls.Add(this.buttonAddServico);
+            this.groupBox2.Location = new System.Drawing.Point(6, 184);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(472, 271);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Serviços";
+            // 
+            // lbxServicos
+            // 
+            this.lbxServicos.FormattingEnabled = true;
+            this.lbxServicos.HorizontalScrollbar = true;
+            this.lbxServicos.Location = new System.Drawing.Point(36, 19);
+            this.lbxServicos.Name = "lbxServicos";
+            this.lbxServicos.Size = new System.Drawing.Size(430, 238);
+            this.lbxServicos.TabIndex = 0;
+            this.lbxServicos.SelectedIndexChanged += new System.EventHandler(this.LbxServicos_SelectedIndexChanged);
+            // 
+            // lbxCarros
+            // 
+            this.lbxCarros.FormattingEnabled = true;
+            this.lbxCarros.HorizontalScrollbar = true;
+            this.lbxCarros.Location = new System.Drawing.Point(6, 18);
+            this.lbxCarros.Name = "lbxCarros";
+            this.lbxCarros.Size = new System.Drawing.Size(711, 160);
+            this.lbxCarros.TabIndex = 0;
+            this.lbxCarros.SelectedIndexChanged += new System.EventHandler(this.LbxCarros_SelectedIndexChanged);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ficheiroToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1126, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ficheiroToolStripMenuItem
+            // 
+            this.ficheiroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novoClienteToolStripMenuItem,
+            this.guardarToolStripMenuItem,
+            this.limparSelecaoToolStripMenuItem,
+            this.sairToolStripMenuItem});
+            this.ficheiroToolStripMenuItem.Name = "ficheiroToolStripMenuItem";
+            this.ficheiroToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.ficheiroToolStripMenuItem.Text = "Ficheiro";
+            // 
+            // novoClienteToolStripMenuItem
+            // 
+            this.novoClienteToolStripMenuItem.Name = "novoClienteToolStripMenuItem";
+            this.novoClienteToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.novoClienteToolStripMenuItem.Text = "Novo Cliente";
+            this.novoClienteToolStripMenuItem.Click += new System.EventHandler(this.NovoClienteToolStripMenuItem_Click);
+            // 
+            // guardarToolStripMenuItem
+            // 
+            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.GuardarToolStripMenuItem_Click);
+            // 
+            // limparSelecaoToolStripMenuItem
+            // 
+            this.limparSelecaoToolStripMenuItem.Name = "limparSelecaoToolStripMenuItem";
+            this.limparSelecaoToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.limparSelecaoToolStripMenuItem.Text = "Limpar Seleções";
+            this.limparSelecaoToolStripMenuItem.Click += new System.EventHandler(this.LimparSelecaoToolStripMenuItem_Click);
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
+            // 
             // buttonEditarParcela
             // 
             this.buttonEditarParcela.Enabled = false;
@@ -182,16 +256,6 @@
             this.buttonAddParcela.UseVisualStyleBackColor = true;
             this.buttonAddParcela.Click += new System.EventHandler(this.ButtonAddParcela_Click);
             // 
-            // lbxParcelas
-            // 
-            this.lbxParcelas.FormattingEnabled = true;
-            this.lbxParcelas.HorizontalScrollbar = true;
-            this.lbxParcelas.Location = new System.Drawing.Point(6, 19);
-            this.lbxParcelas.Name = "lbxParcelas";
-            this.lbxParcelas.Size = new System.Drawing.Size(251, 212);
-            this.lbxParcelas.TabIndex = 0;
-            this.lbxParcelas.SelectedIndexChanged += new System.EventHandler(this.LbxParcelas_SelectedIndexChanged);
-            // 
             // buttonEditarCarro
             // 
             this.buttonEditarCarro.Enabled = false;
@@ -203,26 +267,13 @@
             this.buttonEditarCarro.UseVisualStyleBackColor = true;
             this.buttonEditarCarro.Click += new System.EventHandler(this.ButtonEditarCarro_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.buttonEditarServico);
-            this.groupBox2.Controls.Add(this.buttonEliminarServico);
-            this.groupBox2.Controls.Add(this.lbxServicos);
-            this.groupBox2.Controls.Add(this.buttonAddServico);
-            this.groupBox2.Location = new System.Drawing.Point(6, 184);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(472, 271);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Serviços";
-            // 
             // buttonEditarServico
             // 
             this.buttonEditarServico.Enabled = false;
             this.buttonEditarServico.Image = global::Stand_Automoveis.Properties.Resources.Edit_straight_16xLG;
-            this.buttonEditarServico.Location = new System.Drawing.Point(6, 78);
+            this.buttonEditarServico.Location = new System.Drawing.Point(6, 79);
             this.buttonEditarServico.Name = "buttonEditarServico";
-            this.buttonEditarServico.Size = new System.Drawing.Size(24, 23);
+            this.buttonEditarServico.Size = new System.Drawing.Size(24, 24);
             this.buttonEditarServico.TabIndex = 4;
             this.buttonEditarServico.UseVisualStyleBackColor = true;
             this.buttonEditarServico.Click += new System.EventHandler(this.ButtonEditarServicos_Click);
@@ -233,20 +284,10 @@
             this.buttonEliminarServico.Image = global::Stand_Automoveis.Properties.Resources.Cancel_16x;
             this.buttonEliminarServico.Location = new System.Drawing.Point(6, 49);
             this.buttonEliminarServico.Name = "buttonEliminarServico";
-            this.buttonEliminarServico.Size = new System.Drawing.Size(24, 23);
+            this.buttonEliminarServico.Size = new System.Drawing.Size(24, 24);
             this.buttonEliminarServico.TabIndex = 3;
             this.buttonEliminarServico.UseVisualStyleBackColor = true;
             this.buttonEliminarServico.Click += new System.EventHandler(this.ButtonEliminarServicos_Click);
-            // 
-            // lbxServicos
-            // 
-            this.lbxServicos.FormattingEnabled = true;
-            this.lbxServicos.HorizontalScrollbar = true;
-            this.lbxServicos.Location = new System.Drawing.Point(36, 19);
-            this.lbxServicos.Name = "lbxServicos";
-            this.lbxServicos.Size = new System.Drawing.Size(430, 238);
-            this.lbxServicos.TabIndex = 0;
-            this.lbxServicos.SelectedIndexChanged += new System.EventHandler(this.LbxServicos_SelectedIndexChanged);
             // 
             // buttonAddServico
             // 
@@ -280,64 +321,35 @@
             this.buttonAddCarro.UseVisualStyleBackColor = true;
             this.buttonAddCarro.Click += new System.EventHandler(this.ButtonAddCarro_Click);
             // 
-            // lbxCarros
+            // buttonOrdenarDesc
             // 
-            this.lbxCarros.FormattingEnabled = true;
-            this.lbxCarros.HorizontalScrollbar = true;
-            this.lbxCarros.Location = new System.Drawing.Point(6, 18);
-            this.lbxCarros.Name = "lbxCarros";
-            this.lbxCarros.Size = new System.Drawing.Size(711, 160);
-            this.lbxCarros.TabIndex = 0;
-            this.lbxCarros.SelectedIndexChanged += new System.EventHandler(this.LbxCarros_SelectedIndexChanged);
+            this.buttonOrdenarDesc.Image = global::Stand_Automoveis.Properties.Resources.Download_grey_16x;
+            this.buttonOrdenarDesc.Location = new System.Drawing.Point(311, 20);
+            this.buttonOrdenarDesc.Name = "buttonOrdenarDesc";
+            this.buttonOrdenarDesc.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarDesc.TabIndex = 4;
+            this.buttonOrdenarDesc.UseVisualStyleBackColor = true;
+            this.buttonOrdenarDesc.Click += new System.EventHandler(this.ButtonOrdenarDesc_Click);
             // 
-            // menuStrip1
+            // buttonOrdenarCres
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ficheiroToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1126, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
+            this.buttonOrdenarCres.Image = global::Stand_Automoveis.Properties.Resources.Upload_gray_16x;
+            this.buttonOrdenarCres.Location = new System.Drawing.Point(283, 20);
+            this.buttonOrdenarCres.Name = "buttonOrdenarCres";
+            this.buttonOrdenarCres.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarCres.TabIndex = 3;
+            this.buttonOrdenarCres.UseVisualStyleBackColor = true;
+            this.buttonOrdenarCres.Click += new System.EventHandler(this.ButtonOrdenarCres_Click);
             // 
-            // ficheiroToolStripMenuItem
+            // buttonServicoOkay
             // 
-            this.ficheiroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.novoClienteToolStripMenuItem,
-            this.guardarToolStripMenuItem,
-            this.limparSelecaoToolStripMenuItem,
-            this.sairToolStripMenuItem});
-            this.ficheiroToolStripMenuItem.Name = "ficheiroToolStripMenuItem";
-            this.ficheiroToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.ficheiroToolStripMenuItem.Text = "Ficheiro";
-            // 
-            // novoClienteToolStripMenuItem
-            // 
-            this.novoClienteToolStripMenuItem.Name = "novoClienteToolStripMenuItem";
-            this.novoClienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.novoClienteToolStripMenuItem.Text = "Novo Cliente";
-            this.novoClienteToolStripMenuItem.Click += new System.EventHandler(this.NovoClienteToolStripMenuItem_Click);
-            // 
-            // guardarToolStripMenuItem
-            // 
-            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.guardarToolStripMenuItem.Text = "Guardar";
-            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.GuardarToolStripMenuItem_Click);
-            // 
-            // limparSelecaoToolStripMenuItem
-            // 
-            this.limparSelecaoToolStripMenuItem.Name = "limparSelecaoToolStripMenuItem";
-            this.limparSelecaoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.limparSelecaoToolStripMenuItem.Text = "Limpar Seleções";
-            this.limparSelecaoToolStripMenuItem.Click += new System.EventHandler(this.LimparSelecaoToolStripMenuItem_Click);
-            // 
-            // sairToolStripMenuItem
-            // 
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.sairToolStripMenuItem.Text = "Sair";
-            this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
+            this.buttonServicoOkay.Image = global::Stand_Automoveis.Properties.Resources.Checkmark_16x;
+            this.buttonServicoOkay.Location = new System.Drawing.Point(6, 109);
+            this.buttonServicoOkay.Name = "buttonServicoOkay";
+            this.buttonServicoOkay.Size = new System.Drawing.Size(24, 24);
+            this.buttonServicoOkay.TabIndex = 5;
+            this.buttonServicoOkay.UseVisualStyleBackColor = true;
+            this.buttonServicoOkay.Click += new System.EventHandler(this.ButtonServicoOkay_Click);
             // 
             // GestorOficina
             // 
@@ -391,5 +403,6 @@
         private System.Windows.Forms.Button buttonAddParcela;
         private System.Windows.Forms.Button buttonOrdenarDesc;
         private System.Windows.Forms.Button buttonOrdenarCres;
+        private System.Windows.Forms.Button buttonServicoOkay;
     }
 }

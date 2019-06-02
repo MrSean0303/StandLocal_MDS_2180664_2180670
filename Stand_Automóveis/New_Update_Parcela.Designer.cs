@@ -91,7 +91,7 @@
             // toolTipValor
             // 
             this.toolTipValor.AutoPopDelay = 5000;
-            this.toolTipValor.InitialDelay = 1000;
+            this.toolTipValor.InitialDelay = 400;
             this.toolTipValor.IsBalloon = true;
             this.toolTipValor.ReshowDelay = 100;
             this.toolTipValor.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;

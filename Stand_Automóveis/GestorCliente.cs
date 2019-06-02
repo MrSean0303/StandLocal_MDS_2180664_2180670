@@ -31,8 +31,11 @@ namespace Stand_Automoveis
 
             if (clienteSelecionado == null)
             {
+                btnEditarCliente.Enabled = false;
                 return;
             }
+
+            btnEditarCliente.Enabled = true;
 
             tbAlterarNome.Text = clienteSelecionado.Nome;
             tbAlterarNif.Text = clienteSelecionado.NIF;

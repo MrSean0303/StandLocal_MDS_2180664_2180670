@@ -14,7 +14,7 @@ namespace Stand_Automoveis
     {
         public string tipo;
         public DateTime dataEntrada, dataSaida;
-        public bool tipoCheck = false, dataEntradaCheck, dataSaidaCheck;
+        public bool tipoCheck = false, dataEntradaCheck = true, dataSaidaCheck = true;
         public New_Update_Servico()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace Stand_Automoveis
 
         private void DtpDataEntrada_ValueChanged(object sender, EventArgs e)
         {
-            if (dtpDataEntrada.Value.Date >= DateTime.Now)
+            if (dtpDataEntrada.Value.Date > DateTime.Now.Date)
                 dataEntradaCheck = false;
             else
                 dataEntradaCheck = true;
@@ -40,7 +40,7 @@ namespace Stand_Automoveis
 
         private void DtpDataSaida_ValueChanged(object sender, EventArgs e)
         {
-            if (dtpDataSaida.Value.Date <= DateTime.Now)
+            if (dtpDataSaida.Value.Date < DateTime.Now.Date)
                 dataSaidaCheck = false;
             else
                 dataSaidaCheck = true;

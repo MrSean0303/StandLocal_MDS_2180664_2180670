@@ -19,6 +19,7 @@ namespace Stand_Automoveis
         public New_Update_Parcela()
         {
             InitializeComponent();
+            NumValorCheck();
         }
 
         private void TbxDescricao_TextChanged(object sender, EventArgs e)
@@ -40,12 +41,16 @@ namespace Stand_Automoveis
 
         private void NumValor_ValueChanged(object sender, EventArgs e)
         {
+            NumValorCheck();
+        }
+
+        private void NumValorCheck()
+        {
             if (numValor.Value == 0)
                 pictureBoxValor.Visible = true;
             else
                 pictureBoxValor.Visible = false;
         }
-
         private void buttonCheck()
         {
             if (descricaoCheck != true)

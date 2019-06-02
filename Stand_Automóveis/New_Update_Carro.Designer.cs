@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonAddCarro = new System.Windows.Forms.Button();
             this.tbxModeloCarro = new System.Windows.Forms.TextBox();
             this.lblNif = new System.Windows.Forms.Label();
@@ -40,7 +41,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbxCombustivelCarro = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbxKms = new System.Windows.Forms.TextBox();
+            this.nudKms = new System.Windows.Forms.NumericUpDown();
+            this.toolTipKms = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBoxKms = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKms)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKms)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAddCarro
@@ -156,21 +161,41 @@
             this.label3.TabIndex = 40;
             this.label3.Text = "Combustível:";
             // 
-            // tbxKms
+            // nudKms
             // 
-            this.tbxKms.Location = new System.Drawing.Point(95, 139);
-            this.tbxKms.Name = "tbxKms";
-            this.tbxKms.Size = new System.Drawing.Size(283, 20);
-            this.tbxKms.TabIndex = 5;
-            this.tbxKms.TextChanged += new System.EventHandler(this.TbxKms_TextChanged);
+            this.nudKms.Location = new System.Drawing.Point(95, 140);
+            this.nudKms.Name = "nudKms";
+            this.nudKms.Size = new System.Drawing.Size(283, 20);
+            this.nudKms.TabIndex = 42;
+            this.nudKms.ValueChanged += new System.EventHandler(this.NudKms_ValueChanged);
+            // 
+            // toolTipKms
+            // 
+            this.toolTipKms.AutoPopDelay = 5000;
+            this.toolTipKms.InitialDelay = 400;
+            this.toolTipKms.IsBalloon = true;
+            this.toolTipKms.ReshowDelay = 100;
+            this.toolTipKms.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            this.toolTipKms.ToolTipTitle = "Valor é nulo";
+            // 
+            // pictureBoxKms
+            // 
+            this.pictureBoxKms.Image = global::Stand_Automoveis.Properties.Resources.StatusWarning_exp_16x;
+            this.pictureBoxKms.Location = new System.Drawing.Point(381, 142);
+            this.pictureBoxKms.Name = "pictureBoxKms";
+            this.pictureBoxKms.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxKms.TabIndex = 43;
+            this.pictureBoxKms.TabStop = false;
+            this.toolTipKms.SetToolTip(this.pictureBoxKms, "Atenção! O valor introduzido é nulo.");
             // 
             // New_Update_Carro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(389, 221);
+            this.ClientSize = new System.Drawing.Size(400, 221);
+            this.Controls.Add(this.pictureBoxKms);
+            this.Controls.Add(this.nudKms);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tbxKms);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbxCombustivelCarro);
             this.Controls.Add(this.buttonAddCarro);
@@ -184,6 +209,8 @@
             this.Controls.Add(this.labelNome);
             this.Name = "New_Update_Carro";
             this.Text = "Adicionar Carro";
+            ((System.ComponentModel.ISupportInitialize)(this.nudKms)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKms)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,7 +228,9 @@
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox tbxCombustivelCarro;
         private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.TextBox tbxKms;
         public System.Windows.Forms.Button buttonAddCarro;
+        public System.Windows.Forms.NumericUpDown nudKms;
+        private System.Windows.Forms.ToolTip toolTipKms;
+        private System.Windows.Forms.PictureBox pictureBoxKms;
     }
 }
