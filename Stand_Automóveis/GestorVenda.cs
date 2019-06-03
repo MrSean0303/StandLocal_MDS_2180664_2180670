@@ -298,14 +298,16 @@ namespace Stand_Automoveis
         private void btnInfVenda_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = lbxClientes.SelectedItem as Clientes;
-            Alugueres aluguerSelecionado = (Alugueres)lbxVendas.SelectedItem;
+            Vendas vendaSelecionada = (Vendas)lbxVendas.SelectedItem;
 
-            if (aluguerSelecionado == null || clienteSelecionado == null)
+            if (vendaSelecionada == null || clienteSelecionado == null)
             {
                 MessageBox.Show("ERRO: Tem de selecionar o aluguer e o cliente para consultar informações.", "Cliente ou aluguer Errado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            VendaInformacoes vendaInformacoes = new VendaInformacoes(clienteSelecionado, vendaSelecionada);
+            vendaInformacoes.Show();
 
         }
 

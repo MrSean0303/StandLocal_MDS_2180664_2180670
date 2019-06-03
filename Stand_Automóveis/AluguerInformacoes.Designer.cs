@@ -32,21 +32,21 @@
             this.btnVoltar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblDataInicio = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.lblDtaEntrega = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.lblMatricula = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lblCombustivel = new System.Windows.Forms.Label();
-            this.lblNumChassis = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.lblEstado = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.lblNumChassis = new System.Windows.Forms.Label();
             this.lblModelo = new System.Windows.Forms.Label();
+            this.lblEstado = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblContactoCliente = new System.Windows.Forms.Label();
             this.lblNumKms = new System.Windows.Forms.Label();
@@ -120,15 +120,6 @@
             this.lblDataInicio.TabIndex = 28;
             this.lblDataInicio.Text = "0";
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 165);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(128, 13);
-            this.label15.TabIndex = 27;
-            this.label15.Text = "Data de inicio de aluguer:";
-            // 
             // lblDtaEntrega
             // 
             this.lblDtaEntrega.AutoSize = true;
@@ -156,6 +147,15 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Marca do carro:";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 165);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(128, 13);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Data de inicio de aluguer:";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -164,6 +164,15 @@
             this.label7.Size = new System.Drawing.Size(95, 13);
             this.label7.TabIndex = 10;
             this.label7.Text = "Matricula do carro:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(252, 165);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(189, 13);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "Data de receção do veiculo aluguado:";
             // 
             // lblMatricula
             // 
@@ -192,32 +201,14 @@
             this.lblCombustivel.TabIndex = 21;
             this.lblCombustivel.Text = "0";
             // 
-            // lblNumChassis
+            // label6
             // 
-            this.lblNumChassis.AutoSize = true;
-            this.lblNumChassis.Location = new System.Drawing.Point(350, 125);
-            this.lblNumChassis.Name = "lblNumChassis";
-            this.lblNumChassis.Size = new System.Drawing.Size(13, 13);
-            this.lblNumChassis.TabIndex = 22;
-            this.lblNumChassis.Text = "0";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(252, 165);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(189, 13);
-            this.label14.TabIndex = 17;
-            this.label14.Text = "Data de receção do veiculo aluguado:";
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(334, 85);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(13, 13);
-            this.lblEstado.TabIndex = 20;
-            this.lblEstado.Text = "0";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(252, 45);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(128, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Modelo do carro alugado:";
             // 
             // label10
             // 
@@ -228,15 +219,6 @@
             this.label10.TabIndex = 13;
             this.label10.Text = "Numero de Chassis:";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(252, 45);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Modelo do carro alugado:";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -246,6 +228,15 @@
             this.label8.TabIndex = 11;
             this.label8.Text = "Estado do carro:";
             // 
+            // lblNumChassis
+            // 
+            this.lblNumChassis.AutoSize = true;
+            this.lblNumChassis.Location = new System.Drawing.Point(350, 125);
+            this.lblNumChassis.Name = "lblNumChassis";
+            this.lblNumChassis.Size = new System.Drawing.Size(13, 13);
+            this.lblNumChassis.TabIndex = 22;
+            this.lblNumChassis.Text = "0";
+            // 
             // lblModelo
             // 
             this.lblModelo.AutoSize = true;
@@ -254,6 +245,15 @@
             this.lblModelo.Size = new System.Drawing.Size(13, 13);
             this.lblModelo.TabIndex = 18;
             this.lblModelo.Text = "0";
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Location = new System.Drawing.Point(334, 85);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(13, 13);
+            this.lblEstado.TabIndex = 20;
+            this.lblEstado.Text = "0";
             // 
             // groupBox1
             // 
@@ -431,7 +431,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblDataInicio;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label lblDtaEntrega;
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
@@ -439,7 +438,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblCombustivel;
         private System.Windows.Forms.Label lblNumChassis;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label6;
@@ -460,5 +458,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblDtaEntrega;
+        private System.Windows.Forms.Label label14;
     }
 }
