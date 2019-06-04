@@ -115,18 +115,7 @@
             this.label_Provisorio.TabIndex = 46;
             this.label_Provisorio.Text = "(Provisória)";
             // 
-            // button1
-            // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(101, 105);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 38);
-            this.button1.TabIndex = 47;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // New_Update_Servico
+            // NovoServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -140,7 +129,7 @@
             this.Controls.Add(this.lblNif);
             this.Controls.Add(this.tbxTipo);
             this.Controls.Add(this.labelNome);
-            this.Name = "New_Update_Servico";
+            this.Name = "NovoServico";
             this.Text = "Adicionar Serviço";
             this.ResumeLayout(false);
             this.PerformLayout();

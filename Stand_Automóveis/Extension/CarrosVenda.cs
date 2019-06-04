@@ -8,5 +8,9 @@ namespace Stand_Automoveis
 {
     public partial class CarrosVenda
     {
+        public override string ToString()
+        {
+            return "Marca: " + Marca + " Modelo: " + Modelo + " Combustivel: " + Combustivel + " Extras: " + Extras;
+        }
     }
 }

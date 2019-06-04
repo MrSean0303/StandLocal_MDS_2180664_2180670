@@ -45,8 +45,8 @@ namespace Stand_Automoveis
 
         private void BtnGestaoVenda_Click_1(object sender, EventArgs e)
         {
-            GestorAluguer gestorAluguer = new GestorAluguer();
-            gestorAluguer.Show();
+            GestorVenda gestorVenda = new GestorVenda();
+            gestorVenda.Show();
         }
     }
 }

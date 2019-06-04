@@ -27,12 +27,7 @@ namespace Stand_Automoveis
 
             StandLocalDB = new StandLocalDBContainer();
             LerDados();
-            AtualizarClientes();
             carregar.Close();
-
-            lbxCarrosAluguer.ClearSelected();
-            lbxClientes.ClearSelected();
-            lbxAluguer.ClearSelected();
 
             LimparDados();
         }
@@ -42,10 +37,11 @@ namespace Stand_Automoveis
             ListaClientes = StandLocalDB.Clientes.ToList();
             ListacarrosAluguer = StandLocalDB.Carro.OfType<CarrosAluguer>().ToList();
 
-            AtualizarCarrosAluguer();
+            AtualizarClientes();
+            AtualizarListaCarrosAluguer();
         }
 
-        private void AtualizarAluguer()
+        private void AtualizarListaAluguer()
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
 
@@ -55,10 +51,10 @@ namespace Stand_Automoveis
             }
 
             lbxAluguer.DataSource = null;
-            lbxAluguer.DataSource = StandLocalDB.Clientes.Find(clienteSelecionado.IdCliente).Aluguer.ToList();
+            lbxAluguer.DataSource = clienteSelecionado.Aluguer.ToList();
         }
 
-        private void AtualizarCarrosAluguer()
+        private void AtualizarListaCarrosAluguer()
         {
             lbxCarrosAluguer.DataSource = null;
             lbxCarrosAluguer.DataSource = ListacarrosAluguer;
@@ -79,6 +75,7 @@ namespace Stand_Automoveis
             btnEliminarAluguer.Enabled = false;
             btnEditarCarroAluguer.Enabled = false;
             btnEliminarCarroAluguer.Enabled = false;
+            btnInfAluguer.Enabled = false;
             tbxKms.Clear();
             tbxValor.Clear();
             dtpEntrega.Value = DateTime.Now;
@@ -134,7 +131,7 @@ namespace Stand_Automoveis
             {
                 ListacarrosAluguer.Add(carroTemp);
                 StandLocalDB.Carro.Add(carroTemp);
-                AtualizarCarrosAluguer();
+                AtualizarListaCarrosAluguer();
                 dadosGuardados = false;
             }
         }
@@ -164,13 +161,14 @@ namespace Stand_Automoveis
             carrosAluguerSelecionado.Estado = EditarcarroAluguer.estado;
             carrosAluguerSelecionado.Combustivel = EditarcarroAluguer.combustivel;
 
-            AtualizarCarrosAluguer();
+            AtualizarListaCarrosAluguer();
             dadosGuardados = false;
         }
 
         public void EliminarCarro()
         {
             CarrosAluguer carrosAluguerSelecionado = lbxCarrosAluguer.SelectedItem as CarrosAluguer;
+            bool carroAlugado = false;
 
             if (carrosAluguerSelecionado == null)
             {
@@ -178,10 +176,29 @@ namespace Stand_Automoveis
                 return;
             }
 
-            ListacarrosAluguer.Remove(carrosAluguerSelecionado);
-            StandLocalDB.Carro.Remove(carrosAluguerSelecionado);
-            AtualizarCarrosAluguer();
-            dadosGuardados = false;
+            List<Alugueres> AlugueresLista = StandLocalDB.Aluguer.Local.ToList();
+
+            foreach (Alugueres aluguer in AlugueresLista) {
+
+                if (aluguer.CarroAluguer == carrosAluguerSelecionado) {
+                    if (DateTime.Now.Date < aluguer.DataFim) {
+                        carroAlugado = true;
+                    }               
+                }
+            }
+
+            if (carroAlugado == false)
+            {
+                ListacarrosAluguer.Remove(carrosAluguerSelecionado);
+                StandLocalDB.Carro.Remove(carrosAluguerSelecionado);
+                AtualizarListaCarrosAluguer();
+                dadosGuardados = false;
+            }
+            else {
+                MessageBox.Show("O Carro selecionado esta alugado neste momento", "Carro nao pode ser eliminado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbxCarrosAluguer.ClearSelected();
+                return;
+            }
         }
 
 
@@ -243,7 +260,7 @@ namespace Stand_Automoveis
                 };
 
                 StandLocalDB.Clientes.Find(clienteSelecionado.IdCliente).Aluguer.Add(aluguerTemp);
-                AtualizarAluguer();
+                AtualizarListaAluguer();
                 dadosGuardados = false;
                 lbxAluguer.ClearSelected();
 
@@ -260,14 +277,14 @@ namespace Stand_Automoveis
 
         private void lbxClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Clientes clienteSelecionado = new Clientes();
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
 
             if (clienteSelecionado == null)
             {
                 return;
             }
 
-            AtualizarAluguer();
+            AtualizarListaAluguer();
 
             lbxAluguer.ClearSelected();
             tbxKms.Clear();
@@ -290,8 +307,6 @@ namespace Stand_Automoveis
             btnEditarCarroAluguer.Enabled = true;
             btnEliminarCarroAluguer.Enabled = true;
 
-            AtualizarAluguer();
-
             lbxAluguer.ClearSelected();
             tbxKms.Clear();
             tbxValor.Clear();
@@ -309,8 +324,10 @@ namespace Stand_Automoveis
                 return;
             }
 
+
             StandLocalDB.Aluguer.Remove(aluguerSelecionado);
-            AtualizarAluguer();
+
+            AtualizarListaAluguer();
             dadosGuardados = false;
         }
 
@@ -371,8 +388,10 @@ namespace Stand_Automoveis
                 btnEliminarAluguer.Enabled = false;
                 return;
             }
+
             btnEditarAluguer.Enabled = true;
             btnEliminarAluguer.Enabled = true;
+            btnInfAluguer.Enabled = true;
 
             tbxKms.Text = aluguerSelecionado.Kms;
             tbxValor.Text = aluguerSelecionado.Valor.ToString();
@@ -389,10 +408,10 @@ namespace Stand_Automoveis
             {
                 aluguerSelecionado.Kms = tbxKms.Text;
                 aluguerSelecionado.Valor = double.Parse(tbxValor.Text);
-                dtpEntrega.Value = aluguerSelecionado.DataInicio;
-                dtpRececao.Value = aluguerSelecionado.DataFim;
+                aluguerSelecionado.DataInicio = dtpEntrega.Value;
+                aluguerSelecionado.DataFim = dtpRececao.Value;
 
-                AtualizarAluguer();
+                AtualizarListaAluguer();
                 dadosGuardados = false;
                 lbxAluguer.ClearSelected();
 

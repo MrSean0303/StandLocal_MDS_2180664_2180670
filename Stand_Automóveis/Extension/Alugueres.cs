@@ -11,7 +11,7 @@ namespace Stand_Automoveis
         public override string ToString()
         {
 
-            return "Data de Entrega do veiculo: " + DataInicio.ToString("dd-MM-yy") + " | Valor: " + Valor + "€ | Data de Receção do veiculo: " + DataFim.ToString("dd-MM-yy");
+            return " Data de Entrega do veiculo: " + DataInicio.ToString("dd-MM-yy") + " | Valor: " + Valor + "€ | Data de Receção do veiculo: " + DataFim.ToString("dd-MM-yy");
         }
     }
 }

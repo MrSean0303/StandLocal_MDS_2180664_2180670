@@ -152,7 +152,7 @@
             this.Controls.Add(this.lblContacto);
             this.Controls.Add(this.tbxNomeCliente);
             this.Controls.Add(this.labelNome);
-            this.Name = "Form_Add_Cliente";
+            this.Name = "NovoCliente";
             this.Text = "Adicionar Cliente";
             this.ResumeLayout(false);
             this.PerformLayout();
