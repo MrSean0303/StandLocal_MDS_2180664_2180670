@@ -166,7 +166,9 @@
             this.Controls.Add(this.btnGestaoOficina);
             this.Controls.Add(this.btnGestaoClientes);
             this.Controls.Add(this.statusStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MenuPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stand Local";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

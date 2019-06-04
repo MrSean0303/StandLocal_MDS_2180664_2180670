@@ -64,7 +64,7 @@ namespace Stand_Automoveis
 
         private void BtnCriarCliente_Click(object sender, EventArgs e)
         {      
-            NovoCliente novocliente = new NovoCliente();
+            Form_Add_Cliente novocliente = new Form_Add_Cliente();
             novocliente.ShowDialog();
             Clientes clienteTemp = new Clientes
             {
@@ -149,7 +149,7 @@ namespace Stand_Automoveis
 
         private void NovoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NovoCliente novocliente = new NovoCliente();
+            Form_Add_Cliente novocliente = new Form_Add_Cliente();
             novocliente.ShowDialog();
             Clientes clienteTemp = new Clientes
             {

@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Stand_Automoveis
 {
-    public partial class NovoCliente : Form
+    public partial class Form_Add_Cliente : Form
     {
         public string nome, nif, morada, contacto;
         public bool nomeCheck = false, nifCheck = false, moradaCheck = false, contactoCheck = false;
 
-        public NovoCliente()
+        public Form_Add_Cliente()
         {
             InitializeComponent();
         }

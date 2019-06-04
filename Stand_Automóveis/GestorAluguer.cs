@@ -117,7 +117,7 @@ namespace Stand_Automoveis
 
         public void CriarCarro()
         {
-            New_Update_CarroAluguer novocarroAluguer = new New_Update_CarroAluguer();
+            Form_Add_Edit_CarroAluguer novocarroAluguer = new Form_Add_Edit_CarroAluguer();
             novocarroAluguer.ShowDialog();
 
             CarrosAluguer carroTemp = new CarrosAluguer
@@ -149,7 +149,7 @@ namespace Stand_Automoveis
                 return;
             }
 
-            New_Update_CarroAluguer EditarcarroAluguer = new New_Update_CarroAluguer();
+            Form_Add_Edit_CarroAluguer EditarcarroAluguer = new Form_Add_Edit_CarroAluguer();
             EditarcarroAluguer.tbxMarcaCarro.Text = carrosAluguerSelecionado.Marca;
             EditarcarroAluguer.tbxMatriculaCarro.Text = carrosAluguerSelecionado.Matricula;
             EditarcarroAluguer.tbxModeloCarro.Text = carrosAluguerSelecionado.Modelo;

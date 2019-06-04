@@ -124,35 +124,35 @@
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="New_Update_Carro.cs">
+    <Compile Include="Form_Add_Edit_Carro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_Update_Carro.Designer.cs">
-      <DependentUpon>New_Update_Carro.cs</DependentUpon>
+    <Compile Include="Form_Add_Edit_Carro.Designer.cs">
+      <DependentUpon>Form_Add_Edit_Carro.cs</DependentUpon>
     </Compile>
-    <Compile Include="New_Update_CarroAluguer.cs">
+    <Compile Include="Form_Add_Edit_CarroAluguer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_Update_CarroAluguer.Designer.cs">
-      <DependentUpon>New_Update_CarroAluguer.cs</DependentUpon>
+    <Compile Include="Form_Add_Edit_CarroAluguer.Designer.cs">
+      <DependentUpon>Form_Add_Edit_CarroAluguer.cs</DependentUpon>
     </Compile>
-    <Compile Include="New_Update_Parcela.cs">
+    <Compile Include="Form_Add_Edit_Parcela.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_Update_Parcela.Designer.cs">
-      <DependentUpon>New_Update_Parcela.cs</DependentUpon>
+    <Compile Include="Form_Add_Edit_Parcela.Designer.cs">
+      <DependentUpon>Form_Add_Edit_Parcela.cs</DependentUpon>
     </Compile>
-    <Compile Include="NovoCliente.cs">
+    <Compile Include="Form_Add_Cliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NovoCliente.Designer.cs">
-      <DependentUpon>NovoCliente.cs</DependentUpon>
+    <Compile Include="Form_Add_Cliente.Designer.cs">
+      <DependentUpon>Form_Add_Cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="New_Update_Servico.cs">
+    <Compile Include="Form_Add_Edit_Servico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_Update_Servico.Designer.cs">
-      <DependentUpon>New_Update_Servico.cs</DependentUpon>
+    <Compile Include="Form_Add_Edit_Servico.Designer.cs">
+      <DependentUpon>Form_Add_Edit_Servico.cs</DependentUpon>
     </Compile>
     <Compile Include="Parcelas.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
@@ -189,17 +189,20 @@
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New_Update_Carro.resx">
-      <DependentUpon>New_Update_Carro.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Add_Edit_Carro.resx">
+      <DependentUpon>Form_Add_Edit_Carro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New_Update_Parcela.resx">
-      <DependentUpon>New_Update_Parcela.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Add_Edit_CarroAluguer.resx">
+      <DependentUpon>Form_Add_Edit_CarroAluguer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NovoCliente.resx">
-      <DependentUpon>NovoCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Add_Edit_Parcela.resx">
+      <DependentUpon>Form_Add_Edit_Parcela.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New_Update_Servico.resx">
-      <DependentUpon>New_Update_Servico.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Add_Cliente.resx">
+      <DependentUpon>Form_Add_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Add_Edit_Servico.resx">
+      <DependentUpon>Form_Add_Edit_Servico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

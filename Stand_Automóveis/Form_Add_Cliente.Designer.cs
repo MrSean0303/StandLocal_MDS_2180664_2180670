@@ -1,6 +1,6 @@
 ﻿namespace Stand_Automoveis
 {
-    partial class NovoCliente
+    partial class Form_Add_Cliente
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,7 @@
             this.lblContacto = new System.Windows.Forms.Label();
             this.tbxNomeCliente = new System.Windows.Forms.TextBox();
             this.labelNome = new System.Windows.Forms.Label();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCriarCliente
@@ -124,11 +125,24 @@
             this.labelNome.TabIndex = 18;
             this.labelNome.Text = "Nome Cliente:";
             // 
-            // NovoCliente
+            // buttonCancel
+            // 
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Enabled = false;
+            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonCancel.Location = new System.Drawing.Point(166, 116);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(114, 38);
+            this.buttonCancel.TabIndex = 25;
+            this.buttonCancel.Text = "Criar Cliente";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            // 
+            // Form_Add_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 164);
+            this.ClientSize = new System.Drawing.Size(422, 164);
+            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonCriarCliente);
             this.Controls.Add(this.tbxNifCliente);
             this.Controls.Add(this.lblNif);
@@ -138,7 +152,7 @@
             this.Controls.Add(this.lblContacto);
             this.Controls.Add(this.tbxNomeCliente);
             this.Controls.Add(this.labelNome);
-            this.Name = "NovoCliente";
+            this.Name = "Form_Add_Cliente";
             this.Text = "Adicionar Cliente";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -156,5 +170,6 @@
         public System.Windows.Forms.TextBox tbxNifCliente;
         public System.Windows.Forms.TextBox tbxMoradaCliente;
         public System.Windows.Forms.TextBox tbxContactoCliente;
+        private System.Windows.Forms.Button buttonCancel;
     }
 }

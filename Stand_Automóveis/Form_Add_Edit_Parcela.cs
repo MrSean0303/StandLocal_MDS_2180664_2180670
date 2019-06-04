@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace Stand_Automoveis
 {
-    public partial class New_Update_Parcela : Form
+    public partial class Form_Add_Edit_Parcela : Form
     {
         public string descricao;
         public double valor;
         public bool valorCheck = false, descricaoCheck = false;
 
-        public New_Update_Parcela()
+        public Form_Add_Edit_Parcela()
         {
             InitializeComponent();
             NumValorCheck();

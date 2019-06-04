@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Stand_Automoveis
 {
-    public partial class New_Update_Servico : Form
+    public partial class Form_Add_Edit_Servico : Form
     {
         public string tipo;
         public DateTime dataEntrada, dataSaida;
         public bool tipoCheck = false, dataEntradaCheck = true, dataSaidaCheck = true;
-        public New_Update_Servico()
+        public Form_Add_Edit_Servico()
         {
             InitializeComponent();
         }

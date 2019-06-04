@@ -1,6 +1,6 @@
 ﻿namespace Stand_Automoveis
 {
-    partial class New_Update_Servico
+    partial class Form_Add_Edit_Servico
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,7 @@
             this.dtpDataSaida = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label_Provisorio = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblNif
@@ -68,14 +69,14 @@
             // 
             // buttonAddServico
             // 
-            this.buttonAddServico.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonAddServico.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonAddServico.Enabled = false;
             this.buttonAddServico.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAddServico.Location = new System.Drawing.Point(221, 105);
             this.buttonAddServico.Name = "buttonAddServico";
             this.buttonAddServico.Size = new System.Drawing.Size(114, 38);
             this.buttonAddServico.TabIndex = 41;
-            this.buttonAddServico.Text = "Adicionar Serviço";
+            this.buttonAddServico.Text = "Continuar";
             this.buttonAddServico.UseVisualStyleBackColor = true;
             this.buttonAddServico.Click += new System.EventHandler(this.ButtonAddServico_Click);
             // 
@@ -114,11 +115,23 @@
             this.label_Provisorio.TabIndex = 46;
             this.label_Provisorio.Text = "(Provisória)";
             // 
-            // NovoServico
+            // button1
+            // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(101, 105);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 38);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // New_Update_Servico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(347, 155);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label_Provisorio);
             this.Controls.Add(this.dtpDataSaida);
             this.Controls.Add(this.label1);
@@ -127,7 +140,7 @@
             this.Controls.Add(this.lblNif);
             this.Controls.Add(this.tbxTipo);
             this.Controls.Add(this.labelNome);
-            this.Name = "NovoServico";
+            this.Name = "New_Update_Servico";
             this.Text = "Adicionar Serviço";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -143,5 +156,6 @@
         public System.Windows.Forms.Label label_Provisorio;
         public System.Windows.Forms.DateTimePicker dtpDataEntrada;
         public System.Windows.Forms.DateTimePicker dtpDataSaida;
+        private System.Windows.Forms.Button button1;
     }
 }

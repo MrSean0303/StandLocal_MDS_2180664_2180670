@@ -1,6 +1,6 @@
 ﻿namespace Stand_Automoveis
 {
-    partial class New_Update_Parcela
+    partial class Form_Add_Edit_Parcela
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,7 @@
             this.numValor = new System.Windows.Forms.NumericUpDown();
             this.toolTipValor = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBoxValor = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numValor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxValor)).BeginInit();
             this.SuspendLayout();
@@ -108,11 +109,23 @@
             this.toolTipValor.SetToolTip(this.pictureBoxValor, "Atenção! O valor introduzido é nulo.\r\n");
             this.pictureBoxValor.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.Location = new System.Drawing.Point(95, 72);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 32);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // New_Update_Parcela
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(324, 116);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBoxValor);
             this.Controls.Add(this.numValor);
             this.Controls.Add(this.buttonAddParcela);
@@ -136,5 +149,6 @@
         private System.Windows.Forms.PictureBox pictureBoxValor;
         public System.Windows.Forms.TextBox tbxDescricao;
         public System.Windows.Forms.NumericUpDown numValor;
+        private System.Windows.Forms.Button button1;
     }
 }

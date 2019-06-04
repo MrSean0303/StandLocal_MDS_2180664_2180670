@@ -47,6 +47,7 @@
             this.buttonEliminarParcela = new System.Windows.Forms.Button();
             this.buttonAddParcela = new System.Windows.Forms.Button();
             this.buttonEditarCarro = new System.Windows.Forms.Button();
+            this.buttonServicoOkay = new System.Windows.Forms.Button();
             this.buttonEditarServico = new System.Windows.Forms.Button();
             this.buttonEliminarServico = new System.Windows.Forms.Button();
             this.buttonAddServico = new System.Windows.Forms.Button();
@@ -54,7 +55,6 @@
             this.buttonAddCarro = new System.Windows.Forms.Button();
             this.buttonOrdenarDesc = new System.Windows.Forms.Button();
             this.buttonOrdenarCres = new System.Windows.Forms.Button();
-            this.buttonServicoOkay = new System.Windows.Forms.Button();
             this.gbxClientes.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -244,7 +244,12 @@
             // 
             // buttonAddParcela
             // 
+            this.buttonAddParcela.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
             this.buttonAddParcela.Enabled = false;
+            this.buttonAddParcela.FlatAppearance.BorderSize = 0;
+            this.buttonAddParcela.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(216)))), ((int)(((byte)(226)))));
+            this.buttonAddParcela.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(142)))), ((int)(((byte)(163)))));
+            this.buttonAddParcela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddParcela.Image = global::Stand_Automoveis.Properties.Resources.Add_grey_16x;
             this.buttonAddParcela.Location = new System.Drawing.Point(6, 242);
             this.buttonAddParcela.Name = "buttonAddParcela";
@@ -253,7 +258,7 @@
             this.buttonAddParcela.Text = "Adicionar";
             this.buttonAddParcela.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonAddParcela.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonAddParcela.UseVisualStyleBackColor = true;
+            this.buttonAddParcela.UseVisualStyleBackColor = false;
             this.buttonAddParcela.Click += new System.EventHandler(this.ButtonAddParcela_Click);
             // 
             // buttonEditarCarro
@@ -266,6 +271,16 @@
             this.buttonEditarCarro.TabIndex = 3;
             this.buttonEditarCarro.UseVisualStyleBackColor = true;
             this.buttonEditarCarro.Click += new System.EventHandler(this.ButtonEditarCarro_Click);
+            // 
+            // buttonServicoOkay
+            // 
+            this.buttonServicoOkay.Image = global::Stand_Automoveis.Properties.Resources.Checkmark_16x;
+            this.buttonServicoOkay.Location = new System.Drawing.Point(6, 109);
+            this.buttonServicoOkay.Name = "buttonServicoOkay";
+            this.buttonServicoOkay.Size = new System.Drawing.Size(24, 24);
+            this.buttonServicoOkay.TabIndex = 5;
+            this.buttonServicoOkay.UseVisualStyleBackColor = true;
+            this.buttonServicoOkay.Click += new System.EventHandler(this.ButtonServicoOkay_Click);
             // 
             // buttonEditarServico
             // 
@@ -340,16 +355,6 @@
             this.buttonOrdenarCres.TabIndex = 3;
             this.buttonOrdenarCres.UseVisualStyleBackColor = true;
             this.buttonOrdenarCres.Click += new System.EventHandler(this.ButtonOrdenarCres_Click);
-            // 
-            // buttonServicoOkay
-            // 
-            this.buttonServicoOkay.Image = global::Stand_Automoveis.Properties.Resources.Checkmark_16x;
-            this.buttonServicoOkay.Location = new System.Drawing.Point(6, 109);
-            this.buttonServicoOkay.Name = "buttonServicoOkay";
-            this.buttonServicoOkay.Size = new System.Drawing.Size(24, 24);
-            this.buttonServicoOkay.TabIndex = 5;
-            this.buttonServicoOkay.UseVisualStyleBackColor = true;
-            this.buttonServicoOkay.Click += new System.EventHandler(this.ButtonServicoOkay_Click);
             // 
             // GestorOficina
             // 

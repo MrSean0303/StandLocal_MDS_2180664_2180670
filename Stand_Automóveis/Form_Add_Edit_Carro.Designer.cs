@@ -1,6 +1,6 @@
 ﻿namespace Stand_Automoveis
 {
-    partial class New_Update_Carro
+    partial class Form_Add_Edit_Carro
     {
         /// <summary>
         /// Required designer variable.
@@ -44,6 +44,7 @@
             this.nudKms = new System.Windows.Forms.NumericUpDown();
             this.toolTipKms = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBoxKms = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudKms)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKms)).BeginInit();
             this.SuspendLayout();
@@ -188,11 +189,23 @@
             this.pictureBoxKms.TabStop = false;
             this.toolTipKms.SetToolTip(this.pictureBoxKms, "Atenção! O valor introduzido é nulo.");
             // 
+            // button2
+            // 
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(144, 171);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(114, 38);
+            this.button2.TabIndex = 44;
+            this.button2.Text = "Cancelar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // New_Update_Carro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 221);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBoxKms);
             this.Controls.Add(this.nudKms);
             this.Controls.Add(this.label3);
@@ -232,5 +245,6 @@
         public System.Windows.Forms.NumericUpDown nudKms;
         private System.Windows.Forms.ToolTip toolTipKms;
         private System.Windows.Forms.PictureBox pictureBoxKms;
+        public System.Windows.Forms.Button button2;
     }
 }
