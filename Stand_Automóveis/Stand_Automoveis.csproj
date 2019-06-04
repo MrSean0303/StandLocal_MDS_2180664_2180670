@@ -94,6 +94,12 @@
     <Compile Include="Extension\Parcelas.cs" />
     <Compile Include="Extension\Servicos.cs" />
     <Compile Include="Extension\Vendas.cs" />
+    <Compile Include="Form_AddEdit_Parcela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_AddEdit_Parcela.Designer.cs">
+      <DependentUpon>Form_AddEdit_Parcela.cs</DependentUpon>
+    </Compile>
     <Compile Include="GestorVenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,23 +130,17 @@
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Add_Edit_Carro.cs">
+    <Compile Include="Form_AddEdit_Carro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Add_Edit_Carro.Designer.cs">
-      <DependentUpon>Form_Add_Edit_Carro.cs</DependentUpon>
+    <Compile Include="Form_AddEdit_Carro.Designer.cs">
+      <DependentUpon>Form_AddEdit_Carro.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Add_Edit_CarroAluguer.cs">
+    <Compile Include="Form_AddEdit_CarroAluguer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Add_Edit_CarroAluguer.Designer.cs">
-      <DependentUpon>Form_Add_Edit_CarroAluguer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="New_Update_Parcela.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_Add_Edit_Parcela.Designer.cs">
-      <DependentUpon>Form_Add_Edit_Parcela.cs</DependentUpon>
+    <Compile Include="Form_AddEdit_CarroAluguer.Designer.cs">
+      <DependentUpon>Form_AddEdit_CarroAluguer.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Add_Cliente.cs">
       <SubType>Form</SubType>
@@ -148,11 +148,11 @@
     <Compile Include="Form_Add_Cliente.Designer.cs">
       <DependentUpon>Form_Add_Cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Add_Edit_Servico.cs">
+    <Compile Include="Form_AddEdit_Servico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Add_Edit_Servico.Designer.cs">
-      <DependentUpon>Form_Add_Edit_Servico.cs</DependentUpon>
+    <Compile Include="Form_AddEdit_Servico.Designer.cs">
+      <DependentUpon>Form_AddEdit_Servico.cs</DependentUpon>
     </Compile>
     <Compile Include="Parcelas.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
@@ -192,6 +192,9 @@
     <EmbeddedResource Include="CarregarBD.resx">
       <DependentUpon>CarregarBD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_AddEdit_Parcela.resx">
+      <DependentUpon>Form_AddEdit_Parcela.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GestorAluguer.resx">
       <DependentUpon>GestorAluguer.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,20 +210,17 @@
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Add_Edit_Carro.resx">
-      <DependentUpon>Form_Add_Edit_Carro.cs</DependentUpon>
+    <EmbeddedResource Include="Form_AddEdit_Carro.resx">
+      <DependentUpon>Form_AddEdit_Carro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Add_Edit_CarroAluguer.resx">
-      <DependentUpon>Form_Add_Edit_CarroAluguer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="New_Update_Parcela.resx">
-      <DependentUpon>New_Update_Parcela.cs</DependentUpon>
+    <EmbeddedResource Include="Form_AddEdit_CarroAluguer.resx">
+      <DependentUpon>Form_AddEdit_CarroAluguer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Add_Cliente.resx">
       <DependentUpon>Form_Add_Cliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Add_Edit_Servico.resx">
-      <DependentUpon>Form_Add_Edit_Servico.cs</DependentUpon>
+    <EmbeddedResource Include="Form_AddEdit_Servico.resx">
+      <DependentUpon>Form_AddEdit_Servico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

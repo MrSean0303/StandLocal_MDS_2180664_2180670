@@ -48,8 +48,8 @@
             this.buttonCriarCliente.Location = new System.Drawing.Point(286, 116);
             this.buttonCriarCliente.Name = "buttonCriarCliente";
             this.buttonCriarCliente.Size = new System.Drawing.Size(114, 38);
-            this.buttonCriarCliente.TabIndex = 4;
-            this.buttonCriarCliente.Text = "Criar Cliente";
+            this.buttonCriarCliente.TabIndex = 5;
+            this.buttonCriarCliente.Text = "Continuar";
             this.buttonCriarCliente.UseVisualStyleBackColor = true;
             this.buttonCriarCliente.Click += new System.EventHandler(this.ButtonCriarCliente_Click);
             // 
@@ -128,13 +128,12 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Enabled = false;
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCancel.Location = new System.Drawing.Point(166, 116);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(114, 38);
-            this.buttonCancel.TabIndex = 25;
-            this.buttonCancel.Text = "Criar Cliente";
+            this.buttonCancel.TabIndex = 4;
+            this.buttonCancel.Text = "Cancelar";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // Form_Add_Cliente
@@ -152,7 +151,9 @@
             this.Controls.Add(this.lblContacto);
             this.Controls.Add(this.tbxNomeCliente);
             this.Controls.Add(this.labelNome);
-            this.Name = "NovoCliente";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "Form_Add_Cliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Cliente";
             this.ResumeLayout(false);
             this.PerformLayout();

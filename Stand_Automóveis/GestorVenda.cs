@@ -78,7 +78,7 @@ namespace Stand_Automoveis
         }
 
         public void CriarCarro()
-        {
+        {/*
             New_Update_CarroVenda novoCarroVenda = new New_Update_CarroVenda();
             novoCarroVenda.ShowDialog();
 
@@ -98,11 +98,12 @@ namespace Stand_Automoveis
                 AtualizarListaCarrosVenda();
                 dadosGuardados = false;
             }
-
+            */
         }
 
         public void EditarCarro()
         {
+            /*
             CarrosVenda carroVendaSelecionado = lbxCarrosVenda.SelectedItem as CarrosVenda;
 
             if (carroVendaSelecionado == null) {
@@ -126,7 +127,7 @@ namespace Stand_Automoveis
 
             AtualizarListaCarrosVenda();
             dadosGuardados = false;
-            LimparDados();
+            LimparDados();*/
         }
 
         public void EliminarCarro()

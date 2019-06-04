@@ -1,6 +1,6 @@
 ﻿namespace Stand_Automoveis
 {
-    partial class Form_Add_Edit_CarroAluguer
+    partial class Form_AddEdit_CarroAluguer
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,7 @@
             this.tbxMarcaCarro = new System.Windows.Forms.TextBox();
             this.labelNome = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonAddCarro
@@ -49,7 +50,7 @@
             this.buttonAddCarro.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonAddCarro.Enabled = false;
             this.buttonAddCarro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddCarro.Location = new System.Drawing.Point(248, 166);
+            this.buttonAddCarro.Location = new System.Drawing.Point(256, 167);
             this.buttonAddCarro.Name = "buttonAddCarro";
             this.buttonAddCarro.Size = new System.Drawing.Size(114, 38);
             this.buttonAddCarro.TabIndex = 66;
@@ -60,7 +61,7 @@
             // cbxEstadoCarro
             // 
             this.cbxEstadoCarro.FormattingEnabled = true;
-            this.cbxEstadoCarro.Location = new System.Drawing.Point(79, 139);
+            this.cbxEstadoCarro.Location = new System.Drawing.Point(87, 140);
             this.cbxEstadoCarro.Name = "cbxEstadoCarro";
             this.cbxEstadoCarro.Size = new System.Drawing.Size(283, 21);
             this.cbxEstadoCarro.TabIndex = 92;
@@ -71,7 +72,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(-4, 113);
+            this.label3.Location = new System.Drawing.Point(4, 112);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 15);
             this.label3.TabIndex = 91;
@@ -81,7 +82,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(25, 139);
+            this.label2.Location = new System.Drawing.Point(4, 141);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 15);
             this.label2.TabIndex = 90;
@@ -89,7 +90,7 @@
             // 
             // tbxCombustivelCarro
             // 
-            this.tbxCombustivelCarro.Location = new System.Drawing.Point(79, 110);
+            this.tbxCombustivelCarro.Location = new System.Drawing.Point(87, 111);
             this.tbxCombustivelCarro.Name = "tbxCombustivelCarro";
             this.tbxCombustivelCarro.Size = new System.Drawing.Size(283, 20);
             this.tbxCombustivelCarro.TabIndex = 85;
@@ -98,7 +99,7 @@
             // 
             // tbxModeloCarro
             // 
-            this.tbxModeloCarro.Location = new System.Drawing.Point(79, 33);
+            this.tbxModeloCarro.Location = new System.Drawing.Point(87, 34);
             this.tbxModeloCarro.Name = "tbxModeloCarro";
             this.tbxModeloCarro.Size = new System.Drawing.Size(283, 20);
             this.tbxModeloCarro.TabIndex = 82;
@@ -109,7 +110,7 @@
             // 
             this.lblNif.AutoSize = true;
             this.lblNif.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNif.Location = new System.Drawing.Point(21, 35);
+            this.lblNif.Location = new System.Drawing.Point(4, 35);
             this.lblNif.Name = "lblNif";
             this.lblNif.Size = new System.Drawing.Size(52, 15);
             this.lblNif.TabIndex = 89;
@@ -119,7 +120,7 @@
             // 
             this.lblMorada.AutoSize = true;
             this.lblMorada.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMorada.Location = new System.Drawing.Point(4, 87);
+            this.lblMorada.Location = new System.Drawing.Point(4, 86);
             this.lblMorada.Name = "lblMorada";
             this.lblMorada.Size = new System.Drawing.Size(69, 15);
             this.lblMorada.TabIndex = 88;
@@ -127,7 +128,7 @@
             // 
             // tbxNumChassis
             // 
-            this.tbxNumChassis.Location = new System.Drawing.Point(79, 84);
+            this.tbxNumChassis.Location = new System.Drawing.Point(87, 85);
             this.tbxNumChassis.Name = "tbxNumChassis";
             this.tbxNumChassis.Size = new System.Drawing.Size(283, 20);
             this.tbxNumChassis.TabIndex = 84;
@@ -136,7 +137,7 @@
             // 
             // tbxMatriculaCarro
             // 
-            this.tbxMatriculaCarro.Location = new System.Drawing.Point(79, 59);
+            this.tbxMatriculaCarro.Location = new System.Drawing.Point(87, 60);
             this.tbxMatriculaCarro.Name = "tbxMatriculaCarro";
             this.tbxMatriculaCarro.Size = new System.Drawing.Size(283, 20);
             this.tbxMatriculaCarro.TabIndex = 83;
@@ -147,7 +148,7 @@
             // 
             this.lblContacto.AutoSize = true;
             this.lblContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContacto.Location = new System.Drawing.Point(12, 62);
+            this.lblContacto.Location = new System.Drawing.Point(4, 61);
             this.lblContacto.Name = "lblContacto";
             this.lblContacto.Size = new System.Drawing.Size(61, 15);
             this.lblContacto.TabIndex = 87;
@@ -155,7 +156,7 @@
             // 
             // tbxMarcaCarro
             // 
-            this.tbxMarcaCarro.Location = new System.Drawing.Point(79, 7);
+            this.tbxMarcaCarro.Location = new System.Drawing.Point(87, 8);
             this.tbxMarcaCarro.Name = "tbxMarcaCarro";
             this.tbxMarcaCarro.Size = new System.Drawing.Size(283, 20);
             this.tbxMarcaCarro.TabIndex = 81;
@@ -166,7 +167,7 @@
             // 
             this.labelNome.AutoSize = true;
             this.labelNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNome.Location = new System.Drawing.Point(28, 9);
+            this.labelNome.Location = new System.Drawing.Point(4, 9);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(45, 15);
             this.labelNome.TabIndex = 86;
@@ -183,11 +184,23 @@
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // New_Update_CarroAluguer
+            // button2
+            // 
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(136, 167);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(114, 38);
+            this.button2.TabIndex = 93;
+            this.button2.Text = "Cancelar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // Form_AddEdit_CarroAluguer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 239);
+            this.ClientSize = new System.Drawing.Size(381, 217);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.cbxEstadoCarro);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -201,9 +214,10 @@
             this.Controls.Add(this.tbxMarcaCarro);
             this.Controls.Add(this.labelNome);
             this.Controls.Add(this.buttonAddCarro);
-            this.Name = "New_Update_CarroAluguer";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "Form_AddEdit_CarroAluguer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Carro";
+            this.Text = "Adicionar Carro (Aluguer)";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,5 +238,6 @@
         public System.Windows.Forms.TextBox tbxMarcaCarro;
         private System.Windows.Forms.Label labelNome;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

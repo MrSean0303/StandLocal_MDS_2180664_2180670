@@ -112,7 +112,7 @@ namespace Stand_Automoveis
         private void ButtonAddCarro_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
-            Form_Add_Edit_Carro novocarro = new Form_Add_Edit_Carro();
+            Form_AddEdit_Carro novocarro = new Form_AddEdit_Carro();
             novocarro.ShowDialog();
             CarrosOficina carroTemp = new CarrosOficina
             {
@@ -207,7 +207,7 @@ namespace Stand_Automoveis
         private void ButtonAddServico_Click(object sender, EventArgs e)
         {
             CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
-            Form_Add_Edit_Servico novoServico = new Form_Add_Edit_Servico();
+            Form_AddEdit_Servico novoServico = new Form_AddEdit_Servico();
             novoServico.ShowDialog();
 
             Servicos servicoTemp = new Servicos
@@ -278,7 +278,7 @@ namespace Stand_Automoveis
         private void ButtonEditarServicos_Click(object sender, EventArgs e)
         {
             Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
-            Form_Add_Edit_Servico novoServico = new Form_Add_Edit_Servico();
+            Form_AddEdit_Servico novoServico = new Form_AddEdit_Servico();
 
             novoServico.label_Provisorio.Visible = false;
             novoServico.tbxTipo.Text = servicoSelecionado.Tipo;
@@ -300,7 +300,7 @@ namespace Stand_Automoveis
         private void ButtonEditarCarro_Click(object sender, EventArgs e)
         {
             CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
-            Form_Add_Edit_Carro edicaoCarro = new Form_Add_Edit_Carro();
+            Form_AddEdit_Carro edicaoCarro = new Form_AddEdit_Carro();
             edicaoCarro.Text = "Edição do Carro Selecionado";
 
             edicaoCarro.tbxMarcaCarro.Text = carroSelecionado.Marca;
@@ -329,7 +329,7 @@ namespace Stand_Automoveis
         private void ButtonAddParcela_Click(object sender, EventArgs e)
         {
             Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
-            Form_Add_Edit_Parcela newParcela = new Form_Add_Edit_Parcela();
+            Form_AddEdit_Parcela newParcela = new Form_AddEdit_Parcela();
             newParcela.ShowDialog();
 
             Parcelas novaParcela = new Parcelas
@@ -388,7 +388,7 @@ namespace Stand_Automoveis
         private void ButtonEditarParcelas_Click(object sender, EventArgs e)
         {
             Parcelas parcelaSelecionada = (Parcelas)lbxParcelas.SelectedItem;
-            Form_Add_Edit_Parcela edicaoParcela = new Form_Add_Edit_Parcela();
+            Form_AddEdit_Parcela edicaoParcela = new Form_AddEdit_Parcela();
             edicaoParcela.Text = "Edição da Parcela Selecionada";
 
             edicaoParcela.numValor.Value = (decimal)parcelaSelecionada.Valor;

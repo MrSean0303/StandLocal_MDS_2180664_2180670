@@ -1,6 +1,6 @@
 ﻿namespace Stand_Automoveis
 {
-    partial class Form_Add_Edit_Carro
+    partial class Form_AddEdit_Carro
     {
         /// <summary>
         /// Required designer variable.
@@ -165,6 +165,11 @@
             // nudKms
             // 
             this.nudKms.Location = new System.Drawing.Point(95, 140);
+            this.nudKms.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
             this.nudKms.Name = "nudKms";
             this.nudKms.Size = new System.Drawing.Size(283, 20);
             this.nudKms.TabIndex = 42;
@@ -200,7 +205,7 @@
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // New_Update_Carro
+            // Form_AddEdit_Carro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -220,9 +225,10 @@
             this.Controls.Add(this.lblContacto);
             this.Controls.Add(this.tbxMarcaCarro);
             this.Controls.Add(this.labelNome);
-            this.Name = "New_Update_Carro";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "Form_AddEdit_Carro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Adicionar Carro";
+            this.Text = "Adicionar Carro (Oficina)";
             ((System.ComponentModel.ISupportInitialize)(this.nudKms)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxKms)).EndInit();
             this.ResumeLayout(false);

@@ -10,47 +10,34 @@ using System.Windows.Forms;
 
 namespace Stand_Automoveis
 {
-    public partial class Form_Add_Edit_CarroAluguer : Form
+    public partial class Form_AddEdit_Carro : Form
     {
-        public string marca, modelo, matricula, numeroChassis, combustivel, estado;
-        public bool marcaCheck = false, modeloCheck = false, matriculaCheck = false, numChassisCheck = false, combustivelCheck = false, estadoCheck = false;
+        public string marca, modelo, matricula, numeroChassis, combustivel, kms;
+        public bool marcaCheck = false, modeloCheck = false, matriculaCheck = false, numChassisCheck = false, combustivelCheck = false;
 
-        public enum estadoCarro { Novo, Usado };
-        string estadoCarroAluguer;
-
-        public Form_Add_Edit_CarroAluguer()
+        private void NudKms_ValueChanged(object sender, EventArgs e)
+        {
+            kmsCheck();
+        }
+        private void kmsCheck()
+        {
+            if (nudKms.Value == 0)
+                pictureBoxKms.Visible = true;
+            else
+                pictureBoxKms.Visible = false;
+        }
+        public Form_AddEdit_Carro()
         {
             InitializeComponent();
-            buttonAddCarro.Enabled = false;
-            cbxEstadoCarro.Items.Add(estadoCarro.Novo);
-            cbxEstadoCarro.Items.Add(estadoCarro.Usado);
-            cbxEstadoCarro.Items.Add("Por Avaliar");
-
-        }
-
-        private void cbxEstadoCarro_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbxEstadoCarro.SelectedIndex < 0)
-            {
-                estadoCheck = false;
-            }
-            else
-            {
-                estadoCheck = true;
-            }
-            buttonCheck();
+            kmsCheck();
         }
 
         private void TbxCombustivelCarro_TextChanged(object sender, EventArgs e)
         {
             if (tbxCombustivelCarro.Text.Length == 0)
-            {
                 combustivelCheck = false;
-            }
             else
-            {
                 combustivelCheck = true;
-            }
             buttonCheck();
         }
 
@@ -89,37 +76,26 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
-        private void buttonAddCarro_Click(object sender, EventArgs e)
+        private void ButtonAddCarro_Click(object sender, EventArgs e)
         {
-            if (cbxEstadoCarro.SelectedIndex < 0)
-            {
-                // ASDSDASDA
-            }
-            else
-            {
-                estadoCarroAluguer = cbxEstadoCarro.Items[cbxEstadoCarro.SelectedIndex].ToString();
-            }
-
             marca = tbxMarcaCarro.Text;
             modelo = tbxModeloCarro.Text;
             matricula = tbxMatriculaCarro.Text;
             numeroChassis = tbxNumChassis.Text;
             combustivel = tbxCombustivelCarro.Text;
-            estado = estadoCarroAluguer;
+            kms = nudKms.Value.ToString();
 
             Close();
         }
-
         private void buttonCheck()
         {
-            if (marcaCheck != true || modeloCheck != true || matriculaCheck != true || numChassisCheck != true || combustivelCheck != true || estadoCheck != true)
+            if (marcaCheck != true || modeloCheck != true || matriculaCheck != true || numChassisCheck != true || combustivelCheck != true)
             {
                 buttonAddCarro.Enabled = false;
             }
             else
-            {
                 buttonAddCarro.Enabled = true;
-            }
         }
     }
 }
+

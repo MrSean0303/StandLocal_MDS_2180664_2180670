@@ -1,6 +1,6 @@
 ﻿namespace Stand_Automoveis
 {
-    partial class Form_Add_Edit_Servico
+    partial class Form_AddEdit_Servico
     {
         /// <summary>
         /// Required designer variable.
@@ -69,10 +69,10 @@
             // 
             // buttonAddServico
             // 
-            this.buttonAddServico.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonAddServico.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonAddServico.Enabled = false;
             this.buttonAddServico.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddServico.Location = new System.Drawing.Point(221, 105);
+            this.buttonAddServico.Location = new System.Drawing.Point(209, 105);
             this.buttonAddServico.Name = "buttonAddServico";
             this.buttonAddServico.Size = new System.Drawing.Size(114, 38);
             this.buttonAddServico.TabIndex = 41;
@@ -115,11 +115,22 @@
             this.label_Provisorio.TabIndex = 46;
             this.label_Provisorio.Text = "(Provisória)";
             // 
-            // NovoServico
+            // button1
+            // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(89, 105);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 38);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // Form_AddEdit_Servico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 155);
+            this.ClientSize = new System.Drawing.Size(336, 149);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label_Provisorio);
             this.Controls.Add(this.dtpDataSaida);
@@ -129,7 +140,9 @@
             this.Controls.Add(this.lblNif);
             this.Controls.Add(this.tbxTipo);
             this.Controls.Add(this.labelNome);
-            this.Name = "NovoServico";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "Form_AddEdit_Servico";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Serviço";
             this.ResumeLayout(false);
             this.PerformLayout();
