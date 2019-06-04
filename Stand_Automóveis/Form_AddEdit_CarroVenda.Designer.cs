@@ -1,6 +1,6 @@
 ﻿namespace Stand_Automoveis
 {
-    partial class New_Update_CarroVenda
+    partial class Form_AddEdit_CarroVenda
     {
         /// <summary>
         /// Required designer variable.
@@ -39,6 +39,7 @@
             this.labelNome = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbxExtras = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonAddCarro
@@ -145,11 +146,23 @@
             this.tbxExtras.TabIndex = 80;
             this.tbxExtras.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // New_Update_CarroVenda
+            // button1
+            // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(136, 179);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 38);
+            this.button1.TabIndex = 81;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // Form_AddEdit_CarroVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 227);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tbxExtras);
             this.Controls.Add(this.buttonAddCarro);
             this.Controls.Add(this.label3);
@@ -161,7 +174,7 @@
             this.Controls.Add(this.tbxNumChassis);
             this.Controls.Add(this.tbxMarcaCarro);
             this.Controls.Add(this.labelNome);
-            this.Name = "New_Update_CarroVenda";
+            this.Name = "Form_AddEdit_CarroVenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Carro";
             this.ResumeLayout(false);
@@ -181,5 +194,6 @@
         private System.Windows.Forms.Label labelNome;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox tbxExtras;
+        private System.Windows.Forms.Button button1;
     }
 }

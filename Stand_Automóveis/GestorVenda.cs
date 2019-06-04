@@ -78,8 +78,8 @@ namespace Stand_Automoveis
         }
 
         public void CriarCarro()
-        {/*
-            New_Update_CarroVenda novoCarroVenda = new New_Update_CarroVenda();
+        {
+            Form_AddEdit_CarroVenda novoCarroVenda = new Form_AddEdit_CarroVenda();
             novoCarroVenda.ShowDialog();
 
             CarrosVenda tempCarroVenda = new CarrosVenda
@@ -98,12 +98,12 @@ namespace Stand_Automoveis
                 AtualizarListaCarrosVenda();
                 dadosGuardados = false;
             }
-            */
+            
         }
 
         public void EditarCarro()
         {
-            /*
+            
             CarrosVenda carroVendaSelecionado = lbxCarrosVenda.SelectedItem as CarrosVenda;
 
             if (carroVendaSelecionado == null) {
@@ -111,7 +111,7 @@ namespace Stand_Automoveis
                 return;
             }
 
-            New_Update_CarroVenda EditarCarroVenda = new New_Update_CarroVenda();
+            Form_AddEdit_CarroVenda EditarCarroVenda = new Form_AddEdit_CarroVenda();
             EditarCarroVenda.tbxCombustivelCarro.Text = carroVendaSelecionado.Combustivel;
             EditarCarroVenda.tbxExtras.Text = carroVendaSelecionado.Extras;
             EditarCarroVenda.tbxMarcaCarro.Text = carroVendaSelecionado.Marca;
@@ -127,7 +127,7 @@ namespace Stand_Automoveis
 
             AtualizarListaCarrosVenda();
             dadosGuardados = false;
-            LimparDados();*/
+            LimparDados();
         }
 
         public void EliminarCarro()

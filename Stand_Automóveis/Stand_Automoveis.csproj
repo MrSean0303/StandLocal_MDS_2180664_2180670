@@ -154,6 +154,12 @@
     <Compile Include="Form_AddEdit_Servico.Designer.cs">
       <DependentUpon>Form_AddEdit_Servico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_AddEdit_CarroVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_AddEdit_CarroVenda.Designer.cs">
+      <DependentUpon>Form_AddEdit_CarroVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Parcelas.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
@@ -221,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_AddEdit_Servico.resx">
       <DependentUpon>Form_AddEdit_Servico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_AddEdit_CarroVenda.resx">
+      <DependentUpon>Form_AddEdit_CarroVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

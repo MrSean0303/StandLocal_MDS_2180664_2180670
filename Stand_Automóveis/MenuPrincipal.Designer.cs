@@ -38,6 +38,7 @@
             this.btnGestaoAluguer = new System.Windows.Forms.Button();
             this.btnGestaoOficina = new System.Windows.Forms.Button();
             this.btnGestaoClientes = new System.Windows.Forms.Button();
+            this.Estatisticas = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +46,8 @@
             // 
             this.statusStrip1.BackColor = System.Drawing.Color.White;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelHora});
+            this.toolStripStatusLabelHora,
+            this.Estatisticas});
             this.statusStrip1.Location = new System.Drawing.Point(0, 341);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(763, 22);
@@ -154,6 +156,12 @@
             this.btnGestaoClientes.UseVisualStyleBackColor = false;
             this.btnGestaoClientes.Click += new System.EventHandler(this.BtnGestaoClientes_Click_1);
             // 
+            // Estatisticas
+            // 
+            this.Estatisticas.Name = "Estatisticas";
+            this.Estatisticas.Size = new System.Drawing.Size(0, 17);
+            this.Estatisticas.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,6 +195,7 @@
         private System.Windows.Forms.Button btnGestaoAluguer;
         private System.Windows.Forms.Button btnGestaoOficina;
         private System.Windows.Forms.Button btnGestaoClientes;
+        private System.Windows.Forms.ToolStripStatusLabel Estatisticas;
     }
 }
 

@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Stand_Automoveis
 {
-    public partial class New_Update_CarroVenda : Form
+    public partial class Form_AddEdit_CarroVenda : Form
     {
         public string marca, modelo, extra, numeroChassis, combustivel;
         public bool marcaCheck = false, modeloCheck = false, extrasCheck = false, numChassisCheck = false, combustivelCheck = false;
 
-        public New_Update_CarroVenda()
+        public Form_AddEdit_CarroVenda()
         {
             InitializeComponent();
         }

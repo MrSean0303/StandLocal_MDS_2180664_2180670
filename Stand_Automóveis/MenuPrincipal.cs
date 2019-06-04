@@ -12,10 +12,12 @@ namespace Stand_Automoveis
 {
     public partial class MenuPrincipal : Form
     {
+        private StandLocalDBContainer StandLocalDB;
+        
         public MenuPrincipal()
         {
             InitializeComponent();
-
+            StandLocalDB = new StandLocalDBContainer();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -47,6 +49,20 @@ namespace Stand_Automoveis
         {
             GestorVenda gestorVenda = new GestorVenda();
             gestorVenda.Show();
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+            List<Clientes> listaClientes = StandLocalDB.Clientes.ToList();
+            int aluguerNumero = StandLocalDB.Aluguer.Count();
+            int vendasNumero = StandLocalDB.Vendas.Count();
+            int CarroOficinaNumero = 0;
+
+            foreach (Clientes c in listaClientes) {
+                CarroOficinaNumero+= c.CarroOficina.Count();
+            }
+
+            Estatisticas.Text = "";
         }
     }
 }
