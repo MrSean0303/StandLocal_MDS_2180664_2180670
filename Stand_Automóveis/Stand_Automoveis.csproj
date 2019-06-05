@@ -124,6 +124,7 @@
     <Compile Include="GestorOficina.Designer.cs">
       <DependentUpon>GestorOficina.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImprimirDocumentos.cs" />
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
