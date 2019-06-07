@@ -487,7 +487,7 @@ namespace Stand_Automoveis
 
             if (nome != string.Empty)
             {
-                List<Clientes> clientes = listaCliente.Where(cliente => cliente.Nome.Contains(nome)).ToList();
+                List<Clientes> clientes = listaCliente.Where(cliente => cliente.Nome.ToUpper().Contains(nome.ToUpper())).ToList();
                 lbxClientes.DataSource = null;
                 lbxClientes.DataSource = clientes;
             }

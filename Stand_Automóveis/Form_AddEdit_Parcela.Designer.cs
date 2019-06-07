@@ -53,14 +53,20 @@
             // buttonAddParcela
             // 
             this.buttonAddParcela.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddParcela.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
             this.buttonAddParcela.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonAddParcela.Enabled = false;
-            this.buttonAddParcela.Location = new System.Drawing.Point(202, 68);
+            this.buttonAddParcela.FlatAppearance.BorderSize = 0;
+            this.buttonAddParcela.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.buttonAddParcela.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.buttonAddParcela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddParcela.Location = new System.Drawing.Point(202, 62);
+            this.buttonAddParcela.Margin = new System.Windows.Forms.Padding(6);
             this.buttonAddParcela.Name = "buttonAddParcela";
-            this.buttonAddParcela.Size = new System.Drawing.Size(101, 32);
+            this.buttonAddParcela.Size = new System.Drawing.Size(101, 28);
             this.buttonAddParcela.TabIndex = 10;
             this.buttonAddParcela.Text = "Continuar";
-            this.buttonAddParcela.UseVisualStyleBackColor = true;
+            this.buttonAddParcela.UseVisualStyleBackColor = false;
             this.buttonAddParcela.Click += new System.EventHandler(this.ButtonAddParcela_Click);
             // 
             // label2
@@ -103,13 +109,18 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Location = new System.Drawing.Point(95, 68);
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(92, 62);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 32);
+            this.button1.Size = new System.Drawing.Size(101, 28);
             this.button1.TabIndex = 13;
             this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // toolTipValor
             // 
@@ -124,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 112);
+            this.ClientSize = new System.Drawing.Size(323, 98);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBoxValor);
             this.Controls.Add(this.numValor);

@@ -51,15 +51,20 @@
             // 
             // buttonAddCarro
             // 
+            this.buttonAddCarro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
             this.buttonAddCarro.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonAddCarro.Enabled = false;
-            this.buttonAddCarro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddCarro.Location = new System.Drawing.Point(264, 171);
+            this.buttonAddCarro.FlatAppearance.BorderSize = 0;
+            this.buttonAddCarro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.buttonAddCarro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.buttonAddCarro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddCarro.Location = new System.Drawing.Point(277, 168);
+            this.buttonAddCarro.Margin = new System.Windows.Forms.Padding(6, 6, 3, 6);
             this.buttonAddCarro.Name = "buttonAddCarro";
-            this.buttonAddCarro.Size = new System.Drawing.Size(114, 38);
+            this.buttonAddCarro.Size = new System.Drawing.Size(101, 28);
             this.buttonAddCarro.TabIndex = 6;
             this.buttonAddCarro.Text = "Continuar";
-            this.buttonAddCarro.UseVisualStyleBackColor = true;
+            this.buttonAddCarro.UseVisualStyleBackColor = false;
             this.buttonAddCarro.Click += new System.EventHandler(this.ButtonAddCarro_Click);
             // 
             // tbxModeloCarro
@@ -138,7 +143,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 140);
+            this.label2.Location = new System.Drawing.Point(12, 113);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 15);
             this.label2.TabIndex = 38;
@@ -146,7 +151,7 @@
             // 
             // tbxCombustivelCarro
             // 
-            this.tbxCombustivelCarro.Location = new System.Drawing.Point(95, 113);
+            this.tbxCombustivelCarro.Location = new System.Drawing.Point(95, 139);
             this.tbxCombustivelCarro.Name = "tbxCombustivelCarro";
             this.tbxCombustivelCarro.Size = new System.Drawing.Size(283, 20);
             this.tbxCombustivelCarro.TabIndex = 4;
@@ -156,7 +161,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 114);
+            this.label3.Location = new System.Drawing.Point(12, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 15);
             this.label3.TabIndex = 40;
@@ -164,7 +169,7 @@
             // 
             // nudKms
             // 
-            this.nudKms.Location = new System.Drawing.Point(95, 140);
+            this.nudKms.Location = new System.Drawing.Point(95, 113);
             this.nudKms.Maximum = new decimal(new int[] {
             99999999,
             0,
@@ -187,7 +192,7 @@
             // pictureBoxKms
             // 
             this.pictureBoxKms.Image = global::Stand_Automoveis.Properties.Resources.StatusWarning_exp_16x;
-            this.pictureBoxKms.Location = new System.Drawing.Point(381, 142);
+            this.pictureBoxKms.Location = new System.Drawing.Point(381, 115);
             this.pictureBoxKms.Name = "pictureBoxKms";
             this.pictureBoxKms.Size = new System.Drawing.Size(16, 16);
             this.pictureBoxKms.TabIndex = 43;
@@ -196,20 +201,24 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(144, 171);
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(167, 168);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(114, 38);
+            this.button2.Size = new System.Drawing.Size(101, 28);
             this.button2.TabIndex = 44;
             this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // Form_AddEdit_Carro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 221);
+            this.ClientSize = new System.Drawing.Size(399, 204);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBoxKms);
             this.Controls.Add(this.nudKms);

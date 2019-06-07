@@ -47,15 +47,20 @@
             // 
             // buttonAddCarro
             // 
+            this.buttonAddCarro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
             this.buttonAddCarro.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonAddCarro.Enabled = false;
-            this.buttonAddCarro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddCarro.Location = new System.Drawing.Point(256, 167);
+            this.buttonAddCarro.FlatAppearance.BorderSize = 0;
+            this.buttonAddCarro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.buttonAddCarro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.buttonAddCarro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddCarro.Location = new System.Drawing.Point(269, 170);
+            this.buttonAddCarro.Margin = new System.Windows.Forms.Padding(6);
             this.buttonAddCarro.Name = "buttonAddCarro";
-            this.buttonAddCarro.Size = new System.Drawing.Size(114, 38);
+            this.buttonAddCarro.Size = new System.Drawing.Size(101, 28);
             this.buttonAddCarro.TabIndex = 66;
             this.buttonAddCarro.Text = "Continuar";
-            this.buttonAddCarro.UseVisualStyleBackColor = true;
+            this.buttonAddCarro.UseVisualStyleBackColor = false;
             this.buttonAddCarro.Click += new System.EventHandler(this.buttonAddCarro_Click);
             // 
             // cbxEstadoCarro
@@ -186,20 +191,24 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(136, 167);
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(159, 170);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(114, 38);
+            this.button2.Size = new System.Drawing.Size(101, 28);
             this.button2.TabIndex = 93;
             this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // Form_AddEdit_CarroAluguer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 217);
+            this.ClientSize = new System.Drawing.Size(379, 207);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.cbxEstadoCarro);
             this.Controls.Add(this.label3);

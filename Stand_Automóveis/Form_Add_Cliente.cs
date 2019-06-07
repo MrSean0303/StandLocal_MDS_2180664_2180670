@@ -20,6 +20,11 @@ namespace Stand_Automoveis
             InitializeComponent();
         }
 
+        private void ButtonCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void TbxMoradaCliente_TextChanged(object sender, EventArgs e)
         {
             if (tbxMoradaCliente.Text.Length == 0)
@@ -42,8 +47,16 @@ namespace Stand_Automoveis
         {
             if (tbxNifCliente.Text.Length == 0)
                 nifCheck = false;
+            else if(tbxNifCliente.Text.Length < 9 || tbxNifCliente.Text.Length > 9)
+            {
+                pictureBoxNIF.Visible = true;
+                nifCheck = false;
+            }
             else
+            {
+                pictureBoxNIF.Visible = false;
                 nifCheck = true;
+            } 
             buttonCheck();
         }
 

@@ -31,6 +31,13 @@ namespace Stand_Automoveis
 
             if (clienteSelecionado == null)
             {
+                lblShowNome.Text = null;
+                lblShowMorada.Text = null;
+                lblShowContacto.Text = null;
+                lblShowNif.Text = "(Nenhum Cliente Selecionado)";
+                lblNumCarrosOficina.Text = null;
+                lblNumCarrosComprados.Text = null;
+                lblNumCarroAluguer.Text = null;
                 btnEditarCliente.Enabled = false;
                 return;
             }
@@ -124,12 +131,12 @@ namespace Stand_Automoveis
             }
 
             //Efetuar as alterações no cliente
-            clienteSelecionado.Nome = tbAlterarNome.Text;
-            clienteSelecionado.NIF = tbAlterarNif.Text;
-            clienteSelecionado.Morada = tbAlterarMorada.Text;
-            clienteSelecionado.Contacto = tbAlterarContacto.Text;
-            AtualizarClientes();
-            conteudoNovo = true;
+                clienteSelecionado.Nome = tbAlterarNome.Text;
+                clienteSelecionado.NIF = tbAlterarNif.Text;
+                clienteSelecionado.Morada = tbAlterarMorada.Text;
+                clienteSelecionado.Contacto = tbAlterarContacto.Text;
+                AtualizarClientes();
+                conteudoNovo = true;
         }
 
         private void SairToolStripMenuItem_Click(object sender, EventArgs e)
@@ -187,7 +194,7 @@ namespace Stand_Automoveis
 
             if (nome != string.Empty)
             {
-                List<Clientes> clientes = listaCliente.Where(cliente => cliente.Nome.Contains(nome)).ToList();
+                List<Clientes> clientes = listaCliente.Where(cliente => cliente.Nome.ToUpper().Contains(nome.ToUpper())).ToList();
                 lbxClientes.DataSource = null;
                 lbxClientes.DataSource = clientes;
             }
@@ -225,6 +232,20 @@ namespace Stand_Automoveis
             {
                 tbxFiltrar.Text = "";
                 tbxFiltrar.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void TbAlterarNif_TextChanged(object sender, EventArgs e)
+        {
+            if(tbAlterarNif.Text.Length < 9 || tbAlterarNif.Text.Length > 9)
+            {
+                pictureBoxNIF.Visible = true;
+                btnEditarCliente.Enabled = false;
+            }
+            else
+            {
+                pictureBoxNIF.Visible = false;
+                btnEditarCliente.Enabled = true;
             }
         }
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonCriarCliente = new System.Windows.Forms.Button();
             this.tbxNifCliente = new System.Windows.Forms.TextBox();
             this.lblNif = new System.Windows.Forms.Label();
@@ -38,19 +39,27 @@
             this.tbxNomeCliente = new System.Windows.Forms.TextBox();
             this.labelNome = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.toolTipNIF = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBoxNIF = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNIF)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCriarCliente
             // 
+            this.buttonCriarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
             this.buttonCriarCliente.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonCriarCliente.Enabled = false;
-            this.buttonCriarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonCriarCliente.Location = new System.Drawing.Point(286, 116);
+            this.buttonCriarCliente.FlatAppearance.BorderSize = 0;
+            this.buttonCriarCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.buttonCriarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.buttonCriarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCriarCliente.Location = new System.Drawing.Point(299, 119);
+            this.buttonCriarCliente.Margin = new System.Windows.Forms.Padding(6, 6, 3, 6);
             this.buttonCriarCliente.Name = "buttonCriarCliente";
-            this.buttonCriarCliente.Size = new System.Drawing.Size(114, 38);
-            this.buttonCriarCliente.TabIndex = 5;
+            this.buttonCriarCliente.Size = new System.Drawing.Size(101, 28);
+            this.buttonCriarCliente.TabIndex = 4;
             this.buttonCriarCliente.Text = "Continuar";
-            this.buttonCriarCliente.UseVisualStyleBackColor = true;
+            this.buttonCriarCliente.UseVisualStyleBackColor = false;
             this.buttonCriarCliente.Click += new System.EventHandler(this.ButtonCriarCliente_Click);
             // 
             // tbxNifCliente
@@ -127,20 +136,47 @@
             // 
             // buttonCancel
             // 
+            this.buttonCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonCancel.Location = new System.Drawing.Point(166, 116);
+            this.buttonCancel.FlatAppearance.BorderSize = 0;
+            this.buttonCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(121)))), ((int)(((byte)(121)))));
+            this.buttonCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancel.Location = new System.Drawing.Point(189, 119);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(114, 38);
-            this.buttonCancel.TabIndex = 4;
+            this.buttonCancel.Size = new System.Drawing.Size(101, 28);
+            this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Cancelar";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonCancel.UseVisualStyleBackColor = false;
+            this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
+            // 
+            // toolTipNIF
+            // 
+            this.toolTipNIF.AutoPopDelay = 5000;
+            this.toolTipNIF.InitialDelay = 400;
+            this.toolTipNIF.IsBalloon = true;
+            this.toolTipNIF.ReshowDelay = 100;
+            this.toolTipNIF.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Error;
+            this.toolTipNIF.ToolTipTitle = "NIF Inválido!";
+            // 
+            // pictureBoxNIF
+            // 
+            this.pictureBoxNIF.Image = global::Stand_Automoveis.Properties.Resources.StatusCriticalError_16x;
+            this.pictureBoxNIF.Location = new System.Drawing.Point(402, 40);
+            this.pictureBoxNIF.Name = "pictureBoxNIF";
+            this.pictureBoxNIF.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxNIF.TabIndex = 25;
+            this.pictureBoxNIF.TabStop = false;
+            this.toolTipNIF.SetToolTip(this.pictureBoxNIF, "O NIF introduzido não está correto.");
+            this.pictureBoxNIF.Visible = false;
             // 
             // Form_Add_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 164);
+            this.ClientSize = new System.Drawing.Size(421, 155);
+            this.Controls.Add(this.pictureBoxNIF);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonCriarCliente);
             this.Controls.Add(this.tbxNifCliente);
@@ -155,6 +191,7 @@
             this.Name = "Form_Add_Cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Cliente";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNIF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +209,7 @@
         public System.Windows.Forms.TextBox tbxMoradaCliente;
         public System.Windows.Forms.TextBox tbxContactoCliente;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.ToolTip toolTipNIF;
+        private System.Windows.Forms.PictureBox pictureBoxNIF;
     }
 }

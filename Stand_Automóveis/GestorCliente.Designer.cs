@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ficheiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,11 +68,14 @@
             this.lblContacto = new System.Windows.Forms.Label();
             this.tbAlterarNome = new System.Windows.Forms.TextBox();
             this.labelNome = new System.Windows.Forms.Label();
+            this.pictureBoxNIF = new System.Windows.Forms.PictureBox();
+            this.toolTipNIF = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.gbxClientes.SuspendLayout();
             this.gbxDadosCliente.SuspendLayout();
             this.gbxInformacaoCliente.SuspendLayout();
             this.panelEditarCliente.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNIF)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -98,28 +102,28 @@
             // novoClienteToolStripMenuItem
             // 
             this.novoClienteToolStripMenuItem.Name = "novoClienteToolStripMenuItem";
-            this.novoClienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novoClienteToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.novoClienteToolStripMenuItem.Text = "Novo Cliente";
             this.novoClienteToolStripMenuItem.Click += new System.EventHandler(this.NovoClienteToolStripMenuItem_Click);
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.GuardarToolStripMenuItem_Click);
             // 
             // limparDadosToolStripMenuItem
             // 
             this.limparDadosToolStripMenuItem.Name = "limparDadosToolStripMenuItem";
-            this.limparDadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.limparDadosToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.limparDadosToolStripMenuItem.Text = "Limpar Seleção";
             this.limparDadosToolStripMenuItem.Click += new System.EventHandler(this.LimparDadosToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
             // 
@@ -154,44 +158,66 @@
             // 
             // buttonOrdenarDesc
             // 
+            this.buttonOrdenarDesc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
+            this.buttonOrdenarDesc.FlatAppearance.BorderSize = 0;
+            this.buttonOrdenarDesc.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.buttonOrdenarDesc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.buttonOrdenarDesc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOrdenarDesc.Image = global::Stand_Automoveis.Properties.Resources.Download_grey_16x;
-            this.buttonOrdenarDesc.Location = new System.Drawing.Point(185, 12);
+            this.buttonOrdenarDesc.Location = new System.Drawing.Point(183, 10);
+            this.buttonOrdenarDesc.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
             this.buttonOrdenarDesc.Name = "buttonOrdenarDesc";
-            this.buttonOrdenarDesc.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarDesc.Size = new System.Drawing.Size(26, 26);
             this.buttonOrdenarDesc.TabIndex = 8;
-            this.buttonOrdenarDesc.UseVisualStyleBackColor = true;
+            this.buttonOrdenarDesc.UseVisualStyleBackColor = false;
             this.buttonOrdenarDesc.Click += new System.EventHandler(this.ButtonOrdenarDesc_Click);
             // 
             // btnEliminarCliente
             // 
             this.btnEliminarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEliminarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(194)))), ((int)(((byte)(194)))));
+            this.btnEliminarCliente.FlatAppearance.BorderSize = 0;
+            this.btnEliminarCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.btnEliminarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEliminarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarCliente.Image = global::Stand_Automoveis.Properties.Resources.Cancel_16x;
-            this.btnEliminarCliente.Location = new System.Drawing.Point(227, 11);
+            this.btnEliminarCliente.Location = new System.Drawing.Point(225, 10);
+            this.btnEliminarCliente.Margin = new System.Windows.Forms.Padding(3, 3, 1, 3);
             this.btnEliminarCliente.Name = "btnEliminarCliente";
-            this.btnEliminarCliente.Size = new System.Drawing.Size(24, 24);
+            this.btnEliminarCliente.Size = new System.Drawing.Size(26, 26);
             this.btnEliminarCliente.TabIndex = 1;
-            this.btnEliminarCliente.UseVisualStyleBackColor = true;
+            this.btnEliminarCliente.UseVisualStyleBackColor = false;
             this.btnEliminarCliente.Click += new System.EventHandler(this.BtnEliminarCliente_Click);
             // 
             // buttonOrdenarCres
             // 
+            this.buttonOrdenarCres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
+            this.buttonOrdenarCres.FlatAppearance.BorderSize = 0;
+            this.buttonOrdenarCres.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.buttonOrdenarCres.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.buttonOrdenarCres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOrdenarCres.Image = global::Stand_Automoveis.Properties.Resources.Upload_gray_16x;
-            this.buttonOrdenarCres.Location = new System.Drawing.Point(153, 12);
+            this.buttonOrdenarCres.Location = new System.Drawing.Point(153, 10);
             this.buttonOrdenarCres.Name = "buttonOrdenarCres";
-            this.buttonOrdenarCres.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarCres.Size = new System.Drawing.Size(26, 26);
             this.buttonOrdenarCres.TabIndex = 7;
-            this.buttonOrdenarCres.UseVisualStyleBackColor = true;
+            this.buttonOrdenarCres.UseVisualStyleBackColor = false;
             this.buttonOrdenarCres.Click += new System.EventHandler(this.ButtonOrdenarCres_Click);
             // 
             // btnCriarCliente
             // 
             this.btnCriarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCriarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(216)))));
+            this.btnCriarCliente.FlatAppearance.BorderSize = 0;
+            this.btnCriarCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(202)))), ((int)(((byte)(211)))));
+            this.btnCriarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(141)))), ((int)(((byte)(153)))));
+            this.btnCriarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCriarCliente.Image = global::Stand_Automoveis.Properties.Resources.Add_grey_16x;
-            this.btnCriarCliente.Location = new System.Drawing.Point(257, 11);
+            this.btnCriarCliente.Location = new System.Drawing.Point(255, 10);
             this.btnCriarCliente.Name = "btnCriarCliente";
-            this.btnCriarCliente.Size = new System.Drawing.Size(24, 24);
+            this.btnCriarCliente.Size = new System.Drawing.Size(26, 26);
             this.btnCriarCliente.TabIndex = 2;
-            this.btnCriarCliente.UseVisualStyleBackColor = true;
+            this.btnCriarCliente.UseVisualStyleBackColor = false;
             this.btnCriarCliente.Click += new System.EventHandler(this.BtnCriarCliente_Click);
             // 
             // tbxFiltrar
@@ -247,154 +273,148 @@
             // lblShowNif
             // 
             this.lblShowNif.AutoSize = true;
-            this.lblShowNif.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShowNif.Location = new System.Drawing.Point(119, 129);
+            this.lblShowNif.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowNif.Location = new System.Drawing.Point(245, 120);
             this.lblShowNif.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
             this.lblShowNif.Name = "lblShowNif";
-            this.lblShowNif.Size = new System.Drawing.Size(168, 15);
+            this.lblShowNif.Size = new System.Drawing.Size(150, 13);
             this.lblShowNif.TabIndex = 13;
-            this.lblShowNif.Text = "Nenhum Cliente Selecionado";
+            this.lblShowNif.Text = "(Nenhum Cliente Selecionado)";
             // 
             // lblShowNome
             // 
             this.lblShowNome.AutoSize = true;
-            this.lblShowNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShowNome.Location = new System.Drawing.Point(119, 36);
+            this.lblShowNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowNome.Location = new System.Drawing.Point(245, 36);
             this.lblShowNome.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
             this.lblShowNome.Name = "lblShowNome";
-            this.lblShowNome.Size = new System.Drawing.Size(168, 15);
+            this.lblShowNome.Size = new System.Drawing.Size(0, 13);
             this.lblShowNome.TabIndex = 12;
-            this.lblShowNome.Text = "Nenhum Cliente Selecionado";
             // 
             // lblShowMorada
             // 
             this.lblShowMorada.AutoSize = true;
-            this.lblShowMorada.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShowMorada.Location = new System.Drawing.Point(119, 67);
+            this.lblShowMorada.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowMorada.Location = new System.Drawing.Point(245, 64);
             this.lblShowMorada.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
             this.lblShowMorada.Name = "lblShowMorada";
-            this.lblShowMorada.Size = new System.Drawing.Size(168, 15);
+            this.lblShowMorada.Size = new System.Drawing.Size(0, 13);
             this.lblShowMorada.TabIndex = 11;
-            this.lblShowMorada.Text = "Nenhum Cliente Selecionado";
             // 
             // lblShowContacto
             // 
             this.lblShowContacto.AutoSize = true;
-            this.lblShowContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShowContacto.Location = new System.Drawing.Point(119, 98);
+            this.lblShowContacto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowContacto.Location = new System.Drawing.Point(245, 92);
             this.lblShowContacto.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
             this.lblShowContacto.Name = "lblShowContacto";
-            this.lblShowContacto.Size = new System.Drawing.Size(168, 15);
+            this.lblShowContacto.Size = new System.Drawing.Size(0, 13);
             this.lblShowContacto.TabIndex = 10;
-            this.lblShowContacto.Text = "Nenhum Cliente Selecionado";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 129);
-            this.label4.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 120);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 15);
+            this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "NIF:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 98);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 92);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 16);
+            this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "Contacto:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 67);
-            this.label2.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(6, 64);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 16);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Morada:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(6, 36);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 16);
+            this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Nome Cliente:";
             // 
             // lblNumCarrosComprados
             // 
             this.lblNumCarrosComprados.AutoSize = true;
-            this.lblNumCarrosComprados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumCarrosComprados.Location = new System.Drawing.Point(210, 228);
+            this.lblNumCarrosComprados.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumCarrosComprados.Location = new System.Drawing.Point(245, 207);
             this.lblNumCarrosComprados.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
             this.lblNumCarrosComprados.Name = "lblNumCarrosComprados";
-            this.lblNumCarrosComprados.Size = new System.Drawing.Size(168, 15);
+            this.lblNumCarrosComprados.Size = new System.Drawing.Size(0, 13);
             this.lblNumCarrosComprados.TabIndex = 5;
-            this.lblNumCarrosComprados.Text = "Nenhum Cliente Selecionado";
             // 
             // lblNumCarroAluguer
             // 
             this.lblNumCarroAluguer.AutoSize = true;
-            this.lblNumCarroAluguer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumCarroAluguer.Location = new System.Drawing.Point(210, 195);
+            this.lblNumCarroAluguer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumCarroAluguer.Location = new System.Drawing.Point(245, 179);
             this.lblNumCarroAluguer.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
             this.lblNumCarroAluguer.Name = "lblNumCarroAluguer";
-            this.lblNumCarroAluguer.Size = new System.Drawing.Size(168, 15);
+            this.lblNumCarroAluguer.Size = new System.Drawing.Size(0, 13);
             this.lblNumCarroAluguer.TabIndex = 4;
-            this.lblNumCarroAluguer.Text = "Nenhum Cliente Selecionado";
             // 
             // lblNumCarrosOficina
             // 
             this.lblNumCarrosOficina.AutoSize = true;
-            this.lblNumCarrosOficina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumCarrosOficina.Location = new System.Drawing.Point(210, 162);
+            this.lblNumCarrosOficina.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumCarrosOficina.Location = new System.Drawing.Point(245, 151);
             this.lblNumCarrosOficina.Margin = new System.Windows.Forms.Padding(18, 0, 3, 0);
             this.lblNumCarrosOficina.Name = "lblNumCarrosOficina";
-            this.lblNumCarrosOficina.Size = new System.Drawing.Size(168, 15);
+            this.lblNumCarrosOficina.Size = new System.Drawing.Size(0, 13);
             this.lblNumCarrosOficina.TabIndex = 3;
-            this.lblNumCarrosOficina.Text = "Nenhum Cliente Selecionado";
             // 
             // lblNumCarrosCompradosTexto
             // 
             this.lblNumCarrosCompradosTexto.AutoSize = true;
-            this.lblNumCarrosCompradosTexto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumCarrosCompradosTexto.Location = new System.Drawing.Point(6, 228);
+            this.lblNumCarrosCompradosTexto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumCarrosCompradosTexto.Location = new System.Drawing.Point(6, 207);
             this.lblNumCarrosCompradosTexto.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
             this.lblNumCarrosCompradosTexto.Name = "lblNumCarrosCompradosTexto";
-            this.lblNumCarrosCompradosTexto.Size = new System.Drawing.Size(195, 16);
+            this.lblNumCarrosCompradosTexto.Size = new System.Drawing.Size(151, 13);
             this.lblNumCarrosCompradosTexto.TabIndex = 2;
             this.lblNumCarrosCompradosTexto.Text = "Numero de Carros Comprados:";
             // 
             // lblNumCarroAluguerText
             // 
             this.lblNumCarroAluguerText.AutoSize = true;
-            this.lblNumCarroAluguerText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumCarroAluguerText.Location = new System.Drawing.Point(6, 195);
-            this.lblNumCarroAluguerText.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
+            this.lblNumCarroAluguerText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumCarroAluguerText.Location = new System.Drawing.Point(6, 179);
+            this.lblNumCarroAluguerText.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.lblNumCarroAluguerText.Name = "lblNumCarroAluguerText";
-            this.lblNumCarroAluguerText.Size = new System.Drawing.Size(182, 16);
+            this.lblNumCarroAluguerText.Size = new System.Drawing.Size(142, 13);
             this.lblNumCarroAluguerText.TabIndex = 1;
             this.lblNumCarroAluguerText.Text = "Numero de Carros Alugados:";
             // 
             // lblNumCarrosOficinaText
             // 
             this.lblNumCarrosOficinaText.AutoSize = true;
-            this.lblNumCarrosOficinaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumCarrosOficinaText.Location = new System.Drawing.Point(6, 162);
+            this.lblNumCarrosOficinaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumCarrosOficinaText.Location = new System.Drawing.Point(6, 151);
             this.lblNumCarrosOficinaText.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
             this.lblNumCarrosOficinaText.Name = "lblNumCarrosOficinaText";
-            this.lblNumCarrosOficinaText.Size = new System.Drawing.Size(183, 16);
+            this.lblNumCarrosOficinaText.Size = new System.Drawing.Size(146, 13);
             this.lblNumCarrosOficinaText.TabIndex = 0;
             this.lblNumCarrosOficinaText.Text = "Numero de Carros na Oficina:";
             // 
@@ -419,7 +439,12 @@
             // btnEditarCliente
             // 
             this.btnEditarCliente.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnEditarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(212)))), ((int)(((byte)(179)))));
             this.btnEditarCliente.Enabled = false;
+            this.btnEditarCliente.FlatAppearance.BorderSize = 0;
+            this.btnEditarCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(199)))), ((int)(((byte)(87)))));
+            this.btnEditarCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(153)))), ((int)(((byte)(42)))));
+            this.btnEditarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarCliente.Image = global::Stand_Automoveis.Properties.Resources.Edit_straight_16xLG;
             this.btnEditarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditarCliente.Location = new System.Drawing.Point(426, 86);
@@ -428,7 +453,7 @@
             this.btnEditarCliente.TabIndex = 4;
             this.btnEditarCliente.Text = "Editar Cliente";
             this.btnEditarCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEditarCliente.UseVisualStyleBackColor = true;
+            this.btnEditarCliente.UseVisualStyleBackColor = false;
             this.btnEditarCliente.Click += new System.EventHandler(this.BtnEditarCliente_Click);
             // 
             // tbAlterarNif
@@ -439,6 +464,7 @@
             this.tbAlterarNif.Name = "tbAlterarNif";
             this.tbAlterarNif.Size = new System.Drawing.Size(137, 20);
             this.tbAlterarNif.TabIndex = 2;
+            this.tbAlterarNif.TextChanged += new System.EventHandler(this.TbAlterarNif_TextChanged);
             // 
             // lblNif
             // 
@@ -501,11 +527,32 @@
             this.labelNome.TabIndex = 0;
             this.labelNome.Text = "Nome Cliente";
             // 
+            // pictureBoxNIF
+            // 
+            this.pictureBoxNIF.Image = global::Stand_Automoveis.Properties.Resources.StatusCriticalError_16x;
+            this.pictureBoxNIF.Location = new System.Drawing.Point(866, 80);
+            this.pictureBoxNIF.Name = "pictureBoxNIF";
+            this.pictureBoxNIF.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxNIF.TabIndex = 2;
+            this.pictureBoxNIF.TabStop = false;
+            this.toolTipNIF.SetToolTip(this.pictureBoxNIF, "O NIF introduzido não está correto.");
+            this.pictureBoxNIF.Visible = false;
+            // 
+            // toolTipNIF
+            // 
+            this.toolTipNIF.AutoPopDelay = 5000;
+            this.toolTipNIF.InitialDelay = 400;
+            this.toolTipNIF.IsBalloon = true;
+            this.toolTipNIF.ReshowDelay = 100;
+            this.toolTipNIF.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Error;
+            this.toolTipNIF.ToolTipTitle = "NIF Inválido!";
+            // 
             // GestorCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 450);
+            this.Controls.Add(this.pictureBoxNIF);
             this.Controls.Add(this.gbxDadosCliente);
             this.Controls.Add(this.gbxClientes);
             this.Controls.Add(this.menuStrip1);
@@ -523,6 +570,7 @@
             this.gbxInformacaoCliente.PerformLayout();
             this.panelEditarCliente.ResumeLayout(false);
             this.panelEditarCliente.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNIF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -569,5 +617,7 @@
         private System.Windows.Forms.Label lblShowNome;
         private System.Windows.Forms.Label lblShowMorada;
         private System.Windows.Forms.Label lblShowContacto;
+        private System.Windows.Forms.PictureBox pictureBoxNIF;
+        private System.Windows.Forms.ToolTip toolTipNIF;
     }
 }

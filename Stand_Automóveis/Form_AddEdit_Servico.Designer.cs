@@ -69,15 +69,20 @@
             // 
             // buttonAddServico
             // 
+            this.buttonAddServico.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
             this.buttonAddServico.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonAddServico.Enabled = false;
-            this.buttonAddServico.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAddServico.Location = new System.Drawing.Point(209, 105);
+            this.buttonAddServico.FlatAppearance.BorderSize = 0;
+            this.buttonAddServico.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.buttonAddServico.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.buttonAddServico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddServico.Location = new System.Drawing.Point(222, 90);
+            this.buttonAddServico.Margin = new System.Windows.Forms.Padding(6);
             this.buttonAddServico.Name = "buttonAddServico";
-            this.buttonAddServico.Size = new System.Drawing.Size(114, 38);
+            this.buttonAddServico.Size = new System.Drawing.Size(101, 28);
             this.buttonAddServico.TabIndex = 41;
             this.buttonAddServico.Text = "Continuar";
-            this.buttonAddServico.UseVisualStyleBackColor = true;
+            this.buttonAddServico.UseVisualStyleBackColor = false;
             this.buttonAddServico.Click += new System.EventHandler(this.ButtonAddServico_Click);
             // 
             // dtpDataEntrada
@@ -117,20 +122,24 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(89, 105);
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(112, 90);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 38);
+            this.button1.Size = new System.Drawing.Size(101, 28);
             this.button1.TabIndex = 47;
             this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // Form_AddEdit_Servico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 149);
+            this.ClientSize = new System.Drawing.Size(333, 129);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label_Provisorio);
             this.Controls.Add(this.dtpDataSaida);
