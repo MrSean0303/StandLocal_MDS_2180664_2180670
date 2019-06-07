@@ -72,14 +72,13 @@ namespace Stand_Automoveis
         }
 
         public void AtualizarListaVenda(Clientes cliente) {
-
             lbxVendas.DataSource = null;
             lbxVendas.DataSource = cliente.Venda.ToList();
         }
 
         public void CriarCarro()
-        {/*
-            New_Update_CarroVenda novoCarroVenda = new New_Update_CarroVenda();
+        {
+            Form_AddEdit_CarroVenda novoCarroVenda = new Form_AddEdit_CarroVenda();
             novoCarroVenda.ShowDialog();
 
             CarrosVenda tempCarroVenda = new CarrosVenda
@@ -98,12 +97,12 @@ namespace Stand_Automoveis
                 AtualizarListaCarrosVenda();
                 dadosGuardados = false;
             }
-            */
+            
         }
 
         public void EditarCarro()
         {
-            /*
+            
             CarrosVenda carroVendaSelecionado = lbxCarrosVenda.SelectedItem as CarrosVenda;
 
             if (carroVendaSelecionado == null) {
@@ -111,7 +110,7 @@ namespace Stand_Automoveis
                 return;
             }
 
-            New_Update_CarroVenda EditarCarroVenda = new New_Update_CarroVenda();
+            Form_AddEdit_CarroVenda EditarCarroVenda = new Form_AddEdit_CarroVenda();
             EditarCarroVenda.tbxCombustivelCarro.Text = carroVendaSelecionado.Combustivel;
             EditarCarroVenda.tbxExtras.Text = carroVendaSelecionado.Extras;
             EditarCarroVenda.tbxMarcaCarro.Text = carroVendaSelecionado.Marca;
@@ -127,7 +126,7 @@ namespace Stand_Automoveis
 
             AtualizarListaCarrosVenda();
             dadosGuardados = false;
-            LimparDados();*/
+            LimparDados();
         }
 
         public void EliminarCarro()
@@ -182,15 +181,44 @@ namespace Stand_Automoveis
 
         private void GestorVenda_FormClosing(object sender, FormClosingEventArgs e)
         {
+            bool carroSemVenda = false;
+            List<CarrosVenda> carrosParaEliminar = new List<CarrosVenda>();
+            foreach (CarrosVenda carro in listaCarrosVenda) {
+                if (carro.Venda == null) {
+                    carroSemVenda = true;
+                    carrosParaEliminar.Add(carro);
+                }
+            }
+
             if (dadosGuardados == false)
             {
                 if (MessageBox.Show("Não guardou as suas ultimas alterações.", "Guardar Alterações?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    StandLocalDB.SaveChanges();
+                    if (carroSemVenda == true)
+                    {
+                        MessageBox.Show("Não pode ter carros para Venda sem estarem associados a vendas", "Carros sem vendas", MessageBoxButtons.OK);
+                        if (MessageBox.Show("Deseja apagar os carros sem venda?", "Eliminar Carros sem venda?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        {
+                            foreach (CarrosVenda carrosEliminar in carrosParaEliminar)
+                            {
+                                StandLocalDB.Carro.Remove(carrosEliminar);
+                            }
+                            StandLocalDB.SaveChanges();
+                        }
+                        else {
+                            e.Cancel = true;
+                            return;
+                        }
+
+                    }
+                    else
+                    {
+                        StandLocalDB.SaveChanges();
+                    }
                 }
             }
 
-            StandLocalDB.Dispose();
+                StandLocalDB.Dispose();     
         }
 
         private void limparDadosToolStripMenuItem_Click(object sender, EventArgs e)

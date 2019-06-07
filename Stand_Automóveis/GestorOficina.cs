@@ -24,9 +24,34 @@ namespace Stand_Automoveis
             tbxFiltrar.Leave += new System.EventHandler(TbxFiltrar_Leave);
             tbxFiltrar.Enter += new System.EventHandler(TbxFiltrar_Enter);
 
+            CarregarBD carregar = new CarregarBD();
+            carregar.Show();
+            Application.DoEvents();
+
             StandLocalDB = new StandLocalDBContainer();
             LerDados();
+            carregar.Close();
+            carregar.Close();
         }
+        private void LerDados()
+        {
+            listaCliente = StandLocalDB.Clientes.ToList();
+
+            AtualizarClientes();
+        }
+        private void AtualizarCarros()
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+            lbxCarros.DataSource = null;
+            lbxCarros.DataSource = clienteSelecionado.CarroOficina.ToList();
+        }
+        private void AtualizarClientes()
+        {
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = listaCliente;
+        }
+
+
         private void TbxFiltrar_Leave(object sender, EventArgs e)
         {
             if (tbxFiltrar.Text.Length == 0)
@@ -62,23 +87,7 @@ namespace Stand_Automoveis
                 AtualizarParcelas();
             }
         }
-        private void LerDados()
-        {
-            listaCliente = StandLocalDB.Clientes.ToList();
-
-            AtualizarClientes();
-        }
-        private void AtualizarCarros()
-        {
-            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
-            lbxCarros.DataSource = null;
-            lbxCarros.DataSource = clienteSelecionado.CarroOficina.ToList();
-        }
-        private void AtualizarClientes()
-        {
-            lbxClientes.DataSource = null;
-            lbxClientes.DataSource = listaCliente;
-        }
+     
         private void AtualizarServicos()
         {
             CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
