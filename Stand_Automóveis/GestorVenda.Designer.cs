@@ -43,6 +43,7 @@
             this.btnInfVenda = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ficheiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imprimirHistoricoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.limparDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +62,7 @@
             this.tbxFiltrarVenda = new System.Windows.Forms.TextBox();
             this.lbxCarrosVenda = new System.Windows.Forms.ListBox();
             this.gbxAluguer = new System.Windows.Forms.GroupBox();
-            this.imprimirHistoricoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.gbxAlugados.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -214,12 +215,20 @@
             // 
             this.ficheiroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.imprimirHistoricoClienteToolStripMenuItem,
+            this.novoClienteToolStripMenuItem,
             this.guardarToolStripMenuItem,
             this.limparDadosToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.ficheiroToolStripMenuItem.Name = "ficheiroToolStripMenuItem";
             this.ficheiroToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.ficheiroToolStripMenuItem.Text = "Ficheiro";
+            // 
+            // imprimirHistoricoClienteToolStripMenuItem
+            // 
+            this.imprimirHistoricoClienteToolStripMenuItem.Name = "imprimirHistoricoClienteToolStripMenuItem";
+            this.imprimirHistoricoClienteToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.imprimirHistoricoClienteToolStripMenuItem.Text = "Imprimir Historico Cliente";
+            this.imprimirHistoricoClienteToolStripMenuItem.Click += new System.EventHandler(this.imprimirHistoricoClienteToolStripMenuItem_Click);
             // 
             // guardarToolStripMenuItem
             // 
@@ -255,21 +264,21 @@
             // criarCarroToolStripMenuItem
             // 
             this.criarCarroToolStripMenuItem.Name = "criarCarroToolStripMenuItem";
-            this.criarCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.criarCarroToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.criarCarroToolStripMenuItem.Text = "Criar Carro";
             this.criarCarroToolStripMenuItem.Click += new System.EventHandler(this.criarCarroToolStripMenuItem_Click);
             // 
             // editarCarroToolStripMenuItem
             // 
             this.editarCarroToolStripMenuItem.Name = "editarCarroToolStripMenuItem";
-            this.editarCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarCarroToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.editarCarroToolStripMenuItem.Text = "Editar Carro";
             this.editarCarroToolStripMenuItem.Click += new System.EventHandler(this.editarCarroToolStripMenuItem_Click);
             // 
             // eliminarCarroToolStripMenuItem
             // 
             this.eliminarCarroToolStripMenuItem.Name = "eliminarCarroToolStripMenuItem";
-            this.eliminarCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarCarroToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.eliminarCarroToolStripMenuItem.Text = "Eliminar Carro";
             this.eliminarCarroToolStripMenuItem.Click += new System.EventHandler(this.eliminarCarroToolStripMenuItem_Click);
             // 
@@ -381,12 +390,12 @@
             this.gbxAluguer.TabStop = false;
             this.gbxAluguer.Text = "Carros para Vender";
             // 
-            // imprimirHistoricoClienteToolStripMenuItem
+            // novoClienteToolStripMenuItem
             // 
-            this.imprimirHistoricoClienteToolStripMenuItem.Name = "imprimirHistoricoClienteToolStripMenuItem";
-            this.imprimirHistoricoClienteToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.imprimirHistoricoClienteToolStripMenuItem.Text = "Imprimir Historico Cliente";
-            this.imprimirHistoricoClienteToolStripMenuItem.Click += new System.EventHandler(this.imprimirHistoricoClienteToolStripMenuItem_Click);
+            this.novoClienteToolStripMenuItem.Name = "novoClienteToolStripMenuItem";
+            this.novoClienteToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.novoClienteToolStripMenuItem.Text = "Novo Cliente";
+            this.novoClienteToolStripMenuItem.Click += new System.EventHandler(this.novoClienteToolStripMenuItem_Click);
             // 
             // GestorVenda
             // 
@@ -452,5 +461,6 @@
         public System.Windows.Forms.ListBox lbxCarrosVenda;
         private System.Windows.Forms.GroupBox gbxAluguer;
         private System.Windows.Forms.ToolStripMenuItem imprimirHistoricoClienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem novoClienteToolStripMenuItem;
     }
 }

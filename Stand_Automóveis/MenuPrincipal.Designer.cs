@@ -32,13 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelHora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Estatisticas = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Numeros = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.btnGestaoVenda = new System.Windows.Forms.Button();
             this.btnGestaoAluguer = new System.Windows.Forms.Button();
             this.btnGestaoOficina = new System.Windows.Forms.Button();
             this.btnGestaoClientes = new System.Windows.Forms.Button();
-            this.Estatisticas = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,10 +48,11 @@
             this.statusStrip1.BackColor = System.Drawing.Color.White;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelHora,
-            this.Estatisticas});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 341);
+            this.Estatisticas,
+            this.Numeros});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 321);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(763, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(764, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -60,6 +62,19 @@
             this.toolStripStatusLabelHora.Name = "toolStripStatusLabelHora";
             this.toolStripStatusLabelHora.Size = new System.Drawing.Size(49, 17);
             this.toolStripStatusLabelHora.Text = "00:00:00";
+            // 
+            // Estatisticas
+            // 
+            this.Estatisticas.Name = "Estatisticas";
+            this.Estatisticas.Size = new System.Drawing.Size(0, 17);
+            this.Estatisticas.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            // 
+            // Numeros
+            // 
+            this.Numeros.Name = "Numeros";
+            this.Numeros.Size = new System.Drawing.Size(561, 17);
+            this.Numeros.Text = "Numero Clientes: 0 Numero de Vendas: 0 Numero de carros alugados: 0  Numero de Ca" +
+    "rros Repadados: 0";
             // 
             // timer1
             // 
@@ -156,18 +171,12 @@
             this.btnGestaoClientes.UseVisualStyleBackColor = false;
             this.btnGestaoClientes.Click += new System.EventHandler(this.BtnGestaoClientes_Click_1);
             // 
-            // Estatisticas
-            // 
-            this.Estatisticas.Name = "Estatisticas";
-            this.Estatisticas.Size = new System.Drawing.Size(0, 17);
-            this.Estatisticas.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
-            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(10)))), ((int)(((byte)(28)))));
-            this.ClientSize = new System.Drawing.Size(763, 363);
+            this.ClientSize = new System.Drawing.Size(764, 343);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGestaoVenda);
             this.Controls.Add(this.btnGestaoAluguer);
@@ -175,6 +184,7 @@
             this.Controls.Add(this.btnGestaoClientes);
             this.Controls.Add(this.statusStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stand Local";
@@ -196,6 +206,7 @@
         private System.Windows.Forms.Button btnGestaoOficina;
         private System.Windows.Forms.Button btnGestaoClientes;
         private System.Windows.Forms.ToolStripStatusLabel Estatisticas;
+        private System.Windows.Forms.ToolStripStatusLabel Numeros;
     }
 }
 
