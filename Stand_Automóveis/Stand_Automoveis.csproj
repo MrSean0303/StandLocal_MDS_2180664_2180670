@@ -278,6 +278,7 @@
     <None Include="Resources\Cancel_16x.png" />
     <None Include="Resources\Edit_straight_16xLG.png" />
     <None Include="Resources\Checkmark_16x.png" />
+    <None Include="Resources\PrintStatusBar6_16x.png" />
     <Content Include="StandLocalDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>StandLocalDB.Context.cs</LastGenOutput>

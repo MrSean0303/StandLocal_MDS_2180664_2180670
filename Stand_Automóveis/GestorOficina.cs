@@ -198,17 +198,18 @@ namespace Stand_Automoveis
                 return;
             }
 
-            dialogResult = MessageBox.Show("Pretende eliminar a Parcela selecionada?.", "Eliminar Parcela?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            dialogResult = MessageBox.Show("Pretende eliminar o Carro selecionada?.", "Eliminar Carro?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if (dialogResult == DialogResult.Yes)
+            if (carroSelecionado.Servico.Count == 0 && dialogResult == DialogResult.Yes)
             {
                 listaCarro.Remove(carroSelecionado);
                 StandLocalDB.Carro.Remove(carroSelecionado);
                 AtualizarCarros();
                 conteudoNovo = true;
             }
-            else
+            else if(dialogResult == DialogResult.Yes)
             {
+                MessageBox.Show("O carro selecionado tem serviços associados. Elimine primeiro os Serviços para prosseguir.", "Erro ao Eliminar Carro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
@@ -278,7 +279,7 @@ namespace Stand_Automoveis
                 AtualizarServicos();
                 conteudoNovo = true;
             }
-            else
+            else if(dialogResult == DialogResult.Yes)
             {
                 MessageBox.Show("O serviço selecionado tem parcelas associadas. Elimine primeiro as Parcelas para prosseguir.", "Erro ao Eliminar Serviço", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -464,6 +465,7 @@ namespace Stand_Automoveis
         }
         private void DisableServicos()
         {
+            buttonServicoOkay.Enabled = false;
             buttonAddParcela.Enabled = false;
             buttonEliminarServico.Enabled = false;
             buttonEditarServico.Enabled = false;
@@ -484,6 +486,7 @@ namespace Stand_Automoveis
         }
         private void EnableServicos()
         {
+            buttonServicoOkay.Enabled = true;
             buttonAddParcela.Enabled = true;
             buttonEliminarServico.Enabled = true;
             buttonEditarServico.Enabled = true;
@@ -507,7 +510,16 @@ namespace Stand_Automoveis
         private void ButtonServicoOkay_Click(object sender, EventArgs e)
         {
             Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
+            string done = "(ACABADO) ";
 
+            if(servicoSelecionado.ToString().Contains(done) == false)
+            {
+                servicoSelecionado.DataSaida = DateTime.Now.Date;
+                servicoSelecionado.Tipo = done + servicoSelecionado.Tipo;
+            }
+
+            conteudoNovo = true;
+            AtualizarServicos();
         }
     }
 }
