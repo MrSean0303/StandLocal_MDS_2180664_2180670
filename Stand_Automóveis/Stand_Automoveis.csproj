@@ -58,11 +58,11 @@
     <Compile Include="Alugueres.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="AluguerInformacoes.cs">
+    <Compile Include="Form_AluguerInformacoes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AluguerInformacoes.Designer.cs">
-      <DependentUpon>AluguerInformacoes.cs</DependentUpon>
+    <Compile Include="Form_AluguerInformacoes.Designer.cs">
+      <DependentUpon>Form_AluguerInformacoes.cs</DependentUpon>
     </Compile>
     <Compile Include="CarregarBD.cs">
       <SubType>Form</SubType>
@@ -184,17 +184,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StandLocalDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="VendaInformacoes.cs">
+    <Compile Include="Form_VendaInformacoes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VendaInformacoes.Designer.cs">
-      <DependentUpon>VendaInformacoes.cs</DependentUpon>
+    <Compile Include="Form_VendaInformacoes.Designer.cs">
+      <DependentUpon>Form_VendaInformacoes.cs</DependentUpon>
     </Compile>
     <Compile Include="Vendas.cs">
       <DependentUpon>StandLocalDB.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AluguerInformacoes.resx">
-      <DependentUpon>AluguerInformacoes.cs</DependentUpon>
+    <EmbeddedResource Include="Form_AluguerInformacoes.resx">
+      <DependentUpon>Form_AluguerInformacoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CarregarBD.resx">
       <DependentUpon>CarregarBD.cs</DependentUpon>
@@ -242,8 +242,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="VendaInformacoes.resx">
-      <DependentUpon>VendaInformacoes.cs</DependentUpon>
+    <EmbeddedResource Include="Form_VendaInformacoes.resx">
+      <DependentUpon>Form_VendaInformacoes.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

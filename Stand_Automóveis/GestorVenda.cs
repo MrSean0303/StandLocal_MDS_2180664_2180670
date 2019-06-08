@@ -139,10 +139,17 @@ namespace Stand_Automoveis
                 return;
             }
 
-            listaCarrosVenda.Remove(carroVendaSelecionado);
-            StandLocalDB.Carro.Remove(carroVendaSelecionado);
-            AtualizarListaCarrosVenda();
-            dadosGuardados = false;
+            if (carroVendaSelecionado.Venda == null)
+            {
+                listaCarrosVenda.Remove(carroVendaSelecionado);
+                StandLocalDB.Carro.Remove(carroVendaSelecionado);
+                AtualizarListaCarrosVenda();
+                dadosGuardados = false;
+            }
+            else {
+                MessageBox.Show("O Carro selecionado ja se encontra vendido", "Carro nao pode ser apagado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         public void testarVenda() {   
@@ -168,8 +175,40 @@ namespace Stand_Automoveis
 
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(dadosGuardados == false)
-                StandLocalDB.SaveChanges();
+            bool carroSemVenda = false;
+            List<CarrosVenda> carrosParaEliminar = new List<CarrosVenda>();
+            foreach (CarrosVenda carro in listaCarrosVenda)
+            {
+                if (carro.Venda == null)
+                {
+                    carroSemVenda = true;
+                    carrosParaEliminar.Add(carro);
+                }
+            }
+
+            if (dadosGuardados == false)
+            {
+                if (MessageBox.Show("Não guardou as suas ultimas alterações.", "Guardar Alterações?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if (carroSemVenda == true)
+                    {
+                        MessageBox.Show("Não pode ter carros para Venda sem estarem associados a vendas", "Carros sem vendas", MessageBoxButtons.OK);
+                        if (MessageBox.Show("Deseja apagar os carros sem venda?", "Eliminar Carros sem venda?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        {
+                            foreach (CarrosVenda carrosEliminar in carrosParaEliminar)
+                            {
+                                StandLocalDB.Carro.Remove(carrosEliminar);
+                            }
+                            StandLocalDB.SaveChanges();
+                        }
+
+                    }
+                    else
+                    {
+                        StandLocalDB.SaveChanges();
+                    }
+                }
+            }
 
             dadosGuardados = true;
         }
@@ -240,6 +279,10 @@ namespace Stand_Automoveis
             StandLocalDB.Vendas.Remove(vendaSelecionada);
             AtualizarListaVenda(clienteSelecionado);
             dadosGuardados = false;
+
+            tbxestadoVenda.Clear();
+            tbxValorVenda.Clear();
+            dtpdataVenda.Value = DateTime.Now;
         }
 
         private void btnEditarVenda_Click(object sender, EventArgs e)
@@ -317,7 +360,6 @@ namespace Stand_Automoveis
             tbxValorVenda.Text = VendaSelecionado.Valor.ToString();
             dtpdataVenda.Value = VendaSelecionado.Data;
 
-
             btnEditarVenda.Enabled = true;
             btnEliminarVenda.Enabled = true;
             btnInfVenda.Enabled = true;
@@ -335,7 +377,7 @@ namespace Stand_Automoveis
                 return;
             }
 
-            VendaInformacoes vendaInformacoes = new VendaInformacoes(clienteSelecionado, vendaSelecionada);
+            Form_VendaInformacoes vendaInformacoes = new Form_VendaInformacoes(clienteSelecionado, vendaSelecionada);
             vendaInformacoes.Show();
 
         }
@@ -356,14 +398,19 @@ namespace Stand_Automoveis
                     Estado = tbxestadoVenda.Text,
                     Valor = double.Parse(tbxValorVenda.Text),
                     Data = dtpdataVenda.Value.Date,
-                    CarroVenda = carroVendaSelecionado                  
+                    CarroVenda = carroVendaSelecionado,
                 };
 
                 StandLocalDB.Clientes.Find(clienteSelecionado.IdCliente).Venda.Add(tempvenda);
 
                 lbxVendas.DataSource = null;
                 lbxVendas.DataSource = StandLocalDB.Clientes.Find(clienteSelecionado.IdCliente).Venda.ToList();
-                dadosGuardados = false;         
+                dadosGuardados = false;
+
+                tbxestadoVenda.Clear();
+                tbxValorVenda.Clear();
+                dtpdataVenda.Value = DateTime.Now;
+
             }
 
             valorVenda = false;
@@ -394,6 +441,59 @@ namespace Stand_Automoveis
         private void editarCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditarCarro();
+        }
+
+        private void imprimirHistoricoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+
+            if (clienteSelecionado == null)
+            {
+                MessageBox.Show("ERRO: Tem de ter um cliente selecionado para poder obter o seu Historico.", "Nenhum cliente selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            if (dadosGuardados == false) {
+                if (MessageBox.Show("Por motivos de segurança teremos de guardar qualquer alteração feito nas vendas antes de imprimir. Deseja guardar", "Guardar obrigatorio", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) {
+
+                    bool carroSemVenda = false;
+                    List<CarrosVenda> carrosParaEliminar = new List<CarrosVenda>();
+                    foreach (CarrosVenda carro in listaCarrosVenda)
+                    {
+                        if (carro.Venda == null)
+                        {
+                            carroSemVenda = true;
+                            carrosParaEliminar.Add(carro);
+                        }
+                    }
+
+                    if (carroSemVenda == true)
+                    {
+                        MessageBox.Show("Não pode ter carros para Venda sem estarem associados a vendas", "Carros sem vendas", MessageBoxButtons.OK);
+                        if (MessageBox.Show("Deseja apagar os carros sem venda?", "Eliminar Carros sem venda?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        {
+                            foreach (CarrosVenda carrosEliminar in carrosParaEliminar)
+                            {
+                                StandLocalDB.Carro.Remove(carrosEliminar);
+                            }
+                            AtualizarListaCarrosVenda();
+                            StandLocalDB.SaveChanges();
+                        }
+
+                    }
+                    else
+                    {
+                        StandLocalDB.SaveChanges();
+                    }
+
+
+                    StandLocalDB.SaveChanges();
+
+                    ImprimirDocumentos imprimir = new ImprimirDocumentos();
+                    imprimir.VendaHistorico(clienteSelecionado);
+                }
+            }
         }
 
         private void eliminarCarroToolStripMenuItem_Click(object sender, EventArgs e)

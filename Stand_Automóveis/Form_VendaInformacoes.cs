@@ -10,34 +10,32 @@ using System.Windows.Forms;
 
 namespace Stand_Automoveis
 {
-    public partial class AluguerInformacoes : Form
+    public partial class Form_VendaInformacoes : Form
     {
         public Clientes cliente;
-        public Alugueres aluguer;
-        public CarrosAluguer carro;
+        public Vendas venda;
+        public CarrosVenda carro;
 
-        public AluguerInformacoes(object clienteSelecionado, object aluguerSelecionado)
+        public Form_VendaInformacoes(object clienteSelecionado, object vendaSelecionado)
         {
             InitializeComponent();
 
             cliente = clienteSelecionado as Clientes;
-            aluguer = aluguerSelecionado as Alugueres;
-            carro = aluguer.CarroAluguer;
+            venda = vendaSelecionado as Vendas;
+            carro = venda.CarroVenda;
 
             lblNomeCliente.Text = cliente.Nome;
             lblCombustivel.Text = carro.Combustivel;
             lblContactoCliente.Text = cliente.Contacto;
-            lblDtaEntrega.Text = aluguer.DataFim.ToString("dd-MM-yy");
-            lblEstado.Text = carro.Estado;
+            lblData.Text = venda.Data.ToString("dd-MM-yy");
+            lblEstado.Text = venda.Estado;
             lblMarca.Text = carro.Marca;
-            lblMatricula.Text = carro.Matricula;
+            lblExtras.Text = carro.Extras;
             lblModelo.Text = carro.Modelo;
             lblMoradaCliente.Text = cliente.Morada;
             lblNifCliente.Text = cliente.NIF;
             lblNumChassis.Text = carro.NumeroChassis;
-            lblNumKms.Text = aluguer.Kms;
-            lblValor.Text = aluguer.Valor.ToString();
-            lblDataInicio.Text = aluguer.DataInicio.ToString("dd-MM-yy");
+            lblValor.Text = venda.Valor.ToString();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -47,7 +45,9 @@ namespace Stand_Automoveis
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-
+            ImprimirDocumentos imprimir = new ImprimirDocumentos();
+            imprimir.VendaUnica(cliente, venda);
+            
         }
     }
 }

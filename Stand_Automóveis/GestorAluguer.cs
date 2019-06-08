@@ -341,7 +341,7 @@ namespace Stand_Automoveis
                 return;
             }
 
-            AluguerInformacoes informacoes = new AluguerInformacoes(clienteSelecionado, aluguerSelecionado);
+            Form_AluguerInformacoes informacoes = new Form_AluguerInformacoes(clienteSelecionado, aluguerSelecionado);
             informacoes.Show();
         }
 
@@ -376,6 +376,20 @@ namespace Stand_Automoveis
         private void eliminarCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EliminarCarro();
+        }
+
+        private void imprimirHistoricoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+            if (clienteSelecionado == null)
+            {
+                MessageBox.Show("ERRO: Tem de ter um cliente selecionado para poder obter o seu Historico.", "Nenhum cliente selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            ImprimirDocumentos imprimir = new ImprimirDocumentos();
+            imprimir.Aluguereshistorico(clienteSelecionado);
+
         }
 
         private void lbxAluguer_SelectedIndexChanged(object sender, EventArgs e)

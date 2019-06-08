@@ -1,6 +1,6 @@
 ﻿namespace Stand_Automoveis
 {
-    partial class AluguerInformacoes
+    partial class Form_AluguerInformacoes
     {
         /// <summary>
         /// Required designer variable.
@@ -404,7 +404,7 @@
             this.label11.TabIndex = 14;
             this.label11.Text = "Data de inicio do aluguer:";
             // 
-            // AluguerInformacoes
+            // Form_AluguerInformacoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -413,7 +413,7 @@
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "AluguerInformacoes";
+            this.Name = "Form_AluguerInformacoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AluguerInformacoes";
             this.groupBox2.ResumeLayout(false);

@@ -1,6 +1,6 @@
 ﻿namespace Stand_Automoveis
 {
-    partial class VendaInformacoes
+    partial class Form_VendaInformacoes
     {
         /// <summary>
         /// Required designer variable.
@@ -391,6 +391,7 @@
             this.btnImprimir.TabIndex = 11;
             this.btnImprimir.Text = "Imprimir Aluguer";
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // VendaInformacoes
             // 
