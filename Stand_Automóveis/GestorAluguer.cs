@@ -43,6 +43,7 @@ namespace Stand_Automoveis
             LimparDados();
         }
 
+        #region AtualizarDados
         private void LerDados()
         {
             listaClientes = StandLocalDB.Clientes.ToList();
@@ -94,7 +95,134 @@ namespace Stand_Automoveis
             lbxAluguer.DataSource = null;
 
         }
-        public void TesteAluguer()
+        #endregion
+
+        #region Alugueres
+
+        private void lbxAluguer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
+
+            if (aluguerSelecionado == null)
+            {
+                btnEditarAluguer.Enabled = false;
+                btnEliminarAluguer.Enabled = false;
+                return;
+            }
+
+            btnEditarAluguer.Enabled = true;
+            btnEliminarAluguer.Enabled = true;
+            btnInfAluguer.Enabled = true;
+
+            tbxKms.Text = aluguerSelecionado.Kms;
+            tbxValor.Text = aluguerSelecionado.Valor.ToString();
+            dtpEntrega.Value = aluguerSelecionado.DataInicio;
+
+        }
+
+        private void btnEditarAluguer_Click(object sender, EventArgs e)
+        {
+            Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
+
+            NovoAluguer();
+            if (valorpassou == true && kmspassou == true && dataCerta == true)
+            {
+                aluguerSelecionado.Kms = tbxKms.Text;
+                aluguerSelecionado.Valor = double.Parse(tbxValor.Text);
+                aluguerSelecionado.DataInicio = dtpEntrega.Value;
+                aluguerSelecionado.DataFim = dtpRececao.Value;
+
+                AtualizarListaAluguer();
+                dadosGuardados = false;
+                lbxAluguer.ClearSelected();
+
+                tbxValor.Clear();
+                tbxKms.Clear();
+                dtpEntrega.Value = DateTime.Now;
+                dtpRececao.Value = DateTime.Now;
+            }
+
+            valorpassou = false;
+            kmspassou = false;
+            dataCerta = true;
+        }
+
+        private void BtnEliminarAluguer_Click(object sender, EventArgs e)
+        {
+            Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
+
+            if (aluguerSelecionado == null)
+            {
+                MessageBox.Show("Selecione um aluguer para o poder eliminar", "Aluguer nao selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            StandLocalDB.Aluguer.Remove(aluguerSelecionado);
+
+            AtualizarListaAluguer();
+            dadosGuardados = false;
+        }
+
+        private void ButtonInformacoesAluguer_Click(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+            Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
+
+            if (clienteSelecionado == null || aluguerSelecionado == null)
+            {
+                return;
+            }
+
+            Form_AluguerInformacoes informacoes = new Form_AluguerInformacoes(clienteSelecionado, aluguerSelecionado);
+            informacoes.Show();
+        }
+
+        private void btnAddAluguer_Click(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+            CarrosAluguer carroAluguerSelecionado = lbxCarrosAluguer.SelectedItem as CarrosAluguer;
+
+
+            if (clienteSelecionado == null || carroAluguerSelecionado == null)
+            {
+                MessageBox.Show("Selecione o cliente e o carro antes de adicionar o aluguer", "Aluguer Errado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+
+            NovoAluguer();
+
+            if (valorpassou == true && kmspassou == true && dataCerta == true)
+            {
+                Alugueres aluguerTemp = new Alugueres
+                {
+                    DataInicio = dtpEntrega.Value.Date,
+                    DataFim = dtpRececao.Value.Date,
+                    Valor = double.Parse(tbxValor.Text),
+                    Kms = tbxKms.Text,
+                    CarroAluguer = carroAluguerSelecionado,
+                    Cliente = clienteSelecionado,
+                    ClienteIdCliente = clienteSelecionado.IdCliente,
+                };
+
+                StandLocalDB.Clientes.Find(clienteSelecionado.IdCliente).Aluguer.Add(aluguerTemp);
+                AtualizarListaAluguer();
+                dadosGuardados = false;
+                lbxAluguer.ClearSelected();
+
+                tbxValor.Clear();
+                tbxKms.Clear();
+                dtpEntrega.Value = DateTime.Now;
+                dtpRececao.Value = DateTime.Now;
+            }
+
+            valorpassou = false;
+            kmspassou = false;
+            dataCerta = true;
+        }
+
+        public void NovoAluguer()
         {
             double kms, valor;
             DateTime dataEntrega = dtpEntrega.Value.Date;
@@ -121,6 +249,76 @@ namespace Stand_Automoveis
                 dtpEntrega.Value = DateTime.Now;
                 dtpRececao.Value = DateTime.Now;
             }
+        }
+        #endregion
+
+        #region CarrosParaAluguer
+        private void TbxFiltrarCarrosAluguer_Enter(object sender, EventArgs e)
+        {
+            if (tbxFiltrarCarrosAluguer.Text == "Filtrar")
+            {
+                tbxFiltrarCarrosAluguer.Text = "";
+                tbxFiltrarCarrosAluguer.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void TbxFiltrarCarrosAluguer_Leave(object sender, EventArgs e)
+        {
+            if (tbxFiltrarCarrosAluguer.Text.Length == 0)
+            {
+                tbxFiltrarCarrosAluguer.Text = "Filtrar";
+                tbxFiltrarCarrosAluguer.ForeColor = SystemColors.GrayText;
+                AtualizarListaCarrosAluguer();
+            }
+        }
+
+        private void ButtonOrdenarDescCarros_Click(object sender, EventArgs e)
+        {
+            List<CarrosAluguer> carros = listacarrosAluguer.OrderByDescending(carro => carro.Marca).ToList();
+            lbxCarrosAluguer.DataSource = null;
+            lbxCarrosAluguer.DataSource = carros;
+        }
+
+        private void ButtonOrdenarAscCarros_Click(object sender, EventArgs e)
+        {
+            List<CarrosAluguer> carros = listacarrosAluguer.OrderBy(carro => carro.Marca).ToList();
+            lbxCarrosAluguer.DataSource = null;
+            lbxCarrosAluguer.DataSource = carros;
+        }
+
+        private void TbxFiltrarCarrosAluguer_TextChanged(object sender, EventArgs e)
+        {
+            string nome = tbxFiltrarCarrosAluguer.Text;
+
+            if (nome != string.Empty)
+            {
+                List<CarrosAluguer> carrosAluguer = listacarrosAluguer.Where(carro => carro.Marca.ToUpper().Contains(nome.ToUpper())).ToList();
+                lbxCarrosAluguer.DataSource = null;
+                lbxCarrosAluguer.DataSource = carrosAluguer;
+            }
+            else
+                AtualizarListaCarrosAluguer();
+        }
+
+        private void lbxListaCarrosAluguer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CarrosAluguer carrosAluguerSelecionado = new CarrosAluguer();
+
+            if (carrosAluguerSelecionado == null)
+            {
+                btnEditarCarroAluguer.Enabled = false;
+                btnEliminarCarroAluguer.Enabled = false;
+                return;
+            }
+
+            btnEditarCarroAluguer.Enabled = true;
+            btnEliminarCarroAluguer.Enabled = true;
+
+            lbxAluguer.ClearSelected();
+            tbxKms.Clear();
+            tbxValor.Clear();
+            dtpEntrega.Value = DateTime.Now;
+            dtpRececao.Value = DateTime.Now;
         }
 
         public void CriarCarro()
@@ -211,27 +409,6 @@ namespace Stand_Automoveis
                 return;
             }
         }
-
-
-        private void btnAddCarro_Click(object sender, EventArgs e)
-        {
-            CriarCarro();
-        }
-
-        private void GestorAluguer_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-            if (dadosGuardados == false)
-            {
-                if (MessageBox.Show("Não guardou as suas ultimas alterações.", "Guardar Alterações?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    StandLocalDB.SaveChanges();
-                }
-            }
-
-            StandLocalDB.Dispose();
-        }
-
         private void btnEditarCarroAluguer_Click(object sender, EventArgs e)
         {
             EditarCarro();
@@ -242,48 +419,58 @@ namespace Stand_Automoveis
             EliminarCarro();
         }
 
-        private void btnAddAluguer_Click(object sender, EventArgs e)
+        private void btnAddCarro_Click(object sender, EventArgs e)
         {
-            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
-            CarrosAluguer carroAluguerSelecionado = lbxCarrosAluguer.SelectedItem as CarrosAluguer;
+            CriarCarro();
+        }
+        #endregion
 
-
-            if (clienteSelecionado == null || carroAluguerSelecionado == null)
+        #region Clientes
+        private void TbxFiltrarClientes_Enter(object sender, EventArgs e)
+        {
+            if (tbxFiltrarClientes.Text == "Filtrar")
             {
-                MessageBox.Show("Selecione o cliente e o carro antes de adicionar o aluguer", "Aluguer Errado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-
+                tbxFiltrarClientes.Text = "";
+                tbxFiltrarClientes.ForeColor = SystemColors.WindowText;
             }
+        }
 
-            TesteAluguer();
-
-            if (valorpassou == true && kmspassou == true && dataCerta == true)
+        private void TbxFiltrarClientes_Leave(object sender, EventArgs e)
+        {
+            if (tbxFiltrarClientes.Text.Length == 0)
             {
-                Alugueres aluguerTemp = new Alugueres
-                {
-                    DataInicio = dtpEntrega.Value.Date,
-                    DataFim = dtpRececao.Value.Date,
-                    Valor = double.Parse(tbxValor.Text),
-                    Kms = tbxKms.Text,
-                    CarroAluguer = carroAluguerSelecionado,
-                    Cliente = clienteSelecionado,
-                    ClienteIdCliente = clienteSelecionado.IdCliente,
-                };
-
-                StandLocalDB.Clientes.Find(clienteSelecionado.IdCliente).Aluguer.Add(aluguerTemp);
-                AtualizarListaAluguer();
-                dadosGuardados = false;
-                lbxAluguer.ClearSelected();
-
-                tbxValor.Clear();
-                tbxKms.Clear();
-                dtpEntrega.Value = DateTime.Now;
-                dtpRececao.Value = DateTime.Now;
+                tbxFiltrarClientes.Text = "Filtrar";
+                tbxFiltrarClientes.ForeColor = SystemColors.GrayText;
+                AtualizarClientes();
             }
+        }
 
-            valorpassou = false;
-            kmspassou = false;
-            dataCerta = true;
+        private void ButtonOrdenarCresClientes_Click(object sender, EventArgs e)
+        {
+            List<Clientes> clientes = listaClientes.OrderBy(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
+        }
+
+        private void ButtonOrdenarDescClientes_Click(object sender, EventArgs e)
+        {
+            List<Clientes> clientes = listaClientes.OrderByDescending(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
+        }
+
+        private void TbxFiltrarClientes_TextChanged(object sender, EventArgs e)
+        {
+            string nome = tbxFiltrarClientes.Text;
+
+            if (nome != string.Empty)
+            {
+                List<Clientes> clientes = listaClientes.Where(cliente => cliente.Nome.ToUpper().Contains(nome.ToUpper())).ToList();
+                lbxClientes.DataSource = null;
+                lbxClientes.DataSource = clientes;
+            }
+            else
+                AtualizarClientes();
         }
 
         private void lbxClientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -303,59 +490,9 @@ namespace Stand_Automoveis
             dtpEntrega.Value = DateTime.Now;
             dtpRececao.Value = DateTime.Now;
         }
+        #endregion
 
-        private void lbxListaCarrosAluguer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CarrosAluguer carrosAluguerSelecionado = new CarrosAluguer();
-
-            if (carrosAluguerSelecionado == null)
-            {
-                btnEditarCarroAluguer.Enabled = false;
-                btnEliminarCarroAluguer.Enabled = false;
-                return;
-            }
-
-            btnEditarCarroAluguer.Enabled = true;
-            btnEliminarCarroAluguer.Enabled = true;
-
-            lbxAluguer.ClearSelected();
-            tbxKms.Clear();
-            tbxValor.Clear();
-            dtpEntrega.Value = DateTime.Now;
-            dtpRececao.Value = DateTime.Now;
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
-
-            if (aluguerSelecionado == null)
-            {
-                MessageBox.Show("Selecione um aluguer para o poder eliminar", "Aluguer nao selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-
-            StandLocalDB.Aluguer.Remove(aluguerSelecionado);
-
-            AtualizarListaAluguer();
-            dadosGuardados = false;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
-            Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
-
-            if (clienteSelecionado == null || aluguerSelecionado == null)
-            {
-                return;
-            }
-
-            Form_AluguerInformacoes informacoes = new Form_AluguerInformacoes(clienteSelecionado, aluguerSelecionado);
-            informacoes.Show();
-        }
-
+        #region ToolStripOptions
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
@@ -402,149 +539,20 @@ namespace Stand_Automoveis
             imprimir.Aluguereshistorico(clienteSelecionado);
 
         }
+        #endregion
 
-        private void TbxFiltrarClientes_TextChanged(object sender, EventArgs e)
+        private void GestorAluguer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string nome = tbxFiltrarClientes.Text;
 
-            if (nome != string.Empty)
+            if (dadosGuardados == false)
             {
-                List<Clientes> clientes = listaClientes.Where(cliente => cliente.Nome.ToUpper().Contains(nome.ToUpper())).ToList();
-                lbxClientes.DataSource = null;
-                lbxClientes.DataSource = clientes;
-            }
-            else
-                AtualizarClientes();
-        }
-
-        private void TbxFiltrarCarrosAluguer_TextChanged(object sender, EventArgs e)
-        {
-            string nome = tbxFiltrarCarrosAluguer.Text;
-
-            if (nome != string.Empty)
-            {
-                List<CarrosAluguer> carrosAluguer = listacarrosAluguer.Where(carro => carro.Marca.ToUpper().Contains(nome.ToUpper())).ToList();
-                lbxCarrosAluguer.DataSource = null;
-                lbxCarrosAluguer.DataSource = carrosAluguer;
-            }
-            else
-                AtualizarListaCarrosAluguer();
-        }
-
-        private void ButtonOrdenarCresClientes_Click(object sender, EventArgs e)
-        {
-            List<Clientes> clientes = listaClientes.OrderBy(cliente => cliente.Nome).ToList();
-            lbxClientes.DataSource = null;
-            lbxClientes.DataSource = clientes;
-        }
-
-        private void ButtonOrdenarDescClientes_Click(object sender, EventArgs e)
-        {
-            List<Clientes> clientes = listaClientes.OrderByDescending(cliente => cliente.Nome).ToList();
-            lbxClientes.DataSource = null;
-            lbxClientes.DataSource = clientes;
-        }
-
-        private void ButtonOrdenarDescCarros_Click(object sender, EventArgs e)
-        {
-            List<CarrosAluguer> carros = listacarrosAluguer.OrderByDescending(carro => carro.Marca).ToList();
-            lbxCarrosAluguer.DataSource = null;
-            lbxCarrosAluguer.DataSource = carros;
-        }
-
-        private void ButtonOrdenarAscCarros_Click(object sender, EventArgs e)
-        {
-            List<CarrosAluguer> carros = listacarrosAluguer.OrderBy(carro => carro.Marca).ToList();
-            lbxCarrosAluguer.DataSource = null;
-            lbxCarrosAluguer.DataSource = carros;
-        }
-
-        private void TbxFiltrarClientes_Enter(object sender, EventArgs e)
-        {
-            if (tbxFiltrarClientes.Text == "Filtrar")
-            {
-                tbxFiltrarClientes.Text = "";
-                tbxFiltrarClientes.ForeColor = SystemColors.WindowText;
-            }
-        }
-
-        private void TbxFiltrarClientes_Leave(object sender, EventArgs e)
-        {
-            if (tbxFiltrarClientes.Text.Length == 0)
-            {
-                tbxFiltrarClientes.Text = "Filtrar";
-                tbxFiltrarClientes.ForeColor = SystemColors.GrayText;
-                AtualizarClientes();
-            }
-        }
-
-        private void TbxFiltrarCarrosAluguer_Enter(object sender, EventArgs e)
-        {
-            if (tbxFiltrarCarrosAluguer.Text == "Filtrar")
-            {
-                tbxFiltrarCarrosAluguer.Text = "";
-                tbxFiltrarCarrosAluguer.ForeColor = SystemColors.WindowText;
-            }
-        }
-
-        private void TbxFiltrarCarrosAluguer_Leave(object sender, EventArgs e)
-        {
-            if (tbxFiltrarCarrosAluguer.Text.Length == 0)
-            {
-                tbxFiltrarCarrosAluguer.Text = "Filtrar";
-                tbxFiltrarCarrosAluguer.ForeColor = SystemColors.GrayText;
-                AtualizarListaCarrosAluguer();
-            }
-        }
-
-        private void lbxAluguer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
-
-            if (aluguerSelecionado == null)
-            {
-                btnEditarAluguer.Enabled = false;
-                btnEliminarAluguer.Enabled = false;
-                return;
+                if (MessageBox.Show("Não guardou as suas ultimas alterações.", "Guardar Alterações?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    StandLocalDB.SaveChanges();
+                }
             }
 
-            btnEditarAluguer.Enabled = true;
-            btnEliminarAluguer.Enabled = true;
-            btnInfAluguer.Enabled = true;
-
-            tbxKms.Text = aluguerSelecionado.Kms;
-            tbxValor.Text = aluguerSelecionado.Valor.ToString();
-            dtpEntrega.Value = aluguerSelecionado.DataInicio;
-
+            StandLocalDB.Dispose();
         }
-
-        private void btnEditarAluguer_Click(object sender, EventArgs e)
-        {
-            Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
-
-            TesteAluguer();
-            if (valorpassou == true && kmspassou == true && dataCerta == true)
-            {
-                aluguerSelecionado.Kms = tbxKms.Text;
-                aluguerSelecionado.Valor = double.Parse(tbxValor.Text);
-                aluguerSelecionado.DataInicio = dtpEntrega.Value;
-                aluguerSelecionado.DataFim = dtpRececao.Value;
-
-                AtualizarListaAluguer();
-                dadosGuardados = false;
-                lbxAluguer.ClearSelected();
-
-                tbxValor.Clear();
-                tbxKms.Clear();
-                dtpEntrega.Value = DateTime.Now;
-                dtpRececao.Value = DateTime.Now;
-            }
-
-            valorpassou = false;
-            kmspassou = false;
-            dataCerta = true;
-        }
-
-
     }
 }

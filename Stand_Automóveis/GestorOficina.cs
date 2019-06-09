@@ -31,6 +31,7 @@ namespace Stand_Automoveis
             LerDados();
             carregar.Close();
         }
+        #region AtualizaçãoDados
         private void LerDados()
         {
             listaClientes = StandLocalDB.Clientes.ToList();
@@ -48,44 +49,6 @@ namespace Stand_Automoveis
             lbxClientes.DataSource = null;
             lbxClientes.DataSource = listaClientes;
         }
-
-
-        private void TbxFiltrar_Leave(object sender, EventArgs e)
-        {
-            if (tbxFiltrar.Text.Length == 0)
-            {
-                tbxFiltrar.Text = "Filtrar";
-                tbxFiltrar.ForeColor = SystemColors.GrayText;
-                AtualizarClientes();
-            }
-        }
-
-        private void TbxFiltrar_Enter(object sender, EventArgs e)
-        {
-            if (tbxFiltrar.Text == "Filtrar")
-            {
-                tbxFiltrar.Text = "";
-                tbxFiltrar.ForeColor = SystemColors.WindowText;
-            }
-        }
-        private void LbxClientes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
-
-            if (clienteSelecionado == null)
-            {
-                buttonAddCarro.Enabled = false;
-                return;
-            }
-            else
-            {
-                buttonAddCarro.Enabled = true;
-                AtualizarCarros();
-                AtualizarServicos();
-                AtualizarParcelas();
-            }
-        }
-     
         private void AtualizarServicos()
         {
             CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
@@ -115,7 +78,73 @@ namespace Stand_Automoveis
                 lbxParcelas.DataSource = servicoSelecionado.Parcela.ToList();
             }
         }
+        #endregion
 
+        #region GroupBoxClientes
+        private void TbxFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            string nome = tbxFiltrar.Text;
+
+            if (nome != string.Empty)
+            {
+                List<Clientes> clientes = listaClientes.Where(cliente => cliente.Nome.ToUpper().Contains(nome.ToUpper())).ToList();
+                lbxClientes.DataSource = null;
+                lbxClientes.DataSource = clientes;
+            }
+            else
+                AtualizarClientes();
+        }
+        private void LbxClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+
+            if (clienteSelecionado == null)
+            {
+                buttonAddCarro.Enabled = false;
+                return;
+            }
+            else
+            {
+                buttonAddCarro.Enabled = true;
+                AtualizarCarros();
+                AtualizarServicos();
+                AtualizarParcelas();
+            }
+        }
+        private void TbxFiltrar_Leave(object sender, EventArgs e)
+        {
+            if (tbxFiltrar.Text.Length == 0)
+            {
+                tbxFiltrar.Text = "Filtrar";
+                tbxFiltrar.ForeColor = SystemColors.GrayText;
+                AtualizarClientes();
+            }
+        }
+
+        private void TbxFiltrar_Enter(object sender, EventArgs e)
+        {
+            if (tbxFiltrar.Text == "Filtrar")
+            {
+                tbxFiltrar.Text = "";
+                tbxFiltrar.ForeColor = SystemColors.WindowText;
+            }
+        }
+        private void ButtonOrdenarCres_Click(object sender, EventArgs e)
+        {
+            List<Clientes> clientes = listaClientes.OrderBy(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
+        }
+
+        private void ButtonOrdenarDesc_Click(object sender, EventArgs e)
+        {
+            List<Clientes> clientes = listaClientes.OrderByDescending(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
+        }
+        #endregion
+
+        #region GroupBoxCarrosOficina
         private void ButtonAddCarro_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -139,7 +168,102 @@ namespace Stand_Automoveis
                 conteudoNovo = true;
             }
         }
+        private void ButtonEliminarCarro_Click(object sender, EventArgs e)
+        {
+            CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
+            DialogResult dialogResult;
 
+            if (carroSelecionado == null)
+            {
+                MessageBox.Show("Nenhum Carro Selecionado", "Erro: Carro Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            dialogResult = MessageBox.Show("Pretende eliminar o Carro selecionada?.", "Eliminar Carro?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (carroSelecionado.Servico.Count == 0 && dialogResult == DialogResult.Yes)
+            {
+                listaCarros.Remove(carroSelecionado);
+                StandLocalDB.Carro.Remove(carroSelecionado);
+                AtualizarCarros();
+                conteudoNovo = true;
+            }
+            else if (dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show("O carro selecionado tem serviços associados. Elimine primeiro os Serviços para prosseguir.", "Erro ao Eliminar Carro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+        private void LbxCarros_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
+
+            if (carroSelecionado == null)
+            {
+                DisableCarros();
+                return;
+            }
+            else
+            {
+                EnableCarros();
+                AtualizarServicos();
+                AtualizarParcelas();
+            }
+        }
+        private void ButtonEditarCarro_Click(object sender, EventArgs e)
+        {
+            CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
+            Form_AddEdit_Carro edicaoCarro = new Form_AddEdit_Carro();
+            edicaoCarro.Text = "Edição do Carro Selecionado";
+
+            edicaoCarro.tbxMarcaCarro.Text = carroSelecionado.Marca;
+            edicaoCarro.tbxModeloCarro.Text = carroSelecionado.Modelo;
+            edicaoCarro.tbxMatriculaCarro.Text = carroSelecionado.Matricula;
+            edicaoCarro.tbxNumChassis.Text = carroSelecionado.NumeroChassis;
+            edicaoCarro.nudKms.Value = decimal.Parse(carroSelecionado.Kms);
+            edicaoCarro.tbxCombustivelCarro.Text = carroSelecionado.Combustivel;
+
+            edicaoCarro.ShowDialog();
+
+            if (edicaoCarro.DialogResult == DialogResult.OK)
+            {
+                carroSelecionado.Marca = edicaoCarro.marca;
+                carroSelecionado.Modelo = edicaoCarro.modelo;
+                carroSelecionado.Matricula = edicaoCarro.matricula;
+                carroSelecionado.NumeroChassis = edicaoCarro.numeroChassis;
+                carroSelecionado.Kms = edicaoCarro.kms;
+                carroSelecionado.Combustivel = edicaoCarro.combustivel;
+
+                conteudoNovo = true;
+                AtualizarCarros();
+            }
+        }
+        #endregion
+
+        #region ToolStripOptions
+        private void imprimirHistoricoCarroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+            CarrosOficina carroOficinaSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
+
+            if (clienteSelecionado == null)
+            {
+                MessageBox.Show("Para imprimir por favor selecione um cliente.", "Cliente por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (carroOficinaSelecionado == null)
+            {
+                MessageBox.Show("Para imprimir por favor selecione um carro", "Carro por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (clienteSelecionado == null || carroOficinaSelecionado == null)
+            {
+                return;
+            }
+
+            ImprimirDocumentos imprimir = new ImprimirDocumentos();
+            imprimir.CarroOficinaHistorico(clienteSelecionado, carroOficinaSelecionado);
+        }
         private void NovoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Add_Cliente novocliente = new Form_Add_Cliente();
@@ -171,45 +295,59 @@ namespace Stand_Automoveis
         {
             Close();
         }
-
-        private void GestorOficina_FormClosing(object sender, FormClosingEventArgs e)
+        private void LimparSelecaoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Se o utilizador ainda nao guardou, guarda
-            if (conteudoNovo == true)
+            lbxClientes.ClearSelected();
+            lbxCarros.DataSource = null;
+            lbxServicos.DataSource = null;
+            lbxParcelas.DataSource = null;
+        }
+        #endregion
+
+        #region GroupBoxServiços
+        private void ButtonFatura_Click(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+            CarrosOficina carroOficinaSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
+            Servicos ServicoSelecionada = (Servicos)lbxServicos.SelectedItem;
+
+            if (clienteSelecionado == null)
             {
-                if (MessageBox.Show("Não guardou as suas ultimas alterações.", "Guardar Alterações?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    StandLocalDB.SaveChanges();
-                }
+                MessageBox.Show("Para imprimir por favor selecione um cliente.", "Cliente por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            StandLocalDB.Dispose();
+
+            if (carroOficinaSelecionado == null)
+            {
+                MessageBox.Show("Para imprimir por favor selecione um carro", "Carro por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (ServicoSelecionada == null)
+            {
+                MessageBox.Show("Para imprimir por favor selecione um Servico", "Servico por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (clienteSelecionado == null || carroOficinaSelecionado == null || ServicoSelecionada == null)
+            {
+                return;
+            }
+
+            ImprimirDocumentos imprimir = new ImprimirDocumentos();
+            imprimir.carroOficinaUnica(clienteSelecionado, carroOficinaSelecionado, ServicoSelecionada);
         }
 
-        private void ButtonEliminarCarro_Click(object sender, EventArgs e)
+        private void ButtonServicoOkay_Click(object sender, EventArgs e)
         {
-            CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
-            DialogResult dialogResult;
+            Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
+            string done = "(ACABADO) ";
 
-            if (carroSelecionado == null)
+            if (servicoSelecionado.ToString().Contains(done) == false)
             {
-                MessageBox.Show("Nenhum Carro Selecionado", "Erro: Carro Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                servicoSelecionado.DataSaida = DateTime.Now.Date;
+                servicoSelecionado.Tipo = done + servicoSelecionado.Tipo;
             }
 
-            dialogResult = MessageBox.Show("Pretende eliminar o Carro selecionada?.", "Eliminar Carro?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (carroSelecionado.Servico.Count == 0 && dialogResult == DialogResult.Yes)
-            {
-                listaCarros.Remove(carroSelecionado);
-                StandLocalDB.Carro.Remove(carroSelecionado);
-                AtualizarCarros();
-                conteudoNovo = true;
-            }
-            else if(dialogResult == DialogResult.Yes)
-            {
-                MessageBox.Show("O carro selecionado tem serviços associados. Elimine primeiro os Serviços para prosseguir.", "Erro ao Eliminar Carro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            conteudoNovo = true;
+            AtualizarServicos();
         }
 
         private void ButtonAddServico_Click(object sender, EventArgs e)
@@ -234,24 +372,6 @@ namespace Stand_Automoveis
                 AtualizarServicos();
             }   
         }
-
-        private void LbxCarros_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
-
-            if (carroSelecionado == null)
-            {
-                DisableCarros();
-                return;  
-            }
-            else
-            {
-                EnableCarros();
-                AtualizarServicos();
-                AtualizarParcelas();
-            }       
-        }
-
         private void ButtonEliminarServicos_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult;
@@ -267,7 +387,7 @@ namespace Stand_Automoveis
                 MessageBox.Show("O serviço não está concluido! Termine primeiro o serviço para continuar.", "Erro: Serviço não terminado.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-                
+
             dialogResult = MessageBox.Show("Pretende eliminar o Serviço selecionada?.", "Eliminar Serviço?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (servicoSelecionado.Parcela.Count == 0 && dialogResult == DialogResult.Yes)
@@ -277,7 +397,7 @@ namespace Stand_Automoveis
                 AtualizarServicos();
                 conteudoNovo = true;
             }
-            else if(dialogResult == DialogResult.Yes)
+            else if (dialogResult == DialogResult.Yes)
             {
                 MessageBox.Show("O serviço selecionado tem parcelas associadas. Elimine primeiro as Parcelas para prosseguir.", "Erro ao Eliminar Serviço", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -304,36 +424,25 @@ namespace Stand_Automoveis
                 AtualizarServicos();
             }
         }
-
-        private void ButtonEditarCarro_Click(object sender, EventArgs e)
+        private void LbxServicos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
-            Form_AddEdit_Carro edicaoCarro = new Form_AddEdit_Carro();
-            edicaoCarro.Text = "Edição do Carro Selecionado";
+            Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
 
-            edicaoCarro.tbxMarcaCarro.Text = carroSelecionado.Marca;
-            edicaoCarro.tbxModeloCarro.Text = carroSelecionado.Modelo;
-            edicaoCarro.tbxMatriculaCarro.Text = carroSelecionado.Matricula;
-            edicaoCarro.tbxNumChassis.Text = carroSelecionado.NumeroChassis;
-            edicaoCarro.nudKms.Value = decimal.Parse(carroSelecionado.Kms);
-            edicaoCarro.tbxCombustivelCarro.Text = carroSelecionado.Combustivel;
-
-            edicaoCarro.ShowDialog();
-
-            if (edicaoCarro.DialogResult == DialogResult.OK)
+            if (servicoSelecionado == null)
             {
-                carroSelecionado.Marca = edicaoCarro.marca;
-                carroSelecionado.Modelo = edicaoCarro.modelo;
-                carroSelecionado.Matricula = edicaoCarro.matricula;
-                carroSelecionado.NumeroChassis = edicaoCarro.numeroChassis;
-                carroSelecionado.Kms = edicaoCarro.kms;
-                carroSelecionado.Combustivel = edicaoCarro.combustivel;
-
-                conteudoNovo = true;
-                AtualizarCarros();
+                DisableServicos();
+                return;
             }
-        }
+            else
+            {
+                EnableServicos();
+                AtualizarParcelas();
+            }
 
+        }
+        #endregion
+
+        #region GroupBoxParcelas
         private void ButtonAddParcela_Click(object sender, EventArgs e)
         {
             Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
@@ -354,23 +463,6 @@ namespace Stand_Automoveis
                 conteudoNovo = true;
                 AtualizarParcelas();
             }
-        }
-
-        private void LbxServicos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
-
-            if (servicoSelecionado == null)
-            {
-                DisableServicos();
-                return;
-            }
-            else
-            {
-                EnableServicos();
-                AtualizarParcelas(); 
-            }
-            
         }
 
         private void ButtonEliminarParcelas_Click(object sender, EventArgs e)
@@ -414,20 +506,6 @@ namespace Stand_Automoveis
             }
         }
 
-        private void ButtonOrdenarCres_Click(object sender, EventArgs e)
-        {
-            List<Clientes> clientes = listaClientes.OrderBy(cliente => cliente.Nome).ToList();
-            lbxClientes.DataSource = null;
-            lbxClientes.DataSource = clientes;
-        }
-
-        private void ButtonOrdenarDesc_Click(object sender, EventArgs e)
-        {
-            List<Clientes> clientes = listaClientes.OrderByDescending(cliente => cliente.Nome).ToList();
-            lbxClientes.DataSource = null;
-            lbxClientes.DataSource = clientes;
-        }
-
         private void LbxParcelas_SelectedIndexChanged(object sender, EventArgs e)
         {
             Parcelas parcelaSelecionado = (Parcelas)lbxParcelas.SelectedItem;
@@ -440,14 +518,7 @@ namespace Stand_Automoveis
             else
                 EnableParcelas();
         }
-
-        private void LimparSelecaoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            lbxClientes.ClearSelected();
-            lbxCarros.DataSource = null;
-            lbxServicos.DataSource = null;
-            lbxParcelas.DataSource = null;
-        }
+        #endregion
 
         #region DisableButtons
         private void DisableParcelas()
@@ -491,84 +562,17 @@ namespace Stand_Automoveis
         }
         #endregion
 
-        private void TbxFiltrar_TextChanged(object sender, EventArgs e)
+        private void GestorOficina_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string nome = tbxFiltrar.Text;
-
-            if (nome != string.Empty)
+            //Se o utilizador ainda nao guardou, guarda
+            if (conteudoNovo == true)
             {
-                List<Clientes> clientes = listaClientes.Where(cliente => cliente.Nome.ToUpper().Contains(nome.ToUpper())).ToList();
-                lbxClientes.DataSource = null;
-                lbxClientes.DataSource = clientes;
+                if (MessageBox.Show("Não guardou as suas ultimas alterações.", "Guardar Alterações?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    StandLocalDB.SaveChanges();
+                }
             }
-            else
-                AtualizarClientes();
-        }
-
-        private void ButtonServicoOkay_Click(object sender, EventArgs e)
-        {
-            Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
-            string done = "(ACABADO) ";
-
-            if(servicoSelecionado.ToString().Contains(done) == false)
-            {
-                servicoSelecionado.DataSaida = DateTime.Now.Date;
-                servicoSelecionado.Tipo = done + servicoSelecionado.Tipo;
-            }
-
-            conteudoNovo = true;
-            AtualizarServicos();
-        }
-
-        private void imprimirHistoricoCarroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
-            CarrosOficina carroOficinaSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
-
-            if (clienteSelecionado == null) {
-                MessageBox.Show("Para imprimir por favor selecione um cliente.", "Cliente por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (carroOficinaSelecionado == null) {
-                MessageBox.Show("Para imprimir por favor selecione um carro", "Carro por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (clienteSelecionado == null || carroOficinaSelecionado == null) {
-                return;
-            }
-
-            ImprimirDocumentos imprimir = new ImprimirDocumentos();
-            imprimir.CarroOficinaHistorico(clienteSelecionado, carroOficinaSelecionado);
-        }
-
-        private void buttonFatura_Click(object sender, EventArgs e)
-        {
-            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
-            CarrosOficina carroOficinaSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
-            Servicos ServicoSelecionada = (Servicos)lbxServicos.SelectedItem;
-
-            if (clienteSelecionado == null)
-            {
-                MessageBox.Show("Para imprimir por favor selecione um cliente.", "Cliente por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (carroOficinaSelecionado == null)
-            {
-                MessageBox.Show("Para imprimir por favor selecione um carro", "Carro por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (ServicoSelecionada == null)
-            {
-                MessageBox.Show("Para imprimir por favor selecione um Servico", "Servico por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (clienteSelecionado == null || carroOficinaSelecionado == null || ServicoSelecionada == null)
-            {
-                return;
-            }
-
-            ImprimirDocumentos imprimir = new ImprimirDocumentos();
-            imprimir.carroOficinaUnica(clienteSelecionado, carroOficinaSelecionado, ServicoSelecionada);
+            StandLocalDB.Dispose();
         }
     }
 }

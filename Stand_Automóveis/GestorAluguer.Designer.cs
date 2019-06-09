@@ -268,9 +268,9 @@
             this.label4.Location = new System.Drawing.Point(6, 24);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label4.Size = new System.Drawing.Size(109, 13);
+            this.label4.Size = new System.Drawing.Size(120, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Numero de Kilimetros:";
+            this.label4.Text = "Numero de Quilómetros:";
             // 
             // gbxClientes
             // 
@@ -374,7 +374,7 @@
             this.btnEliminarAluguer.Size = new System.Drawing.Size(26, 26);
             this.btnEliminarAluguer.TabIndex = 6;
             this.btnEliminarAluguer.UseVisualStyleBackColor = false;
-            this.btnEliminarAluguer.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.btnEliminarAluguer.Click += new System.EventHandler(this.BtnEliminarAluguer_Click);
             // 
             // btnEditarAluguer
             // 
@@ -453,7 +453,7 @@
             this.btnInfAluguer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnInfAluguer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnInfAluguer.UseVisualStyleBackColor = false;
-            this.btnInfAluguer.Click += new System.EventHandler(this.button1_Click);
+            this.btnInfAluguer.Click += new System.EventHandler(this.ButtonInformacoesAluguer_Click);
             // 
             // menuStrip1
             // 

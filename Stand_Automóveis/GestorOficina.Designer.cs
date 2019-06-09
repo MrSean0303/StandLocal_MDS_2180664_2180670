@@ -284,6 +284,7 @@
             this.buttonFatura.Size = new System.Drawing.Size(26, 26);
             this.buttonFatura.TabIndex = 5;
             this.buttonFatura.UseVisualStyleBackColor = false;
+            this.buttonFatura.Click += new System.EventHandler(this.ButtonFatura_Click);
             // 
             // buttonServicoOkay
             // 
