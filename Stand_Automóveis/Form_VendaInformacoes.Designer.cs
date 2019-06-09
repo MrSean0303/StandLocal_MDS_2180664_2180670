@@ -393,7 +393,7 @@
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
-            // VendaInformacoes
+            // Form_VendaInformacoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -402,8 +402,8 @@
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnImprimir);
-            this.Name = "VendaInformacoes";
-            this.Text = "VendaInformacoes";
+            this.Name = "Form_VendaInformacoes";
+            this.Text = "Informações da Venda";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

@@ -133,9 +133,29 @@ namespace Stand_Automoveis.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap StatusInformation_grey_16x {
+            get {
+                object obj = ResourceManager.GetObject("StatusInformation_grey_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap StatusWarning_exp_16x {
             get {
                 object obj = ResourceManager.GetObject("StatusWarning_exp_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StepBackwards_16x {
+            get {
+                object obj = ResourceManager.GetObject("StepBackwards_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

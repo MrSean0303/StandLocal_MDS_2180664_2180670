@@ -28,34 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnEliminarCarroAluguer = new System.Windows.Forms.Button();
-            this.btnAddCarro = new System.Windows.Forms.Button();
-            this.btnFiltrarAluguer = new System.Windows.Forms.Button();
             this.lbxCarrosAluguer = new System.Windows.Forms.ListBox();
-            this.btnEliminarAluguer = new System.Windows.Forms.Button();
             this.dtpRececao = new System.Windows.Forms.DateTimePicker();
             this.dtpEntrega = new System.Windows.Forms.DateTimePicker();
-            this.btnEditarAluguer = new System.Windows.Forms.Button();
-            this.btnAddAluguer = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbxValor = new System.Windows.Forms.TextBox();
             this.tbxKms = new System.Windows.Forms.TextBox();
-            this.btnEditarCarroAluguer = new System.Windows.Forms.Button();
             this.gbxAluguer = new System.Windows.Forms.GroupBox();
-            this.tbxFiltrarAluguer = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxFiltrarCarrosAluguer = new System.Windows.Forms.TextBox();
+            this.tbxFiltrarClientes = new System.Windows.Forms.TextBox();
             this.lbxClientes = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.gbxClientes = new System.Windows.Forms.GroupBox();
-            this.btnFiltrarClientes = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnInfAluguer = new System.Windows.Forms.Button();
             this.lbxAluguer = new System.Windows.Forms.ListBox();
             this.gbxAlugados = new System.Windows.Forms.GroupBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ficheiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imprimirHistoricoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.limparDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +55,17 @@
             this.criarCarroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarCarroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarCarroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imprimirHistoricoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonOrdenarDescCarros = new System.Windows.Forms.Button();
+            this.buttonOrdenarAscCarros = new System.Windows.Forms.Button();
+            this.btnEditarCarroAluguer = new System.Windows.Forms.Button();
+            this.btnEliminarCarroAluguer = new System.Windows.Forms.Button();
+            this.btnAddCarro = new System.Windows.Forms.Button();
+            this.buttonOrdenarDescClientes = new System.Windows.Forms.Button();
+            this.buttonOrdenarCresClientes = new System.Windows.Forms.Button();
+            this.btnEliminarAluguer = new System.Windows.Forms.Button();
+            this.btnEditarAluguer = new System.Windows.Forms.Button();
+            this.btnAddAluguer = new System.Windows.Forms.Button();
+            this.btnInfAluguer = new System.Windows.Forms.Button();
             this.gbxAluguer.SuspendLayout();
             this.gbxClientes.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -71,175 +73,123 @@
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnEliminarCarroAluguer
-            // 
-            this.btnEliminarCarroAluguer.Location = new System.Drawing.Point(210, 432);
-            this.btnEliminarCarroAluguer.Name = "btnEliminarCarroAluguer";
-            this.btnEliminarCarroAluguer.Size = new System.Drawing.Size(100, 23);
-            this.btnEliminarCarroAluguer.TabIndex = 6;
-            this.btnEliminarCarroAluguer.Text = "Eliminar Carro";
-            this.btnEliminarCarroAluguer.UseVisualStyleBackColor = true;
-            this.btnEliminarCarroAluguer.Click += new System.EventHandler(this.btnEliminarCarroAluguer_Click);
-            // 
-            // btnAddCarro
-            // 
-            this.btnAddCarro.Location = new System.Drawing.Point(6, 432);
-            this.btnAddCarro.Name = "btnAddCarro";
-            this.btnAddCarro.Size = new System.Drawing.Size(100, 23);
-            this.btnAddCarro.TabIndex = 5;
-            this.btnAddCarro.Text = "Adicionar Carro";
-            this.btnAddCarro.UseVisualStyleBackColor = true;
-            this.btnAddCarro.Click += new System.EventHandler(this.btnAddCarro_Click);
-            // 
-            // btnFiltrarAluguer
-            // 
-            this.btnFiltrarAluguer.Location = new System.Drawing.Point(242, 19);
-            this.btnFiltrarAluguer.Name = "btnFiltrarAluguer";
-            this.btnFiltrarAluguer.Size = new System.Drawing.Size(68, 23);
-            this.btnFiltrarAluguer.TabIndex = 4;
-            this.btnFiltrarAluguer.Text = "Filtrar";
-            this.btnFiltrarAluguer.UseVisualStyleBackColor = true;
-            // 
             // lbxCarrosAluguer
             // 
+            this.lbxCarrosAluguer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lbxCarrosAluguer.FormattingEnabled = true;
             this.lbxCarrosAluguer.HorizontalScrollbar = true;
             this.lbxCarrosAluguer.Location = new System.Drawing.Point(6, 48);
             this.lbxCarrosAluguer.Name = "lbxCarrosAluguer";
-            this.lbxCarrosAluguer.Size = new System.Drawing.Size(304, 381);
+            this.lbxCarrosAluguer.Size = new System.Drawing.Size(328, 407);
             this.lbxCarrosAluguer.TabIndex = 2;
             this.lbxCarrosAluguer.SelectedIndexChanged += new System.EventHandler(this.lbxListaCarrosAluguer_SelectedIndexChanged);
             // 
-            // btnEliminarAluguer
-            // 
-            this.btnEliminarAluguer.Location = new System.Drawing.Point(370, 134);
-            this.btnEliminarAluguer.Name = "btnEliminarAluguer";
-            this.btnEliminarAluguer.Size = new System.Drawing.Size(105, 22);
-            this.btnEliminarAluguer.TabIndex = 16;
-            this.btnEliminarAluguer.Text = "Eliminar Aluguer";
-            this.btnEliminarAluguer.UseVisualStyleBackColor = true;
-            this.btnEliminarAluguer.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
             // dtpRececao
             // 
-            this.dtpRececao.Location = new System.Drawing.Point(153, 149);
+            this.dtpRececao.Location = new System.Drawing.Point(161, 101);
             this.dtpRececao.Name = "dtpRececao";
-            this.dtpRececao.Size = new System.Drawing.Size(200, 20);
+            this.dtpRececao.Size = new System.Drawing.Size(262, 20);
             this.dtpRececao.TabIndex = 15;
             // 
             // dtpEntrega
             // 
-            this.dtpEntrega.Location = new System.Drawing.Point(153, 106);
+            this.dtpEntrega.Location = new System.Drawing.Point(161, 75);
             this.dtpEntrega.Name = "dtpEntrega";
-            this.dtpEntrega.Size = new System.Drawing.Size(200, 20);
+            this.dtpEntrega.Size = new System.Drawing.Size(262, 20);
             this.dtpEntrega.TabIndex = 14;
-            // 
-            // btnEditarAluguer
-            // 
-            this.btnEditarAluguer.Location = new System.Drawing.Point(370, 90);
-            this.btnEditarAluguer.Name = "btnEditarAluguer";
-            this.btnEditarAluguer.Size = new System.Drawing.Size(105, 21);
-            this.btnEditarAluguer.TabIndex = 13;
-            this.btnEditarAluguer.Text = "Editar Aluguer";
-            this.btnEditarAluguer.UseVisualStyleBackColor = true;
-            this.btnEditarAluguer.Click += new System.EventHandler(this.btnEditarAluguer_Click);
-            // 
-            // btnAddAluguer
-            // 
-            this.btnAddAluguer.Location = new System.Drawing.Point(370, 48);
-            this.btnAddAluguer.Name = "btnAddAluguer";
-            this.btnAddAluguer.Size = new System.Drawing.Size(105, 22);
-            this.btnAddAluguer.TabIndex = 12;
-            this.btnAddAluguer.Text = "Adicionar Aluguer";
-            this.btnAddAluguer.UseVisualStyleBackColor = true;
-            this.btnAddAluguer.Click += new System.EventHandler(this.btnAddAluguer_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 152);
+            this.label1.Location = new System.Drawing.Point(6, 107);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(146, 13);
+            this.label1.Size = new System.Drawing.Size(149, 13);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Data de Receção do veículo";
+            this.label1.Text = "Data de Receção do veículo:";
             // 
             // tbxValor
             // 
-            this.tbxValor.Location = new System.Drawing.Point(153, 63);
+            this.tbxValor.Location = new System.Drawing.Point(161, 49);
             this.tbxValor.Name = "tbxValor";
-            this.tbxValor.Size = new System.Drawing.Size(200, 20);
+            this.tbxValor.Size = new System.Drawing.Size(262, 20);
             this.tbxValor.TabIndex = 5;
             // 
             // tbxKms
             // 
-            this.tbxKms.Location = new System.Drawing.Point(153, 21);
+            this.tbxKms.Location = new System.Drawing.Point(161, 21);
+            this.tbxKms.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
             this.tbxKms.Name = "tbxKms";
-            this.tbxKms.Size = new System.Drawing.Size(200, 20);
+            this.tbxKms.Size = new System.Drawing.Size(262, 20);
             this.tbxKms.TabIndex = 4;
-            // 
-            // btnEditarCarroAluguer
-            // 
-            this.btnEditarCarroAluguer.Location = new System.Drawing.Point(109, 432);
-            this.btnEditarCarroAluguer.Name = "btnEditarCarroAluguer";
-            this.btnEditarCarroAluguer.Size = new System.Drawing.Size(100, 23);
-            this.btnEditarCarroAluguer.TabIndex = 7;
-            this.btnEditarCarroAluguer.Text = "Editar Carro";
-            this.btnEditarCarroAluguer.UseVisualStyleBackColor = true;
-            this.btnEditarCarroAluguer.Click += new System.EventHandler(this.btnEditarCarroAluguer_Click);
             // 
             // gbxAluguer
             // 
+            this.gbxAluguer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.gbxAluguer.Controls.Add(this.buttonOrdenarDescCarros);
+            this.gbxAluguer.Controls.Add(this.buttonOrdenarAscCarros);
             this.gbxAluguer.Controls.Add(this.btnEditarCarroAluguer);
             this.gbxAluguer.Controls.Add(this.btnEliminarCarroAluguer);
             this.gbxAluguer.Controls.Add(this.btnAddCarro);
-            this.gbxAluguer.Controls.Add(this.btnFiltrarAluguer);
-            this.gbxAluguer.Controls.Add(this.tbxFiltrarAluguer);
+            this.gbxAluguer.Controls.Add(this.tbxFiltrarCarrosAluguer);
             this.gbxAluguer.Controls.Add(this.lbxCarrosAluguer);
             this.gbxAluguer.Location = new System.Drawing.Point(331, 27);
             this.gbxAluguer.Name = "gbxAluguer";
-            this.gbxAluguer.Size = new System.Drawing.Size(320, 461);
+            this.gbxAluguer.Size = new System.Drawing.Size(340, 461);
             this.gbxAluguer.TabIndex = 8;
             this.gbxAluguer.TabStop = false;
             this.gbxAluguer.Text = "Carros para Aluguer";
             // 
-            // tbxFiltrarAluguer
+            // tbxFiltrarCarrosAluguer
             // 
-            this.tbxFiltrarAluguer.Location = new System.Drawing.Point(6, 23);
-            this.tbxFiltrarAluguer.Name = "tbxFiltrarAluguer";
-            this.tbxFiltrarAluguer.Size = new System.Drawing.Size(230, 20);
-            this.tbxFiltrarAluguer.TabIndex = 3;
+            this.tbxFiltrarCarrosAluguer.Location = new System.Drawing.Point(6, 22);
+            this.tbxFiltrarCarrosAluguer.Name = "tbxFiltrarCarrosAluguer";
+            this.tbxFiltrarCarrosAluguer.Size = new System.Drawing.Size(150, 20);
+            this.tbxFiltrarCarrosAluguer.TabIndex = 3;
+            this.tbxFiltrarCarrosAluguer.TextChanged += new System.EventHandler(this.TbxFiltrarCarrosAluguer_TextChanged);
+            this.tbxFiltrarCarrosAluguer.Enter += new System.EventHandler(this.TbxFiltrarCarrosAluguer_Enter);
+            this.tbxFiltrarCarrosAluguer.Leave += new System.EventHandler(this.TbxFiltrarCarrosAluguer_Leave);
             // 
-            // textBox1
+            // tbxFiltrarClientes
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(229, 20);
-            this.textBox1.TabIndex = 1;
+            this.tbxFiltrarClientes.Location = new System.Drawing.Point(7, 22);
+            this.tbxFiltrarClientes.Name = "tbxFiltrarClientes";
+            this.tbxFiltrarClientes.Size = new System.Drawing.Size(246, 20);
+            this.tbxFiltrarClientes.TabIndex = 1;
+            this.tbxFiltrarClientes.TextChanged += new System.EventHandler(this.TbxFiltrarClientes_TextChanged);
+            this.tbxFiltrarClientes.Enter += new System.EventHandler(this.TbxFiltrarClientes_Enter);
+            this.tbxFiltrarClientes.Leave += new System.EventHandler(this.TbxFiltrarClientes_Leave);
             // 
             // lbxClientes
             // 
+            this.lbxClientes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lbxClientes.FormattingEnabled = true;
             this.lbxClientes.Location = new System.Drawing.Point(6, 48);
             this.lbxClientes.Name = "lbxClientes";
-            this.lbxClientes.Size = new System.Drawing.Size(304, 407);
+            this.lbxClientes.Size = new System.Drawing.Size(308, 407);
             this.lbxClientes.TabIndex = 0;
             this.lbxClientes.SelectedIndexChanged += new System.EventHandler(this.lbxClientes_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 26);
+            this.label4.Location = new System.Drawing.Point(6, 24);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label4.Size = new System.Drawing.Size(106, 13);
+            this.label4.Size = new System.Drawing.Size(109, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Numero de Kilimetros";
+            this.label4.Text = "Numero de Kilimetros:";
             // 
             // gbxClientes
             // 
-            this.gbxClientes.Controls.Add(this.btnFiltrarClientes);
-            this.gbxClientes.Controls.Add(this.textBox1);
+            this.gbxClientes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.gbxClientes.Controls.Add(this.buttonOrdenarDescClientes);
+            this.gbxClientes.Controls.Add(this.buttonOrdenarCresClientes);
+            this.gbxClientes.Controls.Add(this.tbxFiltrarClientes);
             this.gbxClientes.Controls.Add(this.lbxClientes);
             this.gbxClientes.Location = new System.Drawing.Point(5, 27);
             this.gbxClientes.Name = "gbxClientes";
@@ -248,34 +198,25 @@
             this.gbxClientes.TabStop = false;
             this.gbxClientes.Text = "Clientes";
             // 
-            // btnFiltrarClientes
-            // 
-            this.btnFiltrarClientes.Location = new System.Drawing.Point(242, 20);
-            this.btnFiltrarClientes.Name = "btnFiltrarClientes";
-            this.btnFiltrarClientes.Size = new System.Drawing.Size(68, 23);
-            this.btnFiltrarClientes.TabIndex = 2;
-            this.btnFiltrarClientes.Text = "Filtrar";
-            this.btnFiltrarClientes.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 68);
+            this.label3.Location = new System.Drawing.Point(6, 52);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.Size = new System.Drawing.Size(88, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Valor do Aluguer";
+            this.label3.Text = "Valor do Aluguer:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 110);
+            this.label2.Location = new System.Drawing.Point(6, 81);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label2.Size = new System.Drawing.Size(139, 13);
+            this.label2.Size = new System.Drawing.Size(142, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Data de Entrega do veículo";
+            this.label2.Text = "Data de Entrega do veículo:";
             // 
             // groupBox1
             // 
@@ -290,22 +231,12 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(657, 27);
+            this.groupBox1.Location = new System.Drawing.Point(677, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(487, 183);
+            this.groupBox1.Size = new System.Drawing.Size(467, 130);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações do aluguer";
-            // 
-            // btnInfAluguer
-            // 
-            this.btnInfAluguer.Location = new System.Drawing.Point(9, 237);
-            this.btnInfAluguer.Name = "btnInfAluguer";
-            this.btnInfAluguer.Size = new System.Drawing.Size(466, 22);
-            this.btnInfAluguer.TabIndex = 17;
-            this.btnInfAluguer.Text = "Infromações adicionais sobre o aluguer";
-            this.btnInfAluguer.UseVisualStyleBackColor = true;
-            this.btnInfAluguer.Click += new System.EventHandler(this.button1_Click);
             // 
             // lbxAluguer
             // 
@@ -313,7 +244,7 @@
             this.lbxAluguer.HorizontalScrollbar = true;
             this.lbxAluguer.Location = new System.Drawing.Point(9, 19);
             this.lbxAluguer.Name = "lbxAluguer";
-            this.lbxAluguer.Size = new System.Drawing.Size(466, 212);
+            this.lbxAluguer.Size = new System.Drawing.Size(446, 264);
             this.lbxAluguer.TabIndex = 3;
             this.lbxAluguer.SelectedIndexChanged += new System.EventHandler(this.lbxAluguer_SelectedIndexChanged);
             // 
@@ -321,9 +252,9 @@
             // 
             this.gbxAlugados.Controls.Add(this.btnInfAluguer);
             this.gbxAlugados.Controls.Add(this.lbxAluguer);
-            this.gbxAlugados.Location = new System.Drawing.Point(657, 216);
+            this.gbxAlugados.Location = new System.Drawing.Point(677, 163);
             this.gbxAlugados.Name = "gbxAlugados";
-            this.gbxAlugados.Size = new System.Drawing.Size(487, 272);
+            this.gbxAlugados.Size = new System.Drawing.Size(467, 325);
             this.gbxAlugados.TabIndex = 11;
             this.gbxAlugados.TabStop = false;
             this.gbxAlugados.Text = "Carros Alugados";
@@ -350,24 +281,31 @@
             this.ficheiroToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.ficheiroToolStripMenuItem.Text = "Ficheiro";
             // 
+            // imprimirHistoricoClienteToolStripMenuItem
+            // 
+            this.imprimirHistoricoClienteToolStripMenuItem.Name = "imprimirHistoricoClienteToolStripMenuItem";
+            this.imprimirHistoricoClienteToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.imprimirHistoricoClienteToolStripMenuItem.Text = "Imprimir Historico Cliente";
+            this.imprimirHistoricoClienteToolStripMenuItem.Click += new System.EventHandler(this.imprimirHistoricoClienteToolStripMenuItem_Click);
+            // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // limparDadosToolStripMenuItem
             // 
             this.limparDadosToolStripMenuItem.Name = "limparDadosToolStripMenuItem";
-            this.limparDadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.limparDadosToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.limparDadosToolStripMenuItem.Text = "Limpar Dados";
             this.limparDadosToolStripMenuItem.Click += new System.EventHandler(this.limparDadosToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
@@ -384,30 +322,202 @@
             // criarCarroToolStripMenuItem
             // 
             this.criarCarroToolStripMenuItem.Name = "criarCarroToolStripMenuItem";
-            this.criarCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.criarCarroToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.criarCarroToolStripMenuItem.Text = "Criar Carro";
             this.criarCarroToolStripMenuItem.Click += new System.EventHandler(this.adicionarCarroToolStripMenuItem_Click);
             // 
             // editarCarroToolStripMenuItem
             // 
             this.editarCarroToolStripMenuItem.Name = "editarCarroToolStripMenuItem";
-            this.editarCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarCarroToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.editarCarroToolStripMenuItem.Text = "Editar Carro";
             this.editarCarroToolStripMenuItem.Click += new System.EventHandler(this.editarCarroToolStripMenuItem_Click);
             // 
             // eliminarCarroToolStripMenuItem
             // 
             this.eliminarCarroToolStripMenuItem.Name = "eliminarCarroToolStripMenuItem";
-            this.eliminarCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarCarroToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.eliminarCarroToolStripMenuItem.Text = "Eliminar Carro";
             this.eliminarCarroToolStripMenuItem.Click += new System.EventHandler(this.eliminarCarroToolStripMenuItem_Click);
             // 
-            // imprimirHistoricoClienteToolStripMenuItem
+            // buttonOrdenarDescCarros
             // 
-            this.imprimirHistoricoClienteToolStripMenuItem.Name = "imprimirHistoricoClienteToolStripMenuItem";
-            this.imprimirHistoricoClienteToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.imprimirHistoricoClienteToolStripMenuItem.Text = "Imprimir Historico Cliente";
-            this.imprimirHistoricoClienteToolStripMenuItem.Click += new System.EventHandler(this.imprimirHistoricoClienteToolStripMenuItem_Click);
+            this.buttonOrdenarDescCarros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
+            this.buttonOrdenarDescCarros.FlatAppearance.BorderSize = 0;
+            this.buttonOrdenarDescCarros.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.buttonOrdenarDescCarros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.buttonOrdenarDescCarros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOrdenarDescCarros.Image = global::Stand_Automoveis.Properties.Resources.Download_grey_16x;
+            this.buttonOrdenarDescCarros.Location = new System.Drawing.Point(191, 20);
+            this.buttonOrdenarDescCarros.Name = "buttonOrdenarDescCarros";
+            this.buttonOrdenarDescCarros.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarDescCarros.TabIndex = 9;
+            this.buttonOrdenarDescCarros.UseVisualStyleBackColor = false;
+            this.buttonOrdenarDescCarros.Click += new System.EventHandler(this.ButtonOrdenarDescCarros_Click);
+            // 
+            // buttonOrdenarAscCarros
+            // 
+            this.buttonOrdenarAscCarros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
+            this.buttonOrdenarAscCarros.FlatAppearance.BorderSize = 0;
+            this.buttonOrdenarAscCarros.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.buttonOrdenarAscCarros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.buttonOrdenarAscCarros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOrdenarAscCarros.Image = global::Stand_Automoveis.Properties.Resources.Upload_gray_16x;
+            this.buttonOrdenarAscCarros.Location = new System.Drawing.Point(161, 20);
+            this.buttonOrdenarAscCarros.Margin = new System.Windows.Forms.Padding(2, 3, 1, 3);
+            this.buttonOrdenarAscCarros.Name = "buttonOrdenarAscCarros";
+            this.buttonOrdenarAscCarros.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarAscCarros.TabIndex = 8;
+            this.buttonOrdenarAscCarros.UseVisualStyleBackColor = false;
+            this.buttonOrdenarAscCarros.Click += new System.EventHandler(this.ButtonOrdenarAscCarros_Click);
+            // 
+            // btnEditarCarroAluguer
+            // 
+            this.btnEditarCarroAluguer.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnEditarCarroAluguer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(212)))), ((int)(((byte)(179)))));
+            this.btnEditarCarroAluguer.FlatAppearance.BorderSize = 0;
+            this.btnEditarCarroAluguer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(199)))), ((int)(((byte)(87)))));
+            this.btnEditarCarroAluguer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(153)))), ((int)(((byte)(42)))));
+            this.btnEditarCarroAluguer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarCarroAluguer.Image = global::Stand_Automoveis.Properties.Resources.Edit_straight_16xLG;
+            this.btnEditarCarroAluguer.Location = new System.Drawing.Point(276, 18);
+            this.btnEditarCarroAluguer.Name = "btnEditarCarroAluguer";
+            this.btnEditarCarroAluguer.Size = new System.Drawing.Size(26, 26);
+            this.btnEditarCarroAluguer.TabIndex = 7;
+            this.btnEditarCarroAluguer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditarCarroAluguer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEditarCarroAluguer.UseVisualStyleBackColor = false;
+            this.btnEditarCarroAluguer.Click += new System.EventHandler(this.btnEditarCarroAluguer_Click);
+            // 
+            // btnEliminarCarroAluguer
+            // 
+            this.btnEliminarCarroAluguer.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnEliminarCarroAluguer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(194)))), ((int)(((byte)(194)))));
+            this.btnEliminarCarroAluguer.FlatAppearance.BorderSize = 0;
+            this.btnEliminarCarroAluguer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.btnEliminarCarroAluguer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEliminarCarroAluguer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarCarroAluguer.Image = global::Stand_Automoveis.Properties.Resources.Cancel_16x;
+            this.btnEliminarCarroAluguer.Location = new System.Drawing.Point(244, 18);
+            this.btnEliminarCarroAluguer.Name = "btnEliminarCarroAluguer";
+            this.btnEliminarCarroAluguer.Size = new System.Drawing.Size(26, 26);
+            this.btnEliminarCarroAluguer.TabIndex = 6;
+            this.btnEliminarCarroAluguer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminarCarroAluguer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEliminarCarroAluguer.UseVisualStyleBackColor = false;
+            this.btnEliminarCarroAluguer.Click += new System.EventHandler(this.btnEliminarCarroAluguer_Click);
+            // 
+            // btnAddCarro
+            // 
+            this.btnAddCarro.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAddCarro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(216)))));
+            this.btnAddCarro.FlatAppearance.BorderSize = 0;
+            this.btnAddCarro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(202)))), ((int)(((byte)(211)))));
+            this.btnAddCarro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(141)))), ((int)(((byte)(153)))));
+            this.btnAddCarro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddCarro.Image = global::Stand_Automoveis.Properties.Resources.Add_grey_16x;
+            this.btnAddCarro.Location = new System.Drawing.Point(308, 18);
+            this.btnAddCarro.Name = "btnAddCarro";
+            this.btnAddCarro.Size = new System.Drawing.Size(26, 26);
+            this.btnAddCarro.TabIndex = 5;
+            this.btnAddCarro.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddCarro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddCarro.UseVisualStyleBackColor = false;
+            this.btnAddCarro.Click += new System.EventHandler(this.btnAddCarro_Click);
+            // 
+            // buttonOrdenarDescClientes
+            // 
+            this.buttonOrdenarDescClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
+            this.buttonOrdenarDescClientes.FlatAppearance.BorderSize = 0;
+            this.buttonOrdenarDescClientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.buttonOrdenarDescClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.buttonOrdenarDescClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOrdenarDescClientes.Image = global::Stand_Automoveis.Properties.Resources.Download_grey_16x;
+            this.buttonOrdenarDescClientes.Location = new System.Drawing.Point(288, 20);
+            this.buttonOrdenarDescClientes.Name = "buttonOrdenarDescClientes";
+            this.buttonOrdenarDescClientes.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarDescClientes.TabIndex = 6;
+            this.buttonOrdenarDescClientes.UseVisualStyleBackColor = false;
+            this.buttonOrdenarDescClientes.Click += new System.EventHandler(this.ButtonOrdenarDescClientes_Click);
+            // 
+            // buttonOrdenarCresClientes
+            // 
+            this.buttonOrdenarCresClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
+            this.buttonOrdenarCresClientes.FlatAppearance.BorderSize = 0;
+            this.buttonOrdenarCresClientes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            this.buttonOrdenarCresClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(156)))), ((int)(((byte)(178)))));
+            this.buttonOrdenarCresClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOrdenarCresClientes.Image = global::Stand_Automoveis.Properties.Resources.Upload_gray_16x;
+            this.buttonOrdenarCresClientes.Location = new System.Drawing.Point(258, 20);
+            this.buttonOrdenarCresClientes.Margin = new System.Windows.Forms.Padding(2, 3, 1, 3);
+            this.buttonOrdenarCresClientes.Name = "buttonOrdenarCresClientes";
+            this.buttonOrdenarCresClientes.Size = new System.Drawing.Size(26, 23);
+            this.buttonOrdenarCresClientes.TabIndex = 5;
+            this.buttonOrdenarCresClientes.UseVisualStyleBackColor = false;
+            this.buttonOrdenarCresClientes.Click += new System.EventHandler(this.ButtonOrdenarCresClientes_Click);
+            // 
+            // btnEliminarAluguer
+            // 
+            this.btnEliminarAluguer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(194)))), ((int)(((byte)(194)))));
+            this.btnEliminarAluguer.FlatAppearance.BorderSize = 0;
+            this.btnEliminarAluguer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.btnEliminarAluguer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnEliminarAluguer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarAluguer.Image = global::Stand_Automoveis.Properties.Resources.Cancel_16x;
+            this.btnEliminarAluguer.Location = new System.Drawing.Point(435, 81);
+            this.btnEliminarAluguer.Name = "btnEliminarAluguer";
+            this.btnEliminarAluguer.Size = new System.Drawing.Size(26, 26);
+            this.btnEliminarAluguer.TabIndex = 16;
+            this.btnEliminarAluguer.UseVisualStyleBackColor = false;
+            this.btnEliminarAluguer.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnEditarAluguer
+            // 
+            this.btnEditarAluguer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(212)))), ((int)(((byte)(179)))));
+            this.btnEditarAluguer.FlatAppearance.BorderSize = 0;
+            this.btnEditarAluguer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(199)))), ((int)(((byte)(87)))));
+            this.btnEditarAluguer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(153)))), ((int)(((byte)(42)))));
+            this.btnEditarAluguer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarAluguer.Image = global::Stand_Automoveis.Properties.Resources.Edit_straight_16xLG;
+            this.btnEditarAluguer.Location = new System.Drawing.Point(435, 49);
+            this.btnEditarAluguer.Name = "btnEditarAluguer";
+            this.btnEditarAluguer.Size = new System.Drawing.Size(26, 26);
+            this.btnEditarAluguer.TabIndex = 13;
+            this.btnEditarAluguer.UseVisualStyleBackColor = false;
+            this.btnEditarAluguer.Click += new System.EventHandler(this.btnEditarAluguer_Click);
+            // 
+            // btnAddAluguer
+            // 
+            this.btnAddAluguer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(216)))));
+            this.btnAddAluguer.FlatAppearance.BorderSize = 0;
+            this.btnAddAluguer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(202)))), ((int)(((byte)(211)))));
+            this.btnAddAluguer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(141)))), ((int)(((byte)(153)))));
+            this.btnAddAluguer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddAluguer.Image = global::Stand_Automoveis.Properties.Resources.Add_grey_16x;
+            this.btnAddAluguer.Location = new System.Drawing.Point(435, 17);
+            this.btnAddAluguer.Name = "btnAddAluguer";
+            this.btnAddAluguer.Size = new System.Drawing.Size(26, 26);
+            this.btnAddAluguer.TabIndex = 12;
+            this.btnAddAluguer.UseVisualStyleBackColor = false;
+            this.btnAddAluguer.Click += new System.EventHandler(this.btnAddAluguer_Click);
+            // 
+            // btnInfAluguer
+            // 
+            this.btnInfAluguer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
+            this.btnInfAluguer.FlatAppearance.BorderSize = 0;
+            this.btnInfAluguer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(234)))), ((int)(((byte)(146)))));
+            this.btnInfAluguer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(191)))), ((int)(((byte)(97)))));
+            this.btnInfAluguer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInfAluguer.Image = global::Stand_Automoveis.Properties.Resources.StatusInformation_grey_16x;
+            this.btnInfAluguer.Location = new System.Drawing.Point(9, 294);
+            this.btnInfAluguer.Name = "btnInfAluguer";
+            this.btnInfAluguer.Size = new System.Drawing.Size(446, 26);
+            this.btnInfAluguer.TabIndex = 17;
+            this.btnInfAluguer.Text = "Informações sobre o aluguer";
+            this.btnInfAluguer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInfAluguer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInfAluguer.UseVisualStyleBackColor = false;
+            this.btnInfAluguer.Click += new System.EventHandler(this.button1_Click);
             // 
             // GestorAluguer
             // 
@@ -421,7 +531,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "GestorAluguer";
-            this.Text = "GestorAluguer";
+            this.Text = "Gestão de Alugueres";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestorAluguer_FormClosing);
             this.gbxAluguer.ResumeLayout(false);
             this.gbxAluguer.PerformLayout();
@@ -441,7 +551,6 @@
 
         private System.Windows.Forms.Button btnEliminarCarroAluguer;
         private System.Windows.Forms.Button btnAddCarro;
-        private System.Windows.Forms.Button btnFiltrarAluguer;
         public System.Windows.Forms.ListBox lbxCarrosAluguer;
         private System.Windows.Forms.Button btnEliminarAluguer;
         private System.Windows.Forms.DateTimePicker dtpRececao;
@@ -453,12 +562,11 @@
         private System.Windows.Forms.TextBox tbxKms;
         private System.Windows.Forms.Button btnEditarCarroAluguer;
         private System.Windows.Forms.GroupBox gbxAluguer;
-        private System.Windows.Forms.TextBox tbxFiltrarAluguer;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxFiltrarCarrosAluguer;
+        private System.Windows.Forms.TextBox tbxFiltrarClientes;
         private System.Windows.Forms.ListBox lbxClientes;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox gbxClientes;
-        private System.Windows.Forms.Button btnFiltrarClientes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -475,5 +583,9 @@
         private System.Windows.Forms.ToolStripMenuItem editarCarroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarCarroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem imprimirHistoricoClienteToolStripMenuItem;
+        private System.Windows.Forms.Button buttonOrdenarDescClientes;
+        private System.Windows.Forms.Button buttonOrdenarCresClientes;
+        private System.Windows.Forms.Button buttonOrdenarDescCarros;
+        private System.Windows.Forms.Button buttonOrdenarAscCarros;
     }
 }

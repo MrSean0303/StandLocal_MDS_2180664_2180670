@@ -13,14 +13,25 @@ namespace Stand_Automoveis
     public partial class GestorAluguer : Form
     {
         private StandLocalDBContainer StandLocalDB;
-        List<CarrosAluguer> ListacarrosAluguer = new List<CarrosAluguer>();
-        List<Clientes> ListaClientes = new List<Clientes>();
+        List<CarrosAluguer> listacarrosAluguer = new List<CarrosAluguer>();
+        List<Clientes> listaClientes = new List<Clientes>();
         public bool kmspassou, valorpassou, dataCerta = true;
         bool dadosGuardados = true;
 
         public GestorAluguer()
         {
             InitializeComponent();
+
+            tbxFiltrarClientes.ForeColor = SystemColors.GrayText;
+            tbxFiltrarClientes.Text = "Filtrar";
+            tbxFiltrarClientes.Leave += new System.EventHandler(TbxFiltrarClientes_Leave);
+            tbxFiltrarClientes.Enter += new System.EventHandler(TbxFiltrarClientes_Enter);
+
+            tbxFiltrarCarrosAluguer.ForeColor = SystemColors.GrayText;
+            tbxFiltrarCarrosAluguer.Text = "Filtrar";
+            tbxFiltrarCarrosAluguer.Leave += new System.EventHandler(TbxFiltrarCarrosAluguer_Leave);
+            tbxFiltrarCarrosAluguer.Enter += new System.EventHandler(TbxFiltrarCarrosAluguer_Enter);
+
             CarregarBD carregar = new CarregarBD();
             carregar.Show();
             Application.DoEvents();
@@ -34,8 +45,8 @@ namespace Stand_Automoveis
 
         private void LerDados()
         {
-            ListaClientes = StandLocalDB.Clientes.ToList();
-            ListacarrosAluguer = StandLocalDB.Carro.OfType<CarrosAluguer>().ToList();
+            listaClientes = StandLocalDB.Clientes.ToList();
+            listacarrosAluguer = StandLocalDB.Carro.OfType<CarrosAluguer>().ToList();
 
             AtualizarClientes();
             AtualizarListaCarrosAluguer();
@@ -57,13 +68,13 @@ namespace Stand_Automoveis
         private void AtualizarListaCarrosAluguer()
         {
             lbxCarrosAluguer.DataSource = null;
-            lbxCarrosAluguer.DataSource = ListacarrosAluguer;
+            lbxCarrosAluguer.DataSource = listacarrosAluguer;
         }
 
         private void AtualizarClientes()
         {
             lbxClientes.DataSource = null;
-            lbxClientes.DataSource = ListaClientes;
+            lbxClientes.DataSource = listaClientes;
         }
 
         private void LimparDados()
@@ -129,7 +140,7 @@ namespace Stand_Automoveis
 
             if (novocarroAluguer.DialogResult == DialogResult.OK)
             {
-                ListacarrosAluguer.Add(carroTemp);
+                listacarrosAluguer.Add(carroTemp);
                 StandLocalDB.Carro.Add(carroTemp);
                 AtualizarListaCarrosAluguer();
                 dadosGuardados = false;
@@ -189,7 +200,7 @@ namespace Stand_Automoveis
 
             if (carroAlugado == false)
             {
-                ListacarrosAluguer.Remove(carrosAluguerSelecionado);
+                listacarrosAluguer.Remove(carrosAluguerSelecionado);
                 StandLocalDB.Carro.Remove(carrosAluguerSelecionado);
                 AtualizarListaCarrosAluguer();
                 dadosGuardados = false;
@@ -390,6 +401,100 @@ namespace Stand_Automoveis
             ImprimirDocumentos imprimir = new ImprimirDocumentos();
             imprimir.Aluguereshistorico(clienteSelecionado);
 
+        }
+
+        private void TbxFiltrarClientes_TextChanged(object sender, EventArgs e)
+        {
+            string nome = tbxFiltrarClientes.Text;
+
+            if (nome != string.Empty)
+            {
+                List<Clientes> clientes = listaClientes.Where(cliente => cliente.Nome.ToUpper().Contains(nome.ToUpper())).ToList();
+                lbxClientes.DataSource = null;
+                lbxClientes.DataSource = clientes;
+            }
+            else
+                AtualizarClientes();
+        }
+
+        private void TbxFiltrarCarrosAluguer_TextChanged(object sender, EventArgs e)
+        {
+            string nome = tbxFiltrarCarrosAluguer.Text;
+
+            if (nome != string.Empty)
+            {
+                List<CarrosAluguer> carrosAluguer = listacarrosAluguer.Where(carro => carro.Marca.ToUpper().Contains(nome.ToUpper())).ToList();
+                lbxCarrosAluguer.DataSource = null;
+                lbxCarrosAluguer.DataSource = carrosAluguer;
+            }
+            else
+                AtualizarListaCarrosAluguer();
+        }
+
+        private void ButtonOrdenarCresClientes_Click(object sender, EventArgs e)
+        {
+            List<Clientes> clientes = listaClientes.OrderBy(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
+        }
+
+        private void ButtonOrdenarDescClientes_Click(object sender, EventArgs e)
+        {
+            List<Clientes> clientes = listaClientes.OrderByDescending(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
+        }
+
+        private void ButtonOrdenarDescCarros_Click(object sender, EventArgs e)
+        {
+            List<CarrosAluguer> carros = listacarrosAluguer.OrderByDescending(carro => carro.Marca).ToList();
+            lbxCarrosAluguer.DataSource = null;
+            lbxCarrosAluguer.DataSource = carros;
+        }
+
+        private void ButtonOrdenarAscCarros_Click(object sender, EventArgs e)
+        {
+            List<CarrosAluguer> carros = listacarrosAluguer.OrderBy(carro => carro.Marca).ToList();
+            lbxCarrosAluguer.DataSource = null;
+            lbxCarrosAluguer.DataSource = carros;
+        }
+
+        private void TbxFiltrarClientes_Enter(object sender, EventArgs e)
+        {
+            if (tbxFiltrarClientes.Text == "Filtrar")
+            {
+                tbxFiltrarClientes.Text = "";
+                tbxFiltrarClientes.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void TbxFiltrarClientes_Leave(object sender, EventArgs e)
+        {
+            if (tbxFiltrarClientes.Text.Length == 0)
+            {
+                tbxFiltrarClientes.Text = "Filtrar";
+                tbxFiltrarClientes.ForeColor = SystemColors.GrayText;
+                AtualizarClientes();
+            }
+        }
+
+        private void TbxFiltrarCarrosAluguer_Enter(object sender, EventArgs e)
+        {
+            if (tbxFiltrarCarrosAluguer.Text == "Filtrar")
+            {
+                tbxFiltrarCarrosAluguer.Text = "";
+                tbxFiltrarCarrosAluguer.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void TbxFiltrarCarrosAluguer_Leave(object sender, EventArgs e)
+        {
+            if (tbxFiltrarCarrosAluguer.Text.Length == 0)
+            {
+                tbxFiltrarCarrosAluguer.Text = "Filtrar";
+                tbxFiltrarCarrosAluguer.ForeColor = SystemColors.GrayText;
+                AtualizarClientes();
+            }
         }
 
         private void lbxAluguer_SelectedIndexChanged(object sender, EventArgs e)

@@ -47,6 +47,7 @@
             this.buttonEliminarParcela = new System.Windows.Forms.Button();
             this.buttonAddParcela = new System.Windows.Forms.Button();
             this.buttonEditarCarro = new System.Windows.Forms.Button();
+            this.buttonFatura = new System.Windows.Forms.Button();
             this.buttonServicoOkay = new System.Windows.Forms.Button();
             this.buttonEditarServico = new System.Windows.Forms.Button();
             this.buttonEliminarServico = new System.Windows.Forms.Button();
@@ -55,7 +56,6 @@
             this.buttonAddCarro = new System.Windows.Forms.Button();
             this.buttonOrdenarDesc = new System.Windows.Forms.Button();
             this.buttonOrdenarCres = new System.Windows.Forms.Button();
-            this.buttonFatura = new System.Windows.Forms.Button();
             this.gbxClientes.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -191,28 +191,28 @@
             // novoClienteToolStripMenuItem
             // 
             this.novoClienteToolStripMenuItem.Name = "novoClienteToolStripMenuItem";
-            this.novoClienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novoClienteToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.novoClienteToolStripMenuItem.Text = "Novo Cliente";
             this.novoClienteToolStripMenuItem.Click += new System.EventHandler(this.NovoClienteToolStripMenuItem_Click);
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.GuardarToolStripMenuItem_Click);
             // 
             // limparSelecaoToolStripMenuItem
             // 
             this.limparSelecaoToolStripMenuItem.Name = "limparSelecaoToolStripMenuItem";
-            this.limparSelecaoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.limparSelecaoToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.limparSelecaoToolStripMenuItem.Text = "Limpar Seleções";
             this.limparSelecaoToolStripMenuItem.Click += new System.EventHandler(this.LimparSelecaoToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
             // 
@@ -288,6 +288,20 @@
             this.buttonEditarCarro.TabIndex = 3;
             this.buttonEditarCarro.UseVisualStyleBackColor = false;
             this.buttonEditarCarro.Click += new System.EventHandler(this.ButtonEditarCarro_Click);
+            // 
+            // buttonFatura
+            // 
+            this.buttonFatura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(201)))), ((int)(((byte)(179)))));
+            this.buttonFatura.FlatAppearance.BorderSize = 0;
+            this.buttonFatura.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(193)))), ((int)(((byte)(129)))));
+            this.buttonFatura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(124)))), ((int)(((byte)(43)))));
+            this.buttonFatura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFatura.Image = global::Stand_Automoveis.Properties.Resources.PrintStatusBar6_16x;
+            this.buttonFatura.Location = new System.Drawing.Point(6, 231);
+            this.buttonFatura.Name = "buttonFatura";
+            this.buttonFatura.Size = new System.Drawing.Size(26, 26);
+            this.buttonFatura.TabIndex = 6;
+            this.buttonFatura.UseVisualStyleBackColor = false;
             // 
             // buttonServicoOkay
             // 
@@ -415,20 +429,6 @@
             this.buttonOrdenarCres.UseVisualStyleBackColor = false;
             this.buttonOrdenarCres.Click += new System.EventHandler(this.ButtonOrdenarCres_Click);
             // 
-            // buttonFatura
-            // 
-            this.buttonFatura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(201)))), ((int)(((byte)(179)))));
-            this.buttonFatura.FlatAppearance.BorderSize = 0;
-            this.buttonFatura.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(193)))), ((int)(((byte)(129)))));
-            this.buttonFatura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(124)))), ((int)(((byte)(43)))));
-            this.buttonFatura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFatura.Image = global::Stand_Automoveis.Properties.Resources.PrintStatusBar6_16x;
-            this.buttonFatura.Location = new System.Drawing.Point(6, 231);
-            this.buttonFatura.Name = "buttonFatura";
-            this.buttonFatura.Size = new System.Drawing.Size(26, 26);
-            this.buttonFatura.TabIndex = 6;
-            this.buttonFatura.UseVisualStyleBackColor = false;
-            // 
             // GestorOficina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,7 +439,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbxClientes);
             this.Name = "GestorOficina";
-            this.Text = "GestorOficina";
+            this.Text = "Gestão da Oficina";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestorOficina_FormClosing);
             this.gbxClientes.ResumeLayout(false);
             this.gbxClientes.PerformLayout();

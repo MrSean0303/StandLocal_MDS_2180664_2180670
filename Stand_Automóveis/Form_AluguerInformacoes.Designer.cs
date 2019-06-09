@@ -68,22 +68,35 @@
             // 
             // btnImprimir
             // 
+            this.btnImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(201)))), ((int)(((byte)(179)))));
+            this.btnImprimir.FlatAppearance.BorderSize = 0;
+            this.btnImprimir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(193)))), ((int)(((byte)(129)))));
+            this.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(124)))), ((int)(((byte)(43)))));
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Image = global::Stand_Automoveis.Properties.Resources.PrintStatusBar6_16x;
             this.btnImprimir.Location = new System.Drawing.Point(12, 236);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(101, 23);
+            this.btnImprimir.Size = new System.Drawing.Size(26, 26);
             this.btnImprimir.TabIndex = 7;
-            this.btnImprimir.Text = "Imprimir Aluguer";
-            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(326, 236);
+            this.btnVoltar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(200)))), ((int)(((byte)(214)))));
+            this.btnVoltar.FlatAppearance.BorderSize = 0;
+            this.btnVoltar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(210)))), ((int)(((byte)(242)))));
+            this.btnVoltar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(162)))), ((int)(((byte)(244)))));
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.Image = global::Stand_Automoveis.Properties.Resources.StepBackwards_16x;
+            this.btnVoltar.Location = new System.Drawing.Point(321, 236);
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(75, 23);
+            this.btnVoltar.Size = new System.Drawing.Size(80, 26);
             this.btnVoltar.TabIndex = 6;
             this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVoltar.UseVisualStyleBackColor = false;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // groupBox2
@@ -106,7 +119,7 @@
             this.groupBox2.Controls.Add(this.lblEstado);
             this.groupBox2.Location = new System.Drawing.Point(407, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(501, 218);
+            this.groupBox2.Size = new System.Drawing.Size(508, 218);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informações sobre a venda";
@@ -123,7 +136,7 @@
             // lblDtaEntrega
             // 
             this.lblDtaEntrega.AutoSize = true;
-            this.lblDtaEntrega.Location = new System.Drawing.Point(436, 165);
+            this.lblDtaEntrega.Location = new System.Drawing.Point(438, 165);
             this.lblDtaEntrega.Name = "lblDtaEntrega";
             this.lblDtaEntrega.Size = new System.Drawing.Size(13, 13);
             this.lblDtaEntrega.TabIndex = 26;
@@ -168,7 +181,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(252, 165);
+            this.label14.Location = new System.Drawing.Point(243, 165);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(189, 13);
             this.label14.TabIndex = 17;
@@ -204,7 +217,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(252, 45);
+            this.label6.Location = new System.Drawing.Point(243, 45);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(128, 13);
             this.label6.TabIndex = 9;
@@ -213,7 +226,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(252, 125);
+            this.label10.Location = new System.Drawing.Point(243, 125);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(101, 13);
             this.label10.TabIndex = 13;
@@ -222,7 +235,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(252, 85);
+            this.label8.Location = new System.Drawing.Point(243, 85);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(85, 13);
             this.label8.TabIndex = 11;
@@ -249,7 +262,7 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(334, 85);
+            this.lblEstado.Location = new System.Drawing.Point(331, 85);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(13, 13);
             this.lblEstado.TabIndex = 20;
@@ -408,14 +421,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(917, 271);
+            this.ClientSize = new System.Drawing.Size(923, 269);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form_AluguerInformacoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AluguerInformacoes";
+            this.Text = "Informações Aluguer";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);

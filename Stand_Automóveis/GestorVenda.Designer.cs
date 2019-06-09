@@ -43,6 +43,7 @@
             this.btnInfVenda = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ficheiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imprimirHistoricoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.limparDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +62,6 @@
             this.tbxFiltrarVenda = new System.Windows.Forms.TextBox();
             this.lbxCarrosVenda = new System.Windows.Forms.ListBox();
             this.gbxAluguer = new System.Windows.Forms.GroupBox();
-            this.imprimirHistoricoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.gbxAlugados.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -221,6 +221,13 @@
             this.ficheiroToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.ficheiroToolStripMenuItem.Text = "Ficheiro";
             // 
+            // imprimirHistoricoClienteToolStripMenuItem
+            // 
+            this.imprimirHistoricoClienteToolStripMenuItem.Name = "imprimirHistoricoClienteToolStripMenuItem";
+            this.imprimirHistoricoClienteToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.imprimirHistoricoClienteToolStripMenuItem.Text = "Imprimir Historico Cliente";
+            this.imprimirHistoricoClienteToolStripMenuItem.Click += new System.EventHandler(this.imprimirHistoricoClienteToolStripMenuItem_Click);
+            // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
@@ -255,21 +262,21 @@
             // criarCarroToolStripMenuItem
             // 
             this.criarCarroToolStripMenuItem.Name = "criarCarroToolStripMenuItem";
-            this.criarCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.criarCarroToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.criarCarroToolStripMenuItem.Text = "Criar Carro";
             this.criarCarroToolStripMenuItem.Click += new System.EventHandler(this.criarCarroToolStripMenuItem_Click);
             // 
             // editarCarroToolStripMenuItem
             // 
             this.editarCarroToolStripMenuItem.Name = "editarCarroToolStripMenuItem";
-            this.editarCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarCarroToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.editarCarroToolStripMenuItem.Text = "Editar Carro";
             this.editarCarroToolStripMenuItem.Click += new System.EventHandler(this.editarCarroToolStripMenuItem_Click);
             // 
             // eliminarCarroToolStripMenuItem
             // 
             this.eliminarCarroToolStripMenuItem.Name = "eliminarCarroToolStripMenuItem";
-            this.eliminarCarroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarCarroToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.eliminarCarroToolStripMenuItem.Text = "Eliminar Carro";
             this.eliminarCarroToolStripMenuItem.Click += new System.EventHandler(this.eliminarCarroToolStripMenuItem_Click);
             // 
@@ -381,13 +388,6 @@
             this.gbxAluguer.TabStop = false;
             this.gbxAluguer.Text = "Carros para Vender";
             // 
-            // imprimirHistoricoClienteToolStripMenuItem
-            // 
-            this.imprimirHistoricoClienteToolStripMenuItem.Name = "imprimirHistoricoClienteToolStripMenuItem";
-            this.imprimirHistoricoClienteToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.imprimirHistoricoClienteToolStripMenuItem.Text = "Imprimir Historico Cliente";
-            this.imprimirHistoricoClienteToolStripMenuItem.Click += new System.EventHandler(this.imprimirHistoricoClienteToolStripMenuItem_Click);
-            // 
             // GestorVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,7 +400,7 @@
             this.Controls.Add(this.gbxAluguer);
             this.Name = "GestorVenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GertorVenda";
+            this.Text = "Gertão de Vendas";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestorVenda_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

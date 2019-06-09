@@ -559,7 +559,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "GestorCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GestorClientes";
+            this.Text = "Gestão de Clientes";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestorCliente_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -9,11 +9,10 @@ namespace Stand_Automoveis
     public partial class GestorOficina : Form
     {
         private StandLocalDBContainer StandLocalDB;
-        List<Clientes> listaCliente = new List<Clientes>();
-        List<Carros> listaCarro = new List<Carros>();
-        List<Servicos> listaServico = new List<Servicos>();
+        List<Clientes> listaClientes = new List<Clientes>();
+        List<Carros> listaCarros = new List<Carros>();
+        List<Servicos> listaServicos = new List<Servicos>();
         bool conteudoNovo = false;
-        private IEnumerable<string> clientes;
 
         public GestorOficina()
         {
@@ -31,11 +30,10 @@ namespace Stand_Automoveis
             StandLocalDB = new StandLocalDBContainer();
             LerDados();
             carregar.Close();
-            carregar.Close();
         }
         private void LerDados()
         {
-            listaCliente = StandLocalDB.Clientes.ToList();
+            listaClientes = StandLocalDB.Clientes.ToList();
 
             AtualizarClientes();
         }
@@ -48,7 +46,7 @@ namespace Stand_Automoveis
         private void AtualizarClientes()
         {
             lbxClientes.DataSource = null;
-            lbxClientes.DataSource = listaCliente;
+            lbxClientes.DataSource = listaClientes;
         }
 
 
@@ -135,7 +133,7 @@ namespace Stand_Automoveis
 
             if (novocarro.DialogResult == DialogResult.OK)
             {
-                listaCarro.Add(carroTemp);
+                listaCarros.Add(carroTemp);
                 StandLocalDB.Clientes.Find(clienteSelecionado.IdCliente).CarroOficina.Add(carroTemp);
                 AtualizarCarros();
                 conteudoNovo = true;
@@ -156,7 +154,7 @@ namespace Stand_Automoveis
 
             if (novocliente.DialogResult == DialogResult.OK)
             {
-                listaCliente.Add(clienteTemp);
+                listaClientes.Add(clienteTemp);
                 StandLocalDB.Clientes.Add(clienteTemp);
                 AtualizarClientes();
                 conteudoNovo = true;
@@ -202,7 +200,7 @@ namespace Stand_Automoveis
 
             if (carroSelecionado.Servico.Count == 0 && dialogResult == DialogResult.Yes)
             {
-                listaCarro.Remove(carroSelecionado);
+                listaCarros.Remove(carroSelecionado);
                 StandLocalDB.Carro.Remove(carroSelecionado);
                 AtualizarCarros();
                 conteudoNovo = true;
@@ -229,7 +227,7 @@ namespace Stand_Automoveis
 
             if (novoServico.DialogResult == DialogResult.OK)
             {
-                listaServico.Add(servicoTemp);
+                listaServicos.Add(servicoTemp);
                 ((CarrosOficina)StandLocalDB.Carro.Find(carroSelecionado.idCarro)).Servico.Add(servicoTemp);
                 carroSelecionado.Servico.Add(servicoTemp);
                 conteudoNovo = true;
@@ -274,7 +272,7 @@ namespace Stand_Automoveis
 
             if (servicoSelecionado.Parcela.Count == 0 && dialogResult == DialogResult.Yes)
             {
-                listaServico.Remove(servicoSelecionado);
+                listaServicos.Remove(servicoSelecionado);
                 StandLocalDB.Servico.Remove(servicoSelecionado);
                 AtualizarServicos();
                 conteudoNovo = true;
@@ -418,14 +416,14 @@ namespace Stand_Automoveis
 
         private void ButtonOrdenarCres_Click(object sender, EventArgs e)
         {
-            List<Clientes> clientes = listaCliente.OrderBy(cliente => cliente.Nome).ToList();
+            List<Clientes> clientes = listaClientes.OrderBy(cliente => cliente.Nome).ToList();
             lbxClientes.DataSource = null;
             lbxClientes.DataSource = clientes;
         }
 
         private void ButtonOrdenarDesc_Click(object sender, EventArgs e)
         {
-            List<Clientes> clientes = listaCliente.OrderByDescending(cliente => cliente.Nome).ToList();
+            List<Clientes> clientes = listaClientes.OrderByDescending(cliente => cliente.Nome).ToList();
             lbxClientes.DataSource = null;
             lbxClientes.DataSource = clientes;
         }
@@ -499,7 +497,7 @@ namespace Stand_Automoveis
 
             if (nome != string.Empty)
             {
-                List<Clientes> clientes = listaCliente.Where(cliente => cliente.Nome.ToUpper().Contains(nome.ToUpper())).ToList();
+                List<Clientes> clientes = listaClientes.Where(cliente => cliente.Nome.ToUpper().Contains(nome.ToUpper())).ToList();
                 lbxClientes.DataSource = null;
                 lbxClientes.DataSource = clientes;
             }
