@@ -58,7 +58,7 @@
             this.buttonAddCarro.Margin = new System.Windows.Forms.Padding(6);
             this.buttonAddCarro.Name = "buttonAddCarro";
             this.buttonAddCarro.Size = new System.Drawing.Size(101, 28);
-            this.buttonAddCarro.TabIndex = 66;
+            this.buttonAddCarro.TabIndex = 6;
             this.buttonAddCarro.Text = "Continuar";
             this.buttonAddCarro.UseVisualStyleBackColor = false;
             this.buttonAddCarro.Click += new System.EventHandler(this.buttonAddCarro_Click);
@@ -69,7 +69,7 @@
             this.cbxEstadoCarro.Location = new System.Drawing.Point(87, 140);
             this.cbxEstadoCarro.Name = "cbxEstadoCarro";
             this.cbxEstadoCarro.Size = new System.Drawing.Size(283, 21);
-            this.cbxEstadoCarro.TabIndex = 92;
+            this.cbxEstadoCarro.TabIndex = 5;
             this.cbxEstadoCarro.TextChanged += new System.EventHandler(this.cbxEstadoCarro_SelectedIndexChanged);
             this.cbxEstadoCarro.Click += new System.EventHandler(this.cbxEstadoCarro_SelectedIndexChanged);
             // 
@@ -98,7 +98,7 @@
             this.tbxCombustivelCarro.Location = new System.Drawing.Point(87, 111);
             this.tbxCombustivelCarro.Name = "tbxCombustivelCarro";
             this.tbxCombustivelCarro.Size = new System.Drawing.Size(283, 20);
-            this.tbxCombustivelCarro.TabIndex = 85;
+            this.tbxCombustivelCarro.TabIndex = 4;
             this.tbxCombustivelCarro.Click += new System.EventHandler(this.TbxCombustivelCarro_TextChanged);
             this.tbxCombustivelCarro.TextChanged += new System.EventHandler(this.TbxCombustivelCarro_TextChanged);
             // 
@@ -107,7 +107,7 @@
             this.tbxModeloCarro.Location = new System.Drawing.Point(87, 34);
             this.tbxModeloCarro.Name = "tbxModeloCarro";
             this.tbxModeloCarro.Size = new System.Drawing.Size(283, 20);
-            this.tbxModeloCarro.TabIndex = 82;
+            this.tbxModeloCarro.TabIndex = 1;
             this.tbxModeloCarro.Click += new System.EventHandler(this.TbxModeloCarro_TextChanged);
             this.tbxModeloCarro.TextChanged += new System.EventHandler(this.TbxModeloCarro_TextChanged);
             // 
@@ -136,7 +136,7 @@
             this.tbxNumChassis.Location = new System.Drawing.Point(87, 85);
             this.tbxNumChassis.Name = "tbxNumChassis";
             this.tbxNumChassis.Size = new System.Drawing.Size(283, 20);
-            this.tbxNumChassis.TabIndex = 84;
+            this.tbxNumChassis.TabIndex = 3;
             this.tbxNumChassis.Click += new System.EventHandler(this.TbxNumChassis_TextChanged);
             this.tbxNumChassis.TextChanged += new System.EventHandler(this.TbxNumChassis_TextChanged);
             // 
@@ -145,7 +145,7 @@
             this.tbxMatriculaCarro.Location = new System.Drawing.Point(87, 60);
             this.tbxMatriculaCarro.Name = "tbxMatriculaCarro";
             this.tbxMatriculaCarro.Size = new System.Drawing.Size(283, 20);
-            this.tbxMatriculaCarro.TabIndex = 83;
+            this.tbxMatriculaCarro.TabIndex = 2;
             this.tbxMatriculaCarro.Click += new System.EventHandler(this.TbxMatriculaCarro_TextChanged);
             this.tbxMatriculaCarro.TextChanged += new System.EventHandler(this.TbxMatriculaCarro_TextChanged);
             // 
@@ -164,7 +164,7 @@
             this.tbxMarcaCarro.Location = new System.Drawing.Point(87, 8);
             this.tbxMarcaCarro.Name = "tbxMarcaCarro";
             this.tbxMarcaCarro.Size = new System.Drawing.Size(283, 20);
-            this.tbxMarcaCarro.TabIndex = 81;
+            this.tbxMarcaCarro.TabIndex = 0;
             this.tbxMarcaCarro.Click += new System.EventHandler(this.TbxMarcaCarro_TextChanged);
             this.tbxMarcaCarro.TextChanged += new System.EventHandler(this.TbxMarcaCarro_TextChanged);
             // 
@@ -200,7 +200,7 @@
             this.button2.Location = new System.Drawing.Point(159, 170);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(101, 28);
-            this.button2.TabIndex = 93;
+            this.button2.TabIndex = 7;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = false;
             // 
@@ -225,6 +225,7 @@
             this.Controls.Add(this.buttonAddCarro);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form_AddEdit_CarroAluguer";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Carro (Aluguer)";
             this.ResumeLayout(false);

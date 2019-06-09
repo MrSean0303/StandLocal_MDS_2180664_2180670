@@ -25,6 +25,7 @@ namespace Stand_Automoveis
             StandLocalDB = new StandLocalDBContainer();
             LerDados();
         }
+        #region GroupBoxClientes
         private void lblListaClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -58,19 +59,9 @@ namespace Stand_Automoveis
             lblNumCarrosComprados.Text = clienteSelecionado.Venda.Count.ToString();
             lblNumCarroAluguer.Text = clienteSelecionado.Aluguer.Count.ToString();
         }
-        private void LerDados()
-        {
-                listaCliente = StandLocalDB.Clientes.ToList();
-                AtualizarClientes();      
-        }
-        private void AtualizarClientes()
-        {
-            lbxClientes.DataSource = null;
-            lbxClientes.DataSource = listaCliente;
-        }
 
         private void BtnCriarCliente_Click(object sender, EventArgs e)
-        {      
+        {
             Form_Add_Cliente novocliente = new Form_Add_Cliente();
             novocliente.ShowDialog();
             Clientes clienteTemp = new Clientes
@@ -78,10 +69,10 @@ namespace Stand_Automoveis
                 Nome = novocliente.nome,
                 NIF = novocliente.nif,
                 Morada = novocliente.morada,
-                Contacto = novocliente.contacto          
+                Contacto = novocliente.contacto
             };
 
-            if(novocliente.DialogResult == DialogResult.OK)
+            if (novocliente.DialogResult == DialogResult.OK)
             {
                 listaCliente.Add(clienteTemp);
                 StandLocalDB.Clientes.Add(clienteTemp);
@@ -113,81 +104,6 @@ namespace Stand_Automoveis
                 MessageBox.Show("O cliente tem dados introduzidos, por isso nao pode ser apagado", "Erro ao Eliminar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void GuardarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            StandLocalDB.SaveChanges();
-            conteudoNovo = false;
-        }
-
-        private void BtnEditarCliente_Click(object sender, EventArgs e)
-        {
-            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
-
-            if (clienteSelecionado == null)
-            {
-                MessageBox.Show("Nenhum Cliente Selecionado", "Erro Cliente Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //Efetuar as alterações no cliente
-                clienteSelecionado.Nome = tbAlterarNome.Text;
-                clienteSelecionado.NIF = tbAlterarNif.Text;
-                clienteSelecionado.Morada = tbAlterarMorada.Text;
-                clienteSelecionado.Contacto = tbAlterarContacto.Text;
-                AtualizarClientes();
-                conteudoNovo = true;
-        }
-
-        private void SairToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void LimparDadosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            tbAlterarNome.Text = null;
-            tbAlterarNif.Text = null;
-            tbAlterarContacto.Text = null;
-            tbAlterarMorada.Text = null;
-
-            lbxClientes.SelectedIndex = -1;
-        }
-
-        private void NovoClienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form_Add_Cliente novocliente = new Form_Add_Cliente();
-            novocliente.ShowDialog();
-            Clientes clienteTemp = new Clientes
-            {
-                Nome = novocliente.nome,
-                NIF = novocliente.nif,
-                Morada = novocliente.morada,
-                Contacto = novocliente.contacto
-            };
-
-            if (novocliente.DialogResult == DialogResult.OK)
-            {
-                listaCliente.Add(clienteTemp);
-                StandLocalDB.Clientes.Add(clienteTemp);
-                AtualizarClientes();
-            }
-            conteudoNovo = true;
-        }
-
-        private void GestorCliente_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //Se o utilizador ainda nao guardou, guarda
-            if (conteudoNovo == true)
-            {
-                if (MessageBox.Show("Não guardou as suas ultimas alterações.", "Guardar Alterações ?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
-                {
-                    StandLocalDB.SaveChanges();
-                }
-            }
-            StandLocalDB.Dispose();
-        }
-
         private void TbxFiltrar_TextChanged(object sender, EventArgs e)
         {
             string nome = tbxFiltrar.Text;
@@ -235,9 +151,30 @@ namespace Stand_Automoveis
             }
         }
 
+        #endregion
+
+        #region GroupBoxDadosCliente
+        private void BtnEditarCliente_Click(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+
+            if (clienteSelecionado == null)
+            {
+                MessageBox.Show("Nenhum Cliente Selecionado", "Erro Cliente Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Efetuar as alterações no cliente
+                clienteSelecionado.Nome = tbAlterarNome.Text;
+                clienteSelecionado.NIF = tbAlterarNif.Text;
+                clienteSelecionado.Morada = tbAlterarMorada.Text;
+                clienteSelecionado.Contacto = tbAlterarContacto.Text;
+                AtualizarClientes();
+                conteudoNovo = true;
+        }
         private void TbAlterarNif_TextChanged(object sender, EventArgs e)
         {
-            if(tbAlterarNif.Text.Length < 9 || tbAlterarNif.Text.Length > 9)
+            if (tbAlterarNif.Text.Length < 9 || tbAlterarNif.Text.Length > 9)
             {
                 pictureBoxNIF.Visible = true;
                 btnEditarCliente.Enabled = false;
@@ -247,6 +184,76 @@ namespace Stand_Automoveis
                 pictureBoxNIF.Visible = false;
                 btnEditarCliente.Enabled = true;
             }
+        }
+        #endregion
+
+        #region ToolStripOptions
+
+        private void GuardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StandLocalDB.SaveChanges();
+            conteudoNovo = false;
+        }
+        private void SairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void LimparDadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tbAlterarNome.Text = null;
+            tbAlterarNif.Text = null;
+            tbAlterarContacto.Text = null;
+            tbAlterarMorada.Text = null;
+
+            lbxClientes.SelectedIndex = -1;
+        }
+
+        private void NovoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Add_Cliente novocliente = new Form_Add_Cliente();
+            novocliente.ShowDialog();
+            Clientes clienteTemp = new Clientes
+            {
+                Nome = novocliente.nome,
+                NIF = novocliente.nif,
+                Morada = novocliente.morada,
+                Contacto = novocliente.contacto
+            };
+
+            if (novocliente.DialogResult == DialogResult.OK)
+            {
+                listaCliente.Add(clienteTemp);
+                StandLocalDB.Clientes.Add(clienteTemp);
+                AtualizarClientes();
+            }
+            conteudoNovo = true;
+        }
+        #endregion
+
+        #region AtualizarClientes
+        private void LerDados()
+        {
+            listaCliente = StandLocalDB.Clientes.ToList();
+            AtualizarClientes();
+        }
+        private void AtualizarClientes()
+        {
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = listaCliente;
+        }
+        #endregion
+        private void GestorCliente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Se o utilizador ainda nao guardou, guarda
+            if (conteudoNovo == true)
+            {
+                if (MessageBox.Show("Não guardou as suas ultimas alterações.", "Guardar Alterações ?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    StandLocalDB.SaveChanges();
+                }
+            }
+            StandLocalDB.Dispose();
         }
     }
 }

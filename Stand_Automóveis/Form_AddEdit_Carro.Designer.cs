@@ -154,7 +154,7 @@
             this.tbxCombustivelCarro.Location = new System.Drawing.Point(95, 139);
             this.tbxCombustivelCarro.Name = "tbxCombustivelCarro";
             this.tbxCombustivelCarro.Size = new System.Drawing.Size(283, 20);
-            this.tbxCombustivelCarro.TabIndex = 4;
+            this.tbxCombustivelCarro.TabIndex = 5;
             this.tbxCombustivelCarro.TextChanged += new System.EventHandler(this.TbxCombustivelCarro_TextChanged);
             // 
             // label3
@@ -177,7 +177,7 @@
             0});
             this.nudKms.Name = "nudKms";
             this.nudKms.Size = new System.Drawing.Size(283, 20);
-            this.nudKms.TabIndex = 42;
+            this.nudKms.TabIndex = 4;
             this.nudKms.ValueChanged += new System.EventHandler(this.NudKms_ValueChanged);
             // 
             // toolTipKms
@@ -210,7 +210,7 @@
             this.button2.Location = new System.Drawing.Point(167, 168);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(101, 28);
-            this.button2.TabIndex = 44;
+            this.button2.TabIndex = 7;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = false;
             // 
@@ -236,6 +236,7 @@
             this.Controls.Add(this.labelNome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form_AddEdit_Carro";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Carro (Oficina)";
             ((System.ComponentModel.ISupportInitialize)(this.nudKms)).EndInit();

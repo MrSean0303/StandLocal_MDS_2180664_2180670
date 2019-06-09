@@ -136,7 +136,7 @@
             this.lbxClientes.Location = new System.Drawing.Point(6, 39);
             this.lbxClientes.Name = "lbxClientes";
             this.lbxClientes.Size = new System.Drawing.Size(275, 368);
-            this.lbxClientes.TabIndex = 0;
+            this.lbxClientes.TabIndex = 5;
             this.lbxClientes.SelectedIndexChanged += new System.EventHandler(this.lblListaClientes_SelectedIndexChanged);
             // 
             // gbxClientes
@@ -152,7 +152,7 @@
             this.gbxClientes.Location = new System.Drawing.Point(12, 27);
             this.gbxClientes.Name = "gbxClientes";
             this.gbxClientes.Size = new System.Drawing.Size(287, 419);
-            this.gbxClientes.TabIndex = 2;
+            this.gbxClientes.TabIndex = 1;
             this.gbxClientes.TabStop = false;
             this.gbxClientes.Text = "Clientes";
             // 
@@ -168,13 +168,13 @@
             this.buttonOrdenarDesc.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
             this.buttonOrdenarDesc.Name = "buttonOrdenarDesc";
             this.buttonOrdenarDesc.Size = new System.Drawing.Size(26, 26);
-            this.buttonOrdenarDesc.TabIndex = 8;
+            this.buttonOrdenarDesc.TabIndex = 2;
             this.buttonOrdenarDesc.UseVisualStyleBackColor = false;
             this.buttonOrdenarDesc.Click += new System.EventHandler(this.ButtonOrdenarDesc_Click);
             // 
             // btnEliminarCliente
             // 
-            this.btnEliminarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEliminarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEliminarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(194)))), ((int)(((byte)(194)))));
             this.btnEliminarCliente.FlatAppearance.BorderSize = 0;
             this.btnEliminarCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
@@ -185,7 +185,7 @@
             this.btnEliminarCliente.Margin = new System.Windows.Forms.Padding(3, 3, 1, 3);
             this.btnEliminarCliente.Name = "btnEliminarCliente";
             this.btnEliminarCliente.Size = new System.Drawing.Size(26, 26);
-            this.btnEliminarCliente.TabIndex = 1;
+            this.btnEliminarCliente.TabIndex = 3;
             this.btnEliminarCliente.UseVisualStyleBackColor = false;
             this.btnEliminarCliente.Click += new System.EventHandler(this.BtnEliminarCliente_Click);
             // 
@@ -200,13 +200,13 @@
             this.buttonOrdenarCres.Location = new System.Drawing.Point(153, 10);
             this.buttonOrdenarCres.Name = "buttonOrdenarCres";
             this.buttonOrdenarCres.Size = new System.Drawing.Size(26, 26);
-            this.buttonOrdenarCres.TabIndex = 7;
+            this.buttonOrdenarCres.TabIndex = 1;
             this.buttonOrdenarCres.UseVisualStyleBackColor = false;
             this.buttonOrdenarCres.Click += new System.EventHandler(this.ButtonOrdenarCres_Click);
             // 
             // btnCriarCliente
             // 
-            this.btnCriarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCriarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCriarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(213)))), ((int)(((byte)(216)))));
             this.btnCriarCliente.FlatAppearance.BorderSize = 0;
             this.btnCriarCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(202)))), ((int)(((byte)(211)))));
@@ -216,7 +216,7 @@
             this.btnCriarCliente.Location = new System.Drawing.Point(255, 10);
             this.btnCriarCliente.Name = "btnCriarCliente";
             this.btnCriarCliente.Size = new System.Drawing.Size(26, 26);
-            this.btnCriarCliente.TabIndex = 2;
+            this.btnCriarCliente.TabIndex = 4;
             this.btnCriarCliente.UseVisualStyleBackColor = false;
             this.btnCriarCliente.Click += new System.EventHandler(this.BtnCriarCliente_Click);
             // 
@@ -225,7 +225,7 @@
             this.tbxFiltrar.Location = new System.Drawing.Point(6, 14);
             this.tbxFiltrar.Name = "tbxFiltrar";
             this.tbxFiltrar.Size = new System.Drawing.Size(141, 20);
-            this.tbxFiltrar.TabIndex = 5;
+            this.tbxFiltrar.TabIndex = 0;
             this.tbxFiltrar.TextChanged += new System.EventHandler(this.TbxFiltrar_TextChanged);
             this.tbxFiltrar.Enter += new System.EventHandler(this.TbxFiltrar_Enter);
             this.tbxFiltrar.Leave += new System.EventHandler(this.TbxFiltrar_Leave);
@@ -240,7 +240,7 @@
             this.gbxDadosCliente.Location = new System.Drawing.Point(305, 27);
             this.gbxDadosCliente.Name = "gbxDadosCliente";
             this.gbxDadosCliente.Size = new System.Drawing.Size(575, 419);
-            this.gbxDadosCliente.TabIndex = 3;
+            this.gbxDadosCliente.TabIndex = 2;
             this.gbxDadosCliente.TabStop = false;
             this.gbxDadosCliente.Text = "Dados do Cliente";
             // 
@@ -529,6 +529,7 @@
             // 
             // pictureBoxNIF
             // 
+            this.pictureBoxNIF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxNIF.Image = global::Stand_Automoveis.Properties.Resources.StatusCriticalError_16x;
             this.pictureBoxNIF.Location = new System.Drawing.Point(866, 80);
             this.pictureBoxNIF.Name = "pictureBoxNIF";
@@ -558,6 +559,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "GestorCliente";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestão de Clientes";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestorCliente_FormClosing);

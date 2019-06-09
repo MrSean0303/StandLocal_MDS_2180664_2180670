@@ -23,6 +23,16 @@ namespace Stand_Automoveis
         {
             InitializeComponent();
 
+            tbxFiltrarClientes.ForeColor = SystemColors.GrayText;
+            tbxFiltrarClientes.Text = "Filtrar";
+            tbxFiltrarClientes.Leave += new System.EventHandler(TbxFiltrarClientes_Leave);
+            tbxFiltrarClientes.Enter += new System.EventHandler(TbxFiltrarClientes_Enter);
+
+            tbxFiltrarCarrosVenda.ForeColor = SystemColors.GrayText;
+            tbxFiltrarCarrosVenda.Text = "Filtrar";
+            tbxFiltrarCarrosVenda.Leave += new System.EventHandler(TbxFiltrarCarrosVenda_Leave);
+            tbxFiltrarCarrosVenda.Enter += new System.EventHandler(TbxFiltrarCarrosVenda_Enter);
+
             CarregarBD carregar = new CarregarBD();
             carregar.Show();
             Application.DoEvents();
@@ -477,6 +487,100 @@ namespace Stand_Automoveis
                 AtualizarClientes();
                 dadosGuardados = false;
             }
+        }
+
+        private void TbxFiltrarClientes_TextChanged(object sender, EventArgs e)
+        {
+            string nome = tbxFiltrarClientes.Text;
+
+            if (nome != string.Empty)
+            {
+                List<Clientes> clientes = listaClientes.Where(cliente => cliente.Nome.ToUpper().Contains(nome.ToUpper())).ToList();
+                lbxClientes.DataSource = null;
+                lbxClientes.DataSource = clientes;
+            }
+            else
+                AtualizarClientes();
+        }
+
+        private void TbxFiltrarClientes_Enter(object sender, EventArgs e)
+        {
+            if (tbxFiltrarClientes.Text == "Filtrar")
+            {
+                tbxFiltrarClientes.Text = "";
+                tbxFiltrarClientes.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void TbxFiltrarClientes_Leave(object sender, EventArgs e)
+        {
+            if (tbxFiltrarClientes.Text.Length == 0)
+            {
+                tbxFiltrarClientes.Text = "Filtrar";
+                tbxFiltrarClientes.ForeColor = SystemColors.GrayText;
+                AtualizarClientes();
+            }
+        }
+
+        private void TbxFiltrarCarrosVenda_TextChanged(object sender, EventArgs e)
+        {
+            string nome = tbxFiltrarCarrosVenda.Text;
+
+            if (nome != string.Empty)
+            {
+                List<CarrosVenda> carrosVenda = listaCarrosVenda.Where(carro => carro.Marca.ToUpper().Contains(nome.ToUpper())).ToList();
+                lbxCarrosVenda.DataSource = null;
+                lbxCarrosVenda.DataSource = carrosVenda;
+            }
+            else
+                AtualizarListaCarrosVenda();
+        }
+
+        private void TbxFiltrarCarrosVenda_Enter(object sender, EventArgs e)
+        {
+            if (tbxFiltrarCarrosVenda.Text == "Filtrar")
+            {
+                tbxFiltrarCarrosVenda.Text = "";
+                tbxFiltrarCarrosVenda.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void TbxFiltrarCarrosVenda_Leave(object sender, EventArgs e)
+        {
+            if (tbxFiltrarCarrosVenda.Text.Length == 0)
+            {
+                tbxFiltrarCarrosVenda.Text = "Filtrar";
+                tbxFiltrarCarrosVenda.ForeColor = SystemColors.GrayText;
+                AtualizarListaCarrosVenda();
+            }
+        }
+
+        private void ButtonOrdenarCresClientes_Click(object sender, EventArgs e)
+        {
+            List<Clientes> clientes = listaClientes.OrderBy(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
+        }
+
+        private void ButtonOrdenarAscCarros_Click(object sender, EventArgs e)
+        {
+            List<CarrosVenda> carros = listaCarrosVenda.OrderBy(carro => carro.Marca).ToList();
+            lbxCarrosVenda.DataSource = null;
+            lbxCarrosVenda.DataSource = carros;
+        }
+
+        private void ButtonOrdenarDescCarros_Click(object sender, EventArgs e)
+        {
+            List<CarrosVenda> carros = listaCarrosVenda.OrderByDescending(carro => carro.Marca).ToList();
+            lbxCarrosVenda.DataSource = null;
+            lbxCarrosVenda.DataSource = carros;
+        }
+
+        private void ButtonOrdenarDescClientes_Click(object sender, EventArgs e)
+        {
+            List<Clientes> clientes = listaClientes.OrderByDescending(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
         }
 
         private void eliminarCarroToolStripMenuItem_Click(object sender, EventArgs e)

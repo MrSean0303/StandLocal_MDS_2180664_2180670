@@ -72,7 +72,7 @@
             // Numeros
             // 
             this.Numeros.Name = "Numeros";
-            this.Numeros.Size = new System.Drawing.Size(561, 17);
+            this.Numeros.Size = new System.Drawing.Size(560, 17);
             this.Numeros.Text = "Numero Clientes: 0 Numero de Vendas: 0 Numero de carros alugados: 0  Numero de Ca" +
     "rros Repadados: 0";
             // 
@@ -186,6 +186,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuPrincipal";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stand Local";
             this.statusStrip1.ResumeLayout(false);

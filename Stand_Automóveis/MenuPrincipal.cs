@@ -34,7 +34,7 @@ namespace Stand_Automoveis
                 CarroOficinaNumero += c.CarroOficina.Count();
             }
 
-            Numeros.Text = "Numero Clientes: " + numeroClientes + " Numero de Vendas: " + vendasNumero + " Numero de carros alugados: " + aluguerNumero + " Numero de Carros Repadados: " + CarroOficinaNumero;
+            Numeros.Text = "| Clientes: " + numeroClientes + "  | Vendas: " + vendasNumero + " | Carros alugados: " + aluguerNumero + " | Carros na Oficina: " + CarroOficinaNumero;
 
         }
 
@@ -42,7 +42,7 @@ namespace Stand_Automoveis
         private void timer1_Tick(object sender, EventArgs e)
         {
             string hora = DateTime.Now.ToLongTimeString(), data = DateTime.Now.ToString("dd/MM/yyyy");
-            toolStripStatusLabelHora.Text ="Data: " + data + " Hora: " + hora; 
+            toolStripStatusLabelHora.Text ="Data: " + data + " | Hora: " + hora; 
 
         }
 

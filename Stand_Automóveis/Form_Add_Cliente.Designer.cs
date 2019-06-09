@@ -189,6 +189,7 @@
             this.Controls.Add(this.labelNome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form_Add_Cliente";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Cliente";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNIF)).EndInit();

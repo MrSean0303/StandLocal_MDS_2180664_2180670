@@ -54,7 +54,7 @@
             this.tbxTipo.Location = new System.Drawing.Point(96, 7);
             this.tbxTipo.Name = "tbxTipo";
             this.tbxTipo.Size = new System.Drawing.Size(227, 20);
-            this.tbxTipo.TabIndex = 35;
+            this.tbxTipo.TabIndex = 0;
             this.tbxTipo.TextChanged += new System.EventHandler(this.TbxTipo_TextChanged);
             // 
             // labelNome
@@ -80,7 +80,7 @@
             this.buttonAddServico.Margin = new System.Windows.Forms.Padding(6);
             this.buttonAddServico.Name = "buttonAddServico";
             this.buttonAddServico.Size = new System.Drawing.Size(101, 28);
-            this.buttonAddServico.TabIndex = 41;
+            this.buttonAddServico.TabIndex = 3;
             this.buttonAddServico.Text = "Continuar";
             this.buttonAddServico.UseVisualStyleBackColor = false;
             this.buttonAddServico.Click += new System.EventHandler(this.ButtonAddServico_Click);
@@ -90,7 +90,7 @@
             this.dtpDataEntrada.Location = new System.Drawing.Point(96, 33);
             this.dtpDataEntrada.Name = "dtpDataEntrada";
             this.dtpDataEntrada.Size = new System.Drawing.Size(227, 20);
-            this.dtpDataEntrada.TabIndex = 43;
+            this.dtpDataEntrada.TabIndex = 1;
             this.dtpDataEntrada.ValueChanged += new System.EventHandler(this.DtpDataEntrada_ValueChanged);
             // 
             // dtpDataSaida
@@ -98,7 +98,7 @@
             this.dtpDataSaida.Location = new System.Drawing.Point(96, 61);
             this.dtpDataSaida.Name = "dtpDataSaida";
             this.dtpDataSaida.Size = new System.Drawing.Size(227, 20);
-            this.dtpDataSaida.TabIndex = 45;
+            this.dtpDataSaida.TabIndex = 2;
             this.dtpDataSaida.ValueChanged += new System.EventHandler(this.DtpDataSaida_ValueChanged);
             // 
             // label1
@@ -131,7 +131,7 @@
             this.button1.Location = new System.Drawing.Point(112, 90);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 28);
-            this.button1.TabIndex = 47;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -151,6 +151,7 @@
             this.Controls.Add(this.labelNome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form_AddEdit_Servico";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Serviço";
             this.ResumeLayout(false);

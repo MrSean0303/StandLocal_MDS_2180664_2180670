@@ -493,7 +493,7 @@ namespace Stand_Automoveis
             {
                 tbxFiltrarCarrosAluguer.Text = "Filtrar";
                 tbxFiltrarCarrosAluguer.ForeColor = SystemColors.GrayText;
-                AtualizarClientes();
+                AtualizarListaCarrosAluguer();
             }
         }
 

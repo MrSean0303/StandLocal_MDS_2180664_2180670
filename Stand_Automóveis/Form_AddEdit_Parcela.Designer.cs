@@ -47,7 +47,7 @@
             this.numValor.Location = new System.Drawing.Point(83, 7);
             this.numValor.Name = "numValor";
             this.numValor.Size = new System.Drawing.Size(220, 20);
-            this.numValor.TabIndex = 11;
+            this.numValor.TabIndex = 0;
             this.numValor.ValueChanged += new System.EventHandler(this.NumValor_ValueChanged);
             // 
             // buttonAddParcela
@@ -64,7 +64,7 @@
             this.buttonAddParcela.Margin = new System.Windows.Forms.Padding(6);
             this.buttonAddParcela.Name = "buttonAddParcela";
             this.buttonAddParcela.Size = new System.Drawing.Size(101, 28);
-            this.buttonAddParcela.TabIndex = 10;
+            this.buttonAddParcela.TabIndex = 2;
             this.buttonAddParcela.Text = "Continuar";
             this.buttonAddParcela.UseVisualStyleBackColor = false;
             this.buttonAddParcela.Click += new System.EventHandler(this.ButtonAddParcela_Click);
@@ -92,7 +92,7 @@
             this.tbxDescricao.Location = new System.Drawing.Point(83, 33);
             this.tbxDescricao.Name = "tbxDescricao";
             this.tbxDescricao.Size = new System.Drawing.Size(220, 20);
-            this.tbxDescricao.TabIndex = 7;
+            this.tbxDescricao.TabIndex = 1;
             this.tbxDescricao.TextChanged += new System.EventHandler(this.TbxDescricao_TextChanged);
             // 
             // pictureBoxValor
@@ -118,7 +118,7 @@
             this.button1.Location = new System.Drawing.Point(92, 62);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 28);
-            this.button1.TabIndex = 13;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -145,6 +145,7 @@
             this.Controls.Add(this.tbxDescricao);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form_AddEdit_Parcela";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nova Parcela";
             ((System.ComponentModel.ISupportInitialize)(this.numValor)).EndInit();
