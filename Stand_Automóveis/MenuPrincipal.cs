@@ -18,7 +18,26 @@ namespace Stand_Automoveis
         {
             InitializeComponent();
             StandLocalDB = new StandLocalDBContainer();
+            AtualizarMenu();
         }
+
+        public void AtualizarMenu()
+        {
+            List<Clientes> listaClientes = StandLocalDB.Clientes.ToList();
+            int numeroClientes = StandLocalDB.Clientes.Count();
+            int aluguerNumero = StandLocalDB.Aluguer.Count();
+            int vendasNumero = StandLocalDB.Vendas.Count();
+            int CarroOficinaNumero = 0;
+
+            foreach (Clientes c in listaClientes)
+            {
+                CarroOficinaNumero += c.CarroOficina.Count();
+            }
+
+            Numeros.Text = "Numero Clientes: " + numeroClientes + " Numero de Vendas: " + vendasNumero + " Numero de carros alugados: " + aluguerNumero + " Numero de Carros Repadados: " + CarroOficinaNumero;
+
+        }
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -30,39 +49,37 @@ namespace Stand_Automoveis
         private void BtnGestaoClientes_Click_1(object sender, EventArgs e)
         {
             GestorCliente gestorCliente = new GestorCliente();
-            gestorCliente.Show();
+            gestorCliente.ShowDialog();
+            AtualizarMenu();
+
         }
 
         private void BtnGestaoOficina_Click_1(object sender, EventArgs e)
         {
             GestorOficina gestorOficina = new GestorOficina();
-            gestorOficina.Show();
+            gestorOficina.ShowDialog();
+            AtualizarMenu();
         }
 
         private void BtnGestaoAluguer_Click_1(object sender, EventArgs e)
         {
             GestorAluguer gestorAluguer = new GestorAluguer();
-            gestorAluguer.Show();
+            gestorAluguer.ShowDialog();
+            AtualizarMenu();
         }
 
         private void BtnGestaoVenda_Click_1(object sender, EventArgs e)
         {
             GestorVenda gestorVenda = new GestorVenda();
-            gestorVenda.Show();
+            gestorVenda.ShowDialog();
+            AtualizarMenu();
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
-            List<Clientes> listaClientes = StandLocalDB.Clientes.ToList();
-            int aluguerNumero = StandLocalDB.Aluguer.Count();
-            int vendasNumero = StandLocalDB.Vendas.Count();
-            int CarroOficinaNumero = 0;
-
-            foreach (Clientes c in listaClientes) {
-                CarroOficinaNumero+= c.CarroOficina.Count();
-            }
-
-            Estatisticas.Text = "";
+            
         }
+
+        
     }
 }

@@ -519,5 +519,56 @@ namespace Stand_Automoveis
             conteudoNovo = true;
             AtualizarServicos();
         }
+
+        private void imprimirHistoricoCarroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+            CarrosOficina carroOficinaSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
+
+            if (clienteSelecionado == null) {
+                MessageBox.Show("Para imprimir por favor selecione um cliente.", "Cliente por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (carroOficinaSelecionado == null) {
+                MessageBox.Show("Para imprimir por favor selecione um carro", "Carro por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (clienteSelecionado == null || carroOficinaSelecionado == null) {
+                return;
+            }
+
+            ImprimirDocumentos imprimir = new ImprimirDocumentos();
+            imprimir.CarroOficinaHistorico(clienteSelecionado, carroOficinaSelecionado);
+        }
+
+        private void buttonFatura_Click(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+            CarrosOficina carroOficinaSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
+            Servicos ServicoSelecionada = (Servicos)lbxServicos.SelectedItem;
+
+            if (clienteSelecionado == null)
+            {
+                MessageBox.Show("Para imprimir por favor selecione um cliente.", "Cliente por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (carroOficinaSelecionado == null)
+            {
+                MessageBox.Show("Para imprimir por favor selecione um carro", "Carro por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (ServicoSelecionada == null)
+            {
+                MessageBox.Show("Para imprimir por favor selecione um Servico", "Servico por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (clienteSelecionado == null || carroOficinaSelecionado == null || ServicoSelecionada == null)
+            {
+                return;
+            }
+
+            ImprimirDocumentos imprimir = new ImprimirDocumentos();
+            imprimir.carroOficinaUnica(clienteSelecionado, carroOficinaSelecionado, ServicoSelecionada);
+        }
     }
 }

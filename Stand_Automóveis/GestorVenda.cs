@@ -454,45 +454,28 @@ namespace Stand_Automoveis
                 return;
             }
 
-            if (dadosGuardados == false) {
-                if (MessageBox.Show("Por motivos de segurança teremos de guardar qualquer alteração feito nas vendas antes de imprimir. Deseja guardar", "Guardar obrigatorio", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) {
+            ImprimirDocumentos imprimir = new ImprimirDocumentos();
+            imprimir.VendaHistorico(clienteSelecionado);
+        }
 
-                    bool carroSemVenda = false;
-                    List<CarrosVenda> carrosParaEliminar = new List<CarrosVenda>();
-                    foreach (CarrosVenda carro in listaCarrosVenda)
-                    {
-                        if (carro.Venda == null)
-                        {
-                            carroSemVenda = true;
-                            carrosParaEliminar.Add(carro);
-                        }
-                    }
+        private void novoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Add_Cliente novocliente = new Form_Add_Cliente();
+            novocliente.ShowDialog();
+            Clientes clienteTemp = new Clientes
+            {
+                Nome = novocliente.nome,
+                NIF = novocliente.nif,
+                Morada = novocliente.morada,
+                Contacto = novocliente.contacto
+            };
 
-                    if (carroSemVenda == true)
-                    {
-                        MessageBox.Show("Não pode ter carros para Venda sem estarem associados a vendas", "Carros sem vendas", MessageBoxButtons.OK);
-                        if (MessageBox.Show("Deseja apagar os carros sem venda?", "Eliminar Carros sem venda?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                        {
-                            foreach (CarrosVenda carrosEliminar in carrosParaEliminar)
-                            {
-                                StandLocalDB.Carro.Remove(carrosEliminar);
-                            }
-                            AtualizarListaCarrosVenda();
-                            StandLocalDB.SaveChanges();
-                        }
-
-                    }
-                    else
-                    {
-                        StandLocalDB.SaveChanges();
-                    }
-
-
-                    StandLocalDB.SaveChanges();
-
-                    ImprimirDocumentos imprimir = new ImprimirDocumentos();
-                    imprimir.VendaHistorico(clienteSelecionado);
-                }
+            if (novocliente.DialogResult == DialogResult.OK)
+            {
+                listaClientes.Add(clienteTemp);
+                StandLocalDB.Clientes.Add(clienteTemp);
+                AtualizarClientes();
+                dadosGuardados = false;
             }
         }
 

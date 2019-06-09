@@ -62,6 +62,7 @@
             this.tbxFiltrarVenda = new System.Windows.Forms.TextBox();
             this.lbxCarrosVenda = new System.Windows.Forms.ListBox();
             this.gbxAluguer = new System.Windows.Forms.GroupBox();
+            this.novoClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.gbxAlugados.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -214,6 +215,7 @@
             // 
             this.ficheiroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.imprimirHistoricoClienteToolStripMenuItem,
+            this.novoClienteToolStripMenuItem,
             this.guardarToolStripMenuItem,
             this.limparDadosToolStripMenuItem,
             this.sairToolStripMenuItem});
@@ -388,6 +390,13 @@
             this.gbxAluguer.TabStop = false;
             this.gbxAluguer.Text = "Carros para Vender";
             // 
+            // novoClienteToolStripMenuItem
+            // 
+            this.novoClienteToolStripMenuItem.Name = "novoClienteToolStripMenuItem";
+            this.novoClienteToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.novoClienteToolStripMenuItem.Text = "Novo Cliente";
+            this.novoClienteToolStripMenuItem.Click += new System.EventHandler(this.novoClienteToolStripMenuItem_Click);
+            // 
             // GestorVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,7 +409,7 @@
             this.Controls.Add(this.gbxAluguer);
             this.Name = "GestorVenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gertão de Vendas";
+            this.Text = "GertorVenda";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestorVenda_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -452,5 +461,6 @@
         public System.Windows.Forms.ListBox lbxCarrosVenda;
         private System.Windows.Forms.GroupBox gbxAluguer;
         private System.Windows.Forms.ToolStripMenuItem imprimirHistoricoClienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem novoClienteToolStripMenuItem;
     }
 }

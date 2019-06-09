@@ -46,19 +46,20 @@ namespace Stand_Automoveis
             {
 
                 sw.WriteLine("___________________________________________________");
-                sw.WriteLine("Serviço Inicializado no dia: " + s.DataEntrada.Date);
-                sw.WriteLine("Serviço finalizada no dia: " + s.DataSaida.Date);
+                sw.WriteLine("Serviço Inicializado no dia: " + s.DataEntrada.ToString("dd-MM-yy"));
+                sw.WriteLine("Serviço finalizada no dia: " + s.DataSaida.ToString("dd-MM-yy"));
                 sw.WriteLine("___________________________________________________");
                 sw.WriteLine(" ");
                 sw.WriteLine(" ");
                 sw.WriteLine("Serviços Efetuados no carro:");
                 foreach (Parcelas ps in s.Parcela)
                 {
-                    sw.WriteLine("              Descrição:" + ps.Descricao + " Valor: " + ps.Valor.ToString() + "€");
+                    sw.WriteLine("              Descrição:" + ps.Descricao + " Valor: " + ps.Valor + "€");
                     valorTotal += ps.Valor;
                 }
-                sw.WriteLine("Valor Total pago em Serviços: " + valorTotal + "€");
+               
             }
+            sw.WriteLine("Valor Total pago em Serviços: " + valorTotal + "€");
             sw.Close();
 
             MessageBox.Show("Dados guadados com sucesso!");
@@ -104,8 +105,8 @@ namespace Stand_Automoveis
             sw.WriteLine(" ");
             sw.WriteLine("___________________________________________________");
             sw.WriteLine("Tipo de Serviço: " + ServicoSelecionada.Tipo);
-            sw.WriteLine("Data de inicio do Serviço: " + ServicoSelecionada.DataEntrada.Date);
-            sw.WriteLine("Data de finalização do Serviço: " + ServicoSelecionada.DataSaida.Date);
+            sw.WriteLine("Data de inicio do Serviço: " + ServicoSelecionada.DataEntrada.ToString("dd-MM-yy"));
+            sw.WriteLine("Data de finalização do Serviço: " + ServicoSelecionada.DataSaida.ToString("dd-MM-yy"));
             sw.WriteLine("___________________________________________________");
 
             foreach (Parcelas parcelas in listaServico)
@@ -113,8 +114,8 @@ namespace Stand_Automoveis
                 sw.WriteLine(" ");
                 sw.WriteLine(" ");
                 sw.WriteLine("___________________________________________________");
-                sw.WriteLine("Valor:" + parcelas.Valor);
-                sw.WriteLine("Descrição:" + parcelas.Descricao);              
+                sw.WriteLine("Valor: " + parcelas.Valor);
+                sw.WriteLine("Descrição: " + parcelas.Descricao);              
                 sw.WriteLine("___________________________________________________");
                 valorTotal += parcelas.Valor;
             }
@@ -172,8 +173,8 @@ namespace Stand_Automoveis
                 sw.WriteLine(" ");
                 sw.WriteLine("Kilometros do Carro antes do Aluguer: " + alugueresDoCliente.Kms);
                 sw.WriteLine("Valor do Aluguer: " + alugueresDoCliente.Valor + "€");
-                sw.WriteLine("Aluguer Inicializado no dia: " + alugueresDoCliente.DataInicio.Date);
-                sw.WriteLine("Aluguer finalizado no dia: " + alugueresDoCliente.DataFim.Date);
+                sw.WriteLine("Aluguer Inicializado no dia: " + alugueresDoCliente.DataInicio.ToString("dd-MM-yy"));
+                sw.WriteLine("Aluguer finalizado no dia: " + alugueresDoCliente.DataFim.ToString("dd-MM-yy"));
                 sw.WriteLine("___________________________________________________");
                 sw.WriteLine(" ");
                 sw.WriteLine(" ");
@@ -210,15 +211,15 @@ namespace Stand_Automoveis
             sw.WriteLine(" ");
             sw.WriteLine(" ");
             sw.WriteLine("___________________________________________________");
-            sw.WriteLine("Carro:");
-            sw.WriteLine("Marca:" + AluguerSelecionado.CarroAluguer.Marca + " Modelo: " + AluguerSelecionado.CarroAluguer.Modelo);
-            sw.WriteLine("Matricula:" + AluguerSelecionado.CarroAluguer.Matricula + " Tipo de Combustivel: " + AluguerSelecionado.CarroAluguer.Combustivel);
+            sw.WriteLine("Carro: ");
+            sw.WriteLine("Marca: " + AluguerSelecionado.CarroAluguer.Marca + " Modelo: " + AluguerSelecionado.CarroAluguer.Modelo);
+            sw.WriteLine("Matricula: " + AluguerSelecionado.CarroAluguer.Matricula + " Tipo de Combustivel: " + AluguerSelecionado.CarroAluguer.Combustivel);
             sw.WriteLine(" ");
             sw.WriteLine(" ");
             sw.WriteLine("Kilometros do Carro antes do Aluguer: " + AluguerSelecionado.Kms);
             sw.WriteLine("Valor do Aluguer: " + AluguerSelecionado.Valor + "€");
-            sw.WriteLine("Aluguer Inicializado no dia: " + AluguerSelecionado.DataInicio.Date);
-            sw.WriteLine("Aluguer finalizado no dia: " + AluguerSelecionado.DataFim.Date);
+            sw.WriteLine("Aluguer Inicializado no dia: " + AluguerSelecionado.DataInicio.ToString("dd-MM-yy"));
+            sw.WriteLine("Aluguer finalizado no dia: " + AluguerSelecionado.DataFim.ToString("dd-MM-yy"));
             sw.WriteLine("___________________________________________________");
             sw.Close();
 
@@ -263,13 +264,13 @@ namespace Stand_Automoveis
                 sw.WriteLine(" ");
                 sw.WriteLine(" ");
                 sw.WriteLine("___________________________________________________");
-                sw.WriteLine("Carro:");
-                sw.WriteLine("Marca:" + vendaTodo.CarroVenda.Marca + " Modelo: " + vendaTodo.CarroVenda.Modelo);
-                sw.WriteLine("Extras:" + vendaTodo.CarroVenda.Extras);
+                sw.WriteLine("Carro: ");
+                sw.WriteLine("Marca: " + vendaTodo.CarroVenda.Marca + " Modelo: " + vendaTodo.CarroVenda.Modelo);
+                sw.WriteLine("Extras: " + vendaTodo.CarroVenda.Extras);
                 sw.WriteLine(" ");
                 sw.WriteLine(" ");
-                sw.WriteLine("Data de Venda" + vendaTodo.Data.Date);
-                sw.WriteLine("Estado da Venda:" + vendaTodo.Estado);
+                sw.WriteLine("Data de Venda: " + vendaTodo.Data.ToString("dd-MM-yy"));
+                sw.WriteLine("Estado da Venda: " + vendaTodo.Estado);
                 sw.WriteLine("Valor do Venda: " + vendaTodo.Valor + "€");
                 sw.WriteLine("___________________________________________________");
             }
@@ -311,7 +312,7 @@ namespace Stand_Automoveis
             sw.WriteLine("Extras:" + vendasDoCliente.CarroVenda.Extras);
             sw.WriteLine(" ");
             sw.WriteLine(" ");
-            sw.WriteLine("Data de Venda" + vendasDoCliente.Data.Date);
+            sw.WriteLine("Data de Venda" + vendasDoCliente.Data.ToString("dd-MM-yy"));
             sw.WriteLine("Estado da Venda:" + vendasDoCliente.Estado);
             sw.WriteLine("Valor do Venda: " + vendasDoCliente.Valor + "€");
             sw.WriteLine("___________________________________________________");
