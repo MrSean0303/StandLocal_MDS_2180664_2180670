@@ -126,16 +126,21 @@ namespace Stand_Automoveis
             EditarCarroVenda.tbxMarcaCarro.Text = carroVendaSelecionado.Marca;
             EditarCarroVenda.tbxModeloCarro.Text = carroVendaSelecionado.Modelo;
             EditarCarroVenda.tbxNumChassis.Text = carroVendaSelecionado.NumeroChassis;
+            EditarCarroVenda.Text = "Editar Carro (venda)";
             EditarCarroVenda.ShowDialog();
 
-            carroVendaSelecionado.Marca = EditarCarroVenda.marca;
-            carroVendaSelecionado.Modelo = EditarCarroVenda.modelo;
-            carroVendaSelecionado.NumeroChassis = EditarCarroVenda.numeroChassis;
-            carroVendaSelecionado.Extras = EditarCarroVenda.extra;
-            carroVendaSelecionado.Combustivel = EditarCarroVenda.combustivel;
+            if (EditarCarroVenda.DialogResult == DialogResult.OK)
+            {
+                carroVendaSelecionado.Marca = EditarCarroVenda.marca;
+                carroVendaSelecionado.Modelo = EditarCarroVenda.modelo;
+                carroVendaSelecionado.NumeroChassis = EditarCarroVenda.numeroChassis;
+                carroVendaSelecionado.Extras = EditarCarroVenda.extra;
+                carroVendaSelecionado.Combustivel = EditarCarroVenda.combustivel;
+
+                dadosGuardados = false;               
+            }
 
             AtualizarListaCarrosVenda();
-            dadosGuardados = false;
             LimparDados();
         }
 

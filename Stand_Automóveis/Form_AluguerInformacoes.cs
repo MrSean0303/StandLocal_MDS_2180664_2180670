@@ -50,5 +50,10 @@ namespace Stand_Automoveis
             ImprimirDocumentos imprimir = new ImprimirDocumentos();
             imprimir.AluguerUnico(cliente, aluguer);
         }
+
+        private void lblDtaEntrega_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

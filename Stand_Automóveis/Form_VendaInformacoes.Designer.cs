@@ -148,10 +148,9 @@
             // 
             // lblExtras
             // 
-            this.lblExtras.AutoSize = true;
             this.lblExtras.Location = new System.Drawing.Point(334, 152);
             this.lblExtras.Name = "lblExtras";
-            this.lblExtras.Size = new System.Drawing.Size(13, 13);
+            this.lblExtras.Size = new System.Drawing.Size(161, 67);
             this.lblExtras.TabIndex = 19;
             this.lblExtras.Text = "0";
             // 
@@ -386,7 +385,7 @@
             this.groupBox2.Controls.Add(this.lblEstado);
             this.groupBox2.Location = new System.Drawing.Point(407, 15);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(501, 190);
+            this.groupBox2.Size = new System.Drawing.Size(501, 222);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informações sobre a venda";
