@@ -45,6 +45,7 @@ namespace Stand_Automoveis
 
         }
 
+        #region AtualizarDados
         private void LerDados()
         {
             listaClientes = StandLocalDB.Clientes.ToList();
@@ -85,7 +86,85 @@ namespace Stand_Automoveis
             lbxVendas.DataSource = null;
             lbxVendas.DataSource = cliente.Venda.ToList();
         }
+        #endregion
 
+        #region CarrosParaVenda
+        private void ButtonOrdenarAscCarros_Click(object sender, EventArgs e)
+        {
+            List<CarrosVenda> carros = listaCarrosVenda.OrderBy(carro => carro.Marca).ToList();
+            lbxCarrosVenda.DataSource = null;
+            lbxCarrosVenda.DataSource = carros;
+        }
+
+        private void ButtonOrdenarDescCarros_Click(object sender, EventArgs e)
+        {
+            List<CarrosVenda> carros = listaCarrosVenda.OrderByDescending(carro => carro.Marca).ToList();
+            lbxCarrosVenda.DataSource = null;
+            lbxCarrosVenda.DataSource = carros;
+        }
+
+        private void TbxFiltrarCarrosVenda_TextChanged(object sender, EventArgs e)
+        {
+            string nome = tbxFiltrarCarrosVenda.Text;
+
+            if (nome != string.Empty)
+            {
+                List<CarrosVenda> carrosVenda = listaCarrosVenda.Where(carro => carro.Marca.ToUpper().Contains(nome.ToUpper())).ToList();
+                lbxCarrosVenda.DataSource = null;
+                lbxCarrosVenda.DataSource = carrosVenda;
+            }
+            else
+                AtualizarListaCarrosVenda();
+        }
+
+        private void TbxFiltrarCarrosVenda_Enter(object sender, EventArgs e)
+        {
+            if (tbxFiltrarCarrosVenda.Text == "Filtrar")
+            {
+                tbxFiltrarCarrosVenda.Text = "";
+                tbxFiltrarCarrosVenda.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void TbxFiltrarCarrosVenda_Leave(object sender, EventArgs e)
+        {
+            if (tbxFiltrarCarrosVenda.Text.Length == 0)
+            {
+                tbxFiltrarCarrosVenda.Text = "Filtrar";
+                tbxFiltrarCarrosVenda.ForeColor = SystemColors.GrayText;
+                AtualizarListaCarrosVenda();
+            }
+        }
+
+        private void btnAddCarro_Click(object sender, EventArgs e)
+        {
+            CriarCarro();
+        }
+
+        private void btnEditarCarroAluguer_Click(object sender, EventArgs e)
+        {
+            EditarCarro();
+        }
+
+        private void btnEliminarCarroAluguer_Click(object sender, EventArgs e)
+        {
+            EliminarCarro();
+        }
+
+        private void lbxCarrosVenda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CarrosVenda carroVendaSelecionado = (CarrosVenda)lbxCarrosVenda.SelectedItem;
+
+            if (carroVendaSelecionado == null)
+            {
+                btnEditarCarroVenda.Enabled = false;
+                btnEliminarCarroVenda.Enabled = false;
+                return;
+            }
+
+            btnEditarCarroVenda.Enabled = true;
+            btnEliminarCarroVenda.Enabled = true;
+        }
         public void CriarCarro()
         {
             Form_AddEdit_CarroVenda novoCarroVenda = new Form_AddEdit_CarroVenda();
@@ -166,8 +245,138 @@ namespace Stand_Automoveis
             }
 
         }
+        #endregion
 
-        public void testarVenda() {   
+        #region Vendas
+
+        private void lbxVendas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Vendas VendaSelecionado = (Vendas)lbxVendas.SelectedItem;
+
+            if (VendaSelecionado == null)
+            {
+                btnEditarVenda.Enabled = false;
+                btnEliminarVenda.Enabled = false;
+                btnInfVenda.Enabled = false;
+                return;
+            }
+
+            tbxestadoVenda.Text = VendaSelecionado.Estado;
+            tbxValorVenda.Text = VendaSelecionado.Valor.ToString();
+            dtpdataVenda.Value = VendaSelecionado.Data;
+
+            btnEditarVenda.Enabled = true;
+            btnEliminarVenda.Enabled = true;
+            btnInfVenda.Enabled = true;
+
+        }
+
+        private void btnInfVenda_Click(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = lbxClientes.SelectedItem as Clientes;
+            Vendas vendaSelecionada = (Vendas)lbxVendas.SelectedItem;
+
+            if (vendaSelecionada == null || clienteSelecionado == null)
+            {
+                MessageBox.Show("ERRO: Tem de selecionar o aluguer e o cliente para consultar informações.", "Cliente ou aluguer Errado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Form_VendaInformacoes vendaInformacoes = new Form_VendaInformacoes(clienteSelecionado, vendaSelecionada);
+            vendaInformacoes.Show();
+
+        }
+
+        private void btnAddVenda_Click(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+            CarrosVenda carroVendaSelecionado = (CarrosVenda)lbxCarrosVenda.SelectedItem;
+
+            if (clienteSelecionado == null || carroVendaSelecionado == null)
+            {
+                MessageBox.Show("ERRO: Não tem o cliente ou o carro selecionado", "Venda nao sucedida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Add_Edit_Venda();
+            if (valorVenda == true && dataVenda == true)
+            {
+                Vendas tempvenda = new Vendas
+                {
+                    Estado = tbxestadoVenda.Text,
+                    Valor = double.Parse(tbxValorVenda.Text),
+                    Data = dtpdataVenda.Value.Date,
+                    CarroVenda = carroVendaSelecionado,
+                };
+
+                StandLocalDB.Clientes.Find(clienteSelecionado.IdCliente).Venda.Add(tempvenda);
+
+                lbxVendas.DataSource = null;
+                lbxVendas.DataSource = StandLocalDB.Clientes.Find(clienteSelecionado.IdCliente).Venda.ToList();
+                dadosGuardados = false;
+
+                tbxestadoVenda.Clear();
+                tbxValorVenda.Clear();
+                dtpdataVenda.Value = DateTime.Now;
+
+            }
+
+            valorVenda = false;
+            dataVenda = false;
+
+        }
+
+        private void btnEliminarVenda_Click(object sender, EventArgs e)
+        {
+            Vendas vendaSelecionada = (Vendas)lbxVendas.SelectedItem;
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+
+            if (vendaSelecionada == null || clienteSelecionado == null)
+            {
+                MessageBox.Show("Selecione uma venda para que possa ser eliminada", "Venda não selecionada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            StandLocalDB.Vendas.Remove(vendaSelecionada);
+            AtualizarListaVenda(clienteSelecionado);
+            dadosGuardados = false;
+
+            tbxestadoVenda.Clear();
+            tbxValorVenda.Clear();
+            dtpdataVenda.Value = DateTime.Now;
+        }
+
+        private void btnEditarVenda_Click(object sender, EventArgs e)
+        {
+            Vendas vendaSelecionada = (Vendas)lbxVendas.SelectedItem;
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+
+            if (vendaSelecionada == null || clienteSelecionado == null)
+            {
+                MessageBox.Show("Selecione uma venda para que possa ser editada", "Venda não selecionada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            Add_Edit_Venda();
+            if (valorVenda == true && dataVenda == true)
+            {
+                vendaSelecionada.Data = dtpdataVenda.Value.Date;
+                vendaSelecionada.Estado = tbxestadoVenda.Text;
+                vendaSelecionada.Valor = double.Parse(tbxValorVenda.Text);
+
+                AtualizarListaVenda(clienteSelecionado);
+                dadosGuardados = false;
+                lbxVendas.ClearSelected();
+
+                tbxestadoVenda.Clear();
+                tbxValorVenda.Clear();
+                dtpdataVenda.Value = DateTime.Now;
+            }
+
+            valorVenda = false;
+            dataVenda = false;
+        }
+        public void Add_Edit_Venda() {   
             double valor;
 
             valorVenda = double.TryParse(tbxValorVenda.Text, out valor);
@@ -187,7 +396,58 @@ namespace Stand_Automoveis
                 dataVenda = true;
             }
         }
+        #endregion
 
+        #region toolStrip
+        private void eliminarCarroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EliminarCarro();
+        }
+        private void novoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Add_Cliente novocliente = new Form_Add_Cliente();
+            novocliente.ShowDialog();
+            Clientes clienteTemp = new Clientes
+            {
+                Nome = novocliente.nome,
+                NIF = novocliente.nif,
+                Morada = novocliente.morada,
+                Contacto = novocliente.contacto
+            };
+
+            if (novocliente.DialogResult == DialogResult.OK)
+            {
+                listaClientes.Add(clienteTemp);
+                StandLocalDB.Clientes.Add(clienteTemp);
+                AtualizarClientes();
+                dadosGuardados = false;
+            }
+        }
+
+        private void criarCarroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CriarCarro();
+        }
+
+        private void editarCarroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditarCarro();
+        }
+
+        private void imprimirHistoricoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
+
+            if (clienteSelecionado == null)
+            {
+                MessageBox.Show("ERRO: Tem de ter um cliente selecionado para poder obter o seu Historico.", "Nenhum cliente selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            ImprimirDocumentos imprimir = new ImprimirDocumentos();
+            imprimir.VendaHistorico(clienteSelecionado);
+        }
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool carroSemVenda = false;
@@ -237,106 +497,15 @@ namespace Stand_Automoveis
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void GestorVenda_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            bool carroSemVenda = false;
-            List<CarrosVenda> carrosParaEliminar = new List<CarrosVenda>();
-            foreach (CarrosVenda carro in listaCarrosVenda) {
-                if (carro.Venda == null) {
-                    carroSemVenda = true;
-                    carrosParaEliminar.Add(carro);
-                }
-            }
-
-            if (dadosGuardados == false)
-            {
-                if (MessageBox.Show("Não guardou as suas ultimas alterações.", "Guardar Alterações?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    if (carroSemVenda == true)
-                    {
-                        MessageBox.Show("Não pode ter carros para Venda sem estarem associados a vendas", "Carros sem vendas", MessageBoxButtons.OK);
-                        if (MessageBox.Show("Deseja apagar os carros sem venda?", "Eliminar Carros sem venda?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                        {
-                            foreach (CarrosVenda carrosEliminar in carrosParaEliminar)
-                            {
-                                StandLocalDB.Carro.Remove(carrosEliminar);
-                            }
-                            StandLocalDB.SaveChanges();
-                        }
-                        else {
-                            e.Cancel = true;
-                            return;
-                        }
-
-                    }
-                    else
-                    {
-                        StandLocalDB.SaveChanges();
-                    }
-                }
-            }
-
-                StandLocalDB.Dispose();     
-        }
+        } 
 
         private void limparDadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LimparDados();
         }
+        #endregion
 
-        private void btnEliminarAluguer_Click(object sender, EventArgs e)
-        {
-            Vendas vendaSelecionada = (Vendas)lbxVendas.SelectedItem;
-            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
-
-            if (vendaSelecionada == null || clienteSelecionado == null)
-            {
-                MessageBox.Show("Selecione uma venda para que possa ser eliminada", "Venda não selecionada", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            StandLocalDB.Vendas.Remove(vendaSelecionada);
-            AtualizarListaVenda(clienteSelecionado);
-            dadosGuardados = false;
-
-            tbxestadoVenda.Clear();
-            tbxValorVenda.Clear();
-            dtpdataVenda.Value = DateTime.Now;
-        }
-
-        private void btnEditarVenda_Click(object sender, EventArgs e)
-        {
-            Vendas vendaSelecionada = (Vendas)lbxVendas.SelectedItem;
-            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
-
-            if (vendaSelecionada == null || clienteSelecionado == null)
-            {
-                MessageBox.Show("Selecione uma venda para que possa ser editada", "Venda não selecionada", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            testarVenda();
-            if (valorVenda == true && dataVenda == true)
-            {
-                vendaSelecionada.Data = dtpdataVenda.Value.Date;
-                vendaSelecionada.Estado = tbxestadoVenda.Text;
-                vendaSelecionada.Valor = double.Parse(tbxValorVenda.Text);
-
-                AtualizarListaVenda(clienteSelecionado);
-                dadosGuardados = false;
-                lbxVendas.ClearSelected();
-
-                tbxestadoVenda.Clear();
-                tbxValorVenda.Clear();
-                dtpdataVenda.Value = DateTime.Now;
-            }
-
-            valorVenda = false;
-            dataVenda = false;
-        }
-
+        #region Clientes
         private void lbxClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -349,155 +518,6 @@ namespace Stand_Automoveis
             AtualizarListaVenda(clienteSelecionado);
             lbxVendas.ClearSelected();
 
-        }
-
-        private void lbxCarrosVenda_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CarrosVenda carroVendaSelecionado = (CarrosVenda)lbxCarrosVenda.SelectedItem;
-
-            if (carroVendaSelecionado == null) {
-                btnEditarCarroVenda.Enabled = false;
-                btnEliminarCarroVenda.Enabled = false;
-                return;
-            }
-
-            btnEditarCarroVenda.Enabled = true;
-            btnEliminarCarroVenda.Enabled = true;
-        }
-
-        private void lbxVendas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Vendas VendaSelecionado = (Vendas)lbxVendas.SelectedItem;
-
-            if(VendaSelecionado == null)
-            {
-                btnEditarVenda.Enabled = false;
-                btnEliminarVenda.Enabled = false;
-                btnInfVenda.Enabled = false;
-                return;
-            }
-
-            tbxestadoVenda.Text = VendaSelecionado.Estado;
-            tbxValorVenda.Text = VendaSelecionado.Valor.ToString();
-            dtpdataVenda.Value = VendaSelecionado.Data;
-
-            btnEditarVenda.Enabled = true;
-            btnEliminarVenda.Enabled = true;
-            btnInfVenda.Enabled = true;
-
-        }
-
-        private void btnInfVenda_Click(object sender, EventArgs e)
-        {
-            Clientes clienteSelecionado = lbxClientes.SelectedItem as Clientes;
-            Vendas vendaSelecionada = (Vendas)lbxVendas.SelectedItem;
-
-            if (vendaSelecionada == null || clienteSelecionado == null)
-            {
-                MessageBox.Show("ERRO: Tem de selecionar o aluguer e o cliente para consultar informações.", "Cliente ou aluguer Errado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            Form_VendaInformacoes vendaInformacoes = new Form_VendaInformacoes(clienteSelecionado, vendaSelecionada);
-            vendaInformacoes.Show();
-
-        }
-
-        private void btnAddVenda_Click(object sender, EventArgs e)
-        {
-            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
-            CarrosVenda carroVendaSelecionado = (CarrosVenda)lbxCarrosVenda.SelectedItem;
-
-            if (clienteSelecionado == null || carroVendaSelecionado == null) {
-                MessageBox.Show("ERRO: Não tem o cliente ou o carro selecionado", "Venda nao sucedida", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            testarVenda();
-            if (valorVenda == true && dataVenda == true) {  
-                Vendas tempvenda = new Vendas {
-                    Estado = tbxestadoVenda.Text,
-                    Valor = double.Parse(tbxValorVenda.Text),
-                    Data = dtpdataVenda.Value.Date,
-                    CarroVenda = carroVendaSelecionado,
-                };
-
-                StandLocalDB.Clientes.Find(clienteSelecionado.IdCliente).Venda.Add(tempvenda);
-
-                lbxVendas.DataSource = null;
-                lbxVendas.DataSource = StandLocalDB.Clientes.Find(clienteSelecionado.IdCliente).Venda.ToList();
-                dadosGuardados = false;
-
-                tbxestadoVenda.Clear();
-                tbxValorVenda.Clear();
-                dtpdataVenda.Value = DateTime.Now;
-
-            }
-
-            valorVenda = false;
-            dataVenda = false;
-
-        }
-
-        private void btnAddCarro_Click(object sender, EventArgs e)
-        {
-            CriarCarro();
-        }
-
-        private void btnEditarCarroAluguer_Click(object sender, EventArgs e)
-        {
-            EditarCarro();
-        }
-
-        private void btnEliminarCarroAluguer_Click(object sender, EventArgs e)
-        {
-            EliminarCarro();
-        }
-
-        private void criarCarroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CriarCarro();
-        }
-
-        private void editarCarroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EditarCarro();
-        }
-
-        private void imprimirHistoricoClienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
-
-            if (clienteSelecionado == null)
-            {
-                MessageBox.Show("ERRO: Tem de ter um cliente selecionado para poder obter o seu Historico.", "Nenhum cliente selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return;
-            }
-
-            ImprimirDocumentos imprimir = new ImprimirDocumentos();
-            imprimir.VendaHistorico(clienteSelecionado);
-        }
-
-        private void novoClienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form_Add_Cliente novocliente = new Form_Add_Cliente();
-            novocliente.ShowDialog();
-            Clientes clienteTemp = new Clientes
-            {
-                Nome = novocliente.nome,
-                NIF = novocliente.nif,
-                Morada = novocliente.morada,
-                Contacto = novocliente.contacto
-            };
-
-            if (novocliente.DialogResult == DialogResult.OK)
-            {
-                listaClientes.Add(clienteTemp);
-                StandLocalDB.Clientes.Add(clienteTemp);
-                AtualizarClientes();
-                dadosGuardados = false;
-            }
         }
 
         private void TbxFiltrarClientes_TextChanged(object sender, EventArgs e)
@@ -532,38 +552,11 @@ namespace Stand_Automoveis
                 AtualizarClientes();
             }
         }
-
-        private void TbxFiltrarCarrosVenda_TextChanged(object sender, EventArgs e)
+        private void ButtonOrdenarDescClientes_Click(object sender, EventArgs e)
         {
-            string nome = tbxFiltrarCarrosVenda.Text;
-
-            if (nome != string.Empty)
-            {
-                List<CarrosVenda> carrosVenda = listaCarrosVenda.Where(carro => carro.Marca.ToUpper().Contains(nome.ToUpper())).ToList();
-                lbxCarrosVenda.DataSource = null;
-                lbxCarrosVenda.DataSource = carrosVenda;
-            }
-            else
-                AtualizarListaCarrosVenda();
-        }
-
-        private void TbxFiltrarCarrosVenda_Enter(object sender, EventArgs e)
-        {
-            if (tbxFiltrarCarrosVenda.Text == "Filtrar")
-            {
-                tbxFiltrarCarrosVenda.Text = "";
-                tbxFiltrarCarrosVenda.ForeColor = SystemColors.WindowText;
-            }
-        }
-
-        private void TbxFiltrarCarrosVenda_Leave(object sender, EventArgs e)
-        {
-            if (tbxFiltrarCarrosVenda.Text.Length == 0)
-            {
-                tbxFiltrarCarrosVenda.Text = "Filtrar";
-                tbxFiltrarCarrosVenda.ForeColor = SystemColors.GrayText;
-                AtualizarListaCarrosVenda();
-            }
+            List<Clientes> clientes = listaClientes.OrderByDescending(cliente => cliente.Nome).ToList();
+            lbxClientes.DataSource = null;
+            lbxClientes.DataSource = clientes;
         }
 
         private void ButtonOrdenarCresClientes_Click(object sender, EventArgs e)
@@ -572,31 +565,50 @@ namespace Stand_Automoveis
             lbxClientes.DataSource = null;
             lbxClientes.DataSource = clientes;
         }
+        #endregion
 
-        private void ButtonOrdenarAscCarros_Click(object sender, EventArgs e)
+        private void GestorVenda_FormClosing(object sender, FormClosingEventArgs e)
         {
-            List<CarrosVenda> carros = listaCarrosVenda.OrderBy(carro => carro.Marca).ToList();
-            lbxCarrosVenda.DataSource = null;
-            lbxCarrosVenda.DataSource = carros;
-        }
+            bool carroSemVenda = false;
+            List<CarrosVenda> carrosParaEliminar = new List<CarrosVenda>();
+            foreach (CarrosVenda carro in listaCarrosVenda)
+            {
+                if (carro.Venda == null)
+                {
+                    carroSemVenda = true;
+                    carrosParaEliminar.Add(carro);
+                }
+            }
 
-        private void ButtonOrdenarDescCarros_Click(object sender, EventArgs e)
-        {
-            List<CarrosVenda> carros = listaCarrosVenda.OrderByDescending(carro => carro.Marca).ToList();
-            lbxCarrosVenda.DataSource = null;
-            lbxCarrosVenda.DataSource = carros;
-        }
+            if (dadosGuardados == false)
+            {
+                if (MessageBox.Show("Não guardou as suas ultimas alterações.", "Guardar Alterações?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if (carroSemVenda == true)
+                    {
+                        MessageBox.Show("Não pode ter carros para Venda sem estarem associados a vendas", "Carros sem vendas", MessageBoxButtons.OK);
+                        if (MessageBox.Show("Deseja apagar os carros sem venda?", "Eliminar Carros sem venda?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        {
+                            foreach (CarrosVenda carrosEliminar in carrosParaEliminar)
+                            {
+                                StandLocalDB.Carro.Remove(carrosEliminar);
+                            }
+                            StandLocalDB.SaveChanges();
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                            return;
+                        }
 
-        private void ButtonOrdenarDescClientes_Click(object sender, EventArgs e)
-        {
-            List<Clientes> clientes = listaClientes.OrderByDescending(cliente => cliente.Nome).ToList();
-            lbxClientes.DataSource = null;
-            lbxClientes.DataSource = clientes;
-        }
-
-        private void eliminarCarroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EliminarCarro();
+                    }
+                    else
+                    {
+                        StandLocalDB.SaveChanges();
+                    }
+                }
+            }
+            StandLocalDB.Dispose();
         }
     }
 }
