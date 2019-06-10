@@ -47,7 +47,7 @@ namespace Stand_Automoveis
         private void LerDados()
         {
             listaClientes = StandLocalDB.Clientes.ToList();
-            listacarrosAluguer = StandLocalDB.Carro.Local.OfType<CarrosAluguer>().ToList();
+            listacarrosAluguer = StandLocalDB.Carro.OfType<CarrosAluguer>().ToList();
 
             AtualizarClientes();
             AtualizarListaCarrosAluguer();
@@ -360,15 +360,18 @@ namespace Stand_Automoveis
             EditarcarroAluguer.tbxMatriculaCarro.Text = carrosAluguerSelecionado.Matricula;
             EditarcarroAluguer.tbxModeloCarro.Text = carrosAluguerSelecionado.Modelo;
             EditarcarroAluguer.tbxNumChassis.Text = carrosAluguerSelecionado.NumeroChassis;
-            EditarcarroAluguer.tbxCombustivelCarro.Text = carrosAluguerSelecionado.Combustivel.ToString();
+            EditarcarroAluguer.tbxCombustivelCarro.Text = carrosAluguerSelecionado.Combustivel;
+            EditarcarroAluguer.Text = "Editar Carro (Aluguer)";
             EditarcarroAluguer.ShowDialog();
 
-            carrosAluguerSelecionado.Marca = EditarcarroAluguer.marca;
-            carrosAluguerSelecionado.Matricula = EditarcarroAluguer.matricula;
-            carrosAluguerSelecionado.Modelo = EditarcarroAluguer.modelo;
-            carrosAluguerSelecionado.NumeroChassis = EditarcarroAluguer.numeroChassis;
-            carrosAluguerSelecionado.Estado = EditarcarroAluguer.estado;
-            carrosAluguerSelecionado.Combustivel = EditarcarroAluguer.combustivel;
+            if (EditarcarroAluguer.DialogResult == DialogResult.OK) { 
+                carrosAluguerSelecionado.Marca = EditarcarroAluguer.marca;
+                carrosAluguerSelecionado.Matricula = EditarcarroAluguer.matricula;
+                carrosAluguerSelecionado.Modelo = EditarcarroAluguer.modelo;
+                carrosAluguerSelecionado.NumeroChassis = EditarcarroAluguer.numeroChassis;
+                carrosAluguerSelecionado.Estado = EditarcarroAluguer.estado;
+                carrosAluguerSelecionado.Combustivel = EditarcarroAluguer.combustivel;
+            }
 
             AtualizarListaCarrosAluguer();
             dadosGuardados = false;
