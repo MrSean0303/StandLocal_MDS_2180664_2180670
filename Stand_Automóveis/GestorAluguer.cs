@@ -124,7 +124,7 @@ namespace Stand_Automoveis
         {
             Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
 
-            NovoAluguer();
+            Add_Edit_Aluguer();
             if (valorpassou == true && kmspassou == true && dataCerta == true)
             {
                 aluguerSelecionado.Kms = tbxKms.Text;
@@ -153,7 +153,7 @@ namespace Stand_Automoveis
 
             if (aluguerSelecionado == null)
             {
-                MessageBox.Show("Selecione um aluguer para o poder eliminar", "Aluguer nao selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Selecione um aluguer para o poder eliminar", "Aluguer não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -191,7 +191,7 @@ namespace Stand_Automoveis
 
             }
 
-            NovoAluguer();
+            Add_Edit_Aluguer();
 
             if (valorpassou == true && kmspassou == true && dataCerta == true)
             {
@@ -222,7 +222,7 @@ namespace Stand_Automoveis
             dataCerta = true;
         }
 
-        public void NovoAluguer()
+        public void Add_Edit_Aluguer()
         {
             double kms, valor;
             DateTime dataEntrega = dtpEntrega.Value.Date;
@@ -232,7 +232,7 @@ namespace Stand_Automoveis
 
             if (kmspassou == false)
             {
-                MessageBox.Show("Erro kilometros errados", "kms incorretos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro Quilómetros errados", "kms incorretos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbxKms.Clear();
             }
 
@@ -244,7 +244,7 @@ namespace Stand_Automoveis
 
             if (dataEntrega.Date > dataRececao.Date)
             {
-                MessageBox.Show("A data de Entrega e maior que a data de Receção.", "Datas Invalidas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A data de Entrega é mais recente que a data de Receção.", "Datas Inválidas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dataCerta = false;
                 dtpEntrega.Value = DateTime.Now;
                 dtpRececao.Value = DateTime.Now;

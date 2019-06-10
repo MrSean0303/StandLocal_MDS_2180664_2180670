@@ -106,7 +106,7 @@
             this.btnEliminarVenda.Size = new System.Drawing.Size(26, 26);
             this.btnEliminarVenda.TabIndex = 5;
             this.btnEliminarVenda.UseVisualStyleBackColor = false;
-            this.btnEliminarVenda.Click += new System.EventHandler(this.btnEliminarAluguer_Click);
+            this.btnEliminarVenda.Click += new System.EventHandler(this.btnEliminarVenda_Click);
             // 
             // dtpdataVenda
             // 

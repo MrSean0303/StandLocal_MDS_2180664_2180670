@@ -65,12 +65,12 @@ namespace Stand_Automoveis
             MessageBox.Show("Dados guadados com sucesso!");
         }
 
-        public void carroOficinaUnica(Clientes clienteSelecionado,CarrosOficina carrosOficina, Servicos ServicoSelecionada) {
+        public void carroOficinaUnica(Clientes clienteSelecionado,CarrosOficina carrosOficina, Servicos servicoSelecionado) {
 
             List<Parcelas> listaServico = new List<Parcelas>();
             double valorTotal = 0;
 
-            foreach (Parcelas parcela in ServicoSelecionada.Parcela) {
+            foreach (Parcelas parcela in servicoSelecionado.Parcela) {
                 listaServico.Add(parcela);
             }
 
@@ -88,6 +88,7 @@ namespace Stand_Automoveis
 
             Stream caminhoFiceiro = save.OpenFile();
             StreamWriter sw = new StreamWriter(caminhoFiceiro);
+            string done = "(ACABADO) ";
 
             sw.WriteLine("StandLocal - Qualquer serviço tem um preço.");
             sw.WriteLine(" ");
@@ -104,9 +105,12 @@ namespace Stand_Automoveis
             sw.WriteLine(" ");
             sw.WriteLine(" ");
             sw.WriteLine("___________________________________________________");
-            sw.WriteLine("Tipo de Serviço: " + ServicoSelecionada.Tipo);
-            sw.WriteLine("Data de inicio do Serviço: " + ServicoSelecionada.DataEntrada.ToString("dd-MM-yy"));
-            sw.WriteLine("Data de finalização do Serviço: " + ServicoSelecionada.DataSaida.ToString("dd-MM-yy"));
+
+            if (servicoSelecionado.Tipo.ToString().Contains(done) == true)
+                servicoSelecionado.Tipo = servicoSelecionado.Tipo.Replace(done, "");
+            sw.WriteLine("Tipo de Serviço: " + servicoSelecionado.Tipo);
+            sw.WriteLine("Data de inicio do Serviço: " + servicoSelecionado.DataEntrada.ToString("dd-MM-yy"));
+            sw.WriteLine("Data de finalização do Serviço: " + servicoSelecionado.DataSaida.ToString("dd-MM-yy"));
             sw.WriteLine("___________________________________________________");
 
             foreach (Parcelas parcelas in listaServico)
