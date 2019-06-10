@@ -174,7 +174,9 @@ namespace Stand_Automoveis
         }
         private void TbAlterarNif_TextChanged(object sender, EventArgs e)
         {
-            if (tbAlterarNif.Text.Length < 9 || tbAlterarNif.Text.Length > 9)
+            double nif;
+            bool testNif = double.TryParse(tbAlterarNif.Text, out nif);
+            if (tbAlterarNif.Text.Length < 9 || tbAlterarNif.Text.Length > 9 || !testNif)
             {
                 pictureBoxNIF.Visible = true;
                 btnEditarCliente.Enabled = false;

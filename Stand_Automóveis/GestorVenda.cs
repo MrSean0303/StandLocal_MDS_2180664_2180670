@@ -112,7 +112,6 @@ namespace Stand_Automoveis
 
         public void EditarCarro()
         {
-            
             CarrosVenda carroVendaSelecionado = lbxCarrosVenda.SelectedItem as CarrosVenda;
 
             if (carroVendaSelecionado == null) {
@@ -128,15 +127,18 @@ namespace Stand_Automoveis
             EditarCarroVenda.tbxNumChassis.Text = carroVendaSelecionado.NumeroChassis;
             EditarCarroVenda.ShowDialog();
 
-            carroVendaSelecionado.Marca = EditarCarroVenda.marca;
-            carroVendaSelecionado.Modelo = EditarCarroVenda.modelo;
-            carroVendaSelecionado.NumeroChassis = EditarCarroVenda.numeroChassis;
-            carroVendaSelecionado.Extras = EditarCarroVenda.extra;
-            carroVendaSelecionado.Combustivel = EditarCarroVenda.combustivel;
+            if (EditarCarroVenda.DialogResult == DialogResult.OK)
+            {
+                carroVendaSelecionado.Marca = EditarCarroVenda.marca;
+                carroVendaSelecionado.Modelo = EditarCarroVenda.modelo;
+                carroVendaSelecionado.NumeroChassis = EditarCarroVenda.numeroChassis;
+                carroVendaSelecionado.Extras = EditarCarroVenda.extra;
+                carroVendaSelecionado.Combustivel = EditarCarroVenda.combustivel;
 
-            AtualizarListaCarrosVenda();
-            dadosGuardados = false;
-            LimparDados();
+                AtualizarListaCarrosVenda();
+                dadosGuardados = false;
+                LimparDados();
+            }
         }
 
         public void EliminarCarro()

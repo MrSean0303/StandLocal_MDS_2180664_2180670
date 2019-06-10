@@ -45,9 +45,11 @@ namespace Stand_Automoveis
 
         private void TbxNifCliente_TextChanged(object sender, EventArgs e)
         {
+            double nif;
+            bool testNif = double.TryParse(tbxNifCliente.Text, out nif);
             if (tbxNifCliente.Text.Length == 0)
                 nifCheck = false;
-            else if(tbxNifCliente.Text.Length < 9 || tbxNifCliente.Text.Length > 9)
+            else if(tbxNifCliente.Text.Length < 9 || tbxNifCliente.Text.Length > 9 || !testNif)
             {
                 pictureBoxNIF.Visible = true;
                 nifCheck = false;

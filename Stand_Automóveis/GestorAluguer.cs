@@ -124,7 +124,7 @@ namespace Stand_Automoveis
         {
             Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
 
-            NovoAluguer();
+            Add_Edit_Aluguer();
             if (valorpassou == true && kmspassou == true && dataCerta == true)
             {
                 aluguerSelecionado.Kms = tbxKms.Text;
@@ -191,7 +191,7 @@ namespace Stand_Automoveis
 
             }
 
-            NovoAluguer();
+            Add_Edit_Aluguer();
 
             if (valorpassou == true && kmspassou == true && dataCerta == true)
             {
@@ -222,7 +222,7 @@ namespace Stand_Automoveis
             dataCerta = true;
         }
 
-        public void NovoAluguer()
+        public void Add_Edit_Aluguer()
         {
             double kms, valor;
             DateTime dataEntrega = dtpEntrega.Value.Date;
@@ -232,7 +232,7 @@ namespace Stand_Automoveis
 
             if (kmspassou == false)
             {
-                MessageBox.Show("Erro kilometros errados", "kms incorretos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro Quilómetros errados", "kms incorretos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbxKms.Clear();
             }
 
@@ -355,23 +355,27 @@ namespace Stand_Automoveis
                 return;
             }
 
-            Form_AddEdit_CarroAluguer EditarcarroAluguer = new Form_AddEdit_CarroAluguer();
-            EditarcarroAluguer.tbxMarcaCarro.Text = carrosAluguerSelecionado.Marca;
-            EditarcarroAluguer.tbxMatriculaCarro.Text = carrosAluguerSelecionado.Matricula;
-            EditarcarroAluguer.tbxModeloCarro.Text = carrosAluguerSelecionado.Modelo;
-            EditarcarroAluguer.tbxNumChassis.Text = carrosAluguerSelecionado.NumeroChassis;
-            EditarcarroAluguer.tbxCombustivelCarro.Text = carrosAluguerSelecionado.Combustivel.ToString();
-            EditarcarroAluguer.ShowDialog();
+            Form_AddEdit_CarroAluguer EditarCarroAluguer = new Form_AddEdit_CarroAluguer();
 
-            carrosAluguerSelecionado.Marca = EditarcarroAluguer.marca;
-            carrosAluguerSelecionado.Matricula = EditarcarroAluguer.matricula;
-            carrosAluguerSelecionado.Modelo = EditarcarroAluguer.modelo;
-            carrosAluguerSelecionado.NumeroChassis = EditarcarroAluguer.numeroChassis;
-            carrosAluguerSelecionado.Estado = EditarcarroAluguer.estado;
-            carrosAluguerSelecionado.Combustivel = EditarcarroAluguer.combustivel;
+            EditarCarroAluguer.tbxMarcaCarro.Text = carrosAluguerSelecionado.Marca;
+            EditarCarroAluguer.tbxMatriculaCarro.Text = carrosAluguerSelecionado.Matricula;
+            EditarCarroAluguer.tbxModeloCarro.Text = carrosAluguerSelecionado.Modelo;
+            EditarCarroAluguer.tbxNumChassis.Text = carrosAluguerSelecionado.NumeroChassis;
+            EditarCarroAluguer.tbxCombustivelCarro.Text = carrosAluguerSelecionado.Combustivel.ToString();
+            EditarCarroAluguer.ShowDialog();
+
+            if(EditarCarroAluguer.DialogResult == DialogResult.OK)
+            {
+            carrosAluguerSelecionado.Marca = EditarCarroAluguer.marca;
+            carrosAluguerSelecionado.Matricula = EditarCarroAluguer.matricula;
+            carrosAluguerSelecionado.Modelo = EditarCarroAluguer.modelo;
+            carrosAluguerSelecionado.NumeroChassis = EditarCarroAluguer.numeroChassis;
+            carrosAluguerSelecionado.Estado = EditarCarroAluguer.estado;
+            carrosAluguerSelecionado.Combustivel = EditarCarroAluguer.combustivel;
 
             AtualizarListaCarrosAluguer();
             dadosGuardados = false;
+            }
         }
 
         public void EliminarCarro()
