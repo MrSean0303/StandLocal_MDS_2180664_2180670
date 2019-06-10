@@ -150,16 +150,19 @@ namespace Stand_Automoveis
                 MessageBox.Show("Nenhum Carro selecionado", "Carro por selecionar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            if (carroVendaSelecionado.Venda == null)
+            if (MessageBox.Show("Deseja mesmo eliminar este carro ?", "Deseja eliminar Carro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                listaCarrosVenda.Remove(carroVendaSelecionado);
-                StandLocalDB.Carro.Remove(carroVendaSelecionado);
-                AtualizarListaCarrosVenda();
-                dadosGuardados = false;
-            }
-            else {
-                MessageBox.Show("O Carro selecionado ja se encontra vendido", "Carro nao pode ser apagado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (carroVendaSelecionado.Venda == null)
+                {
+                    listaCarrosVenda.Remove(carroVendaSelecionado);
+                    StandLocalDB.Carro.Remove(carroVendaSelecionado);
+                    AtualizarListaCarrosVenda();
+                    dadosGuardados = false;
+                }
+                else
+                {
+                    MessageBox.Show("O Carro selecionado ja se encontra vendido. Por favor elimine a venda antes de eliminar o carro.", "Carro nao pode ser apagado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
         }
@@ -210,19 +213,25 @@ namespace Stand_Automoveis
                             foreach (CarrosVenda carrosEliminar in carrosParaEliminar)
                             {
                                 StandLocalDB.Carro.Remove(carrosEliminar);
+                                listaCarrosVenda.Remove(carrosEliminar);
                             }
                             StandLocalDB.SaveChanges();
+                            dadosGuardados = true;
                         }
-
+                        else {
+                            MessageBox.Show("Os dados nao foram guardados.", "Dados por Guardar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            dadosGuardados = false;
+                        }
                     }
                     else
                     {
                         StandLocalDB.SaveChanges();
+                        dadosGuardados = true;
                     }
                 }
             }
-
-            dadosGuardados = true;
+            AtualizarListaCarrosVenda();
+            
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)

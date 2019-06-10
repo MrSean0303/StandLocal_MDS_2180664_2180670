@@ -124,7 +124,7 @@ namespace Stand_Automoveis
         {
             Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
 
-            Add_Edit_Aluguer();
+            NovoAluguer();
             if (valorpassou == true && kmspassou == true && dataCerta == true)
             {
                 aluguerSelecionado.Kms = tbxKms.Text;
@@ -191,7 +191,7 @@ namespace Stand_Automoveis
 
             }
 
-            Add_Edit_Aluguer();
+            NovoAluguer();
 
             if (valorpassou == true && kmspassou == true && dataCerta == true)
             {
@@ -222,7 +222,7 @@ namespace Stand_Automoveis
             dataCerta = true;
         }
 
-        public void Add_Edit_Aluguer()
+        public void NovoAluguer()
         {
             double kms, valor;
             DateTime dataEntrega = dtpEntrega.Value.Date;
@@ -232,7 +232,7 @@ namespace Stand_Automoveis
 
             if (kmspassou == false)
             {
-                MessageBox.Show("Erro Quilómetros errados", "kms incorretos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro kilometros errados", "kms incorretos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbxKms.Clear();
             }
 
@@ -355,27 +355,26 @@ namespace Stand_Automoveis
                 return;
             }
 
-            Form_AddEdit_CarroAluguer EditarCarroAluguer = new Form_AddEdit_CarroAluguer();
+            Form_AddEdit_CarroAluguer EditarcarroAluguer = new Form_AddEdit_CarroAluguer();
+            EditarcarroAluguer.tbxMarcaCarro.Text = carrosAluguerSelecionado.Marca;
+            EditarcarroAluguer.tbxMatriculaCarro.Text = carrosAluguerSelecionado.Matricula;
+            EditarcarroAluguer.tbxModeloCarro.Text = carrosAluguerSelecionado.Modelo;
+            EditarcarroAluguer.tbxNumChassis.Text = carrosAluguerSelecionado.NumeroChassis;
+            EditarcarroAluguer.tbxCombustivelCarro.Text = carrosAluguerSelecionado.Combustivel;
+            EditarcarroAluguer.Text = "Editar Carro (Aluguer)";
+            EditarcarroAluguer.ShowDialog();
 
-            EditarCarroAluguer.tbxMarcaCarro.Text = carrosAluguerSelecionado.Marca;
-            EditarCarroAluguer.tbxMatriculaCarro.Text = carrosAluguerSelecionado.Matricula;
-            EditarCarroAluguer.tbxModeloCarro.Text = carrosAluguerSelecionado.Modelo;
-            EditarCarroAluguer.tbxNumChassis.Text = carrosAluguerSelecionado.NumeroChassis;
-            EditarCarroAluguer.tbxCombustivelCarro.Text = carrosAluguerSelecionado.Combustivel.ToString();
-            EditarCarroAluguer.ShowDialog();
-
-            if(EditarCarroAluguer.DialogResult == DialogResult.OK)
-            {
-            carrosAluguerSelecionado.Marca = EditarCarroAluguer.marca;
-            carrosAluguerSelecionado.Matricula = EditarCarroAluguer.matricula;
-            carrosAluguerSelecionado.Modelo = EditarCarroAluguer.modelo;
-            carrosAluguerSelecionado.NumeroChassis = EditarCarroAluguer.numeroChassis;
-            carrosAluguerSelecionado.Estado = EditarCarroAluguer.estado;
-            carrosAluguerSelecionado.Combustivel = EditarCarroAluguer.combustivel;
+            if (EditarcarroAluguer.DialogResult == DialogResult.OK) { 
+                carrosAluguerSelecionado.Marca = EditarcarroAluguer.marca;
+                carrosAluguerSelecionado.Matricula = EditarcarroAluguer.matricula;
+                carrosAluguerSelecionado.Modelo = EditarcarroAluguer.modelo;
+                carrosAluguerSelecionado.NumeroChassis = EditarcarroAluguer.numeroChassis;
+                carrosAluguerSelecionado.Estado = EditarcarroAluguer.estado;
+                carrosAluguerSelecionado.Combustivel = EditarcarroAluguer.combustivel;
+            }
 
             AtualizarListaCarrosAluguer();
             dadosGuardados = false;
-            }
         }
 
         public void EliminarCarro()
@@ -394,25 +393,27 @@ namespace Stand_Automoveis
             foreach (Alugueres aluguer in AlugueresLista) {
 
                 if (aluguer.CarroAluguer == carrosAluguerSelecionado) {
-                    if (DateTime.Now.Date < aluguer.DataFim) {
-                        carroAlugado = true;
-                    }               
+                    carroAlugado = true;
                 }
             }
 
-            if (carroAlugado == false)
+            if (carroAlugado == true)
             {
-                listacarrosAluguer.Remove(carrosAluguerSelecionado);
-                StandLocalDB.Carro.Remove(carrosAluguerSelecionado);
-                AtualizarListaCarrosAluguer();
-                dadosGuardados = false;
-            }
-            else {
-                MessageBox.Show("O Carro selecionado esta alugado neste momento", "Carro nao pode ser eliminado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("O Carro selecionado tem alugueres associados neste momento", "Carro nao pode ser eliminado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 lbxCarrosAluguer.ClearSelected();
                 return;
             }
+
+            if (MessageBox.Show("Deseja mesmo eliminar este carro de aluguer.", "Deseja Eliminar o carro?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                StandLocalDB.Carro.Remove(carrosAluguerSelecionado);
+                listacarrosAluguer.Remove(carrosAluguerSelecionado);
+                AtualizarListaCarrosAluguer();
+                dadosGuardados = false;
+            }
+
         }
+
         private void btnEditarCarroAluguer_Click(object sender, EventArgs e)
         {
             EditarCarro();
@@ -528,6 +529,27 @@ namespace Stand_Automoveis
         private void eliminarCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EliminarCarro();
+        }
+
+        private void novoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Add_Cliente novocliente = new Form_Add_Cliente();
+            novocliente.ShowDialog();
+            Clientes clienteTemp = new Clientes
+            {
+                Nome = novocliente.nome,
+                NIF = novocliente.nif,
+                Morada = novocliente.morada,
+                Contacto = novocliente.contacto
+            };
+
+            if (novocliente.DialogResult == DialogResult.OK)
+            {
+                listaClientes.Add(clienteTemp);
+                StandLocalDB.Clientes.Add(clienteTemp);
+                AtualizarClientes();
+                dadosGuardados = true;
+            }
         }
 
         private void imprimirHistoricoClienteToolStripMenuItem_Click(object sender, EventArgs e)
