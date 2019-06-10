@@ -77,8 +77,9 @@ namespace Stand_Automoveis
                 listaCliente.Add(clienteTemp);
                 StandLocalDB.Clientes.Add(clienteTemp);
                 AtualizarClientes();
+                conteudoNovo = true;
             }
-            conteudoNovo = true;
+            
         }
 
         private void BtnEliminarCliente_Click(object sender, EventArgs e)

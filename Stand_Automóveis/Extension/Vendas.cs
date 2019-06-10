@@ -11,7 +11,7 @@ namespace Stand_Automoveis
 
         public override string ToString()
         {
-            return " Valor: " + Valor + " Data: " +Data.ToString("dd-MM-yy") + " Estado: " + Estado;
+            return " Valor: " + Valor + " | Data: " +Data.ToString("dd-MM-yy") + " | Estado: " + Estado;
         }
     }
 }

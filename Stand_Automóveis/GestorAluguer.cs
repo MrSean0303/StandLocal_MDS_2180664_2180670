@@ -47,7 +47,7 @@ namespace Stand_Automoveis
         private void LerDados()
         {
             listaClientes = StandLocalDB.Clientes.ToList();
-            listacarrosAluguer = StandLocalDB.Carro.OfType<CarrosAluguer>().ToList();
+            listacarrosAluguer = StandLocalDB.Carro.Local.OfType<CarrosAluguer>().ToList();
 
             AtualizarClientes();
             AtualizarListaCarrosAluguer();
@@ -390,25 +390,27 @@ namespace Stand_Automoveis
             foreach (Alugueres aluguer in AlugueresLista) {
 
                 if (aluguer.CarroAluguer == carrosAluguerSelecionado) {
-                    if (DateTime.Now.Date < aluguer.DataFim) {
-                        carroAlugado = true;
-                    }               
+                    carroAlugado = true;
                 }
             }
 
-            if (carroAlugado == false)
+            if (carroAlugado == true)
             {
-                listacarrosAluguer.Remove(carrosAluguerSelecionado);
-                StandLocalDB.Carro.Remove(carrosAluguerSelecionado);
-                AtualizarListaCarrosAluguer();
-                dadosGuardados = false;
-            }
-            else {
-                MessageBox.Show("O Carro selecionado esta alugado neste momento", "Carro nao pode ser eliminado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("O Carro selecionado tem alugueres associados neste momento", "Carro nao pode ser eliminado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 lbxCarrosAluguer.ClearSelected();
                 return;
             }
+
+            if (MessageBox.Show("Deseja mesmo eliminar este carro de aluguer.", "Deseja Eliminar o carro?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                StandLocalDB.Carro.Remove(carrosAluguerSelecionado);
+                listacarrosAluguer.Remove(carrosAluguerSelecionado);
+                AtualizarListaCarrosAluguer();
+                dadosGuardados = false;
+            }
+
         }
+
         private void btnEditarCarroAluguer_Click(object sender, EventArgs e)
         {
             EditarCarro();
@@ -524,6 +526,27 @@ namespace Stand_Automoveis
         private void eliminarCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EliminarCarro();
+        }
+
+        private void novoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Add_Cliente novocliente = new Form_Add_Cliente();
+            novocliente.ShowDialog();
+            Clientes clienteTemp = new Clientes
+            {
+                Nome = novocliente.nome,
+                NIF = novocliente.nif,
+                Morada = novocliente.morada,
+                Contacto = novocliente.contacto
+            };
+
+            if (novocliente.DialogResult == DialogResult.OK)
+            {
+                listaClientes.Add(clienteTemp);
+                StandLocalDB.Clientes.Add(clienteTemp);
+                AtualizarClientes();
+                dadosGuardados = true;
+            }
         }
 
         private void imprimirHistoricoClienteToolStripMenuItem_Click(object sender, EventArgs e)
