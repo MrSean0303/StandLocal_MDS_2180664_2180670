@@ -40,10 +40,12 @@ namespace Stand_Automoveis
             LerDados();
             carregar.Close();
 
-            LimparDados();
+            LimparSelecao();
         }
 
         #region AtualizarDados
+
+        //Lê os dados da base de dados e adiciona-os à lista Clientes
         private void LerDados()
         {
             listaClientes = StandLocalDB.Clientes.ToList();
@@ -53,6 +55,7 @@ namespace Stand_Automoveis
             AtualizarListaCarrosAluguer();
         }
 
+        //Atualiza a listBox dos Alugueres
         private void AtualizarListaAluguer()
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -66,19 +69,22 @@ namespace Stand_Automoveis
             lbxAluguer.DataSource = clienteSelecionado.Aluguer.ToList();
         }
 
+        //Atualiza a listBox dos carros de aluguer
         private void AtualizarListaCarrosAluguer()
         {
             lbxCarrosAluguer.DataSource = null;
             lbxCarrosAluguer.DataSource = listacarrosAluguer;
         }
 
+        //Atualiza a listBox Clientes
         private void AtualizarClientes()
         {
             lbxClientes.DataSource = null;
             lbxClientes.DataSource = listaClientes;
         }
 
-        private void LimparDados()
+        //Limpa as seleções do Form
+        private void LimparSelecao()
         {
             lbxCarrosAluguer.ClearSelected();
             lbxClientes.ClearSelected();
@@ -99,6 +105,7 @@ namespace Stand_Automoveis
 
         #region Alugueres
 
+        //Verifica qual o aluguer selecionado
         private void lbxAluguer_SelectedIndexChanged(object sender, EventArgs e)
         {
             Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
@@ -120,6 +127,7 @@ namespace Stand_Automoveis
 
         }
 
+        //Editar o aluguer selecionado
         private void btnEditarAluguer_Click(object sender, EventArgs e)
         {
             Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
@@ -147,6 +155,7 @@ namespace Stand_Automoveis
             dataCerta = true;
         }
 
+        //Elimina o aluguer selecionado
         private void BtnEliminarAluguer_Click(object sender, EventArgs e)
         {
             Alugueres aluguerSelecionado = (Alugueres)lbxAluguer.SelectedItem;
@@ -157,13 +166,13 @@ namespace Stand_Automoveis
                 return;
             }
 
-
             StandLocalDB.Aluguer.Remove(aluguerSelecionado);
 
             AtualizarListaAluguer();
             dadosGuardados = false;
         }
 
+        //Mostra as informações do aluguer
         private void ButtonInformacoesAluguer_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -178,6 +187,7 @@ namespace Stand_Automoveis
             informacoes.Show();
         }
 
+        //Adiciona um novo aluguer ao cliente selecionado
         private void btnAddAluguer_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -222,6 +232,7 @@ namespace Stand_Automoveis
             dataCerta = true;
         }
 
+        //Função adicionar ou editar Alugueres
         public void Add_Edit_Aluguer()
         {
             double kms, valor;
@@ -253,6 +264,8 @@ namespace Stand_Automoveis
         #endregion
 
         #region CarrosParaAluguer
+
+        //Evento sair da textBoxFiltrarCarros
         private void TbxFiltrarCarrosAluguer_Enter(object sender, EventArgs e)
         {
             if (tbxFiltrarCarrosAluguer.Text == "Filtrar")
@@ -262,6 +275,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Evento entrar na textBoxFiltrarCarros
         private void TbxFiltrarCarrosAluguer_Leave(object sender, EventArgs e)
         {
             if (tbxFiltrarCarrosAluguer.Text.Length == 0)
@@ -272,6 +286,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Ordena os Carros por ordem decrescente
         private void ButtonOrdenarDescCarros_Click(object sender, EventArgs e)
         {
             List<CarrosAluguer> carros = listacarrosAluguer.OrderByDescending(carro => carro.Marca).ToList();
@@ -279,6 +294,7 @@ namespace Stand_Automoveis
             lbxCarrosAluguer.DataSource = carros;
         }
 
+        //Ordena os Carros por ordem crescente
         private void ButtonOrdenarAscCarros_Click(object sender, EventArgs e)
         {
             List<CarrosAluguer> carros = listacarrosAluguer.OrderBy(carro => carro.Marca).ToList();
@@ -286,6 +302,7 @@ namespace Stand_Automoveis
             lbxCarrosAluguer.DataSource = carros;
         }
 
+        //Filtra os carros pela Marca
         private void TbxFiltrarCarrosAluguer_TextChanged(object sender, EventArgs e)
         {
             string nome = tbxFiltrarCarrosAluguer.Text;
@@ -300,6 +317,7 @@ namespace Stand_Automoveis
                 AtualizarListaCarrosAluguer();
         }
 
+        //Verifica qual o Carro selecionado
         private void lbxListaCarrosAluguer_SelectedIndexChanged(object sender, EventArgs e)
         {
             CarrosAluguer carrosAluguerSelecionado = new CarrosAluguer();
@@ -321,6 +339,7 @@ namespace Stand_Automoveis
             dtpRececao.Value = DateTime.Now;
         }
 
+        //Adiciona um Carro à lista de Carros
         public void CriarCarro()
         {
             Form_AddEdit_CarroAluguer novocarroAluguer = new Form_AddEdit_CarroAluguer();
@@ -345,6 +364,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Edita o Carro selecionado
         public void EditarCarro()
         {
             CarrosAluguer carrosAluguerSelecionado = lbxCarrosAluguer.SelectedItem as CarrosAluguer;
@@ -377,6 +397,7 @@ namespace Stand_Automoveis
             dadosGuardados = false;
         }
 
+        //Elimina o Carro Selecionado
         public void EliminarCarro()
         {
             CarrosAluguer carrosAluguerSelecionado = lbxCarrosAluguer.SelectedItem as CarrosAluguer;
@@ -414,16 +435,19 @@ namespace Stand_Automoveis
 
         }
 
+        //Editar o Carro Selecionado
         private void btnEditarCarroAluguer_Click(object sender, EventArgs e)
         {
             EditarCarro();
         }
 
+        //Elimina o Carro selecionado
         private void btnEliminarCarroAluguer_Click(object sender, EventArgs e)
         {
             EliminarCarro();
         }
 
+        //Adiciona um novo Carro
         private void btnAddCarro_Click(object sender, EventArgs e)
         {
             CriarCarro();
@@ -431,6 +455,8 @@ namespace Stand_Automoveis
         #endregion
 
         #region Clientes
+
+        //Evento entrar na textBoxFiltarClientes
         private void TbxFiltrarClientes_Enter(object sender, EventArgs e)
         {
             if (tbxFiltrarClientes.Text == "Filtrar")
@@ -440,6 +466,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Evento sair da textBoxFiltarClientes
         private void TbxFiltrarClientes_Leave(object sender, EventArgs e)
         {
             if (tbxFiltrarClientes.Text.Length == 0)
@@ -450,6 +477,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Ordenar Clientes por ordem Crescente
         private void ButtonOrdenarCresClientes_Click(object sender, EventArgs e)
         {
             List<Clientes> clientes = listaClientes.OrderBy(cliente => cliente.Nome).ToList();
@@ -457,6 +485,7 @@ namespace Stand_Automoveis
             lbxClientes.DataSource = clientes;
         }
 
+        //Ordenar Clientes por ordem Decrescente
         private void ButtonOrdenarDescClientes_Click(object sender, EventArgs e)
         {
             List<Clientes> clientes = listaClientes.OrderByDescending(cliente => cliente.Nome).ToList();
@@ -464,6 +493,7 @@ namespace Stand_Automoveis
             lbxClientes.DataSource = clientes;
         }
 
+        //Filtra os clientes pelo nome
         private void TbxFiltrarClientes_TextChanged(object sender, EventArgs e)
         {
             string nome = tbxFiltrarClientes.Text;
@@ -478,6 +508,7 @@ namespace Stand_Automoveis
                 AtualizarClientes();
         }
 
+        //Verifica qual o cliente selecionado
         private void lbxClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -498,39 +529,47 @@ namespace Stand_Automoveis
         #endregion
 
         #region ToolStripOptions
+
+        //Fecha o Form
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void limparDadosToolStripMenuItem_Click(object sender, EventArgs e)
+        //Limpa as seleções do form
+        private void limparSelecaoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LimparDados();
+            LimparSelecao();
         }
 
+        //Guarda os dados na base de dados
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StandLocalDB.SaveChanges();
             dadosGuardados = true;
-            LimparDados();
+            LimparSelecao();
         }
 
+        //Adiciona um novo Carro
         private void adicionarCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CriarCarro();
         }
 
+        //Editar Carro Selecionado
         private void editarCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             EditarCarro();
         }
 
+        //Elimina o Carro Selecionado
         private void eliminarCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EliminarCarro();
         }
 
+        //Adiciona um novo cliente 
         private void novoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Add_Cliente novocliente = new Form_Add_Cliente();
@@ -551,7 +590,8 @@ namespace Stand_Automoveis
                 dadosGuardados = true;
             }
         }
-
+        
+        //Imprime todas as ações do cliente por .txt
         private void imprimirHistoricoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -567,6 +607,7 @@ namespace Stand_Automoveis
         }
         #endregion
 
+        //Evento do Form "enquanto" a fechar
         private void GestorAluguer_FormClosing(object sender, FormClosingEventArgs e)
         {
 

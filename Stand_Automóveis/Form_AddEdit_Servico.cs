@@ -20,6 +20,7 @@ namespace Stand_Automoveis
             InitializeComponent();
         }
 
+        //Verifica se o Tipo está inserido na textBox
         private void TbxTipo_TextChanged(object sender, EventArgs e)
         {
             if (tbxTipo.Text.Length == 0)
@@ -29,6 +30,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Verifica se a Data de Entrada está inserida na textBox
         private void DtpDataEntrada_ValueChanged(object sender, EventArgs e)
         {
             if (dtpDataEntrada.Value.Date > DateTime.Now.Date)
@@ -38,6 +40,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Verifica se a Data de Saída está inserida na textBox
         private void DtpDataSaida_ValueChanged(object sender, EventArgs e)
         {
             if (dtpDataSaida.Value.Date < DateTime.Now.Date)
@@ -47,6 +50,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Passa os dados inseridos nas textBoxes pelas variáveis globais
         private void ButtonAddServico_Click(object sender, EventArgs e)
         {
             tipo = tbxTipo.Text;
@@ -55,6 +59,7 @@ namespace Stand_Automoveis
             Close();
         }
 
+        //Verifica se o botão pode ficar ativo
         private void buttonCheck()
         {
             if (tipoCheck != true || dataEntradaCheck != true || dataSaidaCheck != true)

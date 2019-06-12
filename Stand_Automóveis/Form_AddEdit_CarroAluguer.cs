@@ -28,6 +28,7 @@ namespace Stand_Automoveis
 
         }
 
+        //Verifica se o Estado está inserido na textBox
         private void cbxEstadoCarro_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbxEstadoCarro.SelectedIndex < 0)
@@ -41,6 +42,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Verifica se o Combustivel está inserido na textBox
         private void TbxCombustivelCarro_TextChanged(object sender, EventArgs e)
         {
             if (tbxCombustivelCarro.Text.Length == 0)
@@ -54,6 +56,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Verifica se o Numero de Chassis está inserido na textBox
         private void TbxNumChassis_TextChanged(object sender, EventArgs e)
         {
             if (tbxNumChassis.Text.Length == 0)
@@ -62,6 +65,8 @@ namespace Stand_Automoveis
                 numChassisCheck = true;
             buttonCheck();
         }
+
+        //Verifica se a Matricula está inserida na textBox
         private void TbxMatriculaCarro_TextChanged(object sender, EventArgs e)
         {
             if (tbxMatriculaCarro.Text.Length == 0)
@@ -71,6 +76,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Verifica se o Modelo está inserido na textBox
         private void TbxModeloCarro_TextChanged(object sender, EventArgs e)
         {
             if (tbxModeloCarro.Text.Length == 0)
@@ -80,6 +86,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Verifica se a Marca está inserida na textBox
         private void TbxMarcaCarro_TextChanged(object sender, EventArgs e)
         {
             if (tbxMarcaCarro.Text.Length == 0)
@@ -89,17 +96,10 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Passa os dados inseridos nas textBoxes pelas variáveis globais
         private void buttonAddCarro_Click(object sender, EventArgs e)
         {
-            if (cbxEstadoCarro.SelectedIndex < 0)
-            {
-                // ASDSDASDA
-            }
-            else
-            {
-                estadoCarroAluguer = cbxEstadoCarro.Items[cbxEstadoCarro.SelectedIndex].ToString();
-            }
-
+            estadoCarroAluguer = cbxEstadoCarro.Items[cbxEstadoCarro.SelectedIndex].ToString();
             marca = tbxMarcaCarro.Text;
             modelo = tbxModeloCarro.Text;
             matricula = tbxMatriculaCarro.Text;
@@ -110,6 +110,7 @@ namespace Stand_Automoveis
             Close();
         }
 
+        //Verifica se o botão pode ficar ativo
         private void buttonCheck()
         {
             if (marcaCheck != true || modeloCheck != true || matriculaCheck != true || numChassisCheck != true || combustivelCheck != true || estadoCheck != true)

@@ -20,11 +20,13 @@ namespace Stand_Automoveis
             InitializeComponent();
         }
 
+        //Botão Cancelar
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
+        //Verifica se a Morada está inserida na textBox
         private void TbxMoradaCliente_TextChanged(object sender, EventArgs e)
         {
             if (tbxMoradaCliente.Text.Length == 0)
@@ -34,6 +36,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Verifica se o Contacto está inserido na textBox
         private void TbxContactoCliente_TextChanged(object sender, EventArgs e)
         {
             if (tbxContactoCliente.Text.Length == 0)
@@ -43,6 +46,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Verifica se o NIF está inserido na textBox e se está correto
         private void TbxNifCliente_TextChanged(object sender, EventArgs e)
         {
             double nif;
@@ -62,6 +66,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Verifica se o Nome está inserido na textBox
         private void TbxNomeCliente_TextChanged(object sender, EventArgs e)
         {
             if (tbxNomeCliente.Text.Length == 0)
@@ -71,6 +76,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Passa os dados inseridos nas textBoxes pelas variáveis globais
         private void ButtonCriarCliente_Click(object sender, EventArgs e)
         {
             nome = tbxNomeCliente.Text;
@@ -81,6 +87,7 @@ namespace Stand_Automoveis
             Close();
         }
 
+        //Verifica se o botão pode ficar ativo
         private void buttonCheck()
         {
             if (nomeCheck != true || nifCheck != true || contactoCheck != true || moradaCheck != true)

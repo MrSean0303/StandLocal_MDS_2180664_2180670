@@ -148,7 +148,6 @@
             this.tbxExtras.Name = "tbxExtras";
             this.tbxExtras.Size = new System.Drawing.Size(283, 58);
             this.tbxExtras.TabIndex = 4;
-            this.tbxExtras.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button1
             // 

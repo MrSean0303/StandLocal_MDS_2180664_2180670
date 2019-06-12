@@ -26,6 +26,8 @@ namespace Stand_Automoveis
             LerDados();
         }
         #region GroupBoxClientes
+
+        //Função ListBoxClientes que verifica qual o cliente selecionado
         private void lblListaClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -60,6 +62,7 @@ namespace Stand_Automoveis
             lblNumCarroAluguer.Text = clienteSelecionado.Aluguer.Count.ToString();
         }
 
+        //Função do Botão Criar CLiente que adiciona um novo cliente à lista
         private void BtnCriarCliente_Click(object sender, EventArgs e)
         {
             Form_Add_Cliente novocliente = new Form_Add_Cliente();
@@ -82,6 +85,7 @@ namespace Stand_Automoveis
             
         }
 
+        //Função do Botão Eliminar CLiente que elimina um cliente da lista
         private void BtnEliminarCliente_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -105,6 +109,8 @@ namespace Stand_Automoveis
                 MessageBox.Show("O cliente tem dados introduzidos, por isso nao pode ser apagado", "Erro ao Eliminar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //Função Filtrar Clientes pelo nome inserido
         private void TbxFiltrar_TextChanged(object sender, EventArgs e)
         {
             string nome = tbxFiltrar.Text;
@@ -119,6 +125,7 @@ namespace Stand_Automoveis
                 AtualizarClientes();
         }
 
+        //Função Ordenar Clientes por ordem Crescente
         private void ButtonOrdenarCres_Click(object sender, EventArgs e)
         {
             List<Clientes> clientes = listaCliente.OrderBy(cliente => cliente.Nome).ToList();
@@ -126,6 +133,7 @@ namespace Stand_Automoveis
             lbxClientes.DataSource = clientes;
         }
 
+        //Função Ordenar Clientes por ordem Decrescente
         private void ButtonOrdenarDesc_Click(object sender, EventArgs e)
         {
             List<Clientes> clientes = listaCliente.OrderByDescending(cliente => cliente.Nome).ToList();
@@ -133,6 +141,7 @@ namespace Stand_Automoveis
             lbxClientes.DataSource = clientes;
         }
 
+        //Evento sair da textBox filtrar
         private void TbxFiltrar_Leave(object sender, EventArgs e)
         {
             if (tbxFiltrar.Text.Length == 0)
@@ -143,6 +152,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Evento entrar da textBox Filtrar
         private void TbxFiltrar_Enter(object sender, EventArgs e)
         {
             if (tbxFiltrar.Text == "Filtrar")
@@ -155,6 +165,8 @@ namespace Stand_Automoveis
         #endregion
 
         #region GroupBoxDadosCliente
+
+        //Função Editar os dados do cliente
         private void BtnEditarCliente_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -173,6 +185,8 @@ namespace Stand_Automoveis
                 AtualizarClientes();
                 conteudoNovo = true;
         }
+
+        //Verificar se o Nif foi corretamente alterado
         private void TbAlterarNif_TextChanged(object sender, EventArgs e)
         {
             double nif;
@@ -192,16 +206,20 @@ namespace Stand_Automoveis
 
         #region ToolStripOptions
 
+        //Função Guardar Dados na base de dados
         private void GuardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StandLocalDB.SaveChanges();
             conteudoNovo = false;
         }
+
+        //Função sair da gestão de clientes
         private void SairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        //Função Limpar seleções da gestão de clientes
         private void LimparDadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tbAlterarNome.Text = null;
@@ -212,6 +230,7 @@ namespace Stand_Automoveis
             lbxClientes.SelectedIndex = -1;
         }
 
+        //Função adicionar cliente à lista de clientes
         private void NovoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Add_Cliente novocliente = new Form_Add_Cliente();
@@ -235,17 +254,23 @@ namespace Stand_Automoveis
         #endregion
 
         #region AtualizarClientes
+
+        //Ler dados da base de dados
         private void LerDados()
         {
             listaCliente = StandLocalDB.Clientes.ToList();
             AtualizarClientes();
         }
+
+        //Atualizar ListBoxClientes com a lista dos clientes
         private void AtualizarClientes()
         {
             lbxClientes.DataSource = null;
             lbxClientes.DataSource = listaCliente;
         }
         #endregion
+
+        //Evento do Form "enquanto" a fechar
         private void GestorCliente_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Se o utilizador ainda nao guardou, guarda

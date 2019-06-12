@@ -498,7 +498,7 @@
             this.limparDadosToolStripMenuItem.Name = "limparDadosToolStripMenuItem";
             this.limparDadosToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.limparDadosToolStripMenuItem.Text = "Limpar Dados";
-            this.limparDadosToolStripMenuItem.Click += new System.EventHandler(this.limparDadosToolStripMenuItem_Click);
+            this.limparDadosToolStripMenuItem.Click += new System.EventHandler(this.limparSelecaoToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 

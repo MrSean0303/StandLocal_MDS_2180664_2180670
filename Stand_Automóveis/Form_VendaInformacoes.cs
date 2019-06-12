@@ -16,6 +16,7 @@ namespace Stand_Automoveis
         public Vendas venda;
         public CarrosVenda carro;
 
+        //Mostra as informações relacionadas com a Venda
         public Form_VendaInformacoes(object clienteSelecionado, object vendaSelecionado)
         {
             InitializeComponent();
@@ -38,11 +39,13 @@ namespace Stand_Automoveis
             lblValor.Text = venda.Valor.ToString();
         }
 
+        //Retorna ao Form Gestão Vendas
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        //Imprime uma fatura em .txt
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             ImprimirDocumentos imprimir = new ImprimirDocumentos();

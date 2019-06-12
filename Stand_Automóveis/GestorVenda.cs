@@ -40,12 +40,14 @@ namespace Stand_Automoveis
             StandLocalDB = new StandLocalDBContainer();
             LerDados();
             carregar.Close();
-            LimparDados();
+            LimparSelecao();
             lbxVendas.DataSource = null;
 
         }
 
         #region AtualizarDados
+
+        //Lê os dados da base de dados e adiciona-os às listas
         private void LerDados()
         {
             listaClientes = StandLocalDB.Clientes.ToList();
@@ -55,19 +57,22 @@ namespace Stand_Automoveis
             AtualizarClientes();
         }
 
+        //Atualiza a listBoxCarrosVenda
         private void AtualizarListaCarrosVenda()
         {
             lbxCarrosVenda.DataSource = null;
             lbxCarrosVenda.DataSource = listaCarrosVenda;
         }
 
+        //Atualiza a listBoxClientes
         private void AtualizarClientes()
         {
             lbxClientes.DataSource = null;
             lbxClientes.DataSource = listaClientes;
         }
 
-        public void LimparDados()
+        //Limpa as seleções no Form
+        public void LimparSelecao()
         {
             lbxCarrosVenda.ClearSelected();
             lbxClientes.ClearSelected();
@@ -82,6 +87,7 @@ namespace Stand_Automoveis
             btnInfVenda.Enabled = false;
         }
 
+        //Atualiza a listBoxVenda
         public void AtualizarListaVenda(Clientes cliente) {
             lbxVendas.DataSource = null;
             lbxVendas.DataSource = cliente.Venda.ToList();
@@ -89,6 +95,8 @@ namespace Stand_Automoveis
         #endregion
 
         #region CarrosParaVenda
+
+        //Ordena os Carros por ordem Crescente
         private void ButtonOrdenarAscCarros_Click(object sender, EventArgs e)
         {
             List<CarrosVenda> carros = listaCarrosVenda.OrderBy(carro => carro.Marca).ToList();
@@ -96,6 +104,7 @@ namespace Stand_Automoveis
             lbxCarrosVenda.DataSource = carros;
         }
 
+        //Ordena os Carros por ordem Decrescente
         private void ButtonOrdenarDescCarros_Click(object sender, EventArgs e)
         {
             List<CarrosVenda> carros = listaCarrosVenda.OrderByDescending(carro => carro.Marca).ToList();
@@ -103,6 +112,7 @@ namespace Stand_Automoveis
             lbxCarrosVenda.DataSource = carros;
         }
 
+        //Filtra os Carros pela Marca
         private void TbxFiltrarCarrosVenda_TextChanged(object sender, EventArgs e)
         {
             string nome = tbxFiltrarCarrosVenda.Text;
@@ -117,6 +127,7 @@ namespace Stand_Automoveis
                 AtualizarListaCarrosVenda();
         }
 
+        //Evento entrar na textBoxFiltrarCarrosVenda
         private void TbxFiltrarCarrosVenda_Enter(object sender, EventArgs e)
         {
             if (tbxFiltrarCarrosVenda.Text == "Filtrar")
@@ -126,6 +137,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Evento sair da textBoxFiltrarCarrosVenda
         private void TbxFiltrarCarrosVenda_Leave(object sender, EventArgs e)
         {
             if (tbxFiltrarCarrosVenda.Text.Length == 0)
@@ -136,21 +148,25 @@ namespace Stand_Automoveis
             }
         }
 
+        //Adiciona um novo carro
         private void btnAddCarro_Click(object sender, EventArgs e)
         {
             CriarCarro();
         }
 
-        private void btnEditarCarroAluguer_Click(object sender, EventArgs e)
+        //Edita o Carro selecionado
+        private void btnEditarCarroVenda_Click(object sender, EventArgs e)
         {
             EditarCarro();
         }
 
-        private void btnEliminarCarroAluguer_Click(object sender, EventArgs e)
+        //Elimina o Carro Selecionado
+        private void btnEliminarCarroVenda_Click(object sender, EventArgs e)
         {
             EliminarCarro();
         }
 
+        //Verifica qual o Carro selecionado
         private void lbxCarrosVenda_SelectedIndexChanged(object sender, EventArgs e)
         {
             CarrosVenda carroVendaSelecionado = (CarrosVenda)lbxCarrosVenda.SelectedItem;
@@ -165,6 +181,8 @@ namespace Stand_Automoveis
             btnEditarCarroVenda.Enabled = true;
             btnEliminarCarroVenda.Enabled = true;
         }
+
+        //Adicionar um novo carro
         public void CriarCarro()
         {
             Form_AddEdit_CarroVenda novoCarroVenda = new Form_AddEdit_CarroVenda();
@@ -189,6 +207,7 @@ namespace Stand_Automoveis
             
         }
 
+        //Editar o Carro Selecionado
         public void EditarCarro()
         {
             CarrosVenda carroVendaSelecionado = lbxCarrosVenda.SelectedItem as CarrosVenda;
@@ -219,9 +238,10 @@ namespace Stand_Automoveis
             }
 
             AtualizarListaCarrosVenda();
-            LimparDados();
+            LimparSelecao();
         }
 
+        //Elimina o Carro Selecionado
         public void EliminarCarro()
         {
             CarrosVenda carroVendaSelecionado = lbxCarrosVenda.SelectedItem as CarrosVenda;
@@ -251,6 +271,7 @@ namespace Stand_Automoveis
 
         #region Vendas
 
+        //Verifica qual a venda selecionada
         private void lbxVendas_SelectedIndexChanged(object sender, EventArgs e)
         {
             Vendas VendaSelecionado = (Vendas)lbxVendas.SelectedItem;
@@ -273,6 +294,7 @@ namespace Stand_Automoveis
 
         }
 
+        //Mostra a informação da Venda
         private void btnInfVenda_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = lbxClientes.SelectedItem as Clientes;
@@ -289,6 +311,7 @@ namespace Stand_Automoveis
 
         }
 
+        //Adiciona uma nova venda
         private void btnAddVenda_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -328,6 +351,7 @@ namespace Stand_Automoveis
 
         }
 
+        //Elimina a venda selecionada
         private void btnEliminarVenda_Click(object sender, EventArgs e)
         {
             Vendas vendaSelecionada = (Vendas)lbxVendas.SelectedItem;
@@ -348,6 +372,7 @@ namespace Stand_Automoveis
             dtpdataVenda.Value = DateTime.Now;
         }
 
+        //Editar a venda selecionada
         private void btnEditarVenda_Click(object sender, EventArgs e)
         {
             Vendas vendaSelecionada = (Vendas)lbxVendas.SelectedItem;
@@ -378,6 +403,8 @@ namespace Stand_Automoveis
             valorVenda = false;
             dataVenda = false;
         }
+
+        //Adiciona ou edita uma venda
         public void Add_Edit_Venda() {   
             double valor;
 
@@ -401,10 +428,14 @@ namespace Stand_Automoveis
         #endregion
 
         #region toolStrip
+
+        //Elimina o Carro Selecionado
         private void eliminarCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EliminarCarro();
         }
+
+        //Adiciona um novo cliente
         private void novoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Add_Cliente novocliente = new Form_Add_Cliente();
@@ -426,16 +457,19 @@ namespace Stand_Automoveis
             }
         }
 
+        //Adiciona um novo carro
         private void criarCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CriarCarro();
         }
 
+        //Editar o carro selecionado
         private void editarCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditarCarro();
         }
 
+        //Imprime todas as ações do cliente em relação à venda por .txt
         private void imprimirHistoricoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -450,6 +484,8 @@ namespace Stand_Automoveis
             ImprimirDocumentos imprimir = new ImprimirDocumentos();
             imprimir.VendaHistorico(clienteSelecionado);
         }
+
+        //Guarda as alterações na base de dados
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool carroSemVenda = false;
@@ -496,18 +532,22 @@ namespace Stand_Automoveis
             
         }
 
+        //Fecha o Form
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         } 
 
-        private void limparDadosToolStripMenuItem_Click(object sender, EventArgs e)
+        //Limpa as seleções no Form
+        private void limparSelecaoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LimparDados();
+            LimparSelecao();
         }
         #endregion
 
         #region Clientes
+        
+        //Verifica qual o cliente selecionado
         private void lbxClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -522,6 +562,7 @@ namespace Stand_Automoveis
 
         }
 
+        //Filtra os cliente por nome
         private void TbxFiltrarClientes_TextChanged(object sender, EventArgs e)
         {
             string nome = tbxFiltrarClientes.Text;
@@ -536,6 +577,7 @@ namespace Stand_Automoveis
                 AtualizarClientes();
         }
 
+        //Evento entrar na textBoxFiltrarClientes
         private void TbxFiltrarClientes_Enter(object sender, EventArgs e)
         {
             if (tbxFiltrarClientes.Text == "Filtrar")
@@ -545,6 +587,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Evento sair da textBoxFiltrarClientes
         private void TbxFiltrarClientes_Leave(object sender, EventArgs e)
         {
             if (tbxFiltrarClientes.Text.Length == 0)
@@ -554,6 +597,8 @@ namespace Stand_Automoveis
                 AtualizarClientes();
             }
         }
+
+        //Ordenar os clientes por ordem decrescente
         private void ButtonOrdenarDescClientes_Click(object sender, EventArgs e)
         {
             List<Clientes> clientes = listaClientes.OrderByDescending(cliente => cliente.Nome).ToList();
@@ -561,6 +606,7 @@ namespace Stand_Automoveis
             lbxClientes.DataSource = clientes;
         }
 
+        //Ordenar os clientes por ordem crescente
         private void ButtonOrdenarCresClientes_Click(object sender, EventArgs e)
         {
             List<Clientes> clientes = listaClientes.OrderBy(cliente => cliente.Nome).ToList();
@@ -569,6 +615,7 @@ namespace Stand_Automoveis
         }
         #endregion
 
+        //Evento do Form "enquanto" a fechar
         private void GestorVenda_FormClosing(object sender, FormClosingEventArgs e)
         {
             bool carroSemVenda = false;

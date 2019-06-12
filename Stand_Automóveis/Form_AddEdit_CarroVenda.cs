@@ -20,6 +20,7 @@ namespace Stand_Automoveis
             InitializeComponent();
         }
 
+        //Verifica se o Modelo está inserido na textBox
         private void tbxModeloCarro_TextChanged(object sender, EventArgs e)
         {
             if (tbxModeloCarro.Text.Length == 0)
@@ -29,6 +30,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Verifica se o Numero de Chassis está inserido na textBox
         private void tbxNumChassis_TextChanged(object sender, EventArgs e)
         {
             if (tbxNumChassis.Text.Length == 0)
@@ -38,6 +40,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Verifica se o Combustivel está inserido na textBox
         private void tbxCombustivelCarro_TextChanged(object sender, EventArgs e)
         {
             if (tbxCombustivelCarro.Text.Length == 0)
@@ -47,15 +50,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            if (tbxExtras.Text.Length == 0)
-                extrasCheck = false;
-            else
-                extrasCheck = true;
-            buttonCheck();
-        }
-
+        //Verifica se a Marca está inserida na textBox
         private void tbxMarcaCarro_TextChanged(object sender, EventArgs e)
         {
             if (tbxMarcaCarro.Text.Length == 0)
@@ -65,20 +60,29 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Passa os dados inseridos nas textBoxes pelas variáveis globais
         private void ButtonAddCarro_Click(object sender, EventArgs e)
         {
             marca = tbxMarcaCarro.Text;
             modelo = tbxModeloCarro.Text;
-            extra = tbxExtras.Text;
+            if (tbxExtras.Text.Length == 0)
+            {
+                extra = "Sem Extras";
+            }
+            else
+            {
+                extra = tbxExtras.Text;
+            }
             numeroChassis = tbxNumChassis.Text;
             combustivel = tbxCombustivelCarro.Text;
 
             Close();
         }
 
+        //Verifica se o botão pode ficar ativo
         private void buttonCheck()
         {
-            if (marcaCheck != true || modeloCheck != true || extrasCheck != true || numChassisCheck != true || combustivelCheck != true || extrasCheck != true)
+            if (marcaCheck != true || modeloCheck != true || numChassisCheck != true || combustivelCheck != true)
             {
                 buttonAddCarro.Enabled = false;
             }

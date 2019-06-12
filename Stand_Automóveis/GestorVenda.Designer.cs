@@ -291,7 +291,7 @@
             this.limparDadosToolStripMenuItem.Name = "limparDadosToolStripMenuItem";
             this.limparDadosToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.limparDadosToolStripMenuItem.Text = "Limpar Dados";
-            this.limparDadosToolStripMenuItem.Click += new System.EventHandler(this.limparDadosToolStripMenuItem_Click);
+            this.limparDadosToolStripMenuItem.Click += new System.EventHandler(this.limparSelecaoToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
@@ -411,7 +411,7 @@
             this.btnEditarCarroVenda.Size = new System.Drawing.Size(26, 26);
             this.btnEditarCarroVenda.TabIndex = 4;
             this.btnEditarCarroVenda.UseVisualStyleBackColor = false;
-            this.btnEditarCarroVenda.Click += new System.EventHandler(this.btnEditarCarroAluguer_Click);
+            this.btnEditarCarroVenda.Click += new System.EventHandler(this.btnEditarCarroVenda_Click);
             // 
             // btnEliminarCarroVenda
             // 
@@ -426,7 +426,7 @@
             this.btnEliminarCarroVenda.Size = new System.Drawing.Size(26, 26);
             this.btnEliminarCarroVenda.TabIndex = 3;
             this.btnEliminarCarroVenda.UseVisualStyleBackColor = false;
-            this.btnEliminarCarroVenda.Click += new System.EventHandler(this.btnEliminarCarroAluguer_Click);
+            this.btnEliminarCarroVenda.Click += new System.EventHandler(this.btnEliminarCarroVenda_Click);
             // 
             // btnAddCarroVenda
             // 

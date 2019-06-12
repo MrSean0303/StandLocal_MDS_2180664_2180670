@@ -10,6 +10,7 @@ namespace Stand_Automoveis
 {
     class ImprimirDocumentos
     {
+        //Imprime todo o histórico do cliente selecionado na gestão de Oficina
         public void CarroOficinaHistorico(Clientes clienteSelecionado, CarrosOficina carroSelecionado)
         {
             double valorTotal = 0;
@@ -65,6 +66,7 @@ namespace Stand_Automoveis
             MessageBox.Show("Dados guadados com sucesso!");
         }
 
+        //Imprime a fatura do serviço selecionado na gestão de Oficina
         public void carroOficinaUnica(Clientes clienteSelecionado,CarrosOficina carrosOficina, Servicos servicoSelecionado) {
 
             List<Parcelas> listaServico = new List<Parcelas>();
@@ -131,6 +133,7 @@ namespace Stand_Automoveis
 
         }
 
+        //Imprime todo o histórico do cliente selecionado na gestão de Alugueres
         public void Aluguereshistorico(Clientes clienteSelecionado)
         {
 
@@ -188,6 +191,7 @@ namespace Stand_Automoveis
             MessageBox.Show("Dados guadados com sucesso!");
         }
 
+        //Imprime a fatura do aluguer selecionado na gestão de alugueres
         public void AluguerUnico(Clientes clienteSelecionado, Alugueres AluguerSelecionado)
         {
             SaveFileDialog save = new SaveFileDialog();
@@ -230,6 +234,7 @@ namespace Stand_Automoveis
             MessageBox.Show("Dados guadados com sucesso!");
         }
 
+        //Imprime todo o histórico do cliente selecionado na gestão de Vendas
         public void VendaHistorico(Clientes clienteSelecionado)
         {
 
@@ -283,6 +288,7 @@ namespace Stand_Automoveis
             MessageBox.Show("Dados guadados com sucesso!");
         }
 
+        //Imprime a fatura da venda selecionada na gestão de vendas
         public void VendaUnica(Clientes clienteSelecionado, Vendas vendasDoCliente)
         {
 

@@ -21,6 +21,7 @@ namespace Stand_Automoveis
             InitializeComponent();
         }
 
+        //Verifica se a Descrição está inserida na textBox
         private void TbxDescricao_TextChanged(object sender, EventArgs e)
         {
             if (tbxDescricao.Text.Length == 0)
@@ -30,6 +31,7 @@ namespace Stand_Automoveis
             buttonCheck();
         }
 
+        //Passa os dados inseridos nas textBoxes pelas variáveis globais
         private void ButtonAddParcela_Click(object sender, EventArgs e)
         {
             valor = (double)numValor.Value;
@@ -38,6 +40,7 @@ namespace Stand_Automoveis
             Close();
         }
 
+        //Verifica se o valor está inserido na textBox
         private void NumValor_ValueChanged(object sender, EventArgs e)
         {
             if (numValor.Value == 0)
@@ -46,6 +49,7 @@ namespace Stand_Automoveis
                 pictureBoxValor.Visible = false;
         }
 
+        //Verifica se o botão pode ficar ativo
         private void buttonCheck()
         {
             if (descricaoCheck != true)

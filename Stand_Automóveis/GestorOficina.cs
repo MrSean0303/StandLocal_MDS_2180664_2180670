@@ -32,23 +32,31 @@ namespace Stand_Automoveis
             carregar.Close();
         }
         #region AtualizaçãoDados
+
+        //Lê os dados da Base de Dados e adiciona-os à lista Clientes
         private void LerDados()
         {
             listaClientes = StandLocalDB.Clientes.ToList();
 
             AtualizarClientes();
         }
+
+        //Atualiza a listBoxCarros
         private void AtualizarCarros()
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
             lbxCarros.DataSource = null;
             lbxCarros.DataSource = clienteSelecionado.CarroOficina.ToList();
         }
+
+        //Atualiza a ListBoxClientes
         private void AtualizarClientes()
         {
             lbxClientes.DataSource = null;
             lbxClientes.DataSource = listaClientes;
         }
+
+        //Atualiza a listBoxServicos
         private void AtualizarServicos()
         {
             CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
@@ -64,6 +72,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Atualiza a listBoxParcelas
         private void AtualizarParcelas()
         {
             Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
@@ -81,6 +90,8 @@ namespace Stand_Automoveis
         #endregion
 
         #region GroupBoxClientes
+
+        //Função de Filtrar Clientes
         private void TbxFiltrar_TextChanged(object sender, EventArgs e)
         {
             string nome = tbxFiltrar.Text;
@@ -94,6 +105,8 @@ namespace Stand_Automoveis
             else
                 AtualizarClientes();
         }
+
+        //Verifica qual o cliente selecionado
         private void LbxClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -111,6 +124,8 @@ namespace Stand_Automoveis
                 AtualizarParcelas();
             }
         }
+
+        //Evento sair da textBox Filtar
         private void TbxFiltrar_Leave(object sender, EventArgs e)
         {
             if (tbxFiltrar.Text.Length == 0)
@@ -121,6 +136,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Evento entrar da textBox Filtar
         private void TbxFiltrar_Enter(object sender, EventArgs e)
         {
             if (tbxFiltrar.Text == "Filtrar")
@@ -129,6 +145,8 @@ namespace Stand_Automoveis
                 tbxFiltrar.ForeColor = SystemColors.WindowText;
             }
         }
+
+        //Função Ordenar Clientes por ordem Crescente
         private void ButtonOrdenarCres_Click(object sender, EventArgs e)
         {
             List<Clientes> clientes = listaClientes.OrderBy(cliente => cliente.Nome).ToList();
@@ -136,6 +154,7 @@ namespace Stand_Automoveis
             lbxClientes.DataSource = clientes;
         }
 
+        //Função Ordenar Clientes por ordem Decrescente
         private void ButtonOrdenarDesc_Click(object sender, EventArgs e)
         {
             List<Clientes> clientes = listaClientes.OrderByDescending(cliente => cliente.Nome).ToList();
@@ -145,6 +164,8 @@ namespace Stand_Automoveis
         #endregion
 
         #region GroupBoxCarrosOficina
+
+        //Função Adicionar Carro para Oficina
         private void ButtonAddCarro_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -168,6 +189,8 @@ namespace Stand_Automoveis
                 conteudoNovo = true;
             }
         }
+
+        //Função Eliminar Carro da Oficina
         private void ButtonEliminarCarro_Click(object sender, EventArgs e)
         {
             CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
@@ -194,6 +217,8 @@ namespace Stand_Automoveis
                 return;
             }
         }
+
+        //Verifica qual o Carro selecionado
         private void LbxCarros_SelectedIndexChanged(object sender, EventArgs e)
         {
             CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
@@ -210,6 +235,8 @@ namespace Stand_Automoveis
                 AtualizarParcelas();
             }
         }
+
+        //Função Editar Carro 
         private void ButtonEditarCarro_Click(object sender, EventArgs e)
         {
             CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
@@ -241,6 +268,8 @@ namespace Stand_Automoveis
         #endregion
 
         #region ToolStripOptions
+
+        //Imprimir todas as ações do cliente 
         private void imprimirHistoricoCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -264,6 +293,8 @@ namespace Stand_Automoveis
             ImprimirDocumentos imprimir = new ImprimirDocumentos();
             imprimir.CarroOficinaHistorico(clienteSelecionado, carroOficinaSelecionado);
         }
+
+        //Inserção de novo cliente
         private void NovoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Add_Cliente novocliente = new Form_Add_Cliente();
@@ -285,16 +316,20 @@ namespace Stand_Automoveis
             }
         }
 
+        //Função Guardar os dados na base de dados
         private void GuardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StandLocalDB.SaveChanges();
             conteudoNovo = false;
         }
 
+        //Função Sair da Gestão de Oficina
         private void SairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+        //Limpa as seleções do gestor de Oficinas
         private void LimparSelecaoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             lbxClientes.ClearSelected();
@@ -305,6 +340,8 @@ namespace Stand_Automoveis
         #endregion
 
         #region GroupBoxServiços
+
+        //Função Imprimir Fatura
         private void ButtonFatura_Click(object sender, EventArgs e)
         {
             Clientes clienteSelecionado = (Clientes)lbxClientes.SelectedItem;
@@ -335,6 +372,7 @@ namespace Stand_Automoveis
             imprimir.carroOficinaUnica(clienteSelecionado, carroOficinaSelecionado, ServicoSelecionada);
         }
 
+        //Função Serviço terminado (data de saída é alterada para o dia atual)
         private void ButtonServicoOkay_Click(object sender, EventArgs e)
         {
             Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
@@ -350,6 +388,7 @@ namespace Stand_Automoveis
             AtualizarServicos();
         }
 
+        //Adicionar Serviço ao Carro selecionado
         private void ButtonAddServico_Click(object sender, EventArgs e)
         {
             CarrosOficina carroSelecionado = (CarrosOficina)lbxCarros.SelectedItem;
@@ -372,6 +411,8 @@ namespace Stand_Automoveis
                 AtualizarServicos();
             }   
         }
+
+        //Eliminar Serviços Selecionado
         private void ButtonEliminarServicos_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult;
@@ -403,6 +444,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Editar o Serviço Selecionado
         private void ButtonEditarServicos_Click(object sender, EventArgs e)
         {
             Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
@@ -424,6 +466,8 @@ namespace Stand_Automoveis
                 AtualizarServicos();
             }
         }
+
+        //Verifica qual o serviço selecionado
         private void LbxServicos_SelectedIndexChanged(object sender, EventArgs e)
         {
             Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
@@ -443,6 +487,8 @@ namespace Stand_Automoveis
         #endregion
 
         #region GroupBoxParcelas
+
+        //Adicionar Parcela ao Serviço Selecionado
         private void ButtonAddParcela_Click(object sender, EventArgs e)
         {
             Servicos servicoSelecionado = (Servicos)lbxServicos.SelectedItem;
@@ -464,7 +510,7 @@ namespace Stand_Automoveis
                 AtualizarParcelas();
             }
         }
-
+        //Elimina a Parcela Selecionada
         private void ButtonEliminarParcelas_Click(object sender, EventArgs e)
         {
             Parcelas parcelaSelecionada = (Parcelas)lbxParcelas.SelectedItem;
@@ -485,6 +531,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Editar a parcela selecionada
         private void ButtonEditarParcelas_Click(object sender, EventArgs e)
         {
             Parcelas parcelaSelecionada = (Parcelas)lbxParcelas.SelectedItem;
@@ -506,6 +553,7 @@ namespace Stand_Automoveis
             }
         }
 
+        //Verifica qual a parcela selecionada
         private void LbxParcelas_SelectedIndexChanged(object sender, EventArgs e)
         {
             Parcelas parcelaSelecionado = (Parcelas)lbxParcelas.SelectedItem;
@@ -521,17 +569,23 @@ namespace Stand_Automoveis
         #endregion
 
         #region DisableButtons
+
+        //Desativa os botões das Parcelas
         private void DisableParcelas()
         {
             buttonEliminarParcela.Enabled = false;
             buttonEditarParcela.Enabled = false;
         }
+
+        //Desativa os botões dos Carros
         private void DisableCarros()
         {
             buttonAddServico.Enabled = false;
             buttonEliminarCarro.Enabled = false;
             buttonEditarCarro.Enabled = false;
         }
+
+        //Desativa os botões dos Serviços
         private void DisableServicos()
         {
             buttonServicoOkay.Enabled = false;
@@ -542,17 +596,23 @@ namespace Stand_Automoveis
         #endregion
 
         #region EnableButtons
+
+        //Ativa os botões das Parcelas
         private void EnableParcelas()
         {
             buttonEliminarParcela.Enabled = true;
             buttonEditarParcela.Enabled = true;
         }
+
+        //Ativa os botões dos Carros
         private void EnableCarros()
         {
             buttonAddServico.Enabled = true;
             buttonEliminarCarro.Enabled = true;
             buttonEditarCarro.Enabled = true;
         }
+
+        //Ativa os botões dos Serviços
         private void EnableServicos()
         {
             buttonServicoOkay.Enabled = true;
@@ -562,6 +622,7 @@ namespace Stand_Automoveis
         }
         #endregion
 
+        //Evento do Form "enquanto" a fechar
         private void GestorOficina_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Se o utilizador ainda nao guardou, guarda

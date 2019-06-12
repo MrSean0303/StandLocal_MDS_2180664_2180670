@@ -16,6 +16,7 @@ namespace Stand_Automoveis
         public Alugueres aluguer;
         public CarrosAluguer carro;
 
+        //Mostra as informações relacionadas com o aluguer
         public Form_AluguerInformacoes(object clienteSelecionado, object aluguerSelecionado)
         {
             InitializeComponent();
@@ -40,20 +41,17 @@ namespace Stand_Automoveis
             lblDataInicio.Text = aluguer.DataInicio.ToString("dd-MM-yy");
         }
 
+        //Retorna ao Form Gestão Alugueres
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        //Imprime uma fatura em .txt
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             ImprimirDocumentos imprimir = new ImprimirDocumentos();
             imprimir.AluguerUnico(cliente, aluguer);
-        }
-
-        private void lblDtaEntrega_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
